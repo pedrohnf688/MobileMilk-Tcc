@@ -1,25 +1,21 @@
 package com.eaj.ufrn.mobilemilk;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+
 
 public class LoginActivity extends AppCompatActivity {
 
+    private Toolbar myToolbar;
 
     @Override
-    protected void onCreate(Bundle saveInstanceState){
-        super.onCreate(saveInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-    }
+        getSupportActionBar().setTitle("Login"); // Adiciona um Title ao ActionBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    public void criatConta(View v){
-        Intent i = new Intent(this, InitActivity.class);
-        Toast.makeText(this, "Vamos Criar a Sua Conta", Toast.LENGTH_LONG).show();
-        startActivity(i);
     }
-
 }
