@@ -35,7 +35,7 @@ public class RetrofitConfig {
                 .build();
     }
 
-    public ServiceCliente getUsuarioService(){
+    public ServiceCliente getClienteService(){
         return this.rt.create(ServiceCliente.class);
     }
 }

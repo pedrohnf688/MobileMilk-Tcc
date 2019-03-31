@@ -13,19 +13,19 @@ import retrofit2.http.Path;
 
 public interface ServiceCliente {
 
-    @GET("/cliente/{cpf}")
+    @GET("usuarios/cliente/{cpf}")
     Call<Cliente> buscarClienteCpf(@Path("cpf") String cliente);
 
-    @GET("/cliente")
+    @GET("usuarios/cliente")
     Call<Cliente> listaClientes();
 
-    @POST("/cliente")
+    @POST("usuarios/cliente")
     Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
-    @DELETE("/cliente/{cpf}")
+    @DELETE("usuarios/cliente/{cpf}")
     Call<ResponseBody> deletarCliente(@Path("cpf") int cpf);
 
-    @PUT("/cliente/{cpf}")
+    @PUT("usuarios/cliente/{cpf}")
     Call<ResponseBody> editarCliente(@Path("cpf") int cpf);
 
 }

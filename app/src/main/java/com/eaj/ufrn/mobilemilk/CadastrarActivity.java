@@ -2,15 +2,22 @@ package com.eaj.ufrn.mobilemilk;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CadastrarActivity extends AppCompatActivity {
 
@@ -18,6 +25,8 @@ public class CadastrarActivity extends AppCompatActivity {
     TextView emailUsuario;
     TextView senhaUsuario;
     TextView usuariousuario;
+
+    Cliente cliente;
 
     @Override
     protected void onCreate(Bundle saveInstanteState){
@@ -36,17 +45,16 @@ public class CadastrarActivity extends AppCompatActivity {
 
     //Caso de uso Cadastrar Cliente.
     public void concluirCadastro(View v){
+
         String nome = this.nomeUsuario.getText().toString();
         String email = this.emailUsuario.getText().toString();
         String senha = this.senhaUsuario.getText().toString();
         String usuario = this.usuariousuario.getText().toString();
 
-        Credencial credencial = new Credencial(usuario, senha);
-        Cliente cliente = new Cliente(nome, email, usuario, senha);
+        this.cliente = new Cliente(nome, email, usuario, senha);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
-        alertDialog.setMessage("Para poder fazer uma requisição de análise você precisa completar seu cadastro" +
-                " fornecendo sua identificação Cpf e uma Fazenda. Deseja Cadastrar informações agora?")
+        alertDialog.setMessage(R.string.alertDialogMessage)
                 .setTitle("Completar Cadastro")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
@@ -57,11 +65,31 @@ public class CadastrarActivity extends AppCompatActivity {
                 .setNegativeButton("Agora não", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "Apertou Não", Toast.LENGTH_LONG).show();
+
+                        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
+                        //Fazendo uma chamada assícrona para não prejudicar a Ui Thread
+                        call.enqueue(new Callback<Cliente>() {
+                            //Trata a resposta
+                            @Override
+                            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                                Log.i("MK", "Inseriu com sucesso");
+                                Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+                            }
+                            @Override
+                            public void onFailure(Call<Cliente> call, Throwable t) {
+                                Log.i("MK", "Falha ao Inserir");
+                                Log.i("MK", "Falha ao Inserir " + t.getMessage());
+                                Toast.makeText(getApplicationContext(), "Falha ao inserir", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(i);
                     }
                 });
         AlertDialog dialog = alertDialog.create();
         dialog.show();
     }
+
+
 
 }

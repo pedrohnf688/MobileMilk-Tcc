@@ -9,6 +9,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String telefone;
+    private String tipoPerfilUsuario;
     private List<Solicitacao> listaSolicitacoes;
     private List<Fazenda> listafazendas;
     private Credencial credencial;
@@ -16,10 +17,12 @@ public class Cliente {
     public Cliente(String nome, String email, String username, String senha){
         this.nome = nome;
         this.email = email;
-        this.credencial = new Credencial(senha, username);
+        this.credencial = null;
         this.cpf = null;
-        this.listafazendas = new ArrayList<>();
-        this.listaSolicitacoes = new ArrayList<>();
+        this.telefone = null;
+        this.tipoPerfilUsuario = "ROLE_CLIENTE";
+        //this.listafazendas = new ArrayList<>();
+        //this.listaSolicitacoes = new ArrayList<>();
     }
 
     public Cliente(){
