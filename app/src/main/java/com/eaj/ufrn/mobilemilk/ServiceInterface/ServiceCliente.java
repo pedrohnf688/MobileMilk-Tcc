@@ -1,4 +1,4 @@
-package com.eaj.ufrn.mobilemilk.ServiceClass;
+package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 
@@ -13,19 +13,19 @@ import retrofit2.http.Path;
 
 public interface ServiceCliente {
 
-    @GET("URL DO RECURSO")
+    @GET("/cliente/{cpf}")
     Call<Cliente> buscarClienteCpf(@Path("cpf") String cliente);
 
-    @GET("URL DO RECURSO")
+    @GET("/cliente")
     Call<Cliente> listaClientes();
 
-    @POST("URL DO RECURSO")
+    @POST("/cliente")
     Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
-    @DELETE("URL DO RECURSO")
+    @DELETE("/cliente/{cpf}")
     Call<ResponseBody> deletarCliente(@Path("cpf") int cpf);
 
-    @PUT("URL DO RECURSO")
+    @PUT("/cliente/{cpf}")
     Call<ResponseBody> editarCliente(@Path("cpf") int cpf);
 
 }

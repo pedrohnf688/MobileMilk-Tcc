@@ -60,7 +60,7 @@ public class Cliente {
     }
 
     public List<Solicitacao> getListaSolicitacoes() {
-        return listaSolicitacoes;
+        return this.listaSolicitacoes;
     }
 
     public void setListaSolicitacoes(List<Solicitacao> listaSolicitacoes) {
@@ -68,7 +68,7 @@ public class Cliente {
     }
 
     public List<Fazenda> getListafazendas() {
-        return listafazendas;
+        return this.listafazendas;
     }
 
     public void setListafazendas(List<Fazenda> listafazendas) {
@@ -83,4 +83,13 @@ public class Cliente {
         this.credencial = credencial;
     }
 
+    // Cadastrar Fazenda
+    public void cadastrarFazenda(Fazenda fazenda){
+        getListafazendas().add(fazenda);
+    }
+
+    // Cadastrar Solicitação
+    public void cadastrarSolicitacao(Solicitacao solicitacao){
+        getListaSolicitacoes().add(solicitacao);
+    }
 }

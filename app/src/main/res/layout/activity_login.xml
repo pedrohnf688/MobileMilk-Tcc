@@ -57,6 +57,7 @@
         android:layout_marginEnd="8dp"
         android:text="Entrar"
         android:elevation="4dp"
+        android:onClick="autenticar"
         android:textColor="@color/branco"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"

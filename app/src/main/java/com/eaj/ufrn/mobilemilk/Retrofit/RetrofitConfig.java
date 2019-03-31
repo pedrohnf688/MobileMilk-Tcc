@@ -1,7 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Retrofit;
 
-import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
-import com.eaj.ufrn.mobilemilk.ServiceClass.ServiceCliente;
+import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceCliente;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

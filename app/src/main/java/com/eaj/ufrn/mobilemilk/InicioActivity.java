@@ -19,7 +19,6 @@ public class InicioActivity extends AppCompatActivity {
 
     public void loginAuth(View v){
         Intent i = new Intent(this, LoginActivity.class);
-        //Toast.makeText(this, "En", Toast.LENGTH_LONG).show();
         startActivity(i);
     }
 

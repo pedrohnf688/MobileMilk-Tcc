@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_solicitacao"
+        android:icon="@drawable/solicitacao_48dp"
+        android:title="Solicitações"/>
+
+    <item
+        android:id="@+id/navigation_fazenda"
+        android:icon="@drawable/fazenda_48dp"
+        android:title="Fazendas"/>
+
+    <item
+        android:id="@+id/navigation_perfil"
+        android:icon="@drawable/perfil_48dp"
+        android:title="Perfil"/>
+
+</menu>
