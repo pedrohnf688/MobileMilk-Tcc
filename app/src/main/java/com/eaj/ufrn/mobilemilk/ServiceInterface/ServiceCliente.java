@@ -19,13 +19,13 @@ public interface ServiceCliente {
     @GET("usuarios/cliente")
     Call<Cliente> listaClientes();
 
-    @POST("usuarios/cliente")
+    @POST("usuarios/clientes")
     Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
     @DELETE("usuarios/cliente/{cpf}")
-    Call<ResponseBody> deletarCliente(@Path("cpf") int cpf);
+    Call<ResponseBody> deletarCliente(@Path("cpf") String cpf);
 
     @PUT("usuarios/cliente/{cpf}")
-    Call<ResponseBody> editarCliente(@Path("cpf") int cpf);
+    Call<ResponseBody> editarCliente(@Path("cpf") String cpf);
 
 }

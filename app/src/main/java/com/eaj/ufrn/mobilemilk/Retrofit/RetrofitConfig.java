@@ -29,7 +29,7 @@ public class RetrofitConfig {
                 .readTimeout(100, TimeUnit.SECONDS).build();
         Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
         this.rt = new Retrofit.Builder()
-                .baseUrl("URL ou IP")
+                .baseUrl("http://service-milk.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create(gsonConvertFactory))
                 .client(client)
                 .build();
@@ -38,4 +38,5 @@ public class RetrofitConfig {
     public ServiceCliente getClienteService(){
         return this.rt.create(ServiceCliente.class);
     }
+
 }
