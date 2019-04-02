@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void autenticar(View v){
         if(this.senha.getText().toString().equals("admin") && this.usuario.getText().toString().equals("admin"))
+            finish();
             startActivity(new Intent(this, HomeActivity.class));
     }
 }
