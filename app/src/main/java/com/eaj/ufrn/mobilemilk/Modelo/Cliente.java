@@ -20,12 +20,12 @@ public class Cliente {
     private List<Fazenda> listafazendas;
     private Credencial credencial;
 
-    public Cliente(String nome, String email, String username, String senha){
+    public Cliente(String nome, String email, String username, String senha, String cpf, String telefone){
         this.nome = nome;
         this.email = email;
         this.credencial = null;
-        this.cpf = null;
-        this.telefone = null;
+        this.cpf = cpf;
+        this.telefone = telefone;
         this.tipoPerfilUsuario = "ROLE_CLIENTE";
         //this.listafazendas = new ArrayList<>();
         //this.listaSolicitacoes = new ArrayList<>();
@@ -102,9 +102,16 @@ public class Cliente {
         getListaSolicitacoes().add(solicitacao);
     }
 
-    // Cadastrar novo usuario
+    // Cadastrar novo cliente
     public static Call<Cliente> cadastrarCliente(Cliente cliente){
         Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
         return call;
     }
+
+    // Retorna todos os Clientes cadastrados
+    public static Call<List<Cliente>> listarCliente(){
+        Call<List<Cliente>> call = new RetrofitConfig().getClienteService().listaClientes();
+        return call;
+    }
+
 }

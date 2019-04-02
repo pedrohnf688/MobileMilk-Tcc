@@ -18,8 +18,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setTitle("Login"); // Adiciona um Title ao ActionBar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.Login); // Adiciona um Title ao ActionBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // habilita a seta voltar
 
         this.senha = findViewById(R.id.senha);
         this.usuario = findViewById(R.id.usuario);

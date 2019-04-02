@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_home);
 
-        getSupportActionBar().setTitle("Solicitações");
+        getSupportActionBar().setTitle(R.string.Solicitacoes); // Adiciona o título ao ActionBar
 
         this.bottonNavigation = findViewById(R.id.buttonNavigationHome);
         this.bottonNavigation.setOnNavigationItemSelectedListener(navListener);
@@ -30,13 +30,13 @@ public class HomeActivity extends AppCompatActivity {
 
             switch(menuItem.getItemId()){
                 case R.id.navigation_solicitacao:
-                    getSupportActionBar().setTitle("Solicitações");
+                    getSupportActionBar().setTitle(R.string.Solicitacoes);
                     break;
                 case R.id.navigation_fazenda:
-                    getSupportActionBar().setTitle("Fazendas");
+                    getSupportActionBar().setTitle(R.string.Fazendas);
                     break;
                 case R.id.navigation_perfil:
-                    getSupportActionBar().setTitle("Perfil");
+                    getSupportActionBar().setTitle(R.string.Perfil);
                     break;
             }
 

@@ -1,6 +1,28 @@
 <resources>
     <string name="app_name">MobileMilk</string>
     <string name="alertDialogMessage">
-    Para poder fazer uma requisição de análise você precisa completar seu cadastro fornecendo sua identificação Cpf e uma Fazenda. Deseja Cadastrar informações agora?
+    Para poder fazer uma requisição de análise você precisa completar seu cadastro fornecendo sua identificação Cpf, Telefone e uma Fazenda. Deseja Cadastrar informações agora?
     </string>
+    <string name="NomeObrigatorio">Nome é obrigatório</string>
+    <string name="EmailObrigatorio">Email é obrigatório</string>
+    <string name="UsuarioObrigatorio">Usuário é obrigatório</string>
+    <string name="SenhaObrigatoria">Senha é obrigatório</string>
+    <string name="SenhaUsuarioError">Senha deve conter 6 digitos no mínimo e 16 no máximo</string>
+    <string name="sim">Sim</string>
+    <string name="Nao">Não</string>
+    <string name="cadastrar_se">Cadastrar-se</string>
+    <string name="CompletarCadastro">Completar cadastro</string>
+    <string name="AgoraNao">Agora não</string>
+    <string name="SalvoSucesso">Salvo com sucesso</string>
+    <string name="EmailSetError">E-mail utiizado já existe ou não é válido</string>
+    <string name="FalhaInserir">Falha ao inserir</string>
+    <string name="CadastrarFazenda">Cadastrar fazenda</string>
+    <string name="CpfObrigatorio">Cpf é obrigatório</string>
+    <string name="CpfInvaliso">Cpf inválido</string>
+    <string name="TelefoneObrigatorio">Telefone é obrigatório</string>
+    <string name="TelefoneInvalido">Número deve conter 11 dígitos incluindo o DDD</string>
+    <string name="Solicitacoes">Solicitações</string>
+    <string name="Perfil">Perfil</string>
+    <string name="Fazendas">Fazendas</string>
+    <string name="Login"> Login </string>
 </resources>

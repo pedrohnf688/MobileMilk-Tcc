@@ -53,7 +53,7 @@
         android:layout_marginTop="15dp"
         android:background="@color/GreenB"
         android:onClick="complementoCadastro"
-        android:text="Concluir"
+        android:text="Avançar"
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,5 @@
 package com.eaj.ufrn.mobilemilk;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
-import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
-import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +30,7 @@ public class CadastrarActivity extends AppCompatActivity {
         super.onCreate(saveInstanteState);
         setContentView(R.layout.activity_cadastrar);
 
-        getSupportActionBar().setTitle("Cadastrar-se"); // Adiciona um Title ao ActionBar
+        getSupportActionBar().setTitle(R.string.cadastrar_se); // Adiciona um Title ao ActionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Adiciona a ação voltar ao ActionBar
 
         // Atribuindo os obejtos View aos seus devidos componentes
@@ -52,64 +49,62 @@ public class CadastrarActivity extends AppCompatActivity {
         String usuario = this.usuariousuario.getText().toString();
 
         if(nome.equals("")) {
-            nomeUsuario.setError("Nome é obrigatório");
+            nomeUsuario.setError(""+R.string.NomeObrigatorio);
             return false;
         }
         else if(email.equals("")){
-            emailUsuario.setError("Email é obrigatório");
+            emailUsuario.setError(""+R.string.EmailObrigatorio);
             return false;
         }
         else if(usuario.equals("")){
-            usuariousuario.setError("Usuário é obrigatório");
+            usuariousuario.setError(""+R.string.UsuarioObrigatorio);
             return false;
         }
         else if(senha.equals("")){
-            senhaUsuario.setError("Senha é obrigatório");
+            senhaUsuario.setError(""+R.string.SenhaObrigatoria);
             return false;
         }
         else if(senha.length() < 6 || senha.length() > 16){
-            senhaUsuario.setError("Senha deve conter 6 digitos no mínimo e 16 no máximo");
+            senhaUsuario.setError(""+R.string.SenhaUsuarioError);
             return false;
         }
 
-        this.cliente = new Cliente(nome, email, usuario, senha);
+        this.cliente = new Cliente(nome, email, null, null, null, null);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)
-                .setTitle("Completar Cadastro")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.CompletarCadastro)
+                .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(getApplicationContext(), ComplementoCadastroActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("nome", cliente.getNome());
-                        bundle.putString("email", cliente.getEmail());
+                        Intent i = new Intent(getApplicationContext(), ComplementoCadastroClienteActivity.class);
+                        i.putExtra("nome", cliente.getNome());
+                        i.putExtra("email", cliente.getEmail());
                         //bundle.putString("usuario", cliente.getCredencial().getUsername());
                         //bundle.putString("senha", cliente.getCredencial().getSenha());
-                        startActivity(i, bundle);
+                        startActivity(i);
                     }
                 })
-                .setNegativeButton("Agora não", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.AgoraNao, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         Call<Cliente> call = Cliente.cadastrarCliente(cliente);
                         call.enqueue(new Callback<Cliente>() {
-                            //Trata a resposta
                             @Override
                             public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                                 if(response.isSuccessful()) {
                                     Log.i("MK", "Inseriu com sucesso");
-                                    Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
                                 }
                                 else
-                                    Toast.makeText(getApplicationContext(), "o e-mail utiizado já existe", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.EmailSetError, Toast.LENGTH_SHORT).show();
                             }
                             @Override
                             public void onFailure(Call<Cliente> call, Throwable t) {
                                 Log.i("MK", "Falha ao Inserir");
                                 Log.i("MK", "Falha ao Inserir " + t.getMessage());
-                                Toast.makeText(getApplicationContext(), "Falha ao inserir", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                             }
                         });
                         Intent i = new Intent(getApplicationContext(), LoginActivity.class);

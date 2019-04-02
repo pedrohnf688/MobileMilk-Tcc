@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Usuário"
+            android:drawableRight="@drawable/person_black_24dp"
             android:inputType="textCapSentences" />
     </android.support.design.widget.TextInputLayout>
 
@@ -44,7 +45,8 @@
             android:id="@+id/senha"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Senha "
+            android:drawableRight="@drawable/lock_black_24dp"
+            android:hint="Senha"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
