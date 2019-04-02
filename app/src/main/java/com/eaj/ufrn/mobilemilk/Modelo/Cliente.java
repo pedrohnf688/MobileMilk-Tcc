@@ -1,7 +1,13 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Cliente {
 
@@ -94,5 +100,11 @@ public class Cliente {
     // Cadastrar Solicitação
     public void cadastrarSolicitacao(Solicitacao solicitacao){
         getListaSolicitacoes().add(solicitacao);
+    }
+
+    // Cadastrar novo usuario
+    public static Call<Cliente> cadastrarCliente(Cliente cliente){
+        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
+        return call;
     }
 }

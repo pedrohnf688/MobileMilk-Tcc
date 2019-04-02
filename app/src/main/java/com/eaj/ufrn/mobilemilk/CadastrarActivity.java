@@ -44,12 +44,33 @@ public class CadastrarActivity extends AppCompatActivity {
     }
 
     //Caso de uso Cadastrar Cliente.
-    public void concluirCadastro(View v){
+    public boolean concluirCadastro(View v){
 
         String nome = this.nomeUsuario.getText().toString();
         String email = this.emailUsuario.getText().toString();
         String senha = this.senhaUsuario.getText().toString();
         String usuario = this.usuariousuario.getText().toString();
+
+        if(nome.equals("")) {
+            nomeUsuario.setError("Nome é obrigatório");
+            return false;
+        }
+        else if(email.equals("")){
+            emailUsuario.setError("Email é obrigatório");
+            return false;
+        }
+        else if(usuario.equals("")){
+            usuariousuario.setError("Usuário é obrigatório");
+            return false;
+        }
+        else if(senha.equals("")){
+            senhaUsuario.setError("Senha é obrigatório");
+            return false;
+        }
+        else if(senha.length() < 6 || senha.length() > 16){
+            senhaUsuario.setError("Senha deve conter 6 digitos no mínimo e 16 no máximo");
+            return false;
+        }
 
         this.cliente = new Cliente(nome, email, usuario, senha);
 
@@ -59,21 +80,30 @@ public class CadastrarActivity extends AppCompatActivity {
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "Apertou Sim", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getApplicationContext(), ComplementoCadastroActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nome", cliente.getNome());
+                        bundle.putString("email", cliente.getEmail());
+                        //bundle.putString("usuario", cliente.getCredencial().getUsername());
+                        //bundle.putString("senha", cliente.getCredencial().getSenha());
+                        startActivity(i, bundle);
                     }
                 })
                 .setNegativeButton("Agora não", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
-                        //Fazendo uma chamada assícrona para não prejudicar a Ui Thread
+                        Call<Cliente> call = Cliente.cadastrarCliente(cliente);
                         call.enqueue(new Callback<Cliente>() {
                             //Trata a resposta
                             @Override
                             public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                                Log.i("MK", "Inseriu com sucesso");
-                                Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+                                if(response.isSuccessful()) {
+                                    Log.i("MK", "Inseriu com sucesso");
+                                    Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                    Toast.makeText(getApplicationContext(), "o e-mail utiizado já existe", Toast.LENGTH_SHORT).show();
                             }
                             @Override
                             public void onFailure(Call<Cliente> call, Throwable t) {
@@ -82,12 +112,13 @@ public class CadastrarActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Falha ao inserir", Toast.LENGTH_SHORT).show();
                             }
                         });
-                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(i);
                     }
                 });
         AlertDialog dialog = alertDialog.create();
         dialog.show();
+        return true;
     }
 
 
