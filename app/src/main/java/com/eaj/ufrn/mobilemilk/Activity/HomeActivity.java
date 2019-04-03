@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
+import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
 import com.eaj.ufrn.mobilemilk.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -17,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottonNavigation;
     private Toolbar tool;
     private Activity getActivity;
+    private FrameLayout layout;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -28,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
         this.bottonNavigation = findViewById(R.id.buttonNavigationHome);
         this.bottonNavigation.setOnNavigationItemSelectedListener(navListener);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHome, new SolicitacoesFragment()).commit();
+
     }
 
     //Implementação OnNavigationItemSelectedListener navListener
@@ -35,9 +41,12 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+            Fragment fragment = null;
+
             switch(menuItem.getItemId()){
                 case R.id.navigation_solicitacao:
                     getSupportActionBar().setTitle(R.string.Solicitacoes);
+                    fragment = new SolicitacoesFragment();
                     break;
                 case R.id.navigation_fazenda:
                     getSupportActionBar().setTitle(R.string.Fazendas);
@@ -47,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
 
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHome, fragment).commit();
             return true;
         }
     };

@@ -10,11 +10,15 @@ public class Solicitacao {
     private Enum<Status> status;
     private String observacao;
 
-    public void registrarStatus(Status status){
-        this.status = status;
+    public Solicitacao(String observacao, Enum<Status> status){
+        this.observacao = observacao;
+        this.status = Status.APROVADO;
     }
 
     //Getters and Setters
+    public void registrarStatus(Status status){
+        this.status = status;
+    }
 
     public Fazenda getFazenda() {
         return fazenda;

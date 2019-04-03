@@ -37,7 +37,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         SolicitacaoViewHolder mvn = (SolicitacaoViewHolder) viewHolder;
         this.solicitacaoEscolhida = this.listaSolicitacoes.get(position);
-        mvn.numeroSolicitacao.setText(this.solicitacaoEscolhida.getFazenda().getEmpresa());
+        mvn.numeroSolicitacao.setText(this.solicitacaoEscolhida.getObservacao());
         mvn.statusSolicitacao.setText(this.solicitacaoEscolhida.getStatus().toString());
     }
 
