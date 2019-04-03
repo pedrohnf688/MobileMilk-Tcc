@@ -1,4 +1,4 @@
-package com.eaj.ufrn.mobilemilk;
+package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

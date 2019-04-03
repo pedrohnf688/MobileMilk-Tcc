@@ -1,8 +1,7 @@
-package com.eaj.ufrn.mobilemilk;
+package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Activity.CadastrarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

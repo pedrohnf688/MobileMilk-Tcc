@@ -1,4 +1,4 @@
-package com.eaj.ufrn.mobilemilk;
+package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import com.eaj.ufrn.mobilemilk.Activity.HomeActivity;
+import com.eaj.ufrn.mobilemilk.R;
 
 
 public class LoginActivity extends AppCompatActivity {

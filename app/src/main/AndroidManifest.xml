@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".InicioActivity">
+        <activity android:name=".Activity.InicioActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,33 +20,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".InicioActivity">
+            android:name=".Activity.LoginActivity"
+            android:parentActivityName=".Activity.InicioActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".InicioActivity"/>
+                android:value=".Activity.InicioActivity"/>
         </activity>
         <activity
-            android:name=".CadastrarActivity"
-            android:parentActivityName=".InicioActivity">
+            android:name=".Activity.CadastrarActivity"
+            android:parentActivityName=".Activity.InicioActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".InicioActivity"/>
+                android:value=".Activity.InicioActivity"/>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".Activity.HomeActivity"></activity>
         <activity
-            android:name=".ComplementoCadastroClienteActivity"
-            android:parentActivityName=".CadastrarActivity">
+            android:name=".Activity.ComplementoCadastroClienteActivity"
+            android:parentActivityName=".Activity.CadastrarActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CadastrarActivity"/>
+                android:value=".Activity.CadastrarActivity"/>
         </activity>
         <activity
-            android:name=".CadastrarFazendaActivity"
-            android:parentActivityName=".ComplementoCadastroClienteActivity">
+            android:name=".Activity.CadastrarFazendaActivity"
+            android:parentActivityName=".Activity.ComplementoCadastroClienteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ComplementoCadastroClienteActivity"/>
+                android:value=".Activity.ComplementoCadastroClienteActivity"/>
         </activity>
     </application>
 

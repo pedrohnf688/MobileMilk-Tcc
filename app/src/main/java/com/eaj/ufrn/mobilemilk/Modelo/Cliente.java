@@ -108,10 +108,9 @@ public class Cliente {
         return call;
     }
 
-    // Retorna todos os Clientes cadastrados
-    public static Call<List<Cliente>> listarCliente(){
-        Call<List<Cliente>> call = new RetrofitConfig().getClienteService().listaClientes();
+    // Retorna as solicitações Referentes ao Id do Cliente logado
+    public static Call<List<Solicitacao>> listarSolicitacoes(int id){
+        Call<List<Solicitacao>> call = new RetrofitConfig().getSolicitacaoService().listaSolicitacoesById(id);
         return call;
     }
-
 }

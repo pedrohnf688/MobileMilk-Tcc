@@ -1,4 +1,4 @@
-package com.eaj.ufrn.mobilemilk;
+package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toolbar;
+
+import com.eaj.ufrn.mobilemilk.R;
 
 public class HomeActivity extends AppCompatActivity {
 

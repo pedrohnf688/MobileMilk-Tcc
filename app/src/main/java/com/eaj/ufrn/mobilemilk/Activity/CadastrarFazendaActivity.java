@@ -1,9 +1,11 @@
-package com.eaj.ufrn.mobilemilk;
+package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.eaj.ufrn.mobilemilk.R;
 
 public class CadastrarFazendaActivity extends AppCompatActivity {
 

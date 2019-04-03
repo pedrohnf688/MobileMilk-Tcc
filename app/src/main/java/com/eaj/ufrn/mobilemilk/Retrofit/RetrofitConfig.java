@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Retrofit;
 
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceCliente;
+import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceSolicitacao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -39,4 +40,7 @@ public class RetrofitConfig {
         return this.rt.create(ServiceCliente.class);
     }
 
+    public ServiceSolicitacao getSolicitacaoService(){
+        return this.rt.create(ServiceSolicitacao.class);
+    }
 }
