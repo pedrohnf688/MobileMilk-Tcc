@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 public interface ServiceCliente {
 
     @GET("usuarios/clientes/{id}")
-    Call<Cliente> buscarClienteCpf(@Path("id") String cliente);
+    Call<Cliente> buscarClientePorId(@Path("id") String cliente);
 
     @GET("usuarios/clientes")
     Call<List<Cliente>> listaClientes();

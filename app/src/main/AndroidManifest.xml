@@ -33,7 +33,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.InicioActivity"/>
         </activity>
-        <activity android:name=".Activity.HomeActivity"></activity>
+        <activity android:name=".Activity.HomeActivity">
+
+        </activity>
         <activity
             android:name=".Activity.ComplementoCadastroClienteActivity"
             android:parentActivityName=".Activity.CadastrarActivity">

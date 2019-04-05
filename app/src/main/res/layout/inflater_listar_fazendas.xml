@@ -17,7 +17,7 @@
         android:layout_width="match_parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/imageFazendaList"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginBottom="0dp"
@@ -27,7 +27,7 @@
             card_view:srcCompat="@drawable/icon_solicitacao" />
 
         <TextView
-            android:id="@+id/numeracaoSolicitacao"
+            android:id="@+id/empresaFazendaList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -37,11 +37,11 @@
             android:textColor="@color/BlackT"
             android:textSize="20dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/image"
+            card_view:layout_constraintStart_toEndOf="@+id/imageFazendaList"
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/statusSolicitacao"
+            android:id="@+id/estadoFazendaList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -51,7 +51,7 @@
             android:textColor="@color/GreenB"
             android:textSize="15dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/numeracaoSolicitacao"
+            card_view:layout_constraintStart_toEndOf="@+id/empresaFazendaList"
             card_view:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
