@@ -1,12 +1,16 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +28,8 @@ public class CadastrarActivity extends AppCompatActivity {
     TextView senhaUsuario;
     TextView usuariousuario;
 
+    private ProgressBar progressBar;
+
     Cliente cliente;
 
     @Override
@@ -39,6 +45,9 @@ public class CadastrarActivity extends AppCompatActivity {
         this.senhaUsuario = findViewById(R.id.senhausuario);
         this.emailUsuario = findViewById(R.id.emailusuario);
         this.usuariousuario = findViewById(R.id.usuariousuario);
+        this.progressBar = findViewById(R.id.progressBar2);
+
+        this.progressBar.setVisibility(View.VISIBLE);
     }
 
     //Caso de uso Cadastrar Cliente.
