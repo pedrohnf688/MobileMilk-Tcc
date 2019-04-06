@@ -28,7 +28,6 @@ public class SolicitacoesFragment extends Fragment {
 
     private List<Solicitacao> listaSolicitacoes = new ArrayList<>();
 
-
     // Required empty constructor
     public SolicitacoesFragment(){
 
@@ -48,6 +47,9 @@ public class SolicitacoesFragment extends Fragment {
         listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
         listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
         listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
+        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
+        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
+        listaSolicitacoes.add(new Solicitacao("DEU ERRADO", Status.APROVADO));
 
         View view = inflater.inflate(R.layout.fragment_listar_solicitacoes, container, false);
 

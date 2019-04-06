@@ -106,6 +106,8 @@ public class CadastrarActivity extends AppCompatActivity {
                                 if(response.isSuccessful()) {
                                     Log.i("MK", "Inseriu com sucesso");
                                     Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                                    startActivity(i);
                                 }
                                 else
                                     Toast.makeText(getApplicationContext(), R.string.EmailSetError, Toast.LENGTH_SHORT).show();
@@ -117,8 +119,6 @@ public class CadastrarActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                             }
                         });
-                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(i);
                     }
                 });
         AlertDialog dialog = alertDialog.create();

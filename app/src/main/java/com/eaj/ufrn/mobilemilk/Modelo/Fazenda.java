@@ -7,17 +7,23 @@ public class Fazenda {
     private String cnpj;
     private String cep;
     private String endereco;
+    private String estado;
+    private Integer numero;
     private String imagem;
 
-    public Fazenda(String empresa, String localizacao, String cnpj, String cep, String endereco, String imagem) {
+    // General Constructor
+    public Fazenda(String empresa, String localizacao, String cnpj, String cep, String endereco, String imagem, String estado, Integer numero) {
         this.empresa = empresa;
         this.localizacao = localizacao;
         this.cnpj = cnpj;
         this.cep = cep;
         this.endereco = endereco;
         this.imagem = imagem;
+        this.estado = estado;
+        this.numero = numero;
     }
 
+    // Emprty Constructor
     public Fazenda(){
 
     }
@@ -68,5 +74,21 @@ public class Fazenda {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getStado() {
+        return estado;
+    }
+
+    public void setStado(String stado) {
+        this.estado = stado;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 }
