@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.CadastrarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
 import com.eaj.ufrn.mobilemilk.R;
 
 import retrofit2.Call;
@@ -29,6 +30,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
     private String senha;
     private String cpf;
     private String telefone;
+    private String username;
     private Bundle bundle;
 
     @Override
@@ -53,6 +55,9 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         this.telefone = this.telefoneUsuario.getText().toString();
         this.nome = this.bundle.getString("nome");
         this.email = this.bundle.getString("email");
+        this.usuario = this.bundle.getString("usuario");
+        this.senha = this.bundle.getString("senha");
+        this.username = this.bundle.getString("username");
 
         Log.i("SALVOU", "cpf: " + cpf + " nome: " + nome + " email: " + email + " telefone: " + telefone);
 
@@ -72,7 +77,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.telefoneUsuario.setError(""+R.string.TelefoneInvalido);
         }
 
-        Cliente cliente = new Cliente(this.nome, this.email, null, null,this.cpf, this.telefone);
+        Credencial c = new Credencial(this.senha, this.username, "ROLE_CLIENTE");
+        Cliente cliente = new Cliente(this.nome, this.email, this.cpf, this.telefone,"ROLE_CLIENTE",c);
         Call<Cliente> call = Cliente.cadastrarCliente(cliente);
         call.enqueue(new Callback<Cliente>() {
             @Override
@@ -84,6 +90,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(), R.string.CpfInvaliso, Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
+                    startActivity(i);
                 }
             }
 

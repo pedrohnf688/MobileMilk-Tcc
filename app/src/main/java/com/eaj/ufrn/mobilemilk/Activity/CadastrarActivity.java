@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
 import com.eaj.ufrn.mobilemilk.R;
 
 import retrofit2.Call;
@@ -45,9 +46,9 @@ public class CadastrarActivity extends AppCompatActivity {
         this.senhaUsuario = findViewById(R.id.senhausuario);
         this.emailUsuario = findViewById(R.id.emailusuario);
         this.usuariousuario = findViewById(R.id.usuariousuario);
-        this.progressBar = findViewById(R.id.progressBar2);
+        //this.progressBar = findViewById(R.id.progressBar2);
 
-        this.progressBar.setVisibility(View.VISIBLE);
+        //this.progressBar.setVisibility(View.VISIBLE);
     }
 
     //Caso de uso Cadastrar Cliente.
@@ -59,27 +60,28 @@ public class CadastrarActivity extends AppCompatActivity {
         String usuario = this.usuariousuario.getText().toString();
 
         if(nome.equals("")) {
-            nomeUsuario.setError(""+R.string.NomeObrigatorio);
+            nomeUsuario.setError("Nome é obrigatório");
             return false;
         }
         else if(email.equals("")){
-            emailUsuario.setError(""+R.string.EmailObrigatorio);
+            emailUsuario.setError("Email é obrigatório");
             return false;
         }
         else if(usuario.equals("")){
-            usuariousuario.setError(""+R.string.UsuarioObrigatorio);
+            usuariousuario.setError("Usuário é obrigatório");
             return false;
         }
         else if(senha.equals("")){
-            senhaUsuario.setError(""+R.string.SenhaObrigatoria);
+            senhaUsuario.setError("Senha é obrigatória");
             return false;
         }
         else if(senha.length() < 6 || senha.length() > 16){
-            senhaUsuario.setError(""+R.string.SenhaUsuarioError);
+            senhaUsuario.setError("Senha deve conter entre 6 e 16 caracteres");
             return false;
         }
 
-        this.cliente = new Cliente(nome, email, null, null, null, null);
+        Credencial c = new Credencial(senha, usuario, "ROLE_CLIENTE");
+        this.cliente = new Cliente(nome, email, null, null, "ROLE_CLIENTE", c);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)
@@ -90,8 +92,9 @@ public class CadastrarActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), ComplementoCadastroClienteActivity.class);
                         i.putExtra("nome", cliente.getNome());
                         i.putExtra("email", cliente.getEmail());
-                        //bundle.putString("usuario", cliente.getCredencial().getUsername());
-                        //bundle.putString("senha", cliente.getCredencial().getSenha());
+                        i.putExtra("username", cliente.getCredencial().getUsername());
+                        i.putExtra("senha", cliente.getCredencial().getSenha());
+                        i.putExtra("usuario", cliente.getCredencial().getUsuario());
                         startActivity(i);
                     }
                 })

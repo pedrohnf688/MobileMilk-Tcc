@@ -4,10 +4,12 @@ public class Credencial {
 
     private String senha;
     private String username;
+    private String usuario;
 
-    public Credencial(String senha, String username){
+    public Credencial(String senha, String username, String usuario){
         this.senha = senha;
         this.username = username;
+        this.usuario = usuario;
     }
 
     public String getUsername() {
@@ -18,10 +20,8 @@ public class Credencial {
         return senha;
     }
 
-    public boolean autenticacao(String senha, String username){
-        if(getUsername().equals(username) && getSenha().equals(senha))
-            return  true;
-        else
-            return false;
+    public String getUsuario() {
+        return usuario;
     }
+
 }

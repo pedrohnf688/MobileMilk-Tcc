@@ -14,28 +14,26 @@ public class Cliente {
     private String email;
     private String nome;
     private String cpf;
-    private String telefone;
+    private List<String> telefone;
     private String tipoPerfilUsuario;
     private List<Solicitacao> listaSolicitacoes;
     private List<Fazenda> listafazendas;
     private Credencial credencial;
 
-    public Cliente(String nome, String email, String username, String senha, String cpf, String telefone){
-        this.nome = nome;
-        this.email = email;
-        this.credencial = null;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.tipoPerfilUsuario = "ROLE_CLIENTE";
-        //this.listafazendas = new ArrayList<>();
-        //this.listaSolicitacoes = new ArrayList<>();
-    }
-
     public Cliente(){
 
     }
 
-    //Getters and Setters
+    public Cliente(String nome, String email, String cpf, String telefone, String tipoPerfilUsuario, Credencial credencial) {
+        this.email = email;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = new ArrayList<>();
+        this.telefone.add(telefone);
+        this.tipoPerfilUsuario = tipoPerfilUsuario;
+        this.credencial = credencial;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -60,16 +58,24 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getTelefone() {
+    public List<String> getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(List<String> telefone) {
         this.telefone = telefone;
     }
 
+    public String getTipoPerfilUsuario() {
+        return tipoPerfilUsuario;
+    }
+
+    public void setTipoPerfilUsuario(String tipoPerfilUsuario) {
+        this.tipoPerfilUsuario = tipoPerfilUsuario;
+    }
+
     public List<Solicitacao> getListaSolicitacoes() {
-        return this.listaSolicitacoes;
+        return listaSolicitacoes;
     }
 
     public void setListaSolicitacoes(List<Solicitacao> listaSolicitacoes) {
@@ -77,7 +83,7 @@ public class Cliente {
     }
 
     public List<Fazenda> getListafazendas() {
-        return this.listafazendas;
+        return listafazendas;
     }
 
     public void setListafazendas(List<Fazenda> listafazendas) {
@@ -90,16 +96,6 @@ public class Cliente {
 
     public void setCredencial(Credencial credencial) {
         this.credencial = credencial;
-    }
-
-    // Cadastrar Fazenda
-    public void cadastrarFazenda(Fazenda fazenda){
-        getListafazendas().add(fazenda);
-    }
-
-    // Cadastrar Solicitação
-    public void cadastrarSolicitacao(Solicitacao solicitacao){
-        getListaSolicitacoes().add(solicitacao);
     }
 
     // Cadastrar novo cliente
