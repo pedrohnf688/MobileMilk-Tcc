@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
@@ -24,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar tool;
     private Activity getActivity;
     private FrameLayout layout;
+
+    private FloatingActionButton actionButton;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -88,6 +92,11 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cadastrarNovaSolicitacao(View v){
+        Intent t = new Intent(getApplicationContext(), CadastrarSolicitacao.class);
+        startActivity(t);
     }
 
 }

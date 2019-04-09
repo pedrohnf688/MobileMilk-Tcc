@@ -11,6 +11,7 @@
     <string name="sim">Sim</string>
     <string name="Nao">Não</string>
     <string name="cadastrar_se">Cadastrar-se</string>
+    <string name="cadastrar">Cadastrar</string>
     <string name="CompletarCadastro">Completar cadastro</string>
     <string name="AgoraNao">Agora não</string>
     <string name="SalvoSucesso">Salvo com sucesso</string>
@@ -25,4 +26,12 @@
     <string name="Perfil">Perfil</string>
     <string name="Fazendas">Fazendas</string>
     <string name="Login"> Login </string>
+
+    <string-array name="spinnerFazenda">
+        <item> Fazenda1 </item>
+        <item> Fazenda2 </item>
+        <item> Fazenda3 </item>
+    </string-array>
+
+    
 </resources>

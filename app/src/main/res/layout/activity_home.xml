@@ -40,6 +40,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="26dp"
         android:layout_marginEnd="8dp"
+        android:onClick="cadastrarNovaSolicitacao"
         android:elevation="4dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/add_48dp"

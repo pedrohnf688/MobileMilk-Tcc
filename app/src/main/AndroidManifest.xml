@@ -50,6 +50,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ComplementoCadastroClienteActivity"/>
         </activity>
+        <activity
+            android:name=".Activity.CadastrarSolicitacao"
+            android:parentActivityName=".Activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.HomeActivity"/>
+        </activity>
     </application>
 
 </manifest>
