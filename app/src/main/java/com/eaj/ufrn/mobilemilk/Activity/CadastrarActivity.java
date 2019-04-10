@@ -1,11 +1,8 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,7 +33,7 @@ public class CadastrarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanteState){
         super.onCreate(saveInstanteState);
-        setContentView(R.layout.activity_cadastrar);
+        setContentView(R.layout.activity_cadastrar_cliente);
 
         getSupportActionBar().setTitle(R.string.cadastrar_se); // Adiciona um Title ao ActionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Adiciona a ação voltar ao ActionBar

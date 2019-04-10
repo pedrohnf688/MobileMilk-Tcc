@@ -51,12 +51,13 @@
                 android:value=".Activity.ComplementoCadastroClienteActivity"/>
         </activity>
         <activity
-            android:name=".Activity.CadastrarAnalise"
+            android:name=".Activity.CadastrarAnaliseActivity"
             android:parentActivityName=".Activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
+        <activity android:name=".Activity.CadastrarAmostraActivity"/>
     </application>
 
 </manifest>

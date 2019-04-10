@@ -6,6 +6,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,11 +18,12 @@ import com.eaj.ufrn.mobilemilk.R;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class CadastrarAnalise extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class CadastrarAnaliseActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private Spinner spinnerFazenda;
     private TextView numAmostras;
     private TextView dataObtencaoAmostra;
+    private Button avançar;
 
     @Override
     protected void onCreate(Bundle saveInstanteState){
@@ -40,6 +42,7 @@ public class CadastrarAnalise extends AppCompatActivity implements DatePickerDia
 
         this.numAmostras = findViewById(R.id.numeroAmostras);
         this.dataObtencaoAmostra = findViewById(R.id.dataObtencaoAmostras);
+        this.avançar = findViewById(R.id.bAvançar);
 
     }
 
@@ -59,5 +62,10 @@ public class CadastrarAnalise extends AppCompatActivity implements DatePickerDia
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         this.dataObtencaoAmostra.setText(currentDateString);
+    }
+
+    // Avança para a tela de cadastrara amostras.
+    public void avançar(View v){
+
     }
 }
