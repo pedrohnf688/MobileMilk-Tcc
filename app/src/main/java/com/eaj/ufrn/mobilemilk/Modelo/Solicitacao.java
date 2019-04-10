@@ -6,7 +6,7 @@ public class Solicitacao {
 
     private Fazenda fazenda;
     //private OrdemServico ordemServico;
-    private Analise analise;
+    private Amostra analise;
     private Enum<Status> status;
     private String observacao;
 
@@ -28,11 +28,11 @@ public class Solicitacao {
         this.fazenda = fazenda;
     }
 
-    public Analise getAnalise() {
+    public Amostra getAnalise() {
         return analise;
     }
 
-    public void setAnalise(Analise analise) {
+    public void setAnalise(Amostra analise) {
         this.analise = analise;
     }
 

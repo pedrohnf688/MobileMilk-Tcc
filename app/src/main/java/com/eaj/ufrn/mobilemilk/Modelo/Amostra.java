@@ -1,57 +1,67 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
+import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
-
-import java.util.Date;
+import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
+import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 
 public class Amostra {
 
-    private Date coleta;
-    private Integer numAmostra;
-    private String qrCode;
-    private String observacao;
+    private Enum<Leite> leite;
+    private Enum<OrigemLeite> origemLeite;
+    private Enum<Produtos> produtos;
+    private String especie;
+    private Enum<AnalisesSolicitadas> analisesSolicitadas;
 
-    public Amostra(Date coleta, Integer numAmostra, String qrCode, String observacao) {
-        this.coleta = coleta;
-        this.numAmostra = numAmostra;
-        this.qrCode = qrCode;
-        this.observacao = observacao;
+    public Amostra(Enum<Leite> leite, Enum<OrigemLeite> origemLeite, Enum<Produtos> produtos, String especie, Enum<AnalisesSolicitadas> analisesSolicitadas) {
+        this.leite = leite;
+        this.origemLeite = origemLeite;
+        this.produtos = produtos;
+        this.especie = especie;
+        this.analisesSolicitadas = analisesSolicitadas;
     }
 
     public Amostra(){
 
     }
 
-    public Date getColeta() {
-        return coleta;
+    public Enum<Leite> getLeite() {
+        return leite;
     }
 
-    public void setColeta(Date coleta) {
-        this.coleta = coleta;
+    public void setLeite(Enum<Leite> leite) {
+        this.leite = leite;
     }
 
-    public Integer getNumAmostra() {
-        return numAmostra;
+    public Enum<OrigemLeite> getOrigemLeite() {
+        return origemLeite;
     }
 
-    public void setNumAmostra(Integer numAmostra) {
-        this.numAmostra = numAmostra;
+    public void setOrigemLeite(Enum<OrigemLeite> origemLeite) {
+        this.origemLeite = origemLeite;
     }
 
-    public String getQrCode() {
-        return qrCode;
+    public Enum<Produtos> getProdutos() {
+        return produtos;
     }
 
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
+    public void setProdutos(Enum<Produtos> produtos) {
+        this.produtos = produtos;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public String getEspecie() {
+        return especie;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
+    public Enum<AnalisesSolicitadas> getAnalisesSolicitadas() {
+        return analisesSolicitadas;
+    }
+
+    public void setAnalisesSolicitadas(Enum<AnalisesSolicitadas> analisesSolicitadas) {
+        this.analisesSolicitadas = analisesSolicitadas;
+    }
 }
