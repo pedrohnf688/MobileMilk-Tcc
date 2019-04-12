@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,18 +29,22 @@ public class FazendaAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-        return null;
+        View view = LayoutInflater.from(context).inflate(R.layout.fragment_listar_fazenda, viewGroup, false);
+        FazendaViewHolder holder = new FazendaViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
+        this.fazendaEscolhida = this.listaFazendas.get(position);
+        holder.empresaFazendaList.setText(this.fazendaEscolhida.getNome());
+        //holder.imagefazendaList.setImageResource();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.listaFazendas == null ? 0: listaFazendas.size();
     }
 
     public class FazendaViewHolder extends RecyclerView.ViewHolder{
@@ -48,15 +53,14 @@ public class FazendaAdapter extends RecyclerView.Adapter {
         *   ADICIONAR OS ELEMENTOS DA VIEW DE LISTAR FAZENDAS
         * */
         final TextView empresaFazendaList;
-        final TextView estadoFazendaList;
         final ImageView imagefazendaList;
 
         public FazendaViewHolder(@NonNull View itemView) {
             super(itemView);
             this.empresaFazendaList = itemView.findViewById(R.id.empresaFazendaList);
-            this.estadoFazendaList = itemView.findViewById(R.id.estadoFazendaList);
             this.imagefazendaList = itemView.findViewById(R.id.imageFazendaList);
         }
+
     }
 
 }
