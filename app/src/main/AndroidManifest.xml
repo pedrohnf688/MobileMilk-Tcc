@@ -57,7 +57,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
-        <activity android:name=".Activity.CadastrarAmostraActivity"/>
+        <activity
+            android:name=".Activity.CadastrarAmostra"
+            android:parentActivityName=".Activity.CadastrarAnaliseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.CadastrarAnaliseActivity"/>
+        </activity>
     </application>
 
 </manifest>

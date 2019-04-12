@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
     private TextView dataObtencaoAmostra;
     private Button avançar;
 
+
     @Override
     protected void onCreate(Bundle saveInstanteState){
         super.onCreate(saveInstanteState);
@@ -43,6 +45,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
         this.numAmostras = findViewById(R.id.numeroAmostras);
         this.dataObtencaoAmostra = findViewById(R.id.dataObtencaoAmostras);
         this.avançar = findViewById(R.id.bAvançar);
+
 
     }
 
@@ -66,6 +69,9 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
 
     // Avança para a tela de cadastrara amostras.
     public void avançar(View v){
-
+        Intent t = new Intent(getApplicationContext(), CadastrarAmostra.class);
+        t.putExtra("numAmostras", Integer.parseInt(this.numAmostras.getText().toString()));
+        startActivity(t);
     }
+
 }

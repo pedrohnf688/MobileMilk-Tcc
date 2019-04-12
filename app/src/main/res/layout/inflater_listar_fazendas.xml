@@ -47,7 +47,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="0dp"
-            android:text="APROVADA"
+            android:text="Editar"
             android:textColor="@color/GreenB"
             android:textSize="15dp"
             card_view:layout_constraintBottom_toBottomOf="parent"

@@ -31,7 +31,8 @@
             android:id="@+id/numeroAmostras"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Numero total de amostras" />
+            android:hint="Numero total de amostras"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -50,7 +51,8 @@
             android:layout_width="match_parent"
             android:onClick="setData"
             android:layout_height="match_parent"
-            android:hint="Data da coleta" />
+            android:hint="Data da coleta"
+            android:inputType="datetime" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -63,6 +65,7 @@
         android:layout_marginTop="25dp"
         android:background="@color/GreenB"
         android:text="Avançar"
+        android:onClick="avançar"
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
