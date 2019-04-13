@@ -1,6 +1,8 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
+import com.eaj.ufrn.mobilemilk.Modelo.Usuario;
 
 import java.util.List;
 
@@ -15,14 +17,10 @@ import retrofit2.http.Path;
 
 public interface ServiceCliente {
 
-
     @POST("/cliente")
-    Call<Cliente> cadastrarCliente(@Body Cliente cliente);
+    Call<Usuario> cadastrarCliente(@Body Credencial credencial);
 
-    @DELETE("usuarios/clientes/{id}")
-    Call<ResponseBody> deletarCliente(@Path("id") String cpf);
-
-    @PUT("usuarios/clientes/{id}")
-    Call<ResponseBody> editarCliente(@Path("id") String cpf);
+    @GET("/cliente")
+    Call<List<Usuario>> listarUsuarios();
 
 }

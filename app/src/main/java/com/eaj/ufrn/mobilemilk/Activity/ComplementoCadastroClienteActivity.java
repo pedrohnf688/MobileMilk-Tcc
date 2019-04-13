@@ -10,8 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.CadastrarFazendaActivity;
+import com.eaj.ufrn.mobilemilk.Enum.TipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
+import com.eaj.ufrn.mobilemilk.Modelo.Usuario;
 import com.eaj.ufrn.mobilemilk.R;
 
 import retrofit2.Call;
@@ -32,6 +34,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
     private String telefone;
     private String username;
     private Bundle bundle;
+
+    private Credencial credencial;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -55,7 +59,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         this.telefone = this.telefoneUsuario.getText().toString();
         this.nome = this.bundle.getString("nome");
         this.email = this.bundle.getString("email");
-        this.usuario = this.bundle.getString("usuario");
+        //this.usuario = this.bundle.getString("usuario");
         this.senha = this.bundle.getString("senha");
         this.username = this.bundle.getString("username");
 
@@ -78,12 +82,18 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             return false;
         }
 
-        Credencial c = new Credencial(this.senha, this.username, "ROLE_CLIENTE");
-        Cliente cliente = new Cliente(this.nome, this.email, this.cpf, this.telefone,c);
-        Call<Cliente> call = Cliente.cadastrarCliente(cliente);
-        call.enqueue(new Callback<Cliente>() {
+        Usuario cliente = new Cliente(nome, email, cpf, TipoPerfilUsuario.ROLE_CLIENTE, null, null, null);
+        ((Cliente) cliente).setTelefone(telefone);
+        credencial = new Credencial(senha, username, cliente);
+
+        Log.i("CREDENCIAL", "nome: " + credencial.getUsuario().getNome()+" email: "+credencial.getUsuario().getEmail());
+        Log.i("CREDENCIAL", "cpf: " + credencial.getUsuario().getCpf());
+        Log.i("CREDENCIAL", "senha: " + credencial.getSenha()+" email: "+credencial.getUsername());
+
+        Call<Usuario> call = Cliente.cadastrarCliente(credencial);
+        call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
@@ -97,7 +107,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
+            public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error 404", Toast.LENGTH_SHORT).show();
             }
         });

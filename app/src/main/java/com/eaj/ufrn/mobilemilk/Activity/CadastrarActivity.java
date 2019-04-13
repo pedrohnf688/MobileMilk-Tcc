@@ -11,9 +11,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Enum.TipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
+import com.eaj.ufrn.mobilemilk.Modelo.Usuario;
 import com.eaj.ufrn.mobilemilk.R;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,14 +25,15 @@ import retrofit2.Response;
 
 public class CadastrarActivity extends AppCompatActivity {
 
-    TextView nomeUsuario;
-    TextView emailUsuario;
-    TextView senhaUsuario;
-    TextView usuariousuario;
+    private TextView nomeUsuario;
+    private TextView emailUsuario;
+    private TextView senhaUsuario;
+    private TextView usuariousuario;
 
     private ProgressBar progressBar;
 
-    Cliente cliente;
+    //private Usuario cliente;
+    private Credencial credencial;
 
     @Override
     protected void onCreate(Bundle saveInstanteState){
@@ -43,9 +48,6 @@ public class CadastrarActivity extends AppCompatActivity {
         this.senhaUsuario = findViewById(R.id.senhausuario);
         this.emailUsuario = findViewById(R.id.emailusuario);
         this.usuariousuario = findViewById(R.id.usuariousuario);
-        //this.progressBar = findViewById(R.id.progressBar2);
-
-        //this.progressBar.setVisibility(View.VISIBLE);
     }
 
     //Caso de uso Cadastrar Cliente.
@@ -77,9 +79,10 @@ public class CadastrarActivity extends AppCompatActivity {
             return false;
         }
 
-        Credencial c = new Credencial(senha, usuario, "ROLE_CLIENTE");
-        this.cliente = new Cliente(nome, email, null, null, c);
-
+        Usuario cliente = new Cliente(nome, email, null, TipoPerfilUsuario.ROLE_CLIENTE, null, null, null);
+        credencial = new Credencial(senha, usuario, cliente);
+        Log.i("CREDENCIAL1", "nome: " + credencial.getUsuario().getNome()+" email: "+credencial.getUsuario().getEmail());
+        Log.i("CREDENCIAL1", "senha: " + credencial.getSenha()+" email: "+credencial.getUsername());
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)
                 .setTitle(R.string.CompletarCadastro)
@@ -87,11 +90,10 @@ public class CadastrarActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(getApplicationContext(), ComplementoCadastroClienteActivity.class);
-                        i.putExtra("nome", cliente.getNome());
-                        i.putExtra("email", cliente.getEmail());
-                        i.putExtra("username", cliente.getCredencial().getUsername());
-                        i.putExtra("senha", cliente.getCredencial().getSenha());
-                        i.putExtra("usuario", cliente.getCredencial().getUsuario());
+                        i.putExtra("nome", credencial.getUsuario().getNome());
+                        i.putExtra("email", credencial.getUsuario().getEmail());
+                        i.putExtra("username", credencial.getUsername());
+                        i.putExtra("senha", credencial.getSenha());
                         startActivity(i);
                     }
                 })
@@ -99,10 +101,10 @@ public class CadastrarActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Call<Cliente> call = Cliente.cadastrarCliente(cliente);
-                        call.enqueue(new Callback<Cliente>() {
+                        Call<Usuario> call = Cliente.cadastrarCliente(credencial);
+                        call.enqueue(new Callback<Usuario>() {
                             @Override
-                            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                                 if(response.isSuccessful()) {
                                     Log.i("MK", "Inseriu com sucesso");
                                     Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
@@ -113,7 +115,7 @@ public class CadastrarActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), R.string.EmailSetError, Toast.LENGTH_SHORT).show();
                             }
                             @Override
-                            public void onFailure(Call<Cliente> call, Throwable t) {
+                            public void onFailure(Call<Usuario> call, Throwable t) {
                                 Log.i("MK", "Falha ao Inserir");
                                 Log.i("MK", "Falha ao Inserir " + t.getMessage());
                                 Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();

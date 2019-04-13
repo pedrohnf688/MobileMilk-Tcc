@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
+import com.eaj.ufrn.mobilemilk.Enum.TipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
@@ -9,68 +10,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Cliente {
+public class Cliente extends Usuario{
 
-    private String email;
-    private String nome;
-    private String cpf;
-    private List<String> telefone;
-    private String codigoTipoPerfilUsuario;
+    private List<String> telefones;
     private List<Solicitacao> listaSolicitacoes;
-    private List<Fazenda> listafazendas;
-    private Credencial credencial;
+    private List<Fazenda> listaFazendas;
 
-    public Cliente(){
+    public Cliente(String nome, String email, String cpf, TipoPerfilUsuario codigoTipoPerfilUsuario, Fazenda f, Solicitacao s, String telefone) {
+        super(nome, email, cpf, codigoTipoPerfilUsuario);
+        this.listaFazendas = new ArrayList<>();
+        this.listaSolicitacoes = new ArrayList<>();
+        this.telefones = new ArrayList<>();
+    }
+
+    public Cliente() {
 
     }
 
-    public Cliente(String nome, String email, String cpf, String telefone, Credencial credencial) {
-        this.email = email;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = new ArrayList<>();
-        this.telefone.add(telefone);
-        this.credencial = credencial;
+    public List<String> getTelefones() {
+        return telefones;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public List<String> getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(List<String> telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getTipoPerfilUsuario() {
-        return codigoTipoPerfilUsuario;
-    }
-
-    public void setTipoPerfilUsuario(String tipoPerfilUsuario) {
-        this.codigoTipoPerfilUsuario = tipoPerfilUsuario;
+    public void setTelefones(List<String> telefones) {
+        this.telefones = telefones;
     }
 
     public List<Solicitacao> getListaSolicitacoes() {
@@ -81,25 +43,27 @@ public class Cliente {
         this.listaSolicitacoes = listaSolicitacoes;
     }
 
-    public List<Fazenda> getListafazendas() {
-        return listafazendas;
+    public List<Fazenda> getListaFazendas() {
+        return listaFazendas;
     }
 
-    public void setListafazendas(List<Fazenda> listafazendas) {
-        this.listafazendas = listafazendas;
+    public void setListaFazendas(List<Fazenda> listaFazendas) {
+        this.listaFazendas = listaFazendas;
     }
 
-    public Credencial getCredencial() {
-        return credencial;
-    }
-
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
+    public void setTelefone(String telefone){
+        this.telefones.add(telefone);
     }
 
     // Cadastrar novo cliente
-    public static Call<Cliente> cadastrarCliente(Cliente cliente){
-        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
+    public static Call<Usuario> cadastrarCliente(Credencial credencial){
+        Call<Usuario> call = new RetrofitConfig().getClienteService().cadastrarCliente(credencial);
+        return call;
+    }
+
+    // Cadastrar novo cliente
+    public static Call<List<Usuario>> listaCliente(){
+        Call<List<Usuario>> call = new RetrofitConfig().getClienteService().listarUsuarios();
         return call;
     }
 
