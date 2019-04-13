@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
+import com.eaj.ufrn.mobilemilk.Fragments.FazendasFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_fazenda:
                     getSupportActionBar().setTitle(R.string.Fazendas);
-                    fragment = new SolicitacoesFragment();
+                    fragment = new FazendasFragment();
                     break;
                 case R.id.navigation_perfil:
                     getSupportActionBar().setTitle(R.string.Perfil);

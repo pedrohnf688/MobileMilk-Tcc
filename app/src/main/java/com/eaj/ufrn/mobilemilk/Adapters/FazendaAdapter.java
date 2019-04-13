@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,15 @@ public class FazendaAdapter extends RecyclerView.Adapter {
 
     public FazendaAdapter(List<Fazenda> listaFazendas, Context context) {
         this.listaFazendas = listaFazendas;
+        for(Fazenda f: listaFazendas)
+            Log.i("fazenda", "fazenda nome: " + f.getNome());
         this.context = context;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_listar_fazenda, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.inflater_listar_fazendas, viewGroup, false);
         FazendaViewHolder holder = new FazendaViewHolder(view);
         return holder;
     }
@@ -38,6 +41,7 @@ public class FazendaAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
         this.fazendaEscolhida = this.listaFazendas.get(position);
+        Log.i("ECOLHIDA", "nome: "+fazendaEscolhida.getNome());
         holder.empresaFazendaList.setText(this.fazendaEscolhida.getNome());
         //holder.imagefazendaList.setImageResource();
     }
@@ -53,12 +57,12 @@ public class FazendaAdapter extends RecyclerView.Adapter {
         *   ADICIONAR OS ELEMENTOS DA VIEW DE LISTAR FAZENDAS
         * */
         final TextView empresaFazendaList;
-        final ImageView imagefazendaList;
+        //final ImageView imagefazendaList;
 
         public FazendaViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.empresaFazendaList = itemView.findViewById(R.id.empresaFazendaList);
-            this.imagefazendaList = itemView.findViewById(R.id.imageFazendaList);
+            empresaFazendaList = itemView.findViewById(R.id.empresaFazendaList);
+            //this.imagefazendaList = itemView.findViewById(R.id.imageFazendaList);
         }
 
     }
