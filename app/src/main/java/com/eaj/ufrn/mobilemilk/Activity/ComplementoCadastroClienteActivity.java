@@ -75,10 +75,11 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         }
         else if(telefone.length() < 11 || telefone.length() > 11){
             this.telefoneUsuario.setError(""+R.string.TelefoneInvalido);
+            return false;
         }
 
         Credencial c = new Credencial(this.senha, this.username, "ROLE_CLIENTE");
-        Cliente cliente = new Cliente(this.nome, this.email, this.cpf, this.telefone,"ROLE_CLIENTE",c);
+        Cliente cliente = new Cliente(this.nome, this.email, this.cpf, this.telefone,c);
         Call<Cliente> call = Cliente.cadastrarCliente(cliente);
         call.enqueue(new Callback<Cliente>() {
             @Override

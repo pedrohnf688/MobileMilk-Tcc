@@ -78,7 +78,7 @@ public class CadastrarActivity extends AppCompatActivity {
         }
 
         Credencial c = new Credencial(senha, usuario, "ROLE_CLIENTE");
-        this.cliente = new Cliente(nome, email, null, null, "ROLE_CLIENTE", c);
+        this.cliente = new Cliente(nome, email, null, null, c);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)

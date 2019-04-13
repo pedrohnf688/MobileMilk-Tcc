@@ -4,12 +4,12 @@ public class Credencial {
 
     private String senha;
     private String username;
-    private String usuario;
+    private String codigoTipoPerfilUsuario;
 
     public Credencial(String senha, String username, String usuario){
         this.senha = senha;
         this.username = username;
-        this.usuario = usuario;
+        this.codigoTipoPerfilUsuario = usuario;
     }
 
     public String getUsername() {
@@ -21,7 +21,7 @@ public class Credencial {
     }
 
     public String getUsuario() {
-        return usuario;
+        return codigoTipoPerfilUsuario;
     }
 
 }

@@ -15,13 +15,8 @@ import retrofit2.http.Path;
 
 public interface ServiceCliente {
 
-    @GET("usuarios/clientes/{id}")
-    Call<Cliente> buscarClientePorId(@Path("id") String cliente);
 
-    @GET("usuarios/clientes")
-    Call<List<Cliente>> listaClientes();
-
-    @POST("usuarios/clientes")
+    @POST("/cliente")
     Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
     @DELETE("usuarios/clientes/{id}")

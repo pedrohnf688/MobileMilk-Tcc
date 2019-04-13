@@ -15,7 +15,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private List<String> telefone;
-    private String tipoPerfilUsuario;
+    private String codigoTipoPerfilUsuario;
     private List<Solicitacao> listaSolicitacoes;
     private List<Fazenda> listafazendas;
     private Credencial credencial;
@@ -24,13 +24,12 @@ public class Cliente {
 
     }
 
-    public Cliente(String nome, String email, String cpf, String telefone, String tipoPerfilUsuario, Credencial credencial) {
+    public Cliente(String nome, String email, String cpf, String telefone, Credencial credencial) {
         this.email = email;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = new ArrayList<>();
         this.telefone.add(telefone);
-        this.tipoPerfilUsuario = tipoPerfilUsuario;
         this.credencial = credencial;
     }
 
@@ -67,11 +66,11 @@ public class Cliente {
     }
 
     public String getTipoPerfilUsuario() {
-        return tipoPerfilUsuario;
+        return codigoTipoPerfilUsuario;
     }
 
     public void setTipoPerfilUsuario(String tipoPerfilUsuario) {
-        this.tipoPerfilUsuario = tipoPerfilUsuario;
+        this.codigoTipoPerfilUsuario = tipoPerfilUsuario;
     }
 
     public List<Solicitacao> getListaSolicitacoes() {
