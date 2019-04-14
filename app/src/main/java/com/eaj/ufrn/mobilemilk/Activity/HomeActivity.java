@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
 import com.eaj.ufrn.mobilemilk.Fragments.FazendasFragment;
+import com.eaj.ufrn.mobilemilk.Fragments.PerfilFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -37,12 +39,15 @@ public class HomeActivity extends AppCompatActivity {
         this.bottonNavigation = findViewById(R.id.buttonNavigationHome);
         this.bottonNavigation.setOnNavigationItemSelectedListener(navListener);
 
+        this.actionButton = findViewById(R.id.floatingActionHome);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHome, new SolicitacoesFragment()).commit();
 
     }
 
     //Implementação OnNavigationItemSelectedListener navListener
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @SuppressLint("RestrictedApi")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -51,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             switch(menuItem.getItemId()){
                 case R.id.navigation_solicitacao:
                     getSupportActionBar().setTitle(R.string.Solicitacoes);
+                    actionButton.setVisibility(View.VISIBLE);
                     fragment = new SolicitacoesFragment();
                     break;
                 case R.id.navigation_fazenda:
@@ -59,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_perfil:
                     getSupportActionBar().setTitle(R.string.Perfil);
-                    fragment = new SolicitacoesFragment();
+                    fragment = new PerfilFragment();
                     break;
             }
 
