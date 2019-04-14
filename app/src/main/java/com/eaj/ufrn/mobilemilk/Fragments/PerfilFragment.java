@@ -17,7 +17,7 @@ public class PerfilFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveIsntanceState){
 
-        View view = inflater.inflate(R.layout.fragment_perfil_usuario, container, false);
+        View view = inflater.inflate(R.layout.fragement_perfil, container, false);
         return view;
     }
 }
