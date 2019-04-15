@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Enum.Status;
+import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.R;
@@ -79,6 +80,23 @@ public class SolicitacoesFragment extends Fragment {
                 Toast.makeText(getContext(), "Sem internet", Toast.LENGTH_SHORT);
             }
         });*/
+
+        // Implementando listener de cliques
+        recyclerSolicitacao.addOnItemTouchListener(
+                new MeuRecyclerViewClickListener(getActivity().getApplicationContext(), recyclerSolicitacao, new MeuRecyclerViewClickListener.OnItemClickListener(){
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+                        Toast.makeText(getContext(), "Clicou LONGO", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onItemClick(View view, int position){
+                        Toast.makeText(getContext(), "Clicou CURTO", Toast.LENGTH_SHORT).show();
+                    }
+                })
+        );
+
+
         recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getContext()));
         return view;
     }
