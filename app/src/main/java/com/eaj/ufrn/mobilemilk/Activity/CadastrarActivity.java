@@ -11,12 +11,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.eaj.ufrn.mobilemilk.Enum.TipoPerfilUsuario;
+import com.eaj.ufrn.mobilemilk.Enum.EnumTipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
-import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
-import com.eaj.ufrn.mobilemilk.Modelo.Usuario;
 import com.eaj.ufrn.mobilemilk.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,7 +32,7 @@ public class CadastrarActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     //private Usuario cliente;
-    private Credencial credencial;
+    private Cliente cliente;
 
     @Override
     protected void onCreate(Bundle saveInstanteState){
@@ -79,10 +78,8 @@ public class CadastrarActivity extends AppCompatActivity {
             return false;
         }
 
-        Usuario cliente = new Cliente(nome, email, null, TipoPerfilUsuario.ROLE_CLIENTE, null, null, null);
-        credencial = new Credencial(senha, usuario, cliente);
-        Log.i("CREDENCIAL1", "nome: " + credencial.getUsuario().getNome()+" email: "+credencial.getUsuario().getEmail());
-        Log.i("CREDENCIAL1", "senha: " + credencial.getSenha()+" email: "+credencial.getUsername());
+        cliente =  new Cliente(null, nome, email, null, EnumTipoPerfilUsuario.ROLE_CLIENTE.getCodigo(), senha, usuario);
+
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)
                 .setTitle(R.string.CompletarCadastro)
@@ -90,10 +87,10 @@ public class CadastrarActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(getApplicationContext(), ComplementoCadastroClienteActivity.class);
-                        i.putExtra("nome", credencial.getUsuario().getNome());
-                        i.putExtra("email", credencial.getUsuario().getEmail());
-                        i.putExtra("username", credencial.getUsername());
-                        i.putExtra("senha", credencial.getSenha());
+                        i.putExtra("nome", cliente.getNome());
+                        i.putExtra("email", cliente.getEmail());
+                        i.putExtra("username", cliente.getUsername());
+                        i.putExtra("senha", cliente.getSenha());
                         startActivity(i);
                     }
                 })
@@ -101,21 +98,23 @@ public class CadastrarActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Call<Usuario> call = Cliente.cadastrarCliente(credencial);
-                        call.enqueue(new Callback<Usuario>() {
+                        Call<Cliente> call = Cliente.cadastrarCliente(cliente);
+                        call.enqueue(new Callback<Cliente>() {
                             @Override
-                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                                 if(response.isSuccessful()) {
                                     Log.i("MK", "Inseriu com sucesso");
                                     Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                                     startActivity(i);
                                 }
-                                else
+                                else {
                                     Toast.makeText(getApplicationContext(), R.string.EmailSetError, Toast.LENGTH_SHORT).show();
+                                    Log.i("erro", ""+response.toString());
+                                }
                             }
                             @Override
-                            public void onFailure(Call<Usuario> call, Throwable t) {
+                            public void onFailure(Call<Cliente> call, Throwable t) {
                                 Log.i("MK", "Falha ao Inserir");
                                 Log.i("MK", "Falha ao Inserir " + t.getMessage());
                                 Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
@@ -127,7 +126,5 @@ public class CadastrarActivity extends AppCompatActivity {
         dialog.show();
         return true;
     }
-
-
 
 }

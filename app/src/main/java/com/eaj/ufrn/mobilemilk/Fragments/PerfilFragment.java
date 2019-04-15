@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
-import com.eaj.ufrn.mobilemilk.Modelo.Usuario;
 import com.eaj.ufrn.mobilemilk.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -26,7 +25,7 @@ public class PerfilFragment extends Fragment {
     private Button bAlterarPerfil;
     private Button bListarFazendas;
 
-    private Usuario usuario;
+    //private Usuario usuario;
 
     private FrameLayout frameLayout;
 
