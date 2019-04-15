@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
@@ -29,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private FloatingActionButton actionButton;
 
+    private Button bListarFazendas;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -37,9 +40,11 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.Solicitacoes); // Adiciona o título ao ActionBar
 
         this.bottonNavigation = findViewById(R.id.buttonNavigationHome);
+        // Seta o listener de ButtonNavigation
         this.bottonNavigation.setOnNavigationItemSelectedListener(navListener);
 
         this.actionButton = findViewById(R.id.floatingActionHome);
+        //this.bListarFazendas = findViewById(R.id.bListarfazendas);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHome, new SolicitacoesFragment()).commit();
 
