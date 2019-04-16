@@ -112,4 +112,22 @@ public class Cliente {
         return call;
     }
 
+    // Atualizar informações cliente
+    public static Call<Cliente> atualizarCliente(Cliente cliente){
+        Call<Cliente> call = new RetrofitConfig().getClienteService().atualizarCliete(cliente);
+        return call;
+    }
+
+    // Cadastrar nova fazenda
+    public static Call<Fazenda> cadastrarFazenda(Fazenda fazenda){
+        Call<Fazenda> call = new RetrofitConfig().getFazendaService().cadastrarFazenda(fazenda);
+        return call;
+    }
+
+    // Atualizar informações fazenda
+    public  static  Call<Fazenda> atualizarFazenda(Integer idFazenda){
+        Call<Fazenda> call = new RetrofitConfig().getFazendaService().editarFazenda(idFazenda);
+        return call;
+    }
+
 }

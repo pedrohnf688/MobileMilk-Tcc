@@ -14,13 +14,10 @@ import retrofit2.http.Path;
 
 public interface ServiceFazenda {
 
-    @GET("fazenda")
-    Call<List<Fazenda>> listaFazendas();
-
     @GET("fazenda/{id}")
     Call<List<Fazenda>> listaFazendasPorId();
 
-    @POST("fazenda")
+    @POST("fazenda/{clienteId}")
     Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda);
 
     @DELETE("fazenda/{id}")
