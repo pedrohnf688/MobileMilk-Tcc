@@ -2,22 +2,37 @@ package com.eaj.ufrn.mobilemilk.Modelo;
 
 import com.eaj.ufrn.mobilemilk.Enum.Status;
 
+import java.util.List;
+
 public class Solicitacao {
 
-    private Fazenda fazenda;
-    //private OrdemServico ordemServico;
-    private Amostra analise;
-    private Enum<Status> status;
-    private String observacao;
+   private Cliente cliente;
+   private Fazenda fazenda;
+   private Status status;
+   private String observacao;
+   private List<Analise> listaAnalises;
+   private OrdemServico ordemServico;
 
-    public Solicitacao(String observacao, Enum<Status> status){
+    public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao,
+                       List<Analise> listaAnalises, OrdemServico ordemServico) {
+        this.cliente = cliente;
+        this.fazenda = fazenda;
+        this.status = status;
         this.observacao = observacao;
-        this.status = Status.APROVADO;
+        this.listaAnalises = listaAnalises;
+        this.ordemServico = ordemServico;
     }
 
-    //Getters and Setters
-    public void registrarStatus(Status status){
-        this.status = status;
+    public Solicitacao(){
+
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Fazenda getFazenda() {
@@ -28,12 +43,12 @@ public class Solicitacao {
         this.fazenda = fazenda;
     }
 
-    public Amostra getAnalise() {
-        return analise;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setAnalise(Amostra analise) {
-        this.analise = analise;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getObservacao() {
@@ -44,7 +59,19 @@ public class Solicitacao {
         this.observacao = observacao;
     }
 
-    public Enum<Status> getStatus() {
-        return status;
+    public List<Analise> getListaAnalises() {
+        return listaAnalises;
+    }
+
+    public void setListaAnalises(List<Analise> listaAnalises) {
+        this.listaAnalises = listaAnalises;
+    }
+
+    public OrdemServico getOrdemServico() {
+        return ordemServico;
+    }
+
+    public void setOrdemServico(OrdemServico ordemServico) {
+        this.ordemServico = ordemServico;
     }
 }

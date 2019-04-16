@@ -1,57 +1,91 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
+import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
+import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
+import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 
 import java.util.Date;
+import java.util.List;
 
 public class Analise {
 
-    private Date coleta;
-    private Integer numAmostra;
-    private String qrCode;
-    private String observacao;
+    private Leite leite;
+    private OrigemLeite origemLeite;
+    private Produtos produtos;
+    private String especie;
+    private AnalisesSolicitadas analisesSolicitadas;
+    private Solicitacao solicitacao;
+    private List<Amostra> listaAmostras;
 
-    public Analise(Date coleta, Integer numAmostra, String qrCode, String observacao) {
-        this.coleta = coleta;
-        this.numAmostra = numAmostra;
-        this.qrCode = qrCode;
-        this.observacao = observacao;
+    public Analise(Leite leite, OrigemLeite origemLeite, Produtos produtos, String especie, AnalisesSolicitadas analisesSolicitadas,
+                   Solicitacao solicitacao, List<Amostra> listaAmostras) {
+        this.leite = leite;
+        this.origemLeite = origemLeite;
+        this.produtos = produtos;
+        this.especie = especie;
+        this.analisesSolicitadas = analisesSolicitadas;
+        this.solicitacao = solicitacao;
+        this.listaAmostras = listaAmostras;
     }
 
     public Analise(){
 
     }
 
-    public Date getColeta() {
-        return coleta;
+    public Leite getLeite() {
+        return leite;
     }
 
-    public void setColeta(Date coleta) {
-        this.coleta = coleta;
+    public void setLeite(Leite leite) {
+        this.leite = leite;
     }
 
-    public Integer getNumAmostra() {
-        return numAmostra;
+    public OrigemLeite getOrigemLeite() {
+        return origemLeite;
     }
 
-    public void setNumAmostra(Integer numAmostra) {
-        this.numAmostra = numAmostra;
+    public void setOrigemLeite(OrigemLeite origemLeite) {
+        this.origemLeite = origemLeite;
     }
 
-    public String getQrCode() {
-        return qrCode;
+    public Produtos getProdutos() {
+        return produtos;
     }
 
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
+    public void setProdutos(Produtos produtos) {
+        this.produtos = produtos;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public String getEspecie() {
+        return especie;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
+    public AnalisesSolicitadas getAnalisesSolicitadas() {
+        return analisesSolicitadas;
+    }
+
+    public void setAnalisesSolicitadas(AnalisesSolicitadas analisesSolicitadas) {
+        this.analisesSolicitadas = analisesSolicitadas;
+    }
+
+    public Solicitacao getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
+    }
+
+    public List<Amostra> getListaAmostras() {
+        return listaAmostras;
+    }
+
+    public void setListaAmostras(List<Amostra> listaAmostras) {
+        this.listaAmostras = listaAmostras;
+    }
 }
