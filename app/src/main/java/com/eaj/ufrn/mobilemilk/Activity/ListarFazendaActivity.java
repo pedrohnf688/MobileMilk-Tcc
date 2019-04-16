@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.eaj.ufrn.mobilemilk.Adapters.FazendaAdapter;
+import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -30,10 +31,12 @@ public class ListarFazendaActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Fazendas");
 
-        Fazenda f = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f1 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f2 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f3 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
+        this.cadastrarFazenda = findViewById(R.id.actionButtonCadastrarFazenda);
+
+        Fazenda f = new Fazenda("Fazenda 1", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+        Fazenda f1 = new Fazenda("Fazenda 2", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+        Fazenda f2 = new Fazenda("Fazenda 3", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+        Fazenda f3 = new Fazenda("Fazenda 4", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
 
         listaFazendas.add(f);
         listaFazendas.add(f1);
@@ -44,11 +47,24 @@ public class ListarFazendaActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayout.VERTICAL, false);
 
         recycler.setLayoutManager(layout);
+
         recycler.setItemAnimator(new DefaultItemAnimator());
 
         recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
 
-        this.cadastrarFazenda = findViewById(R.id.actionButtonCadastrarFazenda);
+        // Implementação de Listener de cliques.
+        recycler.addOnItemTouchListener(
+                new MeuRecyclerViewClickListener(getApplicationContext(), recycler, new MeuRecyclerViewClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+                }));
 
     }
 

@@ -35,6 +35,10 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
         getSupportActionBar().setTitle(R.string.cadastrar); // set text action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //
 
+        this.numAmostras = findViewById(R.id.numeroAmostras);
+        this.dataObtencaoAmostra = findViewById(R.id.dataObtencaoAmostras);
+        this.avançar = findViewById(R.id.bAvançar);
+
         // Implementação do Spinner de Fazendas do cliente
         this.spinnerFazenda = findViewById(R.id.spinnerFazenda);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFazenda,
@@ -42,9 +46,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinnerFazenda.setAdapter(adapter);
 
-        this.numAmostras = findViewById(R.id.numeroAmostras);
-        this.dataObtencaoAmostra = findViewById(R.id.dataObtencaoAmostras);
-        this.avançar = findViewById(R.id.bAvançar);
+
 
 
     }

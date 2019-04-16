@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
     private Cliente cliente;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -49,8 +52,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
         // Recuperando os dados de CadastrarActivity
         this.bundle = getIntent().getExtras();
-        //Log.i("SALVOU", "nome "+ bundle.getString("nome") + " email " + bundle.getString("email"));
 
+        this.progressBar = findViewById(R.id.progressBar2);
     }
 
     public boolean complementoCadastro(View v){
@@ -64,21 +67,31 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         Log.i("SALVOU", "cpf: " + cpf + " nome: " + nome + " email: " + email + " telefone: " + telefone);
 
         if(cpf.equals("")){
-            this.cpfUsuario.setError(""+R.string.CpfObrigatorio);
+            this.cpfUsuario.setError("Cpf é obrigatório");
             return false;
         }
         else if(cpf.length() < 11){
-            this.cpfUsuario.setError(""+R.string.CpfInvaliso);
+            this.cpfUsuario.setError("Cpf inválido");
             return  false;
         }
+        else if(cpf.contains(" ")){
+            this.cpfUsuario.setError("Cpf não pode conter espaços");
+            return false;
+        }
         else if(telefone.equals("")){
-            this.telefoneUsuario.setError(""+R.string.TelefoneObrigatorio);
+            this.telefoneUsuario.setError("Telefone obrigatório");
             return  false;
         }
         else if(telefone.length() < 11 || telefone.length() > 11){
-            this.telefoneUsuario.setError(""+R.string.TelefoneInvalido);
+            this.telefoneUsuario.setError("Deve conter 11 digitos incluindo o DDD");
             return false;
         }
+        else if(telefone.contains(" ")){
+            this.telefoneUsuario.setError("Não use espaços ao preencher o número");
+            return false;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
 
         List<String> listaTelefones = new ArrayList<>();
         listaTelefones.add(this.telefone);
@@ -99,11 +112,13 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
                     startActivity(i);
                 }
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error 404", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             }
         });
 
