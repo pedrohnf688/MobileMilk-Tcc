@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.eaj.ufrn.mobilemilk.Activity.AtualizarClienteActivity;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -47,17 +48,27 @@ public class PerfilFragment extends Fragment {
         this.telefoneClientePerfil = view.findViewById(R.id.telefoneCLientePerfil);
 
         this.bListarFazendas = view.findViewById(R.id.bListarfazendas);
+        this.bAlterarPerfil = view.findViewById(R.id.bAlterarDados);
 
+        // implementação de Button para listar fazendas
         this.bListarFazendas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent t = new Intent(getActivity().getApplicationContext(), ListarFazendaActivity.class);
+                Intent t = new Intent(getContext(), ListarFazendaActivity.class);
+                startActivity(t);
+            }
+        });
+
+        // implementação de Button para tela de atualizar informações
+        this.bAlterarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent t = new Intent(getActivity().getApplicationContext(), AtualizarClienteActivity.class);
                 startActivity(t);
             }
         });
 
         return view;
     }
-
 
 }

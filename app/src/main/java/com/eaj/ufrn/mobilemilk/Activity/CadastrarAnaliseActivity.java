@@ -30,7 +30,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
     @Override
     protected void onCreate(Bundle saveInstanteState){
         super.onCreate(saveInstanteState);
-        setContentView(R.layout.activity_cadastrar_analise);
+        setContentView(R.layout.activity_cadastrar_solicitacao);
 
         getSupportActionBar().setTitle(R.string.cadastrar); // set text action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //

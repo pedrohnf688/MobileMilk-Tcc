@@ -37,20 +37,7 @@ public class SolicitacoesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
 
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU CERTO", Status.APROVADO));
-        listaSolicitacoes.add(new Solicitacao("DEU ERRADO", Status.APROVADO));
+        listaSolicitacoes.add(new Solicitacao(null, null, Status.APROVADO, "DEU CERTO", null,null));
 
         View view = inflater.inflate(R.layout.fragment_listar_solicitacoes, container, false);
 
