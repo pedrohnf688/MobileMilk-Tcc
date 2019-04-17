@@ -3,6 +3,7 @@ package com.eaj.ufrn.mobilemilk.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.R;
@@ -17,7 +18,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
     private TextView bairroFazenda;
     private TextView numeroFazenda;
 
-    private Button adicionar;
+    private ImageButton adicionar;
     private Button confirmar;
     private Button cancelar;
 
@@ -39,7 +40,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         this.bairroFazenda = findViewById(R.id.bairroFazenda);
         this.numeroFazenda = findViewById(R.id.numeroFazenda);
 
-        this.adicionar = findViewById(R.id.bAdicionar);
+        this.adicionar = findViewById(R.id.adicionarImagemfazenda);
         this.confirmar = findViewById(R.id.confirmarCadastro);
         this.cancelar = findViewById(R.id.cancelarCadastro);
     }

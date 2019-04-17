@@ -17,7 +17,9 @@ import com.eaj.ufrn.mobilemilk.Fragments.DatePickerFragment;
 import com.eaj.ufrn.mobilemilk.R;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class CadastrarAnaliseActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -41,12 +43,14 @@ public class CadastrarAnaliseActivity extends AppCompatActivity implements DateP
 
         // Implementação do Spinner de Fazendas do cliente
         this.spinnerFazenda = findViewById(R.id.spinnerFazenda);
+
+        List<String> fazendas = new ArrayList<>();
+        
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFazenda,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinnerFazenda.setAdapter(adapter);
-
-
 
 
     }
