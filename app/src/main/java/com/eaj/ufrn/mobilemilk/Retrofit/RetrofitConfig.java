@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Retrofit;
 
+import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceAutenticacao;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceCliente;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceFazenda;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceSolicitacao;
@@ -31,7 +32,7 @@ public class RetrofitConfig {
                 .readTimeout(100, TimeUnit.SECONDS).build();
         Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
         this.rt = new Retrofit.Builder()
-                .baseUrl("http://service-milk-hudson.herokuapp.com")
+                .baseUrl("http://10.0.0.111:3005/")
                 .addConverterFactory(GsonConverterFactory.create(gsonConvertFactory))
                 .client(client)
                 .build();
@@ -47,5 +48,9 @@ public class RetrofitConfig {
 
     public ServiceFazenda getFazendaService(){
         return this.rt.create(ServiceFazenda.class);
+    }
+
+    public ServiceAutenticacao getCredencialService(){
+        return this.rt.create(ServiceAutenticacao.class);
     }
 }

@@ -14,13 +14,13 @@ import retrofit2.http.Path;
 
 public interface ServiceCliente {
 
-    @POST("/cliente")
+    @POST("cliente")
     Call<Cliente> cadastrarCliente(@Body Cliente usuario);
 
-    @PUT("/cliente/{id}")
+    @PUT("cliente/{id}")
     Call<Cliente> atualizarCliete(@Path("id") Cliente cliente);
 
-    @DELETE("/cliente/{id}")
+    @DELETE("cliente/{id}")
     Call<Cliente> deletarCliente(@Path("id") int id);
 
 }
