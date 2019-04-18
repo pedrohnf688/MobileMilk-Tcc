@@ -3,12 +3,12 @@ package com.eaj.ufrn.mobilemilk.Modelo;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 public class Credencial {
 
     private String senha;
     private String username;
-
 
     public Credencial(String senha, String username) {
         this.senha = senha;
@@ -44,8 +44,8 @@ public class Credencial {
     }
 
     // Autenticar credenciais de cliente
-    public static Call<Token> autenticacaoCliente(Credencial credencial){
-        Call<Token> call = new RetrofitConfig().getCredencialService().autenticarCliente(credencial);
+    public static Call<Class> autenticacaoCliente(Credencial credencial){
+        Call<Class> call = new RetrofitConfig().getCredencialService().autenticarCliente(credencial);
         return call;
     }
 }

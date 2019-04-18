@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Token {
@@ -24,5 +25,4 @@ public class Token {
                 "token='" + token + '\'' +
                 '}';
     }
-
 }
