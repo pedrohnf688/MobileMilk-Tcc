@@ -78,6 +78,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
+        <activity
+            android:name=".Activity.PerfilFazendaActivity"
+            android:parentActivityName=".Activity.ListarFazendaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.ListarFazendaActivity"/>
+        </activity>
     </application>
 
 </manifest>

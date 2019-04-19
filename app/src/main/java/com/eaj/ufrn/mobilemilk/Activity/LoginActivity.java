@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -85,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Snackbar snack = Snackbar.make(findViewById(R.id.layoutParent), "Preencha os campos corretamente", Snackbar.LENGTH_SHORT);
             snack.show();
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(i);
         }
     }
 

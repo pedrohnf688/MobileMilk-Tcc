@@ -57,12 +57,13 @@ public class ListarFazendaActivity extends AppCompatActivity {
                 new MeuRecyclerViewClickListener(getApplicationContext(), recycler, new MeuRecyclerViewClickListener.OnItemClickListener() {
                     @Override
                     public void onItemLongClick(View view, int position) {
-
+                        // Implementação opcional para desenvolvimento futuro ....
                     }
 
                     @Override
                     public void onItemClick(View view, int position) {
-
+                        Intent i = new Intent(getApplicationContext(), PerfilFazendaActivity.class);
+                        startActivity(i);
                     }
                 }));
 
@@ -73,4 +74,11 @@ public class ListarFazendaActivity extends AppCompatActivity {
         startActivity(t);
     }
 
+
+    // onStart() -> Carrega as fazendas do Banco de Dados ...
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+    }
 }
