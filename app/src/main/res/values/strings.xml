@@ -33,5 +33,17 @@
         <item> Fazenda3 </item>
     </string-array>
 
-    
+    <string-array name="spinnerOrigemLeite">
+        <item> Balde </item>
+        <item> Tanque </item>
+        <item> Teto </item>
+        <item> Teteira </item>
+    </string-array>
+
+    <string-array name="spinnerTipoLeite">
+        <item> Crú </item>
+        <item> Pasteurizado </item>
+        <item> UHT </item>
+    </string-array>
+
 </resources>

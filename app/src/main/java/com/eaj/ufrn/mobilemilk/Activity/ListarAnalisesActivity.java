@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.eaj.ufrn.mobilemilk.R;
 
-public class CadastrarAmostra extends AppCompatActivity {
+public class ListarAnalisesActivity extends AppCompatActivity {
 
     private FloatingActionButton adicionarAmostra;
     private Button concluirCadastroAmostras;
@@ -24,7 +25,7 @@ public class CadastrarAmostra extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_cadastrar_amostra);
+        setContentView(R.layout.activity_listar_analises);
 
         getSupportActionBar().setTitle("Cadastro de amostras");
 
@@ -53,6 +54,12 @@ public class CadastrarAmostra extends AppCompatActivity {
             this.concluirCadastroAmostras.setBackgroundColor(getResources().getColor(R.color.GreenB));
             this.concluirCadastroAmostras.setTextColor(getResources().getColor(R.color.branco));
         }
+    }
+
+    // Cadastrar Análises
+    public void cadastrarAnalise(View v){
+        Intent i = new Intent(getApplicationContext(), CadastrarAnaliseActivity.class);
+        startActivity(i);
     }
 
 }

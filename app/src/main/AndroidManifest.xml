@@ -51,18 +51,18 @@
                 android:value=".Activity.ComplementoCadastroClienteActivity"/>
         </activity>
         <activity
-            android:name=".Activity.CadastrarAnaliseActivity"
+            android:name=".Activity.CadastrarSolicitacaoActivity"
             android:parentActivityName=".Activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
         <activity
-            android:name=".Activity.CadastrarAmostra"
-            android:parentActivityName=".Activity.CadastrarAnaliseActivity">
+            android:name=".Activity.ListarAnalisesActivity"
+            android:parentActivityName=".Activity.CadastrarSolicitacaoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.CadastrarAnaliseActivity"/>
+                android:value=".Activity.CadastrarSolicitacaoActivity"/>
         </activity>
         <activity
             android:name=".Activity.ListarFazendaActivity"
@@ -85,6 +85,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ListarFazendaActivity"/>
         </activity>
+        <activity android:name=".Activity.CadastrarAnaliseActivity"/>
+
     </application>
 
 </manifest>

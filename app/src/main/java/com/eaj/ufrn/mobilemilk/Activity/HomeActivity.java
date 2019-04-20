@@ -106,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void cadastrarNovaSolicitacao(View v){
-        Intent t = new Intent(getApplicationContext(), CadastrarAnaliseActivity.class);
+        Intent t = new Intent(getApplicationContext(), CadastrarSolicitacaoActivity.class);
         startActivity(t);
     }
 
