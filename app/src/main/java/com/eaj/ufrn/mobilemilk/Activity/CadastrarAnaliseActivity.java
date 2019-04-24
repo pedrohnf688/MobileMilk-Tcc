@@ -17,8 +17,6 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
 
     private Spinner origemLeite;
     private Spinner tipoLeite;
-    private RadioGroup produtos;
-    private RadioGroup analises;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -27,8 +25,6 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
 
         this.origemLeite = findViewById(R.id.origemDoLeite);
         this.tipoLeite = findViewById(R.id.spinnerTipoLeite);
-        this.produtos = findViewById(R.id.radioProdutos);
-        this.analises = findViewById(R.id.radioAnalises);
 
         // Adapter array para spinner de Origem de Leite
         ArrayAdapter<CharSequence> array = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrigemLeite,
