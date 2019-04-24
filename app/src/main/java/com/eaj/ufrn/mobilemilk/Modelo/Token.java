@@ -25,4 +25,5 @@ public class Token {
                 "token='" + token + '\'' +
                 '}';
     }
+
 }
