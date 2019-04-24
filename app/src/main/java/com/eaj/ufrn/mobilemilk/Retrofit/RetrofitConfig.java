@@ -32,7 +32,7 @@ public class RetrofitConfig {
                 .readTimeout(100, TimeUnit.SECONDS).build();
         Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
         this.rt = new Retrofit.Builder()
-                .baseUrl("http://10.0.0.111:3005/")
+                .baseUrl("http://10.77.33.63:3005/")
                 .addConverterFactory(GsonConverterFactory.create(gsonConvertFactory))
                 .client(client)
                 .build();
@@ -53,4 +53,5 @@ public class RetrofitConfig {
     public ServiceAutenticacao getCredencialService(){
         return this.rt.create(ServiceAutenticacao.class);
     }
+
 }

@@ -54,16 +54,22 @@ public class LoginActivity extends AppCompatActivity {
 
             Log.i("credencial", "senha: " + credencial.getSenha() + " username: " + credencial.getUsername());
 
-            Call<Class> call = Credencial.autenticacaoCliente(credencial);
-            call.enqueue(new Callback<Class>() {
+            HashMap<String, Object> parans = new HashMap<>();
+            parans.put("username", usuario.getText().toString());
+            parans.put("senha", senha.getText().toString());
+
+            Log.i("teste", "usuario: "+ parans);
+
+            Call<Token> call = Credencial.autenticacaoCliente(parans);
+            call.enqueue(new Callback<Token>() {
                 @Override
-                public void onResponse(Call<Class> call, Response<Class> response) {
+                public void onResponse(Call<Token> call, Response<Token> response) {
                     if(response.isSuccessful()){
                         Log.i("headers", ""+ response.headers().get("Authorization"));
                         Log.i("body", ""+ response.body());
                         Log.i("toString", ""+ response.toString());
                         Log.i("message", ""+ response.message());
-                        //Log.i("token", ""+ response.body());
+                        Log.i("token", ""+ response.body());
                     }
                     else{
                         Log.i("xx", ""+ response.toString());
@@ -75,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<Class> call, Throwable t) {
+                public void onFailure(Call<Token> call, Throwable t) {
                     Log.i("yy", ""+ t.getStackTrace());
                     Log.i("yy", ""+ t.getMessage());
                     Log.i("yy", ""+ t.getCause());
@@ -86,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Snackbar snack = Snackbar.make(findViewById(R.id.layoutParent), "Preencha os campos corretamente", Snackbar.LENGTH_SHORT);
             snack.show();
-            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+//            startActivity(i);
         }
     }
 
