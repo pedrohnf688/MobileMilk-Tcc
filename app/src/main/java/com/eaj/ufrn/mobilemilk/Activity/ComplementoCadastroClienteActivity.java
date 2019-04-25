@@ -54,6 +54,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         this.bundle = getIntent().getExtras();
 
         this.progressBar = findViewById(R.id.progressBar2);
+        this.progressBar.setVisibility(View.GONE);
     }
 
     public boolean complementoCadastro(View v){
@@ -102,15 +103,15 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         call.enqueue(new Callback<Cliente>() {
             @Override
             public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                progressBar.setVisibility(View.VISIBLE);
                 if(response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.SalvoSucesso, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
+                    finish();
+                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(i);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), R.string.CpfInvaliso, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
-                    startActivity(i);
                 }
                 progressBar.setVisibility(View.GONE);
             }

@@ -12,7 +12,7 @@ public class Login {
     }
 
     // guarda o acessToken
-    public void saveToken(String token) {
+    public static void saveToken(Context context, String token) {
         SharedPreferences prefs = context.getSharedPreferences("PREFS_NAME", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -22,7 +22,7 @@ public class Login {
     }
 
     // destroy accessToken
-    public void destroyToken(){
+    public static void destroyToken(Context context){
         SharedPreferences prefs = context.getSharedPreferences("PREFS_NAME", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 

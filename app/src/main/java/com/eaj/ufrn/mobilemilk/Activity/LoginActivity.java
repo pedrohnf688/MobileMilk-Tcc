@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
+import com.eaj.ufrn.mobilemilk.Modelo.Login;
 import com.eaj.ufrn.mobilemilk.Modelo.Token;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -66,11 +67,16 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
                     if(response.isSuccessful()){
-                        Log.i("headers", ""+ response.headers().get("Authorization"));
-                        Log.i("body", ""+ response.body());
-                        Log.i("toString", ""+ response.toString());
-                        Log.i("message", ""+ response.message());
-                        Log.i("token", ""+ response.body());
+                        String accesstoken = response.headers().get("Authorization");               // Recebe o token pelo cabeçalho.
+
+                        Login login = new Login(getApplicationContext());                                             // Responsável por gerenciar o Token
+                        login.saveToken(getApplicationContext(), accesstoken);                                                               // Armazena o Token no SharedPrefs
+
+                        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+                        Log.i("prefs", "token: " + prefs.getString("accessToken", "errou"));
+
+                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(i);
                     }
                     else{
                         Log.i("xx", ""+ response.toString());
@@ -87,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("yy", ""+ t.getMessage());
                     Log.i("yy", ""+ t.getCause());
                     Log.i("yy", ""+ t.toString());
+                    Snackbar snack = Snackbar.make(findViewById(R.id.layoutParent), "Verifique a conexão com a internet", Snackbar.LENGTH_SHORT);
+                    snack.show();
                 }
             });
         }
