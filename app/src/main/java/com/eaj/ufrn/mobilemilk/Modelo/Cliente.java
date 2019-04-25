@@ -118,6 +118,12 @@ public class Cliente {
         return call;
     }
 
+    // Recuperar informações do cliente
+    public static Call<Cliente> buscarCliente(Integer id){
+        Call<Cliente> call = new RetrofitConfig().getClienteService().buscarCliente(id);
+        return call;
+    }
+
     // Cadastrar nova fazenda
     public static Call<Fazenda> cadastrarFazenda(Fazenda fazenda){
         Call<Fazenda> call = new RetrofitConfig().getFazendaService().cadastrarFazenda(fazenda);
@@ -129,6 +135,4 @@ public class Cliente {
         Call<Fazenda> call = new RetrofitConfig().getFazendaService().editarFazenda(idFazenda);
         return call;
     }
-
-
 }

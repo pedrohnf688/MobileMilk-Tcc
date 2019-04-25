@@ -3,6 +3,7 @@ package com.eaj.ufrn.mobilemilk.Activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,7 +20,13 @@ import android.widget.Toolbar;
 import com.eaj.ufrn.mobilemilk.Fragments.FazendasFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.PerfilFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
+import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.Modelo.Login;
 import com.eaj.ufrn.mobilemilk.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -99,10 +106,32 @@ public class HomeActivity extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), InicioActivity.class);
             finish();
             startActivity(i);
+            Login.destroyToken(getApplicationContext()); // Limpa do sharedPrefs da aplicação.
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    // Método do ciclo de cida da aplicação, responsável por carregar as informações de cliente as outras activities ...
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+        Integer idCliente = prefs.getInt("idCliente", -1);
+
+        Call<Cliente> call = Cliente.buscarCliente(idCliente);
+        call.enqueue(new Callback<Cliente>() {
+            @Override
+            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Cliente> call, Throwable t) {
+
+            }
+        });
     }
 
     public void cadastrarNovaSolicitacao(View v){

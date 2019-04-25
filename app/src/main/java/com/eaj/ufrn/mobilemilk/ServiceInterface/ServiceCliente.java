@@ -23,6 +23,9 @@ public interface ServiceCliente {
     Call<Cliente> atualizarCliete(@Path("id") Cliente cliente);
 
     @DELETE("cliente/{id}")
-    Call<Cliente> deletarCliente(@Path("id") int id);
+    Call<Cliente> deletarCliente(@Path("id") Integer id);
+
+    @GET("cliente/{id}")
+    Call<Cliente> buscarCliente(@Path("id") Integer id);
 
 }
