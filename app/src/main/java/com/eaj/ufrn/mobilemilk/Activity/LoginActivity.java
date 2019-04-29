@@ -14,6 +14,7 @@ import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
 import com.eaj.ufrn.mobilemilk.Modelo.Token;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -62,17 +63,17 @@ public class LoginActivity extends AppCompatActivity {
 
             Log.i("teste", "usuario: "+ parans);
 
-            Call<Token> call = Credencial.autenticacaoCliente(parans);
+            Call<Token> call = new RetrofitConfig().getCredencialService().autenticarCliente(parans);
             call.enqueue(new Callback<Token>() {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
                     if(response.isSuccessful()){
                         String accesstoken = response.headers().get("Authorization");               // Recebe o token pelo cabeçalho.
-                        String[] accessId = response.headers().get("Usuario").split(":");
+                        String[] accessId = response.headers().get("Usuario").split(":");     // Recebe o id do cliente logado.
                         String id = accessId[1];
 
-                        //Login login = new Login(getApplicationContext());                          // Responsável por gerenciar o Token
-                        Login.saveToken(getApplicationContext(), accesstoken, id);                   // Armazena o Token no SharedPrefs
+                        //Login login = new Login(getApplicationContext());                         // Responsável por gerenciar o Token
+                        Login.saveToken(getApplicationContext(), accesstoken, id);                  // Armazena o Token no SharedPrefs
 
                         Log.i("header", "" + response.headers());
                         Log.i("id", "" + id);

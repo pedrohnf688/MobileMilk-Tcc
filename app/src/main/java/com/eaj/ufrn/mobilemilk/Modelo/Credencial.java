@@ -45,10 +45,4 @@ public class Credencial {
                 '}';
     }
 
-    // Autenticar credenciais de cliente
-    public static Call<Token> autenticacaoCliente(HashMap<String, Object> parans){
-        Call<Token> call = new RetrofitConfig().getCredencialService().autenticarCliente(parans);
-        return call;
-    }
-
 }

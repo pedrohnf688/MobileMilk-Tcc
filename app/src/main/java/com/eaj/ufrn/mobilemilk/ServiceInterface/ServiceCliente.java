@@ -27,6 +27,6 @@ public interface ServiceCliente {
     Call<Cliente> deletarCliente(@Path("id") Integer id);
 
     @GET("cliente/{id}")
-    Call<ClienteDto> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
+    Call<Cliente> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
 
 }

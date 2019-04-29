@@ -25,6 +25,7 @@ import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,21 +131,21 @@ public class HomeActivity extends AppCompatActivity {
         Log.i("credenciais", "id: " + idCliente);
         Log.i("credenciais", "token: " + token);
 
-        Call<ClienteDto> call = Cliente.buscarCliente(idCliente, token1);
-        call.enqueue(new Callback<ClienteDto>() {
+        Call<Cliente> call = new RetrofitConfig().getClienteService().buscarCliente(idCliente, token1);
+        call.enqueue(new Callback<Cliente>() {
             @Override
-            public void onResponse(Call<ClienteDto> call, Response<ClienteDto> response) {
+            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                 SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
 
                 if(response.isSuccessful()) {
 
-                    ClienteDto c = response.body();
+                    Cliente c = response.body();
 
-                    editor.putString("nome", response.body().getCliente().getNome());
-                    editor.putString("email", response.body().getCliente().getEmail());
-                    editor.putString("username", response.body().getCliente().getUsername());
-                    editor.putString("cpf", response.body().getCliente().getCpf());
+                    editor.putString("nome", c.getNome());
+                    editor.putString("email", response.body().getEmail());
+                    editor.putString("username", response.body().getUsername());
+                    editor.putString("cpf", response.body().getCpf());
 
                     List<String> telefones = new ArrayList<String>();
 
@@ -154,16 +155,16 @@ public class HomeActivity extends AppCompatActivity {
 
                     editor.commit();
                     Log.i("certo", "Tudo certo cambada");
-                    Log.i("certo", "nome: "+response.body().getCliente().getNome());
-                    Log.i("certo", "email: "+response.body().getCliente().getEmail());
-                    Log.i("certo", "username: "+response.body().getCliente().getUsername());
+                    Log.i("certo", "nome: "+response.body().getNome());
+                    Log.i("certo", "email: "+response.body().getEmail());
+                    Log.i("certo", "username: "+response.body().getUsername());
                 }
                 else
                     Log.i("Error", "Error: " + response.errorBody());
             }
 
             @Override
-            public void onFailure(Call<ClienteDto> call, Throwable t) {
+            public void onFailure(Call<Cliente> call, Throwable t) {
                 Log.i("Error1", "Error: " + t.toString());
                 Log.i("Error1", "Error: " + t.getMessage());
                 Log.i("Error1", "Error: " + t.getCause());

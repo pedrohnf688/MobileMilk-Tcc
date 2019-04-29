@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.eaj.ufrn.mobilemilk.Enum.EnumTipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +100,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
         cliente = new Cliente(null, listaTelefones, nome, email, cpf, EnumTipoPerfilUsuario.ROLE_CLIENTE.getCodigo(), senha, username);
 
-        Call<Cliente> call = Cliente.cadastrarCliente(cliente);
+        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
         call.enqueue(new Callback<Cliente>() {
             @Override
             public void onResponse(Call<Cliente> call, Response<Cliente> response) {

@@ -123,34 +123,4 @@ public class Cliente {
                 ", username='" + username + '\'' +
                 '}';
     }
-
-    // Cadastrar novo cliente
-    public static Call<Cliente> cadastrarCliente(Cliente usuariol){
-        Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(usuariol);
-        return call;
-    }
-
-    // Atualizar informações cliente
-    public static Call<Cliente> atualizarCliente(Cliente cliente){
-        Call<Cliente> call = new RetrofitConfig().getClienteService().atualizarCliete(cliente);
-        return call;
-    }
-
-    // Recuperar informações do cliente
-    public static Call<ClienteDto> buscarCliente(String id, String authorization){
-        Call<ClienteDto> call = new RetrofitConfig().getClienteService().buscarCliente(id, authorization);
-        return call;
-    }
-
-    // Cadastrar nova fazenda
-    public static Call<Fazenda> cadastrarFazenda(Fazenda fazenda, String authorization){
-        Call<Fazenda> call = new RetrofitConfig().getFazendaService().cadastrarFazenda(fazenda, authorization);
-        return call;
-    }
-
-    // Atualizar informações fazenda
-    public  static  Call<Fazenda> atualizarFazenda(Integer idFazenda){
-        Call<Fazenda> call = new RetrofitConfig().getFazendaService().editarFazenda(idFazenda);
-        return call;
-    }
 }
