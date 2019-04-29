@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 
 import java.util.List;
 
@@ -26,6 +27,6 @@ public interface ServiceCliente {
     Call<Cliente> deletarCliente(@Path("id") Integer id);
 
     @GET("cliente/{id}")
-    Call<Cliente> buscarCliente(@Path("id") Integer id);
+    Call<ClienteDto> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
 
 }

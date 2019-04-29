@@ -97,7 +97,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         List<String> listaTelefones = new ArrayList<>();
         listaTelefones.add(this.telefone);
 
-        cliente = new Cliente(listaTelefones, nome, email, cpf, EnumTipoPerfilUsuario.ROLE_CLIENTE.getCodigo(), senha, username);
+        cliente = new Cliente(null, listaTelefones, nome, email, cpf, EnumTipoPerfilUsuario.ROLE_CLIENTE.getCodigo(), senha, username);
 
         Call<Cliente> call = Cliente.cadastrarCliente(cliente);
         call.enqueue(new Callback<Cliente>() {

@@ -10,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,11 @@ import com.eaj.ufrn.mobilemilk.Fragments.PerfilFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -118,18 +123,50 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
 
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-        Integer idCliente = prefs.getInt("idCliente", -1);
+        String idCliente = prefs.getString("accessId", null);
+        String[] token = prefs.getString("accessToken", null).split(" ");
+        String token1 = token[1];
 
-        Call<Cliente> call = Cliente.buscarCliente(idCliente);
-        call.enqueue(new Callback<Cliente>() {
+        Log.i("credenciais", "id: " + idCliente);
+        Log.i("credenciais", "token: " + token);
+
+        Call<ClienteDto> call = Cliente.buscarCliente(idCliente, token1);
+        call.enqueue(new Callback<ClienteDto>() {
             @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+            public void onResponse(Call<ClienteDto> call, Response<ClienteDto> response) {
+                SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
 
+                if(response.isSuccessful()) {
+
+                    ClienteDto c = response.body();
+
+                    editor.putString("nome", response.body().getCliente().getNome());
+                    editor.putString("email", response.body().getCliente().getEmail());
+                    editor.putString("username", response.body().getCliente().getUsername());
+                    editor.putString("cpf", response.body().getCliente().getCpf());
+
+                    List<String> telefones = new ArrayList<String>();
+
+                    for (int i = 0; i < telefones.size(); i++) {
+                        editor.putString("telefone" + i, telefones.get(i));
+                    }
+
+                    editor.commit();
+                    Log.i("certo", "Tudo certo cambada");
+                    Log.i("certo", "nome: "+response.body().getCliente().getNome());
+                    Log.i("certo", "email: "+response.body().getCliente().getEmail());
+                    Log.i("certo", "username: "+response.body().getCliente().getUsername());
+                }
+                else
+                    Log.i("Error", "Error: " + response.errorBody());
             }
 
             @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
-
+            public void onFailure(Call<ClienteDto> call, Throwable t) {
+                Log.i("Error1", "Error: " + t.toString());
+                Log.i("Error1", "Error: " + t.getMessage());
+                Log.i("Error1", "Error: " + t.getCause());
             }
         });
     }

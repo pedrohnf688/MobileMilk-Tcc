@@ -12,11 +12,12 @@ public class Login {
     }
 
     // guarda o acessToken
-    public static void saveToken(Context context, String token) {
+    public static void saveToken(Context context, String token, String idClient) {
         SharedPreferences prefs = context.getSharedPreferences("PREFS_NAME", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putString("accessToken", token);
+        editor.putString("accessId", idClient);
         editor.putBoolean("logged", true);
         editor.commit();
     }

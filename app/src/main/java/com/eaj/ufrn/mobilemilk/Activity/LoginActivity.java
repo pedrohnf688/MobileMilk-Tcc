@@ -68,9 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<Token> call, Response<Token> response) {
                     if(response.isSuccessful()){
                         String accesstoken = response.headers().get("Authorization");               // Recebe o token pelo cabeçalho.
+                        String[] accessId = response.headers().get("Usuario").split(":");
+                        String id = accessId[1];
 
-                        Login login = new Login(getApplicationContext());                                             // Responsável por gerenciar o Token
-                        login.saveToken(getApplicationContext(), accesstoken);                                                               // Armazena o Token no SharedPrefs
+                        //Login login = new Login(getApplicationContext());                          // Responsável por gerenciar o Token
+                        Login.saveToken(getApplicationContext(), accesstoken, id);                   // Armazena o Token no SharedPrefs
+
+                        Log.i("header", "" + response.headers());
+                        Log.i("id", "" + id);
 
                         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
                         Log.i("prefs", "token: " + prefs.getString("accessToken", "errou"));

@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
 import com.eaj.ufrn.mobilemilk.Enum.EnumTipoPerfilUsuario;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
@@ -19,8 +20,9 @@ public class Cliente {
     private Integer codigoTipoPerfilUsuario;
     private String senha;
     private String username;
+    private String id;
 
-    public Cliente(List<String> telefones, String nome, String email, String cpf, Integer codigoTipoPerfilUsuario, String senha, String username) {
+    public Cliente(String id, List<String> telefones, String nome, String email, String cpf, Integer codigoTipoPerfilUsuario, String senha, String username) {
         this.telefones = telefones;
         this.nome = nome;
         this.email = email;
@@ -28,6 +30,7 @@ public class Cliente {
         this.codigoTipoPerfilUsuario = codigoTipoPerfilUsuario;
         this.senha = senha;
         this.username = username;
+        this.id = id;
     }
 
     public Cliente(){
@@ -106,6 +109,21 @@ public class Cliente {
         this.username = username;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "telefones=" + telefones +
+                ", listaSolicitacoes=" + listaSolicitacoes +
+                ", listaFazendas=" + listaFazendas +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", codigoTipoPerfilUsuario=" + codigoTipoPerfilUsuario +
+                ", senha='" + senha + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
     // Cadastrar novo cliente
     public static Call<Cliente> cadastrarCliente(Cliente usuariol){
         Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(usuariol);
@@ -119,14 +137,14 @@ public class Cliente {
     }
 
     // Recuperar informações do cliente
-    public static Call<Cliente> buscarCliente(Integer id){
-        Call<Cliente> call = new RetrofitConfig().getClienteService().buscarCliente(id);
+    public static Call<ClienteDto> buscarCliente(String id, String authorization){
+        Call<ClienteDto> call = new RetrofitConfig().getClienteService().buscarCliente(id, authorization);
         return call;
     }
 
     // Cadastrar nova fazenda
-    public static Call<Fazenda> cadastrarFazenda(Fazenda fazenda){
-        Call<Fazenda> call = new RetrofitConfig().getFazendaService().cadastrarFazenda(fazenda);
+    public static Call<Fazenda> cadastrarFazenda(Fazenda fazenda, String authorization){
+        Call<Fazenda> call = new RetrofitConfig().getFazendaService().cadastrarFazenda(fazenda, authorization);
         return call;
     }
 

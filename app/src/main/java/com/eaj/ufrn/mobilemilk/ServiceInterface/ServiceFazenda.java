@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -18,7 +19,7 @@ public interface ServiceFazenda {
     Call<List<Fazenda>> listaFazendasPorId();
 
     @POST("fazenda/{clienteId}")
-    Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda);
+    Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda, @Header("Authorization") String authorization);
 
     @DELETE("fazenda/{id}")
     Call<Fazenda> deletarFazenda(@Path("id") int id);
