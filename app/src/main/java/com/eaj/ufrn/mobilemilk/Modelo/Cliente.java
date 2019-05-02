@@ -17,12 +17,12 @@ public class Cliente {
     private String nome;
     private String email;
     private String cpf;
-    private Integer codigoTipoPerfilUsuario;
+    private EnumTipoPerfilUsuario codigoTipoPerfilUsuario;
     private String senha;
     private String username;
     private String id;
 
-    public Cliente(String id, List<String> telefones, String nome, String email, String cpf, Integer codigoTipoPerfilUsuario, String senha, String username) {
+    public Cliente(String id, List<String> telefones, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username) {
         this.telefones = telefones;
         this.nome = nome;
         this.email = email;
@@ -85,11 +85,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Integer getCodigoTipoPerfilUsuario() {
+    public EnumTipoPerfilUsuario getCodigoTipoPerfilUsuario() {
         return codigoTipoPerfilUsuario;
     }
 
-    public void setCodigoTipoPerfilUsuario(Integer codigoTipoPerfilUsuario) {
+    public void setCodigoTipoPerfilUsuario(EnumTipoPerfilUsuario codigoTipoPerfilUsuario) {
         this.codigoTipoPerfilUsuario = codigoTipoPerfilUsuario;
     }
 

@@ -8,9 +8,9 @@ import java.util.List;
 public class ClienteDto {
 
     Cliente data;
-    List<String> erros;
+    String[] erros;
 
-    public ClienteDto(Cliente cliente, List<String> erros) {
+    public ClienteDto(Cliente cliente, String[] erros) {
         this.data = cliente;
         this.erros = erros;
     }
@@ -25,12 +25,11 @@ public class ClienteDto {
         this.data = data;
     }
 
-    public List<String> getErros() {
+    public String[] getErros() {
         return erros;
     }
 
-    public void setErros(List<String> erros) {
+    public void setErros(String[] erros) {
         this.erros = erros;
     }
-
 }

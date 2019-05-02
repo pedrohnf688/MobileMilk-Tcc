@@ -131,40 +131,44 @@ public class HomeActivity extends AppCompatActivity {
         Log.i("credenciais", "id: " + idCliente);
         Log.i("credenciais", "token: " + token);
 
-        Call<Cliente> call = new RetrofitConfig().getClienteService().buscarCliente(idCliente, token1);
-        call.enqueue(new Callback<Cliente>() {
+        Call<ClienteDto> call = new RetrofitConfig().getClienteService().buscarCliente(idCliente, token1);
+        call.enqueue(new Callback<ClienteDto>() {
             @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+            public void onResponse(Call<ClienteDto> call, Response<ClienteDto> response) {
                 SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
 
                 if(response.isSuccessful()) {
 
-                    Cliente c = response.body();
+                    ClienteDto c = response.body();
 
-                    editor.putString("nome", c.getNome());
-                    editor.putString("email", response.body().getEmail());
-                    editor.putString("username", response.body().getUsername());
-                    editor.putString("cpf", response.body().getCpf());
+                    editor.putString("nome", c.getData().getNome());
+                    editor.putString("email", c.getData().getEmail());
+                    editor.putString("username", c.getData().getUsername());
+                    editor.putString("cpf", c.getData().getCpf());
+                    editor.putString("senha", c.getData().getSenha());
 
-                    List<String> telefones = new ArrayList<String>();
+                    List<String> telefones = c.getData().getTelefones();
 
                     for (int i = 0; i < telefones.size(); i++) {
                         editor.putString("telefone" + i, telefones.get(i));
+                        Log.i("certo", "nome: "+telefones.get(i));
                     }
 
                     editor.commit();
                     Log.i("certo", "Tudo certo cambada");
-                    Log.i("certo", "nome: "+response.body().getNome());
-                    Log.i("certo", "email: "+response.body().getEmail());
-                    Log.i("certo", "username: "+response.body().getUsername());
+                    Log.i("certo", "nome: "+c.getData().getNome());
+                    Log.i("certo", "email: "+c.getData().getEmail());
+                    Log.i("certo", "username: "+c.getData().getUsername());
+                    Log.i("certo", "username: "+c.getData().getSenha());
+
                 }
                 else
                     Log.i("Error", "Error: " + response.errorBody());
             }
 
             @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
+            public void onFailure(Call<ClienteDto> call, Throwable t) {
                 Log.i("Error1", "Error: " + t.toString());
                 Log.i("Error1", "Error: " + t.getMessage());
                 Log.i("Error1", "Error: " + t.getCause());

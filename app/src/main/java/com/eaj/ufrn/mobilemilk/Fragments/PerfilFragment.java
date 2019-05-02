@@ -1,6 +1,8 @@
 package com.eaj.ufrn.mobilemilk.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,6 +52,9 @@ public class PerfilFragment extends Fragment {
         this.bListarFazendas = view.findViewById(R.id.bListarfazendas);
         this.bAlterarPerfil = view.findViewById(R.id.bAlterarDados);
 
+        // atualiza informações dos textView
+        carregarPerfil();
+
         // implementação de Button para listar fazendas
         this.bListarFazendas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +74,14 @@ public class PerfilFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void carregarPerfil(){
+        SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
+        this.nomeClientePerfil.setText(prefs.getString("nome", "null"));
+        this.emailClientePerfil.setText(prefs.getString("email", "null"));
+        this.cpfClientePerfil.setText(prefs.getString("cpf", "null"));
+        this.telefoneClientePerfil.setText(prefs.getString("telefone0", "null"));
     }
 
 }

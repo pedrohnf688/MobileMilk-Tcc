@@ -94,7 +94,7 @@ public class CadastrarActivity extends AppCompatActivity {
             return false;
         }
 
-        cliente =  new Cliente(null, null, nome, email, null, EnumTipoPerfilUsuario.ROLE_CLIENTE.getCodigo(), senha, usuario);
+        cliente =  new Cliente(null, null, nome, email, null, EnumTipoPerfilUsuario.ROLE_CLIENTE, senha, usuario);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this); // Object AlertDialog.Builder
         alertDialog.setMessage(R.string.alertDialogMessage)
