@@ -33,15 +33,15 @@ public class ListarFazendaActivity extends AppCompatActivity {
 
         this.cadastrarFazenda = findViewById(R.id.actionButtonCadastrarFazenda);
 
-        Fazenda f = new Fazenda("Fazenda 1", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
-        Fazenda f1 = new Fazenda("Fazenda 2", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
-        Fazenda f2 = new Fazenda("Fazenda 3", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
-        Fazenda f3 = new Fazenda("Fazenda 4", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
-
-        listaFazendas.add(f);
-        listaFazendas.add(f1);
-        listaFazendas.add(f2);
-        listaFazendas.add(f3);
+//        Fazenda f = new Fazenda("Fazenda 1", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+//        Fazenda f1 = new Fazenda("Fazenda 2", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+//        Fazenda f2 = new Fazenda("Fazenda 3", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+//        Fazenda f3 = new Fazenda("Fazenda 4", "123", "123", "Macaíba", "RN", "macaíba", "jundiaí", "200", null);
+//
+//        listaFazendas.add(f);
+//        listaFazendas.add(f1);
+//        listaFazendas.add(f2);
+//        listaFazendas.add(f3);
 
         final RecyclerView recycler = findViewById(R.id.recyclerViewListarFazendas);
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayout.VERTICAL, false);

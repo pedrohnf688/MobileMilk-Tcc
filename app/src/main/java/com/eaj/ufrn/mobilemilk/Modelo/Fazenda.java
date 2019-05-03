@@ -10,6 +10,7 @@ public class Fazenda {
     private String cidade;
     private String bairro;
     private String numero;
+    private String imagem;
     private Cliente cliente;
 
     public Fazenda(){
@@ -17,7 +18,7 @@ public class Fazenda {
     }
 
     public Fazenda(String nome, String cnpj, String cep, String endereco, String estado,
-                   String cidade, String bairro, String numero, Cliente cliente) {
+                   String cidade, String bairro, String numero, Cliente cliente, String imagem) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.cep = cep;
@@ -27,6 +28,7 @@ public class Fazenda {
         this.bairro = bairro;
         this.numero = numero;
         this.cliente = cliente;
+        this.imagem = imagem;
     }
 
     public String getNome() {
@@ -99,5 +101,13 @@ public class Fazenda {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

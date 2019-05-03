@@ -33,6 +33,16 @@ public class Cliente {
         this.id = id;
     }
 
+    // SERVE PRA O CADASTRO DE FAZENDAS
+    public Cliente(List<String> telefones, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String id) {
+        this.telefones = telefones;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.codigoTipoPerfilUsuario = codigoTipoPerfilUsuario;
+        this.id = id;
+    }
+
     public Cliente(){
 
     }

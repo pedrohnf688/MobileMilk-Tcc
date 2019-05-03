@@ -28,14 +28,10 @@ public class FazendasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle saveInstanceState){
 
-        Fazenda f = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f1 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f2 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
-        Fazenda f3 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null);
+        Fazenda f = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null, null);
+        Fazenda f1 = new Fazenda("Fazenda 1", null, null, null, null, null, null, null, null, null);
         listaFazendas.add(f);
         listaFazendas.add(f1);
-        listaFazendas.add(f2);
-        listaFazendas.add(f3);
 
         View view = inflate.inflate(R.layout.fragment_listar_fazenda, container, false);
 

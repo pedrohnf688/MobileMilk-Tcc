@@ -19,7 +19,7 @@ public interface ServiceFazenda {
     Call<List<Fazenda>> listaFazendasPorId();
 
     @POST("fazenda/{clienteId}")
-    Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda, @Header("Authorization") String authorization);
+    Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda, @Header("Authorization") String authorization, @Path("clienteId") String id);
 
     @DELETE("fazenda/{id}")
     Call<Fazenda> deletarFazenda(@Path("id") int id);

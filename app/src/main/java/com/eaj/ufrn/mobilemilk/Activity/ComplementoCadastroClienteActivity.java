@@ -120,6 +120,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error 404", Toast.LENGTH_SHORT).show();
+                Log.i("Error404", "vausa: " + t.getCause());
+                t.printStackTrace();
                 progressBar.setVisibility(View.GONE);
             }
         });
