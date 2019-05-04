@@ -81,10 +81,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/layout3">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/usernameClienteAtl"
+                    android:id="@+id/cpfClienteAtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Usuário"
+                    android:hint="Cpf"
                     android:inputType="text"
                     android:onClick="setData" />
             </android.support.design.widget.TextInputLayout>
@@ -101,13 +101,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/layout4">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/cpfClienteAtl"
+                    android:id="@+id/telefoneClienteAtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Cpf"
+                    android:hint="Telefone"
                     android:inputType="number"
                     android:onClick="setData" />
             </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/atualizarCliente"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Confirmar"
+                android:textColor="@color/branco"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout5"/>
 
             <TextView
                 android:id="@+id/layout6"
@@ -121,7 +135,7 @@
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout5" />
+                app:layout_constraintTop_toBottomOf="@+id/atualizarCliente" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout7"
@@ -171,7 +185,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/colorPrimary"
-                android:text="Atualizar"
+                android:text="Atualizar Senha"
                 android:textColor="@color/branco"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,12 +198,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/Red"
+                android:text="Calcelar Alteração"
                 android:textColor="@color/branco"
-                android:text="Atualizar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bAtualizarInformacoes"/>
+                app:layout_constraintTop_toBottomOf="@+id/bAtualizarInformacoes" />
 
         </android.support.constraint.ConstraintLayout>
 

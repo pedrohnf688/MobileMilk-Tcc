@@ -13,7 +13,7 @@ public class AtualizarClienteActivity extends AppCompatActivity {
 
     private EditText nomeCliente;
     private EditText emailCliente;
-    private EditText usernameCliente;
+    private EditText telefoneCliente;
     private EditText cpfCliente;
     private EditText senhaAtualCLiente;
     private EditText senhaNovaCLiente;
@@ -30,18 +30,21 @@ public class AtualizarClienteActivity extends AppCompatActivity {
         this.nomeCliente = findViewById(R.id.nomeClienteAtl);
         this.emailCliente = findViewById(R.id.emailClienteAtl);
         this.cpfCliente = findViewById(R.id.cpfClienteAtl);
-        this.usernameCliente = findViewById(R.id.usernameClienteAtl);
+        this.telefoneCliente = findViewById(R.id.telefoneClienteAtl);
         this.senhaAtualCLiente = findViewById(R.id.senhaAtualClienteAtl);
         this.senhaNovaCLiente = findViewById(R.id.senhaNovaClienteAtl);
 
         this.alterarInfomacoes = findViewById(R.id.bAtualizarInformacoes);
         this.cancelarAlteracao = findViewById(R.id.bCancelarInformacoes);
+
+        this.carregarPerfil(); // carrega informações para a tela de atualizar_informações_cliente
     }
 
     public void carregarPerfil(){
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-        this.nomeCliente.setText(prefs.getString("nome", "null"));
-        this.emailCliente.setText(prefs.getString("email", "null"));
-        this.cpfCliente.setText(prefs.getString("cpf", "null"));
+        this.nomeCliente.setText(prefs.getString("nome", "default"));
+        this.emailCliente.setText(prefs.getString("email", "default"));
+        this.cpfCliente.setText(prefs.getString("cpf", "default"));
+        this.telefoneCliente.setText(prefs.getString("telefone0", "default"));
     }
 }

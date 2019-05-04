@@ -22,10 +22,7 @@ public interface ServiceCliente {
     Call<Cliente> cadastrarCliente(@Body Cliente usuario);
 
     @PUT("cliente/{id}")
-    Call<Cliente> atualizarCliete(@Path("id") String id ,@Body Cliente cliente, @Header("Authorization") String authorization);
-
-    @DELETE("cliente/{id}")
-    Call<Cliente> deletarCliente(@Path("id") Integer id);
+    Call<ClienteDto> atualizarCliete(@Path("id") String id ,@Body Cliente cliente, @Header("Authorization") String authorization);
 
     @GET("cliente/{id}")
     Call<ClienteDto> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
