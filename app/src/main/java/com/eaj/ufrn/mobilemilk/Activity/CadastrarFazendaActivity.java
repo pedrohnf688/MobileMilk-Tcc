@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -98,6 +99,9 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
             public void onResponse(Call<Fazenda> call, Response<Fazenda> response) {
                 if(response.isSuccessful())
                     Toast.makeText(getApplicationContext(), "Fazenda salva com sucesso", Toast.LENGTH_SHORT).show();
+
+                finish();
+                Intent i = new Intent(getApplicationContext(), ListarFazendaActivity.class);
             }
 
             @Override

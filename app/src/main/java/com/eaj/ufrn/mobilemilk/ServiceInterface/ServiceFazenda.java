@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import retrofit2.http.Path;
 public interface ServiceFazenda {
 
     @GET("fazenda/{id}")
-    Call<List<Fazenda>> listaFazendasPorId();
+    Call<List<FazendaDto>> listaFazendasPorId(@Header("Authorization") String authorization, @Path("id") String id);
 
     @POST("fazenda/{clienteId}")
     Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda, @Header("Authorization") String authorization, @Path("clienteId") String id);
