@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardViewLayoutSolicitacoes"
-    android:layout_height="60dp"
+    android:layout_height="250dp"
     android:layout_width="350dp"
     card_view:cardCornerRadius="4dp"
     android:layout_margin="3dp"
@@ -13,57 +13,55 @@
     android:foreground="?android:attr/selectableItemBackground">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="match_parent">
 
         <ImageView
-            android:id="@+id/imageFazendaList"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="0dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="135dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fazenda"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:srcCompat="@drawable/icon_solicitacao" />
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/empresaFazendaList"
-            android:layout_width="wrap_content"
+            android:id="@+id/nomeFazendaCard"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Solicitação 1"
+            android:text="Nome Fazenda"
+            android:textSize="17dp"
+            android:textStyle="bold"
             android:textColor="@color/BlackT"
-            android:textSize="20dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/imageFazendaList"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/imageView2"/>
 
         <TextView
-            android:id="@+id/editarFazendaList"
+            android:id="@+id/localizacaoFazendaCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="0dp"
-            android:text="Editar"
-            android:textColor="@color/GreenB"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:text="Natal / RN"
             android:textSize="15dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/empresaFazendaList"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/nomeFazendaCard"/>
 
         <TextView
-            android:id="@+id/deletarFazendaList"
-            android:layout_width="wrap_content"
+            android:id="@+id/descricaoFazendaCard"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="8dp"
-            android:text="Deletar"
-            android:textColor="@color/buttonGmail"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/editarFazendaList" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="Fazenda pertence a seu fulano de tal"
+            android:textSize="15dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/localizacaoFazendaCard" />
+
 
     </android.support.constraint.ConstraintLayout>
 

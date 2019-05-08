@@ -24,8 +24,6 @@ public class FazendaAdapter extends RecyclerView.Adapter {
 
     public FazendaAdapter(List<Fazenda> listaFazendas, Context context) {
         this.listaFazendas = listaFazendas;
-        for(Fazenda f: listaFazendas)
-            Log.i("fazenda", "fazenda nome: " + f.getNome());
         this.context = context;
     }
 
@@ -41,9 +39,13 @@ public class FazendaAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
         this.fazendaEscolhida = this.listaFazendas.get(position);
-        Log.i("ECOLHIDA", "nome: "+fazendaEscolhida.getNome());
-        holder.empresaFazendaList.setText(this.fazendaEscolhida.getNome());
-        //holder.imagefazendaList.setImageResource();
+
+        holder.nomeFazendaCard.setText(this.fazendaEscolhida.getNome());
+        holder.localizacaoFazendaCard.setText(this.fazendaEscolhida.getCidade() + "/" + this.fazendaEscolhida.getEstado());
+
+        String descricao = "Fazenda pertence ao " + this.fazendaEscolhida.getCliente().getNome();
+
+        holder.descricaoFazendaCard.setText(descricao);
     }
 
     @Override
@@ -56,13 +58,15 @@ public class FazendaAdapter extends RecyclerView.Adapter {
         /*
         *   ADICIONAR OS ELEMENTOS DA VIEW DE LISTAR FAZENDAS
         * */
-        final TextView empresaFazendaList;
-        //final ImageView imagefazendaList;
+        final TextView nomeFazendaCard;
+        final TextView localizacaoFazendaCard;
+        final TextView descricaoFazendaCard;
 
         public FazendaViewHolder(@NonNull View itemView) {
             super(itemView);
-            empresaFazendaList = itemView.findViewById(R.id.empresaFazendaList);
-            //this.imagefazendaList = itemView.findViewById(R.id.imageFazendaList);
+            nomeFazendaCard = itemView.findViewById(R.id.nomeFazendaCard);
+            localizacaoFazendaCard = itemView.findViewById(R.id.localizacaoFazendaCard);
+            descricaoFazendaCard = itemView.findViewById(R.id.descricaoFazendaCard);
         }
 
     }

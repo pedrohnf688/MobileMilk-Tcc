@@ -33,23 +33,26 @@ public class ListarFazendaActivity extends AppCompatActivity {
 
     private FloatingActionButton cadastrarFazenda;
 
+    RecyclerView recycler;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.fragment_listar_fazenda);
 
+//        listaFazendas.add(f);
+//        listaFazendas.add(f1);
+
         getSupportActionBar().setTitle("Fazendas");
 
         this.cadastrarFazenda = findViewById(R.id.actionButtonCadastrarFazenda);
 
-        final RecyclerView recycler = findViewById(R.id.recyclerViewListarFazendas);
+        recycler = findViewById(R.id.recyclerViewListarFazendas);
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayout.VERTICAL, false);
 
         recycler.setLayoutManager(layout);
 
         recycler.setItemAnimator(new DefaultItemAnimator());
-
-        //recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
 
         // Implementação de Listener de cliques.
         recycler.addOnItemTouchListener(
@@ -92,8 +95,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                 listaFazendas.clear();
                 if(response.isSuccessful()){
                     listaFazendas = response.body();
-                    Log.i("listaFazendas", "deu certo");
-                    Toast.makeText(ListarFazendaActivity.this, "Deu certo", Toast.LENGTH_SHORT).show();
+                    recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
                 }
             }
 
