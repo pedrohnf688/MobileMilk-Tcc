@@ -9,6 +9,7 @@
     <color name="GreenB">#32CD32</color>
     <color name="BlackT">#000000</color>
     <color name="Red">#FF0000</color>
+    <color name="RedFloat">#FF4500</color>
 </resources>
 
 <!--  #00BFFF   -->

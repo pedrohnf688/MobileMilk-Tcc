@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
+import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
 
@@ -28,7 +29,6 @@ public interface ServiceCliente {
     Call<ClienteDto> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
 
     @GET("cliente/{id}/fazenda")
-    Call<List<FazendaDto>> buscarFazendas(@Path("id") String id, @Header("Authorization") String authorization);
-
+    Call<List<Fazenda>> buscarFazendas(@Path("id") String id, @Header("Authorization") String authorization);
 
 }

@@ -28,6 +28,7 @@
         android:layout_margin="26dp"
         android:onClick="CadastrarFazenda"
         android:src="@drawable/add_48dp"
+        android:background="@color/RedFloat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

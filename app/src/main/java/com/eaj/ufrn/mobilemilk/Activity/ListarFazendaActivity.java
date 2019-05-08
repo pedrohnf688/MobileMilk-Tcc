@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 public class ListarFazendaActivity extends AppCompatActivity {
 
-    List<FazendaDto> listaFazendas = new ArrayList<>();
+    List<Fazenda> listaFazendas = new ArrayList<>();
 
     private FloatingActionButton cadastrarFazenda;
 
@@ -82,13 +82,14 @@ public class ListarFazendaActivity extends AppCompatActivity {
         Log.i("onstart", "Entrou aqui");
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        Call<List<FazendaDto>> call = new RetrofitConfig()
-                                        .getClienteService()
-                                        .buscarFazendas(prefs.getString("accessToken", "default")
-                                            , prefs.getString("accessId", "default"));
-        call.enqueue(new Callback<List<FazendaDto>>() {
+        Call<List<Fazenda>> call = new RetrofitConfig()
+                .getClienteService()
+                .buscarFazendas(prefs.getString("accessId", "default")
+                        , prefs.getString("accessToken", "default"));
+        call.enqueue(new Callback<List<Fazenda>>() {
             @Override
-            public void onResponse(Call<List<FazendaDto>> call, Response<List<FazendaDto>> response) {
+            public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
+                listaFazendas.clear();
                 if(response.isSuccessful()){
                     listaFazendas = response.body();
                     Log.i("listaFazendas", "deu certo");
@@ -97,7 +98,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<FazendaDto>> call, Throwable t) {
+            public void onFailure(Call<List<Fazenda>> call, Throwable t) {
                 Log.i("Error404", "cause: " + t.getCause());
                 Log.i("Error404", "message: " + t.getMessage());
                 Toast.makeText(ListarFazendaActivity.this, "Erro ao listar fazendas", Toast.LENGTH_SHORT).show();
@@ -105,4 +106,5 @@ public class ListarFazendaActivity extends AppCompatActivity {
         });
         Log.i("onstart", "Encerrou aqui");
     }
+
 }
