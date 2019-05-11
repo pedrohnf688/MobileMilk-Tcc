@@ -2,6 +2,7 @@ package com.eaj.ufrn.mobilemilk.Modelo;
 
 public class Fazenda {
 
+    private String id;
     private String nome;
     private String cnpj;
     private String cep;
@@ -15,6 +16,21 @@ public class Fazenda {
 
     public Fazenda(){
 
+    }
+
+    public Fazenda(String id, String nome, String cnpj, String cep, String endereco, String estado,
+                   String cidade, String bairro, String numero, Cliente cliente, String imagem) {
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.cliente = cliente;
+        this.imagem = imagem;
+        this.id = id;
     }
 
     public Fazenda(String nome, String cnpj, String cep, String endereco, String estado,
@@ -109,5 +125,13 @@ public class Fazenda {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

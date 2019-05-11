@@ -60,11 +60,21 @@ public class ListarFazendaActivity extends AppCompatActivity {
                     @Override
                     public void onItemLongClick(View view, int position) {
                         // Implementação opcional para desenvolvimento futuro ....
+                        Toast.makeText(getApplicationContext(), "LONG", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent i = new Intent(getApplicationContext(), PerfilFazendaActivity.class);
+                        // Salva as informações da fazenda clicada
+                        i.putExtra("nomeFazenda", listaFazendas.get(position).getNome());
+                        i.putExtra("cnpjFazenda", listaFazendas.get(position).getCnpj());
+                        i.putExtra("cepFazenda", listaFazendas.get(position).getCep());
+                        i.putExtra("estadoFazenda", listaFazendas.get(position).getEstado());
+                        i.putExtra("cidadeFazenda", listaFazendas.get(position).getCidade());
+                        i.putExtra("bairroFazenda", listaFazendas.get(position).getBairro());
+                        i.putExtra("numeroFazenda", listaFazendas.get(position).getNumero());
+                        i.putExtra("idFazenda", listaFazendas.get(position).getId());
                         startActivity(i);
                     }
                 }));
@@ -82,7 +92,6 @@ public class ListarFazendaActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
-        Log.i("onstart", "Entrou aqui");
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
         Call<List<Fazenda>> call = new RetrofitConfig()
@@ -106,7 +115,6 @@ public class ListarFazendaActivity extends AppCompatActivity {
                 Toast.makeText(ListarFazendaActivity.this, "Erro ao listar fazendas", Toast.LENGTH_SHORT).show();
             }
         });
-        Log.i("onstart", "Encerrou aqui");
     }
 
 }

@@ -23,9 +23,9 @@ public interface ServiceFazenda {
     Call<Fazenda> cadastrarFazenda(@Body Fazenda fazenda, @Header("Authorization") String authorization, @Path("clienteId") String id);
 
     @DELETE("fazenda/{id}")
-    Call<Fazenda> deletarFazenda(@Path("id") int id);
+    Call<FazendaDto> deletarFazenda(@Path("id") String id, @Header("Authorization") String authorization);
 
     @PUT("fazenda/{id}")
-    Call<Fazenda> editarFazenda(@Path("id") int id);
+    Call<Fazenda> editarFazenda(@Path("id") String id, @Header("Authorization") String authorization, @Body Fazenda fazenda);
 
 }

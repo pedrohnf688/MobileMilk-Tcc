@@ -35,7 +35,7 @@ public class MeuRecyclerViewClickListener implements RecyclerView.OnItemTouchLis
                super.onLongPress(e);
                View childView = view.findChildViewUnder(e.getX(), e.getY());
                if(childView != null && myListener != null)
-                   myListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+                   myListener.onItemLongClick(childView, view.getChildAdapterPosition(childView));
            }
         });
     }
