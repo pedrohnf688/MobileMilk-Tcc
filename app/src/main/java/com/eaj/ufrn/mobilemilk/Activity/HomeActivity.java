@@ -118,6 +118,7 @@ public class HomeActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     // Método do ciclo de cida da aplicação, responsável por carregar as informações de cliente as outras activities ...
     @Override
     protected void onStart(){
@@ -147,13 +148,8 @@ public class HomeActivity extends AppCompatActivity {
                     editor.putString("username", c.getData().getUsername());
                     editor.putString("cpf", c.getData().getCpf());
                     editor.putString("senha", c.getData().getSenha());
-
-                    List<String> telefones = c.getData().getTelefones();
-
-                    for (int i = 0; i < telefones.size(); i++) {
-                        editor.putString("telefone" + i, telefones.get(i));
-                        Log.i("certo", "nome: "+telefones.get(i));
-                    }
+                    editor.putString("telefone1", c.getData().getTelefone1());
+                    editor.putString("telefone2", c.getData().getTelefone2());
 
                     editor.commit();
                     Log.i("certo", "Tudo certo cambada");

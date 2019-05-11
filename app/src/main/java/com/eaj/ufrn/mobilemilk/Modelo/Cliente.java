@@ -11,7 +11,8 @@ import retrofit2.Call;
 
 public class Cliente {
 
-    private List<String> telefones;
+    private String telefone1;
+    private String telefone2;
     private List<Solicitacao> listaSolicitacoes;
     private List<Fazenda> listaFazendas;
     private String nome;
@@ -22,8 +23,9 @@ public class Cliente {
     private String username;
     private String id;
 
-    public Cliente(String id, List<String> telefones, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username) {
-        this.telefones = telefones;
+    public Cliente(String id, String telefone1, String telefone2, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username) {
+        this.telefone1 = telefone1;
+        this.telefone2 = telefone2;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
@@ -34,8 +36,9 @@ public class Cliente {
     }
 
     // SERVE PRA O CADASTRO DE FAZENDAS
-    public Cliente(List<String> telefones, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String id) {
-        this.telefones = telefones;
+    public Cliente(String telefone1, String telefone2,  String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String id) {
+        this.telefone1 = telefone1;
+        this.telefone2 = telefone2;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
@@ -47,13 +50,6 @@ public class Cliente {
 
     }
 
-    public List<String> getTelefones() {
-        return telefones;
-    }
-
-    public void setTelefones(List<String> telefones) {
-        this.telefones = telefones;
-    }
 
     public List<Solicitacao> getListaSolicitacoes() {
         return listaSolicitacoes;
@@ -119,18 +115,19 @@ public class Cliente {
         this.username = username;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "telefones=" + telefones +
-                ", listaSolicitacoes=" + listaSolicitacoes +
-                ", listaFazendas=" + listaFazendas +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", codigoTipoPerfilUsuario=" + codigoTipoPerfilUsuario +
-                ", senha='" + senha + '\'' +
-                ", username='" + username + '\'' +
-                '}';
+    public String getTelefone1() {
+        return telefone1;
+    }
+
+    public void setTelefone1(String telefone1) {
+        this.telefone1 = telefone1;
+    }
+
+    public String getTelefone2() {
+        return telefone2;
+    }
+
+    public void setTelefone2(String telefone2) {
+        this.telefone2 = telefone2;
     }
 }

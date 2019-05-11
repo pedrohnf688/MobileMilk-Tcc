@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,15 +25,18 @@ import retrofit2.Response;
 
 public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
-    private TextView cpfUsuario;
-    private TextView telefoneUsuario;
+    private EditText cpfUsuario;
+    private EditText telefone1Usuario;
+    private EditText telefone2Usuario;
+
     private Button complementoCadastro;
 
     private String nome;
     private String email;
     private String senha;
     private String cpf;
-    private String telefone;
+    private String telefone1;
+    private String telefone2;
     private String username;
     private Bundle bundle;
 
@@ -49,7 +53,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Habilita a seta de voltar
 
         this.cpfUsuario = findViewById(R.id.cpfusuario);
-        this.telefoneUsuario = findViewById(R.id.telefoneusuario);
+        this.telefone1Usuario = findViewById(R.id.telefone1usuario);
+        this.telefone2Usuario = findViewById(R.id.telefone2usuario);
 
         // Recuperando os dados de CadastrarActivity
         this.bundle = getIntent().getExtras();
@@ -60,13 +65,13 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
     public boolean complementoCadastro(View v){
         this.cpf = this.cpfUsuario.getText().toString();
-        this.telefone = this.telefoneUsuario.getText().toString();
+        this.telefone1 = this.telefone1Usuario.getText().toString();
+        this.telefone2 = this.telefone2Usuario.getText().toString();
         this.nome = this.bundle.getString("nome");
         this.email = this.bundle.getString("email");
         this.senha = this.bundle.getString("senha");
         this.username = this.bundle.getString("username");
 
-        Log.i("SALVOU", "cpf: " + cpf + " nome: " + nome + " email: " + email + " telefone: " + telefone);
 
         if(cpf.equals("")){
             this.cpfUsuario.setError("Cpf é obrigatório");
@@ -80,25 +85,30 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.cpfUsuario.setError("Cpf não pode conter espaços");
             return false;
         }
-        else if(telefone.equals("")){
-            this.telefoneUsuario.setError("Telefone obrigatório");
+        else if(telefone1.equals("")){
+            this.telefone1Usuario.setError("Telefone obrigatório");
             return  false;
         }
-        else if(telefone.length() < 11 || telefone.length() > 11){
-            this.telefoneUsuario.setError("Deve conter 11 digitos incluindo o DDD");
+        else if(telefone1.length() < 11 || telefone1.length() > 11){
+            this.telefone1Usuario.setError("Deve conter 11 digitos incluindo o DDD");
             return false;
         }
-        else if(telefone.contains(" ")){
-            this.telefoneUsuario.setError("Não use espaços ao preencher o número");
+        else if(telefone1.contains(" ")){
+            this.telefone1Usuario.setError("Não use espaços ao preencher o número");
+            return false;
+        }
+        else if(telefone2.length() < 11 || telefone2.length() > 11){
+            this.telefone2Usuario.setError("Deve conter 11 digitos incluindo o DDD");
+            return false;
+        }
+        else if(telefone2.contains(" ")){
+            this.telefone2Usuario.setError("Não use espaços ao preencher o número");
             return false;
         }
 
         progressBar.setVisibility(View.VISIBLE);
 
-        List<String> listaTelefones = new ArrayList<>();
-        listaTelefones.add(this.telefone);
-
-        cliente = new Cliente(null, listaTelefones, nome, email, cpf, EnumTipoPerfilUsuario.ROLE_CLIENTE, senha, username);
+        cliente = new Cliente(null, telefone1, telefone2, nome, email, cpf, EnumTipoPerfilUsuario.ROLE_CLIENTE, senha, username);
 
         Call<Cliente> call = new RetrofitConfig().getClienteService().cadastrarCliente(cliente);
         call.enqueue(new Callback<Cliente>() {

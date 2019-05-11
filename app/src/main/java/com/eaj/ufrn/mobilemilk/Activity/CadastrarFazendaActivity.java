@@ -71,10 +71,10 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        List<String> telefones = new ArrayList<>();
-        telefones.add(prefs.getString("telefone0", "84988888888"));
 
-        Cliente cliente = new Cliente(telefones, prefs.getString("nome", "default")
+        Cliente cliente = new Cliente(prefs.getString("telefone1", "default")
+                                        , prefs.getString("telefone2", "default")
+                                        , prefs.getString("nome", "default")
                                         , prefs.getString("email", "default")
                                         , prefs.getString("cpf", "default")
                                         , EnumTipoPerfilUsuario.ROLE_CLIENTE

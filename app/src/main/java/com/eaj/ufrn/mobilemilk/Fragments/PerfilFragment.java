@@ -23,7 +23,8 @@ public class PerfilFragment extends Fragment {
     private TextView nomeClientePerfil;
     private TextView emailClientePerfil;
     private TextView cpfClientePerfil;
-    private TextView telefoneClientePerfil;
+    private TextView telefone1ClientePerfil;
+    private TextView telefone2ClientePerfil;
 
     private Button bAlterarPerfil;
     private Button bListarFazendas;
@@ -47,7 +48,8 @@ public class PerfilFragment extends Fragment {
         this.nomeClientePerfil = view.findViewById(R.id.nomeCLientePerfil);
         this.emailClientePerfil = view.findViewById(R.id.emailCLientePerfil);
         this.cpfClientePerfil = view.findViewById(R.id.cpfCLientePerfil);
-        this.telefoneClientePerfil = view.findViewById(R.id.telefoneCLientePerfil);
+        this.telefone1ClientePerfil = view.findViewById(R.id.telefone1CLientePerfil);
+        this.telefone2ClientePerfil = view.findViewById(R.id.telefone2CLientePerfil);
 
         this.bListarFazendas = view.findViewById(R.id.bListarfazendas);
         this.bAlterarPerfil = view.findViewById(R.id.bAlterarDados);
@@ -81,7 +83,8 @@ public class PerfilFragment extends Fragment {
         this.nomeClientePerfil.setText(prefs.getString("nome", "null"));
         this.emailClientePerfil.setText(prefs.getString("email", "null"));
         this.cpfClientePerfil.setText(prefs.getString("cpf", "null"));
-        this.telefoneClientePerfil.setText(prefs.getString("telefone0", "null"));
+        this.telefone1ClientePerfil.setText(prefs.getString("telefone1", "DEFAULT"));
+        this.telefone2ClientePerfil.setText(prefs.getString("telefone2", "DEFAULT"));
     }
 
 }
