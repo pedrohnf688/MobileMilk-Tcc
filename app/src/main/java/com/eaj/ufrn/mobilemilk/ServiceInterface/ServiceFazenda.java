@@ -26,6 +26,6 @@ public interface ServiceFazenda {
     Call<FazendaDto> deletarFazenda(@Path("id") String id, @Header("Authorization") String authorization);
 
     @PUT("fazenda/{id}")
-    Call<Fazenda> editarFazenda(@Path("id") String id, @Header("Authorization") String authorization, @Body Fazenda fazenda);
+    Call<FazendaDto> editarFazenda(@Path("id") String id, @Header("Authorization") String authorization, @Body Fazenda fazenda);
 
 }

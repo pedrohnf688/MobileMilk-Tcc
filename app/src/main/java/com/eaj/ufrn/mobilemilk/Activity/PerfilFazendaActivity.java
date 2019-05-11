@@ -68,7 +68,9 @@ public class PerfilFazendaActivity extends AppCompatActivity {
 
     // Editar informações
     public void editar(View v){
-
+        Intent i = new Intent(getApplicationContext(), AtualizarFazendaActivity.class);
+        i.putExtras(bundle);
+        startActivity(i);
     }
 
     // Excruir Fazenda

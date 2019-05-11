@@ -92,7 +92,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ListarFazendaActivity"/>
         </activity>
+
         <activity android:name=".Activity.CadastrarAnaliseActivity"/>
+        <activity android:name=".Activity.AtualizarFazendaActivity"/>
 
     </application>
 
