@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListarAnalisesActivity extends AppCompatActivity {
 
@@ -20,7 +24,10 @@ public class ListarAnalisesActivity extends AppCompatActivity {
 
     private Bundle bundle;
 
-    private Integer quantidadeAmostras;
+    private Integer quantidadeAmostras;  // quantidade de analises desejadas
+    private String cnpj;                 // cnpj da fzenda selecionada
+
+    private List<Analise> listaAnalise = new ArrayList<>();
 
     @Override
     protected  void onCreate(Bundle saveInstanceState){
@@ -34,15 +41,17 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         this.frameLayoutMessagemInicial = findViewById(R.id.frameMenssagemInicial);
         this.frameLayoutListarAmostras = findViewById(R.id.frameListarAnalises);
 
-        this.frameLayoutListarAmostras.setVisibility(View.GONE); // seta o layout como inicialmente invisível ao usuário.
+        this.frameLayoutListarAmostras.setVisibility(View.GONE);          // seta o layout como inicialmente invisível ao usuário.
 
-        this.bundle = getIntent().getExtras(); // Recebendo informações da Chamada de CadastrarAnalise.class
+        this.bundle = getIntent().getExtras();                            // Recebendo informações da Chamada de CadastrarAnalise.class
         this.quantidadeAmostras = this.bundle.getInt("numAmostras"); // Recebendo a quantidade de amostras solicitadas.
+        this.cnpj = this.bundle.getString("cnpjFazenda");            // Recebendo o cnpj da fazenda.
 
         Log.i("quantidade", ""+this.quantidadeAmostras);
-        verificaNumeroAmostras(2);
+
     }
 
+    // Verifica a quantidade de analises cadastradas com a quantidade solicitada pelo cliente
     public void verificaNumeroAmostras(Integer tamanho){
         if(tamanho > 0 & tamanho < this.quantidadeAmostras){
             this.frameLayoutMessagemInicial.setVisibility(View.GONE);
@@ -59,7 +68,16 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     // Cadastrar Análises
     public void cadastrarAnalise(View v){
         Intent i = new Intent(getApplicationContext(), CadastrarAnaliseActivity.class);
-        startActivity(i);
+        startActivityForResult(i, 1);
+    }
+
+    /*
+    *   Trata a volta de CadastrarAnaliseActivity.
+    *   Adiciona objeto ao listaAnalise.
+    * */
+    @Override
+    protected void onActivityResult(int requestcode, int Resultcode, Intent data){
+
     }
 
 }
