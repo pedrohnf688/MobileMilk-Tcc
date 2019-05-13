@@ -47,7 +47,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_fazendas);
 
         getSupportActionBar().setTitle(R.string.CadastrarFazenda); // Seta um titulo ao ActionBar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Habilita a seta voltar
 
         this.nomeFazenda = findViewById(R.id.nomeFazenda);
         this.cnpjFazenda = findViewById(R.id.cnpjFazenda);
@@ -112,6 +111,10 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void cancelar(View v){
+        finish();
     }
 
     public boolean verifiedInputs(){

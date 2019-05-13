@@ -5,35 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinnerFazenda"
+    <LinearLayout
+        android:id="@id/layout1"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/layout1"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerFazenda">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecionar Fazenda"
+            android:textSize="18dp" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/numeroAmostras"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Numero total de amostras"
-            android:inputType="number"/>
-    </android.support.design.widget.TextInputLayout>
+        <Spinner
+            android:id="@+id/spinnerFazenda"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/layout2"
@@ -47,12 +40,11 @@
         app:layout_constraintTop_toBottomOf="@id/layout1">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/dataObtencaoAmostras"
+            android:id="@+id/numeroAnalises"
             android:layout_width="match_parent"
-            android:onClick="setData"
             android:layout_height="match_parent"
-            android:hint="Data da coleta"
-            android:inputType="datetime" />
+            android:hint="Numero total de análises"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button

@@ -26,7 +26,7 @@
         android:id="@+id/actionButtonCadastrarFazenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="26dp"
+        android:layout_margin="20dp"
         android:onClick="CadastrarFazenda"
         android:src="@drawable/add_48dp"
         android:background="@color/RedFloat"

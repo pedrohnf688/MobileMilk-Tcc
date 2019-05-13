@@ -2,31 +2,43 @@ package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Adapters.FazendaAdapter;
 import com.eaj.ufrn.mobilemilk.Fragments.DatePickerFragment;
+import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CadastrarSolicitacaoActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
     private Spinner spinnerFazenda;
-    private TextView numAmostras;
-    private TextView dataObtencaoAmostra;
-    private Button avançar;
+    private EditText numAnalises;
 
+    private List<Fazenda> listaFazendas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle saveInstanteState){
@@ -36,43 +48,67 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity implements D
         getSupportActionBar().setTitle(R.string.cadastrar); // set text action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //
 
-        this.numAmostras = findViewById(R.id.numeroAmostras);
-        this.dataObtencaoAmostra = findViewById(R.id.dataObtencaoAmostras);
-        this.avançar = findViewById(R.id.bAvançar);
-
-
+        this.numAnalises = findViewById(R.id.numeroAnalises);
         this.spinnerFazenda = findViewById(R.id.spinnerFazenda);
-
-        // ArrayAdapter para listar Fazendas
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFazenda,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.spinnerFazenda.setAdapter(adapter);
-
-    }
-
-    // Chama ao clicar no textView de data de obtenção de amostras...
-    public void setData(View v){
-        DialogFragment fragment = new DatePickerFragment();
-        fragment.show(getSupportFragmentManager(), "Date Picker");
-    }
-
-    // Trata o retorno da função setdata
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-        this.dataObtencaoAmostra.setText(currentDateString);
     }
 
     // Avança para a tela de cadastrara amostras.
     public void avançar(View v){
+
+        // buscar o cnpj da fazenda solicitada
+        String nome = this.spinnerFazenda.getSelectedItem().toString(); // Fazenda Selecionada.
+        String cnpj = null;                                             // Cnpj da fazenda selecionada.
+
+        // Buscando Cnpj
+        for(Fazenda f: listaFazendas){
+            if(f.getNome().equals(nome))
+                cnpj = f.getCnpj();
+        }
+
+        //Log.i("Nomefazenda", "nome: "+ nome + "Cnpj: " + cnpj);
         Intent t = new Intent(getApplicationContext(), ListarAnalisesActivity.class);
-        t.putExtra("numAmostras", Integer.parseInt(this.numAmostras.getText().toString()));
+        t.putExtra("numAmostras", Integer.parseInt(this.numAnalises.getText().toString()));
+        t.putExtra("cnpjFazenda", cnpj);
         startActivity(t);
+    }
+
+    // onStart() -> Carrega as fazendas do Banco de Dados ...
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+
+        Call<List<Fazenda>> call = new RetrofitConfig()
+                .getClienteService()
+                .buscarFazendas(prefs.getString("accessId", "default")
+                        , prefs.getString("accessToken", "default"));
+        call.enqueue(new Callback<List<Fazenda>>() {
+            @Override
+            public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
+                listaFazendas.clear();
+                if(response.isSuccessful()){
+                    listaFazendas = response.body();
+
+                    String[] arrayFazenda = new String[listaFazendas.size()];
+
+                    for(int i = 0; i < listaFazendas.size(); i++){
+                        arrayFazenda[i] = listaFazendas.get(i).getNome();
+                    }
+                    // ArrayAdapter para listar Fazendas
+                    ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(),
+                            android.R.layout.simple_spinner_item, arrayFazenda);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerFazenda.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Fazenda>> call, Throwable t) {
+                Log.i("Error404", "cause: " + t.getCause());
+                Log.i("Error404", "message: " + t.getMessage());
+            }
+        });
     }
 
 }

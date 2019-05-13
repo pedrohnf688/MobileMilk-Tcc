@@ -53,7 +53,8 @@
                     android:id="@+id/nomeFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nome da fazenda" />
+                    android:hint="Nome da fazenda"
+                    android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -61,8 +62,8 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout1">
@@ -71,7 +72,8 @@
                     android:id="@+id/cnpjFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CNPJ" />
+                    android:hint="CNPJ"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -89,7 +91,8 @@
                     android:id="@+id/cepFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CEP" />
+                    android:hint="CEP"
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -107,7 +110,8 @@
                     android:id="@+id/estadoFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Estado" />
+                    android:hint="Estado"
+                    android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -125,7 +129,8 @@
                     android:id="@+id/cidadeFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cidade" />
+                    android:hint="Cidade"
+                    android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -143,7 +148,8 @@
                     android:id="@+id/bairroFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Bairro" />
+                    android:hint="Bairro"
+                    android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -161,7 +167,8 @@
                     android:id="@+id/numeroFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Numero" />
+                    android:hint="Numero"
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <Button
@@ -187,9 +194,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/Red"
                 android:text="Cancelar"
                 android:textColor="@color/branco"
+                android:onClick="cancelar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confirmarCadastro" />

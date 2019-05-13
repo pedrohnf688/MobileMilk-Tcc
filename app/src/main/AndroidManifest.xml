@@ -51,13 +51,6 @@
                 android:value=".Activity.CadastrarActivity"/>
         </activity>
         <activity
-            android:name=".Activity.CadastrarFazendaActivity"
-            android:parentActivityName=".Activity.ComplementoCadastroClienteActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.ComplementoCadastroClienteActivity"/>
-        </activity>
-        <activity
             android:name=".Activity.CadastrarSolicitacaoActivity"
             android:parentActivityName=".Activity.HomeActivity">
             <meta-data
@@ -95,7 +88,7 @@
 
         <activity android:name=".Activity.CadastrarAnaliseActivity"/>
         <activity android:name=".Activity.AtualizarFazendaActivity"/>
-
+        <activity android:name=".Activity.CadastrarFazendaActivity"/>
     </application>
 
 </manifest>
