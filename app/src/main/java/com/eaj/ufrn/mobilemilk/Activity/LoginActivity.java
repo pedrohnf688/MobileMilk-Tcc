@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.i("prefs", "token: " + prefs.getString("accessToken", "errou"));
 
                         Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        finish();
                         startActivity(i);
                     }
                     else{

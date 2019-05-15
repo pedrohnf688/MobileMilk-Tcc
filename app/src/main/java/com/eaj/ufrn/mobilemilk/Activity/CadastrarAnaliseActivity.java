@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -37,6 +38,9 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
     private RadioButton analisesPh;
     private RadioButton analisesSoro;
 
+    // EditView numero de amostras
+    private EditText numAmostras;
+
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -58,6 +62,8 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         this.analisesResiduoAntibiotico = findViewById(R.id.residuoAntibiotico);
         this.analisesPh = findViewById(R.id.ph);
         this.analisesSoro = findViewById(R.id.Soro);
+
+        this.numAmostras = findViewById(R.id.numeroAmostras);
 
         // Adapter array para spinner de Origem de Leite
         ArrayAdapter<CharSequence> array = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrigemLeite,
@@ -81,8 +87,11 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
     public void adicionarAnalise(View v){
 
         Intent t = new Intent();
-        t.putExtra("origemLeite", this.origemLeite.getSelectedItemId());                // Origem do Leite
-        t.putExtra("tipoLeite", this.tipoLeite.getSelectedItemId());                    // Tipo do Leite
+        /*
+        *   Checando Spinner de TipoLeite e OrigemLeite
+        * */
+        t.putExtra("origemLeite", this.origemLeite.getSelectedItemId());
+        t.putExtra("tipoLeite", this.tipoLeite.getSelectedItemId());
 
         /*
         *   Checando radio Buttons de Tipos de Análises
@@ -102,6 +111,11 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         t.putExtra("produtosCreme30", this.produtosCreme30.isChecked() ? true : false);
         t.putExtra("produtosCreme45", this.produtosCreme45.isChecked() ? true : false);
         t.putExtra("produtosSoro", this.produtosSoro.isChecked() ? true : false);
+
+        /*
+        *  quantidade de amostras
+        * */
+        t.putExtra("numAmostras", Integer.parseInt(this.numAmostras.getText().toString()));
 
         setResult(1, t);
         finish();

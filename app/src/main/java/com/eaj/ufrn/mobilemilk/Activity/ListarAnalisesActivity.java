@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
+import com.eaj.ufrn.mobilemilk.Enum.Leite;
+import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
+import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoDto;
@@ -26,12 +30,16 @@ public class ListarAnalisesActivity extends AppCompatActivity {
 
     private Bundle bundle;
 
-    private Integer quantidadeAmostras;  // quantidade de analises desejadas
-    private String cnpj;                 // cnpj da fzenda selecionada
+    private Integer quantidadeAmostras;                                         // quantidade de analises desejadas
+    private String cnpj;                                                        // cnpj da fzenda selecionada
 
-    private List<Analise> listaAnalise = new ArrayList<>();  // Guarda as analises adicionadas
+    private List<Analise> listaAnalise = new ArrayList<>();                     // Guarda as analises adicionadas
+    private List<Leite> leite = new ArrayList<>();                              // Guarda o Tipo do Leite
+    private List<OrigemLeite> origemLeite = new ArrayList<>();                  // Guarda a Origem do Leite
+    private List<Produtos> produtos = new ArrayList<>();                        // Guarda rodutos
+    private List<AnalisesSolicitadas> analisesSolicitadas = new ArrayList<>();  // Guarda as Analises Solicitadas
 
-    private Solicitacao solicitacao;     // Serve para adicionar as analises
+    private Solicitacao solicitacao;                                            // Serve para adicionar as analises
 
     @Override
     protected  void onCreate(Bundle saveInstanceState){
@@ -89,10 +97,43 @@ public class ListarAnalisesActivity extends AppCompatActivity {
 
         if(resultcode == 1) {
 
+            /*
+            *  Verificando Analises Solicitadas
+            * */
+            if(bundle.getBoolean("analiseCaseina")) this.analisesSolicitadas.add(AnalisesSolicitadas.CASEINA);
+            if(bundle.getBoolean("analiseComposicao")) this.analisesSolicitadas.add(AnalisesSolicitadas.COMPOSICAO);
+            if(bundle.getBoolean("analiseCelulasSomaticas")) this.analisesSolicitadas.add(AnalisesSolicitadas.CELULAS_SOMATICAS);
+            if(bundle.getBoolean("analiseCondutividadeEletrica")) this.analisesSolicitadas.add(AnalisesSolicitadas.CONDUTIVIDADE_ELETRICA);
+            if(bundle.getBoolean("analiseNitrogenioUreico")) this.analisesSolicitadas.add(AnalisesSolicitadas.NITROGENIO_UREICO);
+            if(bundle.getBoolean("analiseResiduoAntibiotico")) this.analisesSolicitadas.add(AnalisesSolicitadas.RESIDUO_ANTIBIOTICO);
+            if(bundle.getBoolean("analisePH")) this.analisesSolicitadas.add(AnalisesSolicitadas.PH);
+            if(bundle.getBoolean("analiseSoro")) this.analisesSolicitadas.add(AnalisesSolicitadas.SORO);
+
+            Log.i("tamanho", "tamanho list analisesSolicitadas " + analisesSolicitadas.size());
+
+            /*
+            * Verificando Proutos
+            * */
+            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
+            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
+            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
+
+            /*
+            *  Verificando Origem do Leite
+            * */
+            if(bundle.getInt("origemLeite") == 0) this.origemLeite.add(OrigemLeite.BALDE);
+            if(bundle.getInt("origemLeite") == 1) this.origemLeite.add(OrigemLeite.TANQUE);
+            if(bundle.getInt("origemLeite") == 2) this.origemLeite.add(OrigemLeite.TETO);
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite.add(OrigemLeite.TETEIRA);
+
+            /*
+             * Verificando tipo do Leite
+             * */
+            if(bundle.getInt("tipoLeite") == 0) this.leite.add(Leite.CRU);
+            if(bundle.getInt("tipoLeite") == 1) this.leite.add(Leite.PASTEURIZADO);
+            if(bundle.getInt("tipoLeite") == 2) this.leite.add(Leite.UHT);
+
         }
-
-
-
     }
 
 }
