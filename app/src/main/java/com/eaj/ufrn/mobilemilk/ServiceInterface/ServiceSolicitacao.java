@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoDto;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import retrofit2.http.Path;
 public interface ServiceSolicitacao {
 
     @PUT("solicitacao")
-    Call<Solicitacao> cadastrarSolicitacao(@Body Solicitacao solicitacao, @Header("Authorization") String authorzation);
+    Call<SolicitacaoDto> cadastrarSolicitacao(@Body SolicitacaoDto solicitacaoDto, @Header("Authorization") String authorzation);
 
     @GET("solicitacao/{id}")
     Call<Solicitacao> buscarSolicitacao( @Path("id") String id, @Header("Authorization") String authorization);

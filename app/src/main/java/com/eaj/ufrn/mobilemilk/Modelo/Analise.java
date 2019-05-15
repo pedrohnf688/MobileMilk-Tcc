@@ -10,51 +10,58 @@ import java.util.List;
 
 public class Analise {
 
-    private Leite leite;
-    private OrigemLeite origemLeite;
-    private Produtos produtos;
+    private List<Leite> leite;
+    private List<OrigemLeite> origemLeite;
+    private List<Produtos> produtos;
+    private List<AnalisesSolicitadas> analisesSolicitadas;
     private String especie;
-    private AnalisesSolicitadas analisesSolicitadas;
+    private Integer quantidadeAmostras;
     private Solicitacao solicitacao;
     private List<Amostra> listaAmostras;
 
-    public Analise(Leite leite, OrigemLeite origemLeite, Produtos produtos, String especie, AnalisesSolicitadas analisesSolicitadas,
-                   Solicitacao solicitacao, List<Amostra> listaAmostras) {
+    public Analise(List<Leite> leite, List<OrigemLeite> origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
+            , String especie, Integer quantidadeAmostras, List<Amostra> listaAmostras) {
         this.leite = leite;
         this.origemLeite = origemLeite;
         this.produtos = produtos;
-        this.especie = especie;
         this.analisesSolicitadas = analisesSolicitadas;
-        this.solicitacao = solicitacao;
+        this.especie = especie;
+        this.quantidadeAmostras = quantidadeAmostras;
         this.listaAmostras = listaAmostras;
     }
 
-    public Analise(){
+    public Analise(){}
 
-    }
-
-    public Leite getLeite() {
+    public List<Leite> getLeite() {
         return leite;
     }
 
-    public void setLeite(Leite leite) {
+    public void setLeite(List<Leite> leite) {
         this.leite = leite;
     }
 
-    public OrigemLeite getOrigemLeite() {
+    public List<OrigemLeite> getOrigemLeite() {
         return origemLeite;
     }
 
-    public void setOrigemLeite(OrigemLeite origemLeite) {
+    public void setOrigemLeite(List<OrigemLeite> origemLeite) {
         this.origemLeite = origemLeite;
     }
 
-    public Produtos getProdutos() {
+    public List<Produtos> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(Produtos produtos) {
+    public void setProdutos(List<Produtos> produtos) {
         this.produtos = produtos;
+    }
+
+    public List<AnalisesSolicitadas> getAnalisesSolicitadas() {
+        return analisesSolicitadas;
+    }
+
+    public void setAnalisesSolicitadas(List<AnalisesSolicitadas> analisesSolicitadas) {
+        this.analisesSolicitadas = analisesSolicitadas;
     }
 
     public String getEspecie() {
@@ -65,12 +72,12 @@ public class Analise {
         this.especie = especie;
     }
 
-    public AnalisesSolicitadas getAnalisesSolicitadas() {
-        return analisesSolicitadas;
+    public Integer getQuantidadeAmostras() {
+        return quantidadeAmostras;
     }
 
-    public void setAnalisesSolicitadas(AnalisesSolicitadas analisesSolicitadas) {
-        this.analisesSolicitadas = analisesSolicitadas;
+    public void setQuantidadeAmostras(Integer quantidadeAmostras) {
+        this.quantidadeAmostras = quantidadeAmostras;
     }
 
     public Solicitacao getSolicitacao() {

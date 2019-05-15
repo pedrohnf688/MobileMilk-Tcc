@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
+import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoDto;
 import com.eaj.ufrn.mobilemilk.R;
 
 import java.util.ArrayList;
@@ -27,7 +29,9 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     private Integer quantidadeAmostras;  // quantidade de analises desejadas
     private String cnpj;                 // cnpj da fzenda selecionada
 
-    private List<Analise> listaAnalise = new ArrayList<>();
+    private List<Analise> listaAnalise = new ArrayList<>();  // Guarda as analises adicionadas
+
+    private Solicitacao solicitacao;     // Serve para adicionar as analises
 
     @Override
     protected  void onCreate(Bundle saveInstanceState){
@@ -76,7 +80,18 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     *   Adiciona objeto ao listaAnalise.
     * */
     @Override
-    protected void onActivityResult(int requestcode, int Resultcode, Intent data){
+    protected void onActivityResult(int requestcode, int resultcode, Intent data){
+
+        Bundle bundle = data.getExtras();
+
+        if(data == null)
+            return;
+
+        if(resultcode == 1) {
+
+        }
+
+
 
     }
 

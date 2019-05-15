@@ -1,7 +1,10 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -33,6 +36,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
     private RadioButton analisesResiduoAntibiotico;
     private RadioButton analisesPh;
     private RadioButton analisesSoro;
+
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -66,6 +70,40 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item);
         array1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.tipoLeite.setAdapter(array1);
+
     }
 
+    /* salva as informaçoes selecionadas e manda para a activity ListarAnalises ...
+        as informações seram tratadas e adicionadas ao um List Local a classe para só
+        depois usado o método POST de "/solicitacao", esta requisição também será feitas em lista
+        de analises, dentro do fluxo de cadastro de solicitação.
+    */
+    public void adicionarAnalise(View v){
+
+        Intent t = new Intent();
+        t.putExtra("origemLeite", this.origemLeite.getSelectedItemId());                // Origem do Leite
+        t.putExtra("tipoLeite", this.tipoLeite.getSelectedItemId());                    // Tipo do Leite
+
+        /*
+        *   Checando radio Buttons de Tipos de Análises
+        * */
+        t.putExtra("analiseCaseina", this.analisesCaseina.isChecked() ? true : false);
+        t.putExtra("analiseComposicao", this.analisesComposicao.isChecked() ? true : false);
+        t.putExtra("analiseCelulasSomaticas", this.analisesCelulasSomaticas.isChecked() ? true : false);
+        t.putExtra("analiseNitrogenioUreico", this.analisesNitrogenioUreico.isChecked() ? true : false);
+        t.putExtra("analiseCondutividadeEletrica", this.analisesCondutividadeEletrica.isChecked() ? true : false);
+        t.putExtra("analiseResiduoAntibiotico", this.analisesResiduoAntibiotico.isChecked() ? true : false);
+        t.putExtra("analisePH", this.analisesPh.isChecked() ? true : false);
+        t.putExtra("analiseSoro", this.analisesSoro.isChecked() ? true : false);
+
+        /*
+         *   Checando radio Buttons de Produtos
+         * */
+        t.putExtra("produtosCreme30", this.produtosCreme30.isChecked() ? true : false);
+        t.putExtra("produtosCreme45", this.produtosCreme45.isChecked() ? true : false);
+        t.putExtra("produtosSoro", this.produtosSoro.isChecked() ? true : false);
+
+        setResult(1, t);
+        finish();
+    }
 }
