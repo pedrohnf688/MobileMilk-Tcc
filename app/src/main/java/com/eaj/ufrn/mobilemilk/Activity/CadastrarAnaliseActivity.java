@@ -117,10 +117,11 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         * */
         boolean verify = this.numAmostras.getText().toString().isEmpty() ? false : true;
         Integer numAmostras;
-        
-        if(verify){
+
+        if(verify && !this.numAmostras.getText().toString().contains(".") && !this.numAmostras.getText().toString().contains(",")
+            && !this.numAmostras.getText().toString().contains("-")){
             numAmostras = Integer.parseInt(this.numAmostras.getText().toString());
-            if(numAmostras <= 0){
+            if(numAmostras <= 0 ){
                 this.numAmostras.setError("O número de análises deve ser maior que 0");
                 return;
             }else{
@@ -128,7 +129,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
             }
         }
         else {
-            this.numAmostras.setError("Campo obrigatório");
+            this.numAmostras.setError("Este Campo é obrigatório e não aceita caracteres como: '.', ',' e '-' ");
             return;
         }
 

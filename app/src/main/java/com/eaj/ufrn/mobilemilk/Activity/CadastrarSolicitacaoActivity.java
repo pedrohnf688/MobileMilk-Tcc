@@ -59,28 +59,8 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         *  Verifica se há fazendas cadastradas
         * */
         if(this.listaFazendas.isEmpty()){
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getApplicationContext())
-                    .setMessage("Não fazendas cadastradas, gostaria de cadastrar ?")
-                    .setTitle("Temos um problema")
-                    .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent t = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
-                            startActivity(t);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton(R.string.AgoraNao, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
-            AlertDialog alert = alertDialog.create();
-            alert.show();
-
+            Toast.makeText(getApplicationContext(), "Não há fazendas cadastradas", Toast.LENGTH_LONG).show();
             return;
-
         }
 
         // buscar o cnpj da fazenda solicitada
