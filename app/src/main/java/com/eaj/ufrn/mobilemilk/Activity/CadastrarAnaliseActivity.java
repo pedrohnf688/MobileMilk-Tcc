@@ -115,7 +115,22 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         /*
         *  quantidade de amostras
         * */
-        t.putExtra("numAmostras", Integer.parseInt(this.numAmostras.getText().toString()));
+        boolean verify = this.numAmostras.getText().toString().isEmpty() ? false : true;
+        Integer numAmostras;
+        
+        if(verify){
+            numAmostras = Integer.parseInt(this.numAmostras.getText().toString());
+            if(numAmostras <= 0){
+                this.numAmostras.setError("O número de análises deve ser maior que 0");
+                return;
+            }else{
+                t.putExtra("numAmostras", Integer.parseInt(this.numAmostras.getText().toString()));
+            }
+        }
+        else {
+            this.numAmostras.setError("Campo obrigatório");
+            return;
+        }
 
         setResult(1, t);
         finish();

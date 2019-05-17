@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
@@ -133,6 +134,23 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             if(bundle.getInt("tipoLeite") == 1) this.leite.add(Leite.PASTEURIZADO);
             if(bundle.getInt("tipoLeite") == 2) this.leite.add(Leite.UHT);
 
+            /*
+            *  Quantidade de amostras
+            * */
+            Integer numAnalises = bundle.getInt("numAmostras");
+
+            /*
+            *   Criando objeto do tipo Analise para adicionar ao List<Analise> ...
+            * */
+            Analise analise = new Analise(
+                this.leite, this.origemLeite, this.produtos
+                    , this.analisesSolicitadas, "Nelore", numAnalises
+                    , null
+            );
+
+            this.listaAnalise.add(analise);
+
+            Toast.makeText(getApplicationContext(), "Analise Cadastrada", Toast.LENGTH_SHORT).show();
         }
     }
 
