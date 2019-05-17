@@ -36,7 +36,6 @@ import retrofit2.Response;
 public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
     private Spinner spinnerFazenda;
-    private EditText numAnalises;
 
     private List<Fazenda> listaFazendas = new ArrayList<>();
 
@@ -48,7 +47,6 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.cadastrar); // set text action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //
 
-        this.numAnalises = findViewById(R.id.numeroAnalises);
         this.spinnerFazenda = findViewById(R.id.spinnerFazenda);
     }
 
@@ -67,7 +65,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
         //Log.i("Nomefazenda", "nome: "+ nome + "Cnpj: " + cnpj);
         Intent t = new Intent(getApplicationContext(), ListarAnalisesActivity.class);
-        t.putExtra("numAmostras", Integer.parseInt(this.numAnalises.getText().toString()));
+        t.putExtra("nomeFazenda", nome);
         t.putExtra("cnpjFazenda", cnpj);
         startActivity(t);
     }
