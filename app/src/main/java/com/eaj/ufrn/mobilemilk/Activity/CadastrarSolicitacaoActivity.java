@@ -1,6 +1,8 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -52,6 +54,34 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
     // Avança para a tela de cadastrara amostras.
     public void avançar(View v){
+
+        /*
+        *  Verifica se há fazendas cadastradas
+        * */
+        if(this.listaFazendas.isEmpty()){
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getApplicationContext())
+                    .setMessage("Não fazendas cadastradas, gostaria de cadastrar ?")
+                    .setTitle("Temos um problema")
+                    .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent t = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
+                            startActivity(t);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton(R.string.AgoraNao, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = alertDialog.create();
+            alert.show();
+
+            return;
+
+        }
 
         // buscar o cnpj da fazenda solicitada
         String nome = this.spinnerFazenda.getSelectedItem().toString(); // Fazenda Selecionada.
