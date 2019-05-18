@@ -10,6 +10,7 @@
     <color name="BlackT">#000000</color>
     <color name="Red">#FF0000</color>
     <color name="RedFloat">#FF4500</color>
+    <color name="YELLOW">#FFFF00</color>
 </resources>
 
 <!--  #00BFFF   -->

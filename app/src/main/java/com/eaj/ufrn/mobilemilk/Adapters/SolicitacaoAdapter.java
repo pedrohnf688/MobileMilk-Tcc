@@ -1,7 +1,9 @@
 package com.eaj.ufrn.mobilemilk.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompatSideChannelService;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,8 +40,18 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         SolicitacaoViewHolder mvn = (SolicitacaoViewHolder) viewHolder;
         this.solicitacaoEscolhida = this.listaSolicitacoes.get(position);
-        mvn.numeroSolicitacao.setText(this.solicitacaoEscolhida.getFazenda().getNome());
+        mvn.nomeFazendaSolicitacao.setText(this.solicitacaoEscolhida.getFazenda().getNome());
+        mvn.numeroAnaliseSolicitacao.setText("Numero de Análises: " + this.solicitacaoEscolhida.getListaAnalise().size());
+        mvn.tipoLeiteSolicitacao.setText("Tipo do Leite: " + this.solicitacaoEscolhida.getListaAnalise().get(position).getLeite().get(0).name());
+        mvn.origemLeiteSolicitcao.setText("Origem do Leite: " + this.solicitacaoEscolhida.getListaAnalise().get(position).getOrigemLeite().get(0).name());
         mvn.statusSolicitacao.setText(this.solicitacaoEscolhida.getStatus());
+
+        if(mvn.statusSolicitacao.getText().toString().equals("PENDENTE"))
+            mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.RedFloat));
+        else if(mvn.statusSolicitacao.getText().toString().equals("APROVADO"))
+            mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.YELLOW));
+        else
+            mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.GreenB));
     }
 
     @Override
@@ -49,14 +61,18 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
 
     public class SolicitacaoViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView imagem;
-        final TextView numeroSolicitacao;
+        final TextView nomeFazendaSolicitacao;
+        final TextView numeroAnaliseSolicitacao;
+        final TextView tipoLeiteSolicitacao;
+        final TextView origemLeiteSolicitcao;
         final TextView statusSolicitacao;
 
         public SolicitacaoViewHolder(@NonNull View itemView) {
             super(itemView);
-            imagem = itemView.findViewById(R.id.image);
-            numeroSolicitacao = itemView.findViewById(R.id.numeracaoSolicitacao);
+            nomeFazendaSolicitacao = itemView.findViewById(R.id.nomeFazendaSolicitacao);
+            numeroAnaliseSolicitacao = itemView.findViewById(R.id.qtdAnalisesCadastradasSolicitacao);
+            tipoLeiteSolicitacao = itemView.findViewById(R.id.tipoLeiteSolicitacao);
+            origemLeiteSolicitcao = itemView.findViewById(R.id.origemLeiteSolicitacao);
             statusSolicitacao = itemView.findViewById(R.id.statusSolicitacao);
         }
     }
