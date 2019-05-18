@@ -42,8 +42,6 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
         this.solicitacaoEscolhida = this.listaSolicitacoes.get(position);
         mvn.nomeFazendaSolicitacao.setText(this.solicitacaoEscolhida.getFazenda().getNome());
         mvn.numeroAnaliseSolicitacao.setText("Numero de Análises: " + this.solicitacaoEscolhida.getListaAnalise().size());
-        mvn.tipoLeiteSolicitacao.setText("Tipo do Leite: " + this.solicitacaoEscolhida.getListaAnalise().get(position).getLeite().get(0).name());
-        mvn.origemLeiteSolicitcao.setText("Origem do Leite: " + this.solicitacaoEscolhida.getListaAnalise().get(position).getOrigemLeite().get(0).name());
         mvn.statusSolicitacao.setText(this.solicitacaoEscolhida.getStatus());
 
         if(mvn.statusSolicitacao.getText().toString().equals("PENDENTE"))
@@ -63,16 +61,12 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
 
         final TextView nomeFazendaSolicitacao;
         final TextView numeroAnaliseSolicitacao;
-        final TextView tipoLeiteSolicitacao;
-        final TextView origemLeiteSolicitcao;
         final TextView statusSolicitacao;
 
         public SolicitacaoViewHolder(@NonNull View itemView) {
             super(itemView);
             nomeFazendaSolicitacao = itemView.findViewById(R.id.nomeFazendaSolicitacao);
             numeroAnaliseSolicitacao = itemView.findViewById(R.id.qtdAnalisesCadastradasSolicitacao);
-            tipoLeiteSolicitacao = itemView.findViewById(R.id.tipoLeiteSolicitacao);
-            origemLeiteSolicitcao = itemView.findViewById(R.id.origemLeiteSolicitacao);
             statusSolicitacao = itemView.findViewById(R.id.statusSolicitacao);
         }
     }

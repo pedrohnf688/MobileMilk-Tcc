@@ -77,6 +77,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         Intent t = new Intent(getApplicationContext(), ListarAnalisesActivity.class);
         t.putExtra("nomeFazenda", nome);
         t.putExtra("cnpjFazenda", cnpj);
+        finish();
         startActivity(t);
     }
 

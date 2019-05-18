@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.eaj.ufrn.mobilemilk">
 
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -26,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activity.LoginActivity"
             android:parentActivityName=".Activity.InicioActivity">
@@ -33,6 +35,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.InicioActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.CadastrarActivity"
             android:parentActivityName=".Activity.InicioActivity">
@@ -40,9 +43,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.InicioActivity"/>
         </activity>
+
         <activity android:name=".Activity.HomeActivity">
 
         </activity>
+
         <activity
             android:name=".Activity.ComplementoCadastroClienteActivity"
             android:parentActivityName=".Activity.CadastrarActivity">
@@ -50,6 +55,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.CadastrarActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.CadastrarSolicitacaoActivity"
             android:parentActivityName=".Activity.HomeActivity">
@@ -57,6 +63,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.ListarAnalisesActivity"
             android:parentActivityName=".Activity.CadastrarSolicitacaoActivity">
@@ -64,6 +71,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.CadastrarSolicitacaoActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.ListarFazendaActivity"
             android:parentActivityName=".Activity.HomeActivity">
@@ -71,6 +79,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.AtualizarClienteActivity"
             android:parentActivityName=".Activity.HomeActivity">
@@ -78,6 +87,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity"/>
         </activity>
+
         <activity
             android:name=".Activity.PerfilFazendaActivity"
             android:parentActivityName=".Activity.ListarFazendaActivity">
@@ -86,8 +96,16 @@
                 android:value=".Activity.ListarFazendaActivity"/>
         </activity>
 
-        <activity android:name=".Activity.CadastrarAnaliseActivity"/>
+        <activity
+            android:name=".Activity.CadastrarAnaliseActivity"
+            android:parentActivityName=".Activity.ListarAnalisesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.ListarAnalisesActivity"/>
+        </activity>
+
         <activity android:name=".Activity.AtualizarFazendaActivity"/>
+
         <activity android:name=".Activity.CadastrarFazendaActivity"/>
     </application>
 

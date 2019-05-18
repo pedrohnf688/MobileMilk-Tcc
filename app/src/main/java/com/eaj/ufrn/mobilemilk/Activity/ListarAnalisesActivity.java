@@ -113,7 +113,8 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<SolicitacaoPostDto> call, Response<SolicitacaoPostDto> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "deu certo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Solicitação Cadastrada", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "deu ruim", Toast.LENGTH_SHORT).show();
@@ -134,10 +135,11 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data){
 
-        Bundle bundle = data.getExtras();
-
-        if(data == null)
+        try {
+            Bundle bundle = data.getExtras();
+        }catch(RuntimeException e){
             return;
+        }
 
         if(resultcode == 1) {
 

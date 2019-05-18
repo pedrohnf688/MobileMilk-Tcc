@@ -20,7 +20,7 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/RedFloat"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent">
@@ -37,6 +37,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="8dp"
                     android:text="Fazenda"
+                    android:textColor="@color/branco"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
@@ -56,25 +57,6 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-        <TextView
-            android:id="@+id/tipoLeiteSolicitacao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Tipo do Leite: "
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/qtdAnalisesCadastradasSolicitacao" />
-
-        <TextView
-            android:id="@+id/origemLeiteSolicitacao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Origem do Leite: "
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/tipoLeiteSolicitacao" />
 
         <TextView
             android:id="@+id/textView2"
@@ -85,7 +67,7 @@
             android:text="Status: "
             android:textColor="@color/BlackT"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/origemLeiteSolicitacao" />
+            card_view:layout_constraintTop_toBottomOf="@+id/qtdAnalisesCadastradasSolicitacao" />
 
         <TextView
             android:id="@+id/statusSolicitacao"
@@ -94,7 +76,7 @@
             android:layout_marginTop="8dp"
             android:text="status"
             card_view:layout_constraintStart_toEndOf="@+id/textView2"
-            card_view:layout_constraintTop_toBottomOf="@+id/origemLeiteSolicitacao" />
+            card_view:layout_constraintTop_toBottomOf="@+id/qtdAnalisesCadastradasSolicitacao" />
 
     </android.support.constraint.ConstraintLayout>
 
