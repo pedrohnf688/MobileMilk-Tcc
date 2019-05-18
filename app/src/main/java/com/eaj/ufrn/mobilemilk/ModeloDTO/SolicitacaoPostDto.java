@@ -5,12 +5,12 @@ import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 
 import java.util.List;
 
-public class SolicitacaoDto {
+public class SolicitacaoPostDto {
 
     private String cnpj;
     private List<Analise> listaAnalise;
 
-    public SolicitacaoDto(String cnpj, List<Analise> listaAnalise) {
+    public SolicitacaoPostDto(String cnpj, List<Analise> listaAnalise) {
         this.cnpj = cnpj;
         this.listaAnalise = listaAnalise;
     }

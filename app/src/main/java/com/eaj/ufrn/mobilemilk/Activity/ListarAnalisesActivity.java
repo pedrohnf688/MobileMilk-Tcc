@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -22,8 +21,7 @@ import com.eaj.ufrn.mobilemilk.Enum.Leite;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
 import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
-import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
-import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoDto;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoPostDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
@@ -105,15 +103,15 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         /*
         *   Criando objeto de SolicitaDto -> Será o corpo @Body da requisição...
         * */
-        SolicitacaoDto solicitacaoDto = new SolicitacaoDto(this.bundle.getString("cnpjFazenda"), this.listaAnalise);
+        SolicitacaoPostDto solicitacaoPostDto = new SolicitacaoPostDto(this.bundle.getString("cnpjFazenda"), this.listaAnalise);
 
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        Call<SolicitacaoDto> call = new RetrofitConfig().getSolicitacaoService().cadastrarSolicitacao(
-                solicitacaoDto, prefs.getString("accessToken", "default"));
-        call.enqueue(new Callback<SolicitacaoDto>() {
+        Call<SolicitacaoPostDto> call = new RetrofitConfig().getSolicitacaoService().cadastrarSolicitacao(
+                solicitacaoPostDto, prefs.getString("accessToken", "default"));
+        call.enqueue(new Callback<SolicitacaoPostDto>() {
             @Override
-            public void onResponse(Call<SolicitacaoDto> call, Response<SolicitacaoDto> response) {
+            public void onResponse(Call<SolicitacaoPostDto> call, Response<SolicitacaoPostDto> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "deu certo", Toast.LENGTH_SHORT).show();
                 }
@@ -123,7 +121,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SolicitacaoDto> call, Throwable t) {
+            public void onFailure(Call<SolicitacaoPostDto> call, Throwable t) {
 
             }
         });

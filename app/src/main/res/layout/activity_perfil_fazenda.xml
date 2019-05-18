@@ -223,7 +223,7 @@
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/branco"
                 android:background="@color/colorPrimary"
-                android:text="Editar Indormações"
+                android:text="Editar Informações"
                 android:onClick="editar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
