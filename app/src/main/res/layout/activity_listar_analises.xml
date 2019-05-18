@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="0/0"
+        android:text="0"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,7 @@
 
     <FrameLayout
         android:id="@+id/frameListarAnalises"
-        android:layout_width="380dp"
+        android:layout_width="wrap_content"
         android:layout_height="610dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -84,11 +84,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="false"
-        android:text="Concluir"
         android:elevation="4dp"
+        android:text="Concluir"
+        android:textColor="@color/branco"
+        android:background="@color/GreenB"
+        android:onClick="cadastrarSolicitacao"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -100,6 +104,7 @@
         android:layout_margin="20dp"
         android:src="@drawable/add_48dp"
         android:onClick="cadastrarAnalise"
+        android:backgroundTint="@color/RedFloat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

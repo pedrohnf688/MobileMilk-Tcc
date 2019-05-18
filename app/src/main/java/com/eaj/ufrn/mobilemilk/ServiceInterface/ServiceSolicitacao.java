@@ -17,10 +17,7 @@ import retrofit2.http.Path;
 
 public interface ServiceSolicitacao {
 
-    @PUT("solicitacao")
+    @POST("solicitacao")
     Call<SolicitacaoDto> cadastrarSolicitacao(@Body SolicitacaoDto solicitacaoDto, @Header("Authorization") String authorzation);
-
-    @GET("solicitacao/{id}")
-    Call<Solicitacao> buscarSolicitacao( @Path("id") String id, @Header("Authorization") String authorization);
 
 }

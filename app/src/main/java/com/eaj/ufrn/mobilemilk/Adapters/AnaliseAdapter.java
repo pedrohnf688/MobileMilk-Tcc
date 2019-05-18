@@ -41,9 +41,9 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
         analiseEscolhida = listaAnalise.get(position);
         Leite leite = analiseEscolhida.getLeite().get(0);
         OrigemLeite origemLeite = analiseEscolhida.getOrigemLeite().get(0);
-        holder.numAmostras.setText(analiseEscolhida.getQuantidadeAmostras());
-        holder.tipoLeite.setText(leite.name());
-        holder.origemLeite.setText(origemLeite.name());
+        holder.numAmostras.setText("Quantidade de Amostras: " + analiseEscolhida.getQuantidadeAmostras());
+        holder.tipoLeite.setText("Tipo do Leite: " + leite.name());
+        holder.origemLeite.setText("Origem do Leite: " + origemLeite.name());
     }
 
     @Override

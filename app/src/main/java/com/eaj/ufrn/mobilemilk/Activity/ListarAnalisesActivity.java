@@ -1,15 +1,22 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
 import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
@@ -18,16 +25,21 @@ import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoDto;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListarAnalisesActivity extends AppCompatActivity {
 
     private FloatingActionButton adicionarAmostra;
     private Button concluirCadastroAmostras;
     private FrameLayout frameLayoutMessagemInicial;
-    private FrameLayout frameLayoutListarAmostras;
+    private FrameLayout frameLayoutListarAnalise;
 
     private Bundle bundle;
 
@@ -40,7 +52,10 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     private List<Produtos> produtos = new ArrayList<>();                        // Guarda rodutos
     private List<AnalisesSolicitadas> analisesSolicitadas = new ArrayList<>();  // Guarda as Analises Solicitadas
 
-    private Solicitacao solicitacao;                                            // Serve para adicionar as analises
+    private RecyclerView recyclerListAnalise;
+    private AnaliseAdapter analiseAdapter;
+
+    private TextView qtdAnalisesCadastradas;                                    // Quantidade de análises cadastradas
 
     @Override
     protected  void onCreate(Bundle saveInstanceState){
@@ -52,36 +67,66 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         this.adicionarAmostra = findViewById(R.id.adicionarAmostra);
         this.concluirCadastroAmostras = findViewById(R.id.concluirCadastroAmostras);
         this.frameLayoutMessagemInicial = findViewById(R.id.frameMenssagemInicial);
-        this.frameLayoutListarAmostras = findViewById(R.id.frameListarAnalises);
+        this.frameLayoutListarAnalise = findViewById(R.id.frameListarAnalises);
 
-        this.frameLayoutListarAmostras.setVisibility(View.GONE);          // seta o layout como inicialmente invisível ao usuário.
+        this.frameLayoutListarAnalise.setVisibility(View.GONE);           // seta o layout como inicialmente invisível ao usuário.
+        this.concluirCadastroAmostras.setVisibility(View.GONE);           // Button para concluir inicalmente invisível ao usuário.
+        this.concluirCadastroAmostras.setClickable(false);                // Button para concluir não está clicável.
 
         this.bundle = getIntent().getExtras();                            // Recebendo informações da Chamada de CadastrarAnalise.class
         this.quantidadeAmostras = this.bundle.getInt("numAmostras"); // Recebendo a quantidade de amostras solicitadas.
         this.cnpj = this.bundle.getString("cnpjFazenda");            // Recebendo o cnpj da fazenda.
 
+        this.qtdAnalisesCadastradas = findViewById(R.id.qtdAnalisesCadastradas);
+
         Log.i("quantidade", ""+this.quantidadeAmostras);
 
-    }
+        /*
+        *   Implementação RECYCLERVIEW
+        *
+        *   Obs = o Adapter será setado no onActivityResult Linha -> 170 ... n.
+        * */
+        this.recyclerListAnalise = findViewById(R.id.recyclerViewListarAnalises);
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        this.recyclerListAnalise.setLayoutManager(layout);
+        this.recyclerListAnalise.setItemAnimator(new DefaultItemAnimator());
 
-    // Verifica a quantidade de analises cadastradas com a quantidade solicitada pelo cliente
-    public void verificaNumeroAmostras(Integer tamanho){
-        if(tamanho > 0 & tamanho < this.quantidadeAmostras){
-            this.frameLayoutMessagemInicial.setVisibility(View.GONE);
-            this.frameLayoutListarAmostras.setVisibility(View.VISIBLE);
-        } else if (tamanho == this.quantidadeAmostras){
-            this.frameLayoutMessagemInicial.setVisibility(View.GONE);
-            this.frameLayoutListarAmostras.setVisibility(View.VISIBLE);
-            this.concluirCadastroAmostras.setClickable(true);
-            this.concluirCadastroAmostras.setBackgroundColor(getResources().getColor(R.color.GreenB));
-            this.concluirCadastroAmostras.setTextColor(getResources().getColor(R.color.branco));
-        }
     }
 
     // Cadastrar Análises
     public void cadastrarAnalise(View v){
         Intent i = new Intent(getApplicationContext(), CadastrarAnaliseActivity.class);
         startActivityForResult(i, 1);
+    }
+
+    // Cadastrar Solicitação
+    public void cadastrarSolicitacao(View v){
+
+        /*
+        *   Criando objeto de SolicitaDto -> Será o corpo @Body da requisição...
+        * */
+        SolicitacaoDto solicitacaoDto = new SolicitacaoDto(this.bundle.getString("cnpjFazenda"), this.listaAnalise);
+
+        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+
+        Call<SolicitacaoDto> call = new RetrofitConfig().getSolicitacaoService().cadastrarSolicitacao(
+                solicitacaoDto, prefs.getString("accessToken", "default"));
+        call.enqueue(new Callback<SolicitacaoDto>() {
+            @Override
+            public void onResponse(Call<SolicitacaoDto> call, Response<SolicitacaoDto> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "deu certo", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "deu ruim", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SolicitacaoDto> call, Throwable t) {
+
+            }
+        });
     }
 
     /*
@@ -97,6 +142,11 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             return;
 
         if(resultcode == 1) {
+
+            this.frameLayoutMessagemInicial.setVisibility(View.GONE);   // Esconde a mensagem de boas vindas
+            this.frameLayoutListarAnalise.setVisibility(View.VISIBLE);  // Layout de Lista análises visívek
+            this.concluirCadastroAmostras.setClickable(true);           // Button concluir está clicável
+            this.concluirCadastroAmostras.setVisibility(View.VISIBLE);  // Button concluir está visível
 
             /*
             *  Verificando Analises Solicitadas
@@ -149,6 +199,16 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             );
 
             this.listaAnalise.add(analise);
+
+            /*
+            *   Atualiza o textView com a quantidade de análises cadastradas
+            * */
+            this.qtdAnalisesCadastradas.setText(""+this.listaAnalise.size());
+
+            /*
+            *  Setando adaptador para o recyclerView -> Lista Análise..
+            * */
+            this.recyclerListAnalise.setAdapter(new AnaliseAdapter(listaAnalise, getApplicationContext()));
 
             Toast.makeText(getApplicationContext(), "Analise Cadastrada", Toast.LENGTH_SHORT).show();
         }
