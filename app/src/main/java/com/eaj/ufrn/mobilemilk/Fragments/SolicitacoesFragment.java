@@ -1,5 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,7 +18,9 @@ import com.eaj.ufrn.mobilemilk.Enum.Status;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +31,8 @@ import retrofit2.Response;
 
 public class SolicitacoesFragment extends Fragment {
 
-    private List<Solicitacao> listaSolicitacoes = new ArrayList<>();
+   private List<SolicitacaoGetDto> listaSolicitacoes = new ArrayList<>();
+   private RecyclerView recyclerSolicitacao;
 
     // Required empty constructor
     public SolicitacoesFragment(){
@@ -44,7 +49,7 @@ public class SolicitacoesFragment extends Fragment {
         *   obs = o Adapter do recycler será setado no método onStart do ciclo de vida da aplicação,
         *   após a chamada da requisição GET do recurso /cliente/{id}/solicitacao
         * */
-        final RecyclerView recyclerSolicitacao = view.findViewById(R.id.recyclerViewListarSolicitacoes);
+        this.recyclerSolicitacao = view.findViewById(R.id.recyclerViewListarSolicitacoes);
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
         recyclerSolicitacao.setLayoutManager(layout);
@@ -77,6 +82,33 @@ public class SolicitacoesFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
+        SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
 
+        Call<List<SolicitacaoGetDto>> call = new RetrofitConfig().getClienteService().buscarSolicitacoes(
+                prefs.getString("accessId", "default"),
+                prefs.getString("accessToken", "default")
+        );
+        call.enqueue(new Callback<List<SolicitacaoGetDto>>() {
+            @Override
+            public void onResponse(Call<List<SolicitacaoGetDto>> call, Response<List<SolicitacaoGetDto>> response) {
+                listaSolicitacoes.clear();
+                if(response.isSuccessful()){
+                    listaSolicitacoes = response.body();
+
+                    recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getActivity().getApplicationContext()));
+                }
+                else {
+                    Log.i("ResponseError", "Message: " + response.message());
+                    Log.i("ResponseError", "Error Body: " + response.errorBody());
+                    Log.i("ResponseError", "Http Code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SolicitacaoGetDto>> call, Throwable t) {
+                Log.i("failure", "Message: " + t.getMessage());
+                Log.i("failure", "Vause: " + t.getCause());
+            }
+        });
     }
 }

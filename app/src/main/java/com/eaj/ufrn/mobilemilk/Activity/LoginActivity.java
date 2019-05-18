@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
 import com.eaj.ufrn.mobilemilk.Modelo.Token;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         this.senha = findViewById(R.id.senha);
         this.usuario = findViewById(R.id.usuario);
+
 
     }
 

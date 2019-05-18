@@ -10,17 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
 
 import java.util.List;
 
 public class SolicitacaoAdapter extends RecyclerView.Adapter {
 
-    private List<Solicitacao> listaSolicitacoes;
-    private Solicitacao solicitacaoEscolhida;
+    private List<SolicitacaoGetDto> listaSolicitacoes;
+    private SolicitacaoGetDto solicitacaoEscolhida;
     private Context context;
 
-    public SolicitacaoAdapter(List<Solicitacao> lista, Context context){
+    public SolicitacaoAdapter(List<SolicitacaoGetDto> lista, Context context){
         this.context = context;
         this.listaSolicitacoes = lista;
     }
@@ -37,8 +38,8 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         SolicitacaoViewHolder mvn = (SolicitacaoViewHolder) viewHolder;
         this.solicitacaoEscolhida = this.listaSolicitacoes.get(position);
-        mvn.numeroSolicitacao.setText(this.solicitacaoEscolhida.getObservacao());
-        mvn.statusSolicitacao.setText(this.solicitacaoEscolhida.getStatus().toString());
+        mvn.numeroSolicitacao.setText(this.solicitacaoEscolhida.getFazenda().getNome());
+        mvn.statusSolicitacao.setText(this.solicitacaoEscolhida.getStatus());
     }
 
     @Override

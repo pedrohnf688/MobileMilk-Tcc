@@ -4,6 +4,7 @@ import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 
 import java.util.List;
 
@@ -23,12 +24,15 @@ public interface ServiceCliente {
     Call<Cliente> cadastrarCliente(@Body Cliente usuario);
 
     @PUT("cliente/{id}")
-    Call<ClienteDto> atualizarCliete(@Path("id") String id ,@Body Cliente cliente, @Header("Authorization") String authorization);
+    Call<ClienteDto> atualizarCliente(@Path("id") String id ,@Body Cliente cliente, @Header("Authorization") String authorization);
 
     @GET("cliente/{id}")
     Call<ClienteDto> buscarCliente(@Path("id") String id, @Header("Authorization") String authorization);
 
     @GET("cliente/{id}/fazenda")
     Call<List<Fazenda>> buscarFazendas(@Path("id") String id, @Header("Authorization") String authorization);
+
+    @GET("cliente/{id}/solicitacao")
+    Call<List<SolicitacaoGetDto>> buscarSolicitacoes(@Path("id") String id, @Header("Authorization") String authorization);
 
 }
