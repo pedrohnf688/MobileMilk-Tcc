@@ -43,4 +43,9 @@ dependencies {
     // imagem circular
     implementation 'de.hdodenhof:circleimageview:2.1.0'
 
+    //Bilioteca para uso do QrCode
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
+    implementation 'com.android.support:appcompat-v7:28.0.0'   // Version 23+ is required
+    implementation 'com.google.zxing:core:3.3.0'
+
 }
