@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<resources>-->
+    <!--<color name="colorPrimary">#00BFFF </color>-->
+    <!--<color name="colorPrimaryDark">#1E90FF</color>-->
+    <!--<color name="colorAccent">#1E90FF</color>-->
+    <!--<color name="buttonFacebook">#4169E1</color>-->
+    <!--<color name="buttonGmail">#B22222</color>-->
+    <!--<color name="branco">#FFFFFF</color>-->
+    <!--<color name="GreenB">#32CD32</color>-->
+    <!--<color name="BlackT">#000000</color>-->
+    <!--<color name="Red">#FF0000</color>-->
+    <!--<color name="RedFloat">#FF4500</color>-->
+    <!--<color name="YELLOW">#FFFF00</color>-->
+<!--</resources>-->
+
+<!--  #00BFFF   -->
 <resources>
-    <color name="colorPrimary">#00BFFF </color>
-    <color name="colorPrimaryDark">#1E90FF</color>
-    <color name="colorAccent">#1E90FF</color>
+    <color name="colorPrimary">#51BEE8</color>
+    <color name="colorPrimaryDark">#59A5FF</color>
+    <color name="colorAccent">#59A5FF</color>
     <color name="buttonFacebook">#4169E1</color>
     <color name="buttonGmail">#B22222</color>
     <color name="branco">#FFFFFF</color>
     <color name="GreenB">#32CD32</color>
     <color name="BlackT">#000000</color>
     <color name="Red">#FF0000</color>
-    <color name="RedFloat">#FF4500</color>
+    <color name="RedFloat">#E86B40</color>
     <color name="YELLOW">#FFFF00</color>
 </resources>
-
-<!--  #00BFFF   -->
