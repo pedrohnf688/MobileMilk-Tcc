@@ -73,6 +73,10 @@ public class CadastrarActivity extends AppCompatActivity {
             emailUsuario.setError("Email não pode haver espaços");
             return false;
         }
+        else if(!email.contains("@") || !email.contains(".")){
+            emailUsuario.setError("Email não é válido");
+            return false;
+        }
         else if(usuario.equals("")){
             usuariousuario.setError("Usuário é obrigatório");
             return false;
