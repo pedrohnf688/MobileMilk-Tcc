@@ -47,6 +47,9 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_cadastrar_analise);
 
+        getSupportActionBar().setTitle("Cadastro de amostras");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         this.origemLeite = findViewById(R.id.origemDoLeite);
         this.tipoLeite = findViewById(R.id.spinnerTipoLeite);
 
@@ -92,6 +95,9 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         * */
         t.putExtra("origemLeite", this.origemLeite.getSelectedItemId());
         t.putExtra("tipoLeite", this.tipoLeite.getSelectedItemId());
+
+        Log.i("item", "origemLeite: " + this.origemLeite.getSelectedItemId());
+        Log.i("item", "tipoLeite: " + this.tipoLeite.getSelectedItemId());
 
         /*
         *   Checando radio Buttons de Tipos de Análises

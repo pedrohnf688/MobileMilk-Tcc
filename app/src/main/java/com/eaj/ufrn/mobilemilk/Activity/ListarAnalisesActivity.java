@@ -60,7 +60,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_listar_analises);
 
-        getSupportActionBar().setTitle("Cadastro de amostras");
+        getSupportActionBar().setTitle("Amostras Cadastradas");
 
         this.adicionarAmostra = findViewById(R.id.adicionarAmostra);
         this.concluirCadastroAmostras = findViewById(R.id.concluirCadastroAmostras);
@@ -71,9 +71,13 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         this.concluirCadastroAmostras.setVisibility(View.GONE);           // Button para concluir inicalmente invisível ao usuário.
         this.concluirCadastroAmostras.setClickable(false);                // Button para concluir não está clicável.
 
-        this.bundle = getIntent().getExtras();                            // Recebendo informações da Chamada de CadastrarAnalise.class
-        this.quantidadeAmostras = this.bundle.getInt("numAmostras"); // Recebendo a quantidade de amostras solicitadas.
-        this.cnpj = this.bundle.getString("cnpjFazenda");            // Recebendo o cnpj da fazenda.
+        this.bundle = getIntent().getExtras();// Recebendo informações da Chamada de CadastrarAnalise.class.
+
+        try {
+            this.cnpj = this.bundle.getString("cnpjFazenda");            // Recebendo o cnpj da fazenda.
+        }catch (RuntimeException e){
+
+        }
 
         this.qtdAnalisesCadastradas = findViewById(R.id.qtdAnalisesCadastradas);
 
@@ -135,11 +139,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data){
 
-        try {
-            Bundle bundle = data.getExtras();
-        }catch(RuntimeException e){
-            return;
-        }
+        Bundle bundle = data.getExtras();
 
         if(resultcode == 1) {
 
@@ -213,5 +213,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Analise Cadastrada", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 }
