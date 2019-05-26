@@ -39,8 +39,8 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         AnaliseViewHolder holder = (AnaliseViewHolder) viewHolder;
         analiseEscolhida = listaAnalise.get(position);
-        Leite leite = analiseEscolhida.getLeite().get(0);
-        OrigemLeite origemLeite = analiseEscolhida.getOrigemLeite().get(0);
+        Leite leite = analiseEscolhida.getLeite();
+        OrigemLeite origemLeite = analiseEscolhida.getOrigemLeite();
         holder.numAmostras.setText("Quantidade de Amostras: " + analiseEscolhida.getQuantidadeAmostras());
         holder.tipoLeite.setText("Tipo do Leite: " + leite.name());
         holder.origemLeite.setText("Origem do Leite: " + origemLeite.name());

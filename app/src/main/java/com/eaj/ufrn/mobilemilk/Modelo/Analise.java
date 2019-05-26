@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Analise {
 
-    private List<Leite> leite;
-    private List<OrigemLeite> origemLeite;
+    private Leite leite;
+    private OrigemLeite origemLeite;
     private List<Produtos> produtos;
     private List<AnalisesSolicitadas> analisesSolicitadas;
     private String especie;
@@ -19,7 +19,7 @@ public class Analise {
     private Solicitacao solicitacao;
     private List<Amostra> listaAmostras;
 
-    public Analise(List<Leite> leite, List<OrigemLeite> origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
+    public Analise(Leite leite, OrigemLeite origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
             , String especie, Integer quantidadeAmostras, List<Amostra> listaAmostras) {
         this.leite = leite;
         this.origemLeite = origemLeite;
@@ -32,19 +32,19 @@ public class Analise {
 
     public Analise(){}
 
-    public List<Leite> getLeite() {
+    public Leite getLeite() {
         return leite;
     }
 
-    public void setLeite(List<Leite> leite) {
+    public void setLeite(Leite leite) {
         this.leite = leite;
     }
 
-    public List<OrigemLeite> getOrigemLeite() {
+    public OrigemLeite getOrigemLeite() {
         return origemLeite;
     }
 
-    public void setOrigemLeite(List<OrigemLeite> origemLeite) {
+    public void setOrigemLeite(OrigemLeite origemLeite) {
         this.origemLeite = origemLeite;
     }
 

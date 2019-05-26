@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Enum.EnumTipoPerfilUsuario;
@@ -18,9 +17,6 @@ import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +24,7 @@ import retrofit2.Response;
 public class CadastrarFazendaActivity extends AppCompatActivity {
 
     private EditText nomeFazenda;
-    private EditText cnpjFazenda;
+    private EditText cpfcnpjFazenda;
     private EditText cepFazenda;
     private EditText estadoFazenda;
     private EditText cidadeFazenda;
@@ -49,7 +45,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.CadastrarFazenda); // Seta um titulo ao ActionBar
 
         this.nomeFazenda = findViewById(R.id.nomeFazenda);
-        this.cnpjFazenda = findViewById(R.id.cnpjFazenda);
+        this.cpfcnpjFazenda = findViewById(R.id.cnpjFazenda);
         this.cepFazenda = findViewById(R.id.cepFazenda);
         this.estadoFazenda = findViewById(R.id.estadoFazenda);
         this.cidadeFazenda = findViewById(R.id.cidadeFazenda);
@@ -80,7 +76,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
                                         , prefs.getString("accessId", "default"));
 
         Fazenda fazenda = new Fazenda(this.nomeFazenda.getText().toString()
-            , this.cnpjFazenda.getText().toString()
+            , this.cpfcnpjFazenda.getText().toString()
             , this.cepFazenda.getText().toString()
             , "default"
             , this.estadoFazenda.getText().toString()
@@ -120,18 +116,19 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
     public boolean verifiedInputs(){
 
         String message = "Campo obrigatório";
-        String cnpLenght = "Deve conter 14 números";
+        String lenght = "Cpf deve conter 11 dígitos, já o Cnpj contem 14 dígitos";
+        String entraInvalida = "Este campo não corresponde a um cpf ou cnpj válido";
 
         if(this.nomeFazenda.getText().toString().isEmpty()){
             this.nomeFazenda.setError(message);
             return false;
         }
-        else if(this.cnpjFazenda.getText().toString().isEmpty()){
-            this.cnpjFazenda.setError(message);
+        else if(this.cpfcnpjFazenda.getText().toString().isEmpty()){
+            this.cpfcnpjFazenda.setError(message);
             return false;
         }
-        else if(this.cnpjFazenda.getText().toString().length() < 14 || this.cnpjFazenda.getText().toString().length() > 14){
-            this.cnpjFazenda.setError(cnpLenght);
+        else if(this.cpfcnpjFazenda.getText().toString().length() != 11 && this.cpfcnpjFazenda.getText().toString().length() != 14){
+            this.cpfcnpjFazenda.setError(lenght);
             return false;
         }
         else if(this.cepFazenda.getText().toString().isEmpty()){

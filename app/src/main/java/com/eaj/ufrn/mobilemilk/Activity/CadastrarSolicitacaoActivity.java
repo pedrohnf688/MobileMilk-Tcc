@@ -1,34 +1,20 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.eaj.ufrn.mobilemilk.Adapters.FazendaAdapter;
-import com.eaj.ufrn.mobilemilk.Fragments.DatePickerFragment;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
-import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -70,7 +56,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         // Buscando Cnpj
         for(Fazenda f: listaFazendas){
             if(f.getNome().equals(nome))
-                cnpj = f.getCnpj();
+                cnpj = f.getCpfcnpj();
         }
 
         //Log.i("Nomefazenda", "nome: "+ nome + "Cnpj: " + cnpj);

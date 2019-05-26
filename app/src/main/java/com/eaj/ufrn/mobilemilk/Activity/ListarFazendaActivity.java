@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.eaj.ufrn.mobilemilk.Adapters.FazendaAdapter;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
-import com.eaj.ufrn.mobilemilk.ModeloDTO.FazendaDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
@@ -68,7 +67,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), PerfilFazendaActivity.class);
                         // Salva as informações da fazenda clicada
                         i.putExtra("nomeFazenda", listaFazendas.get(position).getNome());
-                        i.putExtra("cnpjFazenda", listaFazendas.get(position).getCnpj());
+                        i.putExtra("cnpjFazenda", listaFazendas.get(position).getCpfcnpj());
                         i.putExtra("cepFazenda", listaFazendas.get(position).getCep());
                         i.putExtra("estadoFazenda", listaFazendas.get(position).getEstado());
                         i.putExtra("cidadeFazenda", listaFazendas.get(position).getCidade());

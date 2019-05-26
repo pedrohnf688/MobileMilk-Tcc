@@ -45,8 +45,8 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     private String cnpj;                                                        // cnpj da fzenda selecionada
 
     private List<Analise> listaAnalise = new ArrayList<>();                     // Guarda as analises adicionadas
-    private List<Leite> leite = new ArrayList<>();                              // Guarda o Tipo do Leite
-    private List<OrigemLeite> origemLeite = new ArrayList<>();                  // Guarda a Origem do Leite
+    private Leite leite;                                                        // Guarda o Tipo do Leite
+    private OrigemLeite origemLeite;                                            // Guarda a Origem do Leite
     private List<Produtos> produtos = new ArrayList<>();                        // Guarda rodutos
     private List<AnalisesSolicitadas> analisesSolicitadas = new ArrayList<>();  // Guarda as Analises Solicitadas
 
@@ -172,17 +172,17 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             /*
             *  Verificando Origem do Leite
             * */
-            if(bundle.getInt("origemLeite") == 0) this.origemLeite.add(OrigemLeite.BALDE);
-            if(bundle.getInt("origemLeite") == 1) this.origemLeite.add(OrigemLeite.TANQUE);
-            if(bundle.getInt("origemLeite") == 2) this.origemLeite.add(OrigemLeite.TETO);
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite.add(OrigemLeite.TETEIRA);
+            if(bundle.getInt("origemLeite") == 0) this.origemLeite = OrigemLeite.BALDE;
+            if(bundle.getInt("origemLeite") == 1) this.origemLeite = OrigemLeite.TANQUE;
+            if(bundle.getInt("origemLeite") == 2) this.origemLeite = OrigemLeite.TETO;
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TETEIRA;
 
             /*
              * Verificando tipo do Leite
              * */
-            if(bundle.getInt("tipoLeite") == 0) this.leite.add(Leite.CRU);
-            if(bundle.getInt("tipoLeite") == 1) this.leite.add(Leite.PASTEURIZADO);
-            if(bundle.getInt("tipoLeite") == 2) this.leite.add(Leite.UHT);
+            if(bundle.getInt("tipoLeite") == 0) this.leite = Leite.CRU;
+            if(bundle.getInt("tipoLeite") == 1) this.leite = Leite.PASTEURIZADO;
+            if(bundle.getInt("tipoLeite") == 2) this.leite = Leite.UHT;
 
             /*
             *  Quantidade de amostras

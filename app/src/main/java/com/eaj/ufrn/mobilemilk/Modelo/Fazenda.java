@@ -4,7 +4,7 @@ public class Fazenda {
 
     private String id;
     private String nome;
-    private String cnpj;
+    private String cpfcnpj;
     private String cep;
     private String endereco;
     private String estado;
@@ -18,10 +18,10 @@ public class Fazenda {
 
     }
 
-    public Fazenda(String id, String nome, String cnpj, String cep, String endereco, String estado,
+    public Fazenda(String id, String nome, String cpfcnpj, String cep, String endereco, String estado,
                    String cidade, String bairro, String numero, Cliente cliente, String imagem) {
         this.nome = nome;
-        this.cnpj = cnpj;
+        this.cpfcnpj = cpfcnpj;
         this.cep = cep;
         this.endereco = endereco;
         this.estado = estado;
@@ -33,10 +33,10 @@ public class Fazenda {
         this.id = id;
     }
 
-    public Fazenda(String nome, String cnpj, String cep, String endereco, String estado,
+    public Fazenda(String nome, String cpfcnpj, String cep, String endereco, String estado,
                    String cidade, String bairro, String numero, Cliente cliente, String imagem) {
         this.nome = nome;
-        this.cnpj = cnpj;
+        this.cpfcnpj = cpfcnpj;
         this.cep = cep;
         this.endereco = endereco;
         this.estado = estado;
@@ -55,12 +55,12 @@ public class Fazenda {
         this.nome = nome;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpfcnpj() {
+        return cpfcnpj;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpfcnpj(String cpfcnpj) {
+        this.cpfcnpj = cpfcnpj;
     }
 
     public String getCep() {
