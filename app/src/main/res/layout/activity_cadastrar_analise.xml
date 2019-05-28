@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="8dp"
                 android:text="Composição"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selecionarAnalises" />
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Caseina"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/composicao" />
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Ponto Crioscópico"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/caseina" />
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Quantidade de Células Somáticas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pontoCrioscopico" />
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Nitrogênio Uréico "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/celulasSomaticas" />
@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Condutividade Elétrica"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nitroGenioUreico" />
@@ -181,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Resíduo Antibiótico"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/condutividadeeletrica" />
@@ -191,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Ph"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/residuoAntibiotico" />
@@ -201,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Acidez Dornic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ph" />
@@ -211,7 +211,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Densidade Relativa"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/acidezDornic" />
@@ -221,7 +221,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Contagem Total de Bactérias"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/densidadeRelativa" />
@@ -230,76 +230,91 @@
                 android:id="@+id/selecionarFraude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="15dp"
                 android:text="Selecionar Análises de Fraudes"
                 android:textColor="@color/BlackT"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contagemBacteriasTotais"/>
+                app:layout_constraintTop_toBottomOf="@id/contagemBacteriasTotais" />
 
-            <CheckBox
-                android:id="@+id/formol"
+            <LinearLayout
+                android:id="@+id/contentFraude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="8dp"
-                android:text="Formol"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/selecionarFraude" />
+                app:layout_constraintTop_toBottomOf="@id/selecionarFraude">
 
-            <CheckBox
-                android:id="@+id/açucares"
-                android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/formol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Formol" />
+
+                <CheckBox
+                    android:id="@+id/açucares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Açucares" />
+
+                <CheckBox
+                    android:id="@+id/alcalinizantes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alcalinizantes" />
+
+                <CheckBox
+                    android:id="@+id/lactoperoxidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lactoperoxidade" />
+
+                <CheckBox
+                    android:id="@+id/cloretos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cloretos" />
+
+                <CheckBox
+                    android:id="@+id/amido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amido" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/adicionarAnalise"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Açucares"
+                android:background="@color/GreenB"
+                android:text="Adicionar"
+                android:textColor="@color/branco"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formol" />
+                app:layout_constraintTop_toBottomOf="@+id/contentFraude"/>
 
-            <CheckBox
-                android:id="@+id/alcalinizantes"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/cancelarAnalise"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Alcalinizantes"
+                android:background="@color/Red"
+                android:text="Cancelar"
+                android:textColor="@color/branco"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/açucares" />
-
-            <CheckBox
-                android:id="@+id/lactoperoxidade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
-                android:text="Lactoperoxidade"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alcalinizantes" />
-
-            <CheckBox
-                android:id="@+id/cloretos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
-                android:text="Cloretos"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lactoperoxidade" />
-
-            <CheckBox
-                android:id="@+id/amido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
-                android:text="Amido"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cloretos" />
-
+                app:layout_constraintTop_toBottomOf="@+id/adicionarAnalise"/>
 
         </android.support.constraint.ConstraintLayout>
 
