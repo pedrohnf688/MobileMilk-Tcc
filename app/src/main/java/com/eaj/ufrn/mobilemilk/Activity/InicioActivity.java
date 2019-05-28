@@ -24,7 +24,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
     public void cadastrar(View v){
-        Intent i = new Intent(this, CadastrarActivity.class);
+        Intent i = new Intent(this, CadastrarClienteActivity.class);
         startActivity(i);
     }
 

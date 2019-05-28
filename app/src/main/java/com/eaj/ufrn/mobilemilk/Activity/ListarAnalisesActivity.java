@@ -158,7 +158,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             if(bundle.getBoolean("analiseNitrogenioUreico")) this.analisesSolicitadas.add(AnalisesSolicitadas.NITROGENIO_UREICO);
             if(bundle.getBoolean("analiseResiduoAntibiotico")) this.analisesSolicitadas.add(AnalisesSolicitadas.RESIDUO_ANTIBIOTICO);
             if(bundle.getBoolean("analisePH")) this.analisesSolicitadas.add(AnalisesSolicitadas.PH);
-            if(bundle.getBoolean("analiseSoro")) this.analisesSolicitadas.add(AnalisesSolicitadas.SORO);
+            //if(bundle.getBoolean("analiseSoro")) this.analisesSolicitadas.add(AnalisesSolicitadas.SORO);
 
             Log.i("tamanho", "tamanho list analisesSolicitadas " + analisesSolicitadas.size());
 

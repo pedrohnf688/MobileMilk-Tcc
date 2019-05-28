@@ -37,7 +37,7 @@
         </activity>
 
         <activity
-            android:name=".Activity.CadastrarActivity"
+            android:name=".Activity.CadastrarClienteActivity"
             android:parentActivityName=".Activity.InicioActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -50,10 +50,10 @@
 
         <activity
             android:name=".Activity.ComplementoCadastroClienteActivity"
-            android:parentActivityName=".Activity.CadastrarActivity">
+            android:parentActivityName=".Activity.CadastrarClienteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.CadastrarActivity"/>
+                android:value=".Activity.CadastrarClienteActivity"/>
         </activity>
 
         <activity

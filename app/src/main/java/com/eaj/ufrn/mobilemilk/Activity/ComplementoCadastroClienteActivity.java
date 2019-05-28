@@ -56,7 +56,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         this.telefone1Usuario = findViewById(R.id.telefone1usuario);
         this.telefone2Usuario = findViewById(R.id.telefone2usuario);
 
-        // Recuperando os dados de CadastrarActivity
+        // Recuperando os dados de CadastrarClienteActivity
         this.bundle = getIntent().getExtras();
 
         this.progressBar = findViewById(R.id.progressBar2);

@@ -2,6 +2,7 @@
 <android.widget.ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
@@ -27,11 +28,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Origem do Leite"
+                    android:text="Selecionar Produto"
                     android:textSize="20dp" />
 
                 <Spinner
-                    android:id="@+id/origemDoLeite"
+                    android:id="@+id/spinnerProduto"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content" />
 
@@ -50,7 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tipo do Leite"
+                    android:text="Tipo do Leite "
                     android:textSize="20dp" />
 
                 <Spinner
@@ -62,7 +63,7 @@
 
             <LinearLayout
                 android:id="@+id/layout3"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -73,140 +74,232 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Produtos"
+                    android:text="Origem do Leite"
                     android:textSize="20dp" />
 
-                <RadioButton
-                    android:id="@+id/creme30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Creme 30% Gordura" />
-
-                <RadioButton
-                    android:id="@+id/creme45"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Creme 45% Gordura" />
-
-                <RadioButton
-                    android:id="@+id/soro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Soro" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout4"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout3">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Análises"
-                    android:textSize="20dp" />
-
-                <RadioButton
-                    android:id="@+id/composicao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Composição" />
-
-                <RadioButton
-                    android:id="@+id/caseina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Caseina" />
-
-                <RadioButton
-                    android:id="@+id/celulasSomaticas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Células Somáticas" />
-
-                <RadioButton
-                    android:id="@+id/nitrogenioUreico"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nitrogênio Uréico" />
-
-                <RadioButton
-                    android:id="@+id/condutividadeEletrica"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Condutividade Elétrica" />
-
-                <RadioButton
-                    android:id="@+id/residuoAntibiotico"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Resíduo Antibiótico" />
-
-                <RadioButton
-                    android:id="@+id/ph"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ph" />
-
-                <RadioButton
-                    android:id="@+id/Soro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Soro" />
+                <Spinner
+                    android:id="@+id/spinnerOrigemLeite"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/layout5"
+                android:id="@+id/contextParan"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout4">
+                app:layout_constraintTop_toBottomOf="@+id/layout3">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/numeroAmostras"
+                    android:id="@+id/numAmostras"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Número de amostras"
+                    android:hint="Número de Amostras"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/bConcluir"
-                android:layout_width="350dp"
+            <TextView
+                android:id="@+id/selecionarAnalises"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/GreenB"
-                android:onClick="adicionarAnalise"
-                android:text="Concluir"
-                android:textColor="@color/branco"
+                android:text="Selecionar Análises"
+                android:textColor="@color/BlackT"
+                android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout5"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/contextParan" />
+
+
+            <CheckBox
+                android:id="@+id/composicao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="Composição"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selecionarAnalises" />
+
+            <CheckBox
+                android:id="@+id/caseina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Caseina"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/composicao" />
+
+            <CheckBox
+                android:id="@+id/pontoCrioscopico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Ponto Crioscópico"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/caseina" />
+
+            <CheckBox
+                android:id="@+id/celulasSomaticas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Quantidade de Células Somáticas"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pontoCrioscopico" />
+
+            <CheckBox
+                android:id="@+id/nitroGenioUreico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Nitrogênio Uréico "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/celulasSomaticas" />
+
+            <CheckBox
+                android:id="@+id/condutividadeeletrica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Condutividade Elétrica"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nitroGenioUreico" />
+
+            <CheckBox
+                android:id="@+id/residuoAntibiotico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Resíduo Antibiótico"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/condutividadeeletrica" />
+
+            <CheckBox
+                android:id="@+id/ph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Ph"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/residuoAntibiotico" />
+
+            <CheckBox
+                android:id="@+id/acidezDornic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Acidez Dornic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ph" />
+
+            <CheckBox
+                android:id="@+id/densidadeRelativa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Densidade Relativa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/acidezDornic" />
+
+            <CheckBox
+                android:id="@+id/contagemBacteriasTotais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Contagem Total de Bactérias"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/densidadeRelativa" />
+
+            <TextView
+                android:id="@+id/selecionarFraude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Selecionar Análises de Fraudes"
+                android:textColor="@color/BlackT"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contagemBacteriasTotais"/>
+
+            <CheckBox
+                android:id="@+id/formol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Formol"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selecionarFraude" />
+
+            <CheckBox
+                android:id="@+id/açucares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Açucares"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formol" />
+
+            <CheckBox
+                android:id="@+id/alcalinizantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Alcalinizantes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/açucares" />
+
+            <CheckBox
+                android:id="@+id/lactoperoxidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Lactoperoxidade"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alcalinizantes" />
+
+            <CheckBox
+                android:id="@+id/cloretos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Cloretos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lactoperoxidade" />
+
+            <CheckBox
+                android:id="@+id/amido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Amido"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cloretos" />
+
 
         </android.support.constraint.ConstraintLayout>
 

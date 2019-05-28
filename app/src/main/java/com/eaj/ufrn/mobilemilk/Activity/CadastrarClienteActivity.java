@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastrarActivity extends AppCompatActivity {
+public class CadastrarClienteActivity extends AppCompatActivity {
 
     private TextView nomeUsuario;
     private TextView emailUsuario;

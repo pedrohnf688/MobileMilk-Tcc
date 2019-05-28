@@ -46,4 +46,15 @@
         <item> UHT </item>
     </string-array>
 
+    <string-array name="spinnerProdutos">
+        <item> CREME 30% GORDURA </item>
+        <item> CREME 45% GORDURA </item>
+        <item> Soro </item>
+        <item> Bebida Láctea </item>
+        <item> Iorgute </item>
+        <item> Sorvete </item>
+        <item> Queijo </item>
+        <item> Leite </item>
+    </string-array>
+
 </resources>
