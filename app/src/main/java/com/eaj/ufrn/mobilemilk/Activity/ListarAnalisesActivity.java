@@ -158,16 +158,24 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             if(bundle.getBoolean("analiseNitrogenioUreico")) this.analisesSolicitadas.add(AnalisesSolicitadas.NITROGENIO_UREICO);
             if(bundle.getBoolean("analiseResiduoAntibiotico")) this.analisesSolicitadas.add(AnalisesSolicitadas.RESIDUO_ANTIBIOTICO);
             if(bundle.getBoolean("analisePH")) this.analisesSolicitadas.add(AnalisesSolicitadas.PH);
-            //if(bundle.getBoolean("analiseSoro")) this.analisesSolicitadas.add(AnalisesSolicitadas.SORO);
+            if(bundle.getBoolean("analiseAcidezDornic")) this.analisesSolicitadas.add(AnalisesSolicitadas.ACIDEZ_DORNIC);
+            if(bundle.getBoolean("analiseDensidadeRelativa")) this.analisesSolicitadas.add(AnalisesSolicitadas.DENSIDADE_RELATIVA);
+            if(bundle.getBoolean("analisePontoCrioscopico")) this.analisesSolicitadas.add(AnalisesSolicitadas.PONTO_CRIOSCOPICO);
+            if(bundle.getBoolean("analiseContagemBacteriaTotal")) this.analisesSolicitadas.add(AnalisesSolicitadas.CBT);
 
             Log.i("tamanho", "tamanho list analisesSolicitadas " + analisesSolicitadas.size());
 
             /*
             * Verificando Proutos
             * */
-            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
-            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
-            if(bundle.getBoolean("produtosCreme30")) this.produtos.add(Produtos.CREME30GORDURA);
+            if(bundle.getInt("produtos") == 0) this.produtos.add(Produtos.CREME30GORDURA);
+            if(bundle.getInt("produtos") == 1) this.produtos.add(Produtos.CREME45GORDURA);
+            if(bundle.getInt("produtos") == 2) this.produtos.add(Produtos.SORO);
+            if(bundle.getInt("produtos") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA);
+            if(bundle.getInt("produtos") == 4) this.produtos.add(Produtos.IORGUTE);
+            if(bundle.getInt("produtos") == 5) this.produtos.add(Produtos.SORVETE);
+            if(bundle.getInt("produtos") == 6) this.produtos.add(Produtos.QUEIJO);
+            if(bundle.getInt("produtos") == 7) this.produtos.add(Produtos.LEITE);
 
             /*
             *  Verificando Origem do Leite
@@ -212,8 +220,11 @@ public class ListarAnalisesActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Analise Cadastrada", Toast.LENGTH_SHORT).show();
         }
-    }
+        else{
+            Toast.makeText(getApplicationContext(), "Cadastro Cancelado", Toast.LENGTH_SHORT).show();
+        }
 
+    }
 
 
 }

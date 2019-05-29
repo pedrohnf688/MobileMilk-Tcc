@@ -298,6 +298,7 @@
                 android:background="@color/GreenB"
                 android:text="Adicionar"
                 android:textColor="@color/branco"
+                android:onClick="adicionarAnalise"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contentFraude"/>
@@ -312,6 +313,7 @@
                 android:background="@color/Red"
                 android:text="Cancelar"
                 android:textColor="@color/branco"
+                android:onClick="cancelarAnalise"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/adicionarAnalise"/>
