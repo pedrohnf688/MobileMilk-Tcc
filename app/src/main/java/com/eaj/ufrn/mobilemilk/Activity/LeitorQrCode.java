@@ -13,6 +13,7 @@ import com.eaj.ufrn.mobilemilk.R;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+
 public class LeitorQrCode extends AppCompatActivity {
     ImageButton btScan;
     @Override
@@ -23,7 +24,6 @@ public class LeitorQrCode extends AppCompatActivity {
         final Activity activity = this;
 
         btScan =  findViewById(R.id.scanQR);
-
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,8 +33,10 @@ public class LeitorQrCode extends AppCompatActivity {
                 integrator.setCameraId(0); //0 camera traseira e 1 para camera frontal
                 integrator.initiateScan();
 
+
             }
         });
+
     }
 
     @Override
@@ -51,6 +53,8 @@ public class LeitorQrCode extends AppCompatActivity {
         }
 
     }
+
+
     private  void alert(String msg){ //depois trocar esse toast
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
