@@ -34,10 +34,13 @@
     </string-array>
 
     <string-array name="spinnerOrigemLeite">
-        <item> Balde </item>
-        <item> Tanque </item>
-        <item> Teto </item>
+        <item> Tanque Coletivo </item>
+        <item> Animal Quarto Mamário </item>
         <item> Teteira </item>
+        <item> Tanque Invividual </item>
+        <item> Animal </item>
+        <item> Rebanho Balde </item>
+        <item> Teto </item>
     </string-array>
 
     <string-array name="spinnerTipoLeite">

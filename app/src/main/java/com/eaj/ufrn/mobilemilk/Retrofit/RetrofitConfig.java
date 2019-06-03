@@ -32,7 +32,7 @@ public class RetrofitConfig {
                 .readTimeout(100, TimeUnit.SECONDS).build();
         Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
         this.rt = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.142:3005/")
+                .baseUrl("http://10.0.0.117:3005/")
                 .addConverterFactory(GsonConverterFactory.create(gsonConvertFactory))
                 .client(client)
                 .build();

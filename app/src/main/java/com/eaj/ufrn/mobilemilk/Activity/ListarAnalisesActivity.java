@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
 import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
+import com.eaj.ufrn.mobilemilk.Enum.EnumEspecie;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
 import com.eaj.ufrn.mobilemilk.Enum.Produtos;
@@ -25,7 +26,9 @@ import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoPostDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -107,7 +110,15 @@ public class ListarAnalisesActivity extends AppCompatActivity {
         /*
         *   Criando objeto de SolicitaDto -> Será o corpo @Body da requisição...
         * */
-        SolicitacaoPostDto solicitacaoPostDto = new SolicitacaoPostDto(this.bundle.getString("cnpjFazenda"), this.listaAnalise);
+
+        Date date = new Date();
+        String data = date.toString();
+        Log.i("data", "data: " + data);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        String dataFormat = format.format(date);
+
+        SolicitacaoPostDto solicitacaoPostDto = new SolicitacaoPostDto(this.bundle.getString("cnpjFazenda"), dataFormat, this.listaAnalise);
 
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
@@ -168,8 +179,8 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             /*
             * Verificando Proutos
             * */
-            if(bundle.getInt("produtos") == 0) this.produtos.add(Produtos.CREME30GORDURA);
-            if(bundle.getInt("produtos") == 1) this.produtos.add(Produtos.CREME45GORDURA);
+            if(bundle.getInt("produtos") == 0) this.produtos.add(Produtos.CREME_30_GORDURA);
+            if(bundle.getInt("produtos") == 1) this.produtos.add(Produtos.CREME_45_GORDURA);
             if(bundle.getInt("produtos") == 2) this.produtos.add(Produtos.SORO);
             if(bundle.getInt("produtos") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA);
             if(bundle.getInt("produtos") == 4) this.produtos.add(Produtos.IORGUTE);
@@ -180,10 +191,13 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             /*
             *  Verificando Origem do Leite
             * */
-            if(bundle.getInt("origemLeite") == 0) this.origemLeite = OrigemLeite.BALDE;
-            if(bundle.getInt("origemLeite") == 1) this.origemLeite = OrigemLeite.TANQUE;
-            if(bundle.getInt("origemLeite") == 2) this.origemLeite = OrigemLeite.TETO;
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TETEIRA;
+            if(bundle.getInt("origemLeite") == 0) this.origemLeite = OrigemLeite.TANQUE_COLETIVO;
+            if(bundle.getInt("origemLeite") == 1) this.origemLeite = OrigemLeite.ANIMAL_QUARTO_MAMARIO;
+            if(bundle.getInt("origemLeite") == 2) this.origemLeite = OrigemLeite.TETEIRA;
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TANQUE_INDIVIDUAL;
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.ANIMAL;
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.REBANHO_BALDE;
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TETO;
 
             /*
              * Verificando tipo do Leite
@@ -202,8 +216,8 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             * */
             Analise analise = new Analise(
                 this.leite, this.origemLeite, this.produtos
-                    , this.analisesSolicitadas, "Nelore", numAnalises
-                    , null
+                    , this.analisesSolicitadas, EnumEspecie.BOVINO, numAnalises
+                    , null, "oshente"
             );
 
             this.listaAnalise.add(analise);

@@ -3,18 +3,21 @@ package com.eaj.ufrn.mobilemilk.ModeloDTO;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 
+import java.util.Date;
 import java.util.List;
 
 public class SolicitacaoGetDto {
 
     private String id;
+    private Date dataCriada;
     private Fazenda fazenda;
     private List<Analise> listaAnalise;
     private String status;
     private String observacao;
 
-    public SolicitacaoGetDto(String id, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao) {
+    public SolicitacaoGetDto(String id, Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao) {
         this.id = id;
+        this.dataCriada = dataCriada;
         this.fazenda = fazenda;
         this.listaAnalise = listaAnalise;
         this.status = status;
@@ -61,6 +64,14 @@ public class SolicitacaoGetDto {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Date getDataCriada() {
+        return dataCriada;
+    }
+
+    public void setDataCriada(Date dataCriada) {
+        this.dataCriada = dataCriada;
     }
 
     @Override

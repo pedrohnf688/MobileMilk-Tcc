@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Modelo;
 
 import com.eaj.ufrn.mobilemilk.Enum.AnalisesSolicitadas;
+import com.eaj.ufrn.mobilemilk.Enum.EnumEspecie;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
 import com.eaj.ufrn.mobilemilk.Enum.Produtos;
@@ -14,13 +15,14 @@ public class Analise {
     private OrigemLeite origemLeite;
     private List<Produtos> produtos;
     private List<AnalisesSolicitadas> analisesSolicitadas;
-    private String especie;
+    private EnumEspecie especie;
     private Integer quantidadeAmostras;
     private Solicitacao solicitacao;
     private List<Amostra> listaAmostras;
+    private String descricao;
 
     public Analise(Leite leite, OrigemLeite origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
-            , String especie, Integer quantidadeAmostras, List<Amostra> listaAmostras) {
+            , EnumEspecie especie, Integer quantidadeAmostras, List<Amostra> listaAmostras, String descricao) {
         this.leite = leite;
         this.origemLeite = origemLeite;
         this.produtos = produtos;
@@ -28,6 +30,7 @@ public class Analise {
         this.especie = especie;
         this.quantidadeAmostras = quantidadeAmostras;
         this.listaAmostras = listaAmostras;
+        this.descricao = descricao;
     }
 
     public Analise(){}
@@ -64,11 +67,11 @@ public class Analise {
         this.analisesSolicitadas = analisesSolicitadas;
     }
 
-    public String getEspecie() {
+    public EnumEspecie getEspecie() {
         return especie;
     }
 
-    public void setEspecie(String especie) {
+    public void setEspecie(EnumEspecie especie) {
         this.especie = especie;
     }
 
