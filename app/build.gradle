@@ -44,4 +44,7 @@ dependencies {
     // imagem circular
     implementation 'de.hdodenhof:circleimageview:2.1.0'
 
+    // Maskaras
+    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+
 }

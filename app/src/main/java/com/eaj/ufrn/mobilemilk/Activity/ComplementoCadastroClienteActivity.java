@@ -15,6 +15,8 @@ import com.eaj.ufrn.mobilemilk.Enum.EnumTipoPerfilUsuario;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,18 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
         this.progressBar = findViewById(R.id.progressBar2);
         this.progressBar.setVisibility(View.GONE);
+
+        // Adicionando maskaras ao campo cpf
+        SimpleMaskFormatter mask = new SimpleMaskFormatter("NNN-NNN-NNN.NN");
+        MaskTextWatcher watcher = new MaskTextWatcher(this.cpfUsuario, mask);
+        this.cpfUsuario.addTextChangedListener(watcher);
+
+        // Adicionando maskaras ao camo telefone 1 e telefone 2
+        SimpleMaskFormatter mask1 = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher watcher1 = new MaskTextWatcher(this.telefone1Usuario, mask1);
+        this.telefone1Usuario.addTextChangedListener(watcher1);
+        watcher1 = new MaskTextWatcher(this.telefone2Usuario, mask1);
+        this.telefone2Usuario.addTextChangedListener(watcher1);
     }
 
     public boolean complementoCadastro(View v){
@@ -77,7 +91,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.cpfUsuario.setError("Cpf é obrigatório");
             return false;
         }
-        else if(cpf.length() < 11){
+        else if(cpf.length() < 14){
             this.cpfUsuario.setError("Cpf inválido");
             return  false;
         }
@@ -89,7 +103,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.telefone1Usuario.setError("Telefone obrigatório");
             return  false;
         }
-        else if(telefone1.length() < 11 || telefone1.length() > 11){
+        else if(telefone1.length() < 14 || telefone1.length() > 14){
             this.telefone1Usuario.setError("Deve conter 11 digitos incluindo o DDD");
             return false;
         }
@@ -97,7 +111,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.telefone1Usuario.setError("Não use espaços ao preencher o número");
             return false;
         }
-        else if(telefone2.length() < 11 || telefone2.length() > 11){
+        else if(telefone2.length() < 14 || telefone2.length() > 14){
             this.telefone2Usuario.setError("Deve conter 11 digitos incluindo o DDD");
             return false;
         }
