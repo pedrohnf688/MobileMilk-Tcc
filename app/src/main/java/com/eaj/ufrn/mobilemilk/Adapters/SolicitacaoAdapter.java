@@ -5,11 +5,13 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompatSideChannelService;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
@@ -65,6 +67,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
 
         public SolicitacaoViewHolder(@NonNull View itemView) {
             super(itemView);
+            Log.i("vdc", "Entrou");
             nomeFazendaSolicitacao = itemView.findViewById(R.id.nomeFazendaSolicitacao);
             numeroAnaliseSolicitacao = itemView.findViewById(R.id.qtdAnalisesCadastradasSolicitacao);
             statusSolicitacao = itemView.findViewById(R.id.statusSolicitacao);
