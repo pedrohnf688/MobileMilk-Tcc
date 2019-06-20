@@ -63,14 +63,15 @@ public class SolicitacoesFragment extends Fragment {
                 new MeuRecyclerViewClickListener(getActivity().getApplicationContext(), recyclerSolicitacao, new MeuRecyclerViewClickListener.OnItemClickListener(){
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        Toast.makeText(getContext(), "Clicou LONGO", Toast.LENGTH_SHORT).show();
-                        Intent t = new Intent(getContext(), Leitor.class);
-                        startActivity(t);
+                        //Toast.makeText(getContext(), "Clicou LONGO", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
                     public void onItemClick(View view, int position){
                         Toast.makeText(getContext(), "Clicou CURTO", Toast.LENGTH_SHORT).show();
+                        Intent t = new Intent(getContext(), Leitor.class);
+                        startActivity(t);
                     }
                 })
         );

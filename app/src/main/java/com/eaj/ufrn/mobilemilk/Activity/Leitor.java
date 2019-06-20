@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,19 +19,21 @@ import com.google.zxing.integration.android.IntentResult;
 public class Leitor extends AppCompatActivity {
 
     TextView txtleite;
-    TextView txorigem;
-    TextView txtproduto;
     ImageButton btScan;
+    Button botFinalizar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leitor);
 
+        getSupportActionBar().setTitle("Leitor de Amostras");
+
         final Activity activity = this;
 
         txtleite = findViewById(R.id.leite);
-        txorigem= findViewById(R.id.origem);
-        txtproduto = findViewById(R.id.produtos);
+        botFinalizar = findViewById(R.id.btFinalizar);
 
 
         btScan =  findViewById(R.id.scanQR);
@@ -47,6 +50,14 @@ public class Leitor extends AppCompatActivity {
             }
         });
 
+
+        botFinalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -54,10 +65,8 @@ public class Leitor extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result!=null){
             if(result.getContents() != null){
-                alert("Deu bom");
+                //alert("Deu bom");
                 txtleite.setText(result.getContents());
-                txorigem.setText(result.getContents());
-                txtproduto.setText(result.getContents());
             }else{
                 alert("Cancelado");
             }
