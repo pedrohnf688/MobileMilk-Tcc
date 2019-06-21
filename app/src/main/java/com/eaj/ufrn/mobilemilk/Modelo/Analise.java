@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Analise {
 
-    private Leite leite;
     private OrigemLeite origemLeite;
     private List<Produtos> produtos;
     private List<AnalisesSolicitadas> analisesSolicitadas;
@@ -21,9 +20,8 @@ public class Analise {
     private List<Amostra> listaAmostras;
     private String descricao;
 
-    public Analise(Leite leite, OrigemLeite origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
+    public Analise(OrigemLeite origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
             , EnumEspecie especie, Integer quantidadeAmostras, List<Amostra> listaAmostras, String descricao) {
-        this.leite = leite;
         this.origemLeite = origemLeite;
         this.produtos = produtos;
         this.analisesSolicitadas = analisesSolicitadas;
@@ -34,14 +32,6 @@ public class Analise {
     }
 
     public Analise(){}
-
-    public Leite getLeite() {
-        return leite;
-    }
-
-    public void setLeite(Leite leite) {
-        this.leite = leite;
-    }
 
     public OrigemLeite getOrigemLeite() {
         return origemLeite;
@@ -97,5 +87,13 @@ public class Analise {
 
     public void setListaAmostras(List<Amostra> listaAmostras) {
         this.listaAmostras = listaAmostras;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

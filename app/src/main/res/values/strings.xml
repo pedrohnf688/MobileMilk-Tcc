@@ -57,7 +57,17 @@
         <item> Iorgute </item>
         <item> Sorvete </item>
         <item> Queijo </item>
-        <item> Leite </item>
+        <item> Leite UHT</item>
+        <item> Leite PASTEURIZADO</item>
+        <item> Leite CRÚ</item>
+    </string-array>
+
+    <string-array name="spinnerEspecie">
+        <item> Caprino </item>
+        <item> Bovino </item>
+        <item> Ovino </item>
+        <item> Bubalino </item>
+        <item> Asilino </item>
     </string-array>
 
 </resources>

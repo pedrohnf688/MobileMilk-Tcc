@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.eaj.ufrn.mobilemilk.Enum.EnumEspecie;
 import com.eaj.ufrn.mobilemilk.Enum.Leite;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
+import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -39,11 +41,11 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         AnaliseViewHolder holder = (AnaliseViewHolder) viewHolder;
         analiseEscolhida = listaAnalise.get(position);
-        Leite leite = analiseEscolhida.getLeite();
-        OrigemLeite origemLeite = analiseEscolhida.getOrigemLeite();
+        EnumEspecie especie = analiseEscolhida.getEspecie();
+        Produtos produto = analiseEscolhida.getProdutos().get(0);
         holder.numAmostras.setText("Quantidade de Amostras: " + analiseEscolhida.getQuantidadeAmostras());
-        holder.tipoLeite.setText("Tipo do Leite: " + leite.name());
-        holder.origemLeite.setText("Origem do Leite: " + origemLeite.name());
+        holder.tipoLeite.setText("Espécie: " + especie.name());
+        holder.origemLeite.setText("Produto: " + produto.name());
     }
 
     @Override

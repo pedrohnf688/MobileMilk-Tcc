@@ -48,7 +48,7 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     private String cnpj;                                                        // cnpj da fzenda selecionada
 
     private List<Analise> listaAnalise = new ArrayList<>();                     // Guarda as analises adicionadas
-    private Leite leite;                                                        // Guarda o Tipo do Leite
+    private EnumEspecie especie;                                                  // Guarda o Tipo de Especie
     private OrigemLeite origemLeite;                                            // Guarda a Origem do Leite
     private List<Produtos> produtos = new ArrayList<>();                        // Guarda rodutos
     private List<AnalisesSolicitadas> analisesSolicitadas = new ArrayList<>();  // Guarda as Analises Solicitadas
@@ -150,6 +150,10 @@ public class ListarAnalisesActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data){
 
+        if (data == null){
+            return;
+        }
+
         Bundle bundle = data.getExtras();
 
         if(resultcode == 1) {
@@ -174,19 +178,32 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             if(bundle.getBoolean("analisePontoCrioscopico")) this.analisesSolicitadas.add(AnalisesSolicitadas.PONTO_CRIOSCOPICO);
             if(bundle.getBoolean("analiseContagemBacteriaTotal")) this.analisesSolicitadas.add(AnalisesSolicitadas.CBT);
 
+            /*
+            *  Verificando Analises Solicitadas (Fraudes)
+            *
+            * */
+            if(bundle.getBoolean("analiseFraudeFormol")) this.analisesSolicitadas.add(AnalisesSolicitadas.FORMOL);
+            if(bundle.getBoolean("analiseFraudeAçucares")) this.analisesSolicitadas.add(AnalisesSolicitadas.AÇUCARES);
+            if(bundle.getBoolean("analiseFraudeAlcalinizantes")) this.analisesSolicitadas.add(AnalisesSolicitadas.ALCALINIZANTES);
+            if(bundle.getBoolean("analiseFraudeLactoperoxidade")) this.analisesSolicitadas.add(AnalisesSolicitadas.LACTOPEROXIDADE);
+            if(bundle.getBoolean("analiseFraudeCloretos")) this.analisesSolicitadas.add(AnalisesSolicitadas.CLORETOS);
+            if(bundle.getBoolean("analiseFraudeAmido")) this.analisesSolicitadas.add(AnalisesSolicitadas.AMIDO);
+
             Log.i("tamanho", "tamanho list analisesSolicitadas " + analisesSolicitadas.size());
 
             /*
             * Verificando Proutos
             * */
-            if(bundle.getInt("produtos") == 0) this.produtos.add(Produtos.CREME_30_GORDURA);
-            if(bundle.getInt("produtos") == 1) this.produtos.add(Produtos.CREME_45_GORDURA);
-            if(bundle.getInt("produtos") == 2) this.produtos.add(Produtos.SORO);
-            if(bundle.getInt("produtos") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA);
-            if(bundle.getInt("produtos") == 4) this.produtos.add(Produtos.IORGUTE);
-            if(bundle.getInt("produtos") == 5) this.produtos.add(Produtos.SORVETE);
-            if(bundle.getInt("produtos") == 6) this.produtos.add(Produtos.QUEIJO);
-            if(bundle.getInt("produtos") == 7) this.produtos.add(Produtos.LEITE);
+            if(bundle.getInt("produto") == 0) this.produtos.add(Produtos.CREME_30_GORDURA);
+            if(bundle.getInt("produto") == 1) this.produtos.add(Produtos.CREME_45_GORDURA);
+            if(bundle.getInt("produto") == 2) this.produtos.add(Produtos.SORO);
+            if(bundle.getInt("produto") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA);
+            if(bundle.getInt("produto") == 4) this.produtos.add(Produtos.IORGUTE);
+            if(bundle.getInt("produto") == 5) this.produtos.add(Produtos.SORVETE);
+            if(bundle.getInt("produto") == 6) this.produtos.add(Produtos.QUEIJO);
+            if(bundle.getInt("produto") == 7) this.produtos.add(Produtos.LEITE_UHT);
+            if(bundle.getInt("produto") == 8) this.produtos.add(Produtos.LEITE_PASTEURIZADO);
+            if(bundle.getInt("produto") == 9) this.produtos.add(Produtos.LEITE_CRU);
 
             /*
             *  Verificando Origem do Leite
@@ -200,11 +217,13 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TETO;
 
             /*
-             * Verificando tipo do Leite
-             * */
-            if(bundle.getInt("tipoLeite") == 0) this.leite = Leite.CRU;
-            if(bundle.getInt("tipoLeite") == 1) this.leite = Leite.PASTEURIZADO;
-            if(bundle.getInt("tipoLeite") == 2) this.leite = Leite.UHT;
+            *   Verificando especie
+            * */
+            if(bundle.getInt("especie") == 0) this.especie = EnumEspecie.CAPRINO;
+            if(bundle.getInt("especie") == 1) this.especie = EnumEspecie.BOVINO;
+            if(bundle.getInt("especie") == 2) this.especie = EnumEspecie.OVINO;
+            if(bundle.getInt("especie") == 3) this.especie = EnumEspecie.BUBALINO;
+            if(bundle.getInt("especie") == 4) this.especie = EnumEspecie.ASILINO;
 
             /*
             *  Quantidade de amostras
@@ -215,9 +234,9 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             *   Criando objeto do tipo Analise para adicionar ao List<Analise> ...
             * */
             Analise analise = new Analise(
-                this.leite, this.origemLeite, this.produtos
-                    , this.analisesSolicitadas, EnumEspecie.BOVINO, numAnalises
-                    , null, "oshente"
+                this.origemLeite, this.produtos
+                    , this.analisesSolicitadas, especie, numAnalises
+                    , null, null
             );
 
             this.listaAnalise.add(analise);
@@ -233,6 +252,9 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             this.recyclerListAnalise.setAdapter(new AnaliseAdapter(listaAnalise, getApplicationContext()));
 
             Toast.makeText(getApplicationContext(), "Analise Cadastrada", Toast.LENGTH_SHORT).show();
+
+            //this.analisesSolicitadas.clear();
+            //this.produtos.clear();
         }
         else{
             Toast.makeText(getApplicationContext(), "Cadastro Cancelado", Toast.LENGTH_SHORT).show();
