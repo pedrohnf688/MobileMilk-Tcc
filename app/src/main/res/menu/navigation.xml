@@ -8,6 +8,11 @@
         android:title="Solicitações"/>
 
     <item
+        android:id="@+id/navigation_qrcode"
+        android:icon="@drawable/qrcode"
+        android:title="QrCode"/>
+
+    <item
         android:id="@+id/navigation_perfil"
         android:icon="@drawable/baseline_person_white_48dp"
         android:title="Perfil"/>

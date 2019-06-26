@@ -32,52 +32,52 @@ public class Leitor extends AppCompatActivity {
 
         final Activity activity = this;
 
-        txtleite = findViewById(R.id.leite);
-        botFinalizar = findViewById(R.id.btFinalizar);
-
-
-        btScan =  findViewById(R.id.scanQR);
-        btScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(activity);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-                integrator.setPrompt("Qr Code da sua Amostra");
-                integrator.setCameraId(0); //0 camera traseira e 1 para camera frontal
-                integrator.initiateScan();
-
-
-            }
-        });
-
-
-        botFinalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result!=null){
-            if(result.getContents() != null){
-                //alert("Deu bom");
-                txtleite.setText(result.getContents());
-            }else{
-                alert("Cancelado");
-            }
-        }else{
-            super.onActivityResult(requestCode, resultCode, data);
-        }
+//        txtleite = findViewById(R.id.leite);
+//        botFinalizar = findViewById(R.id.btFinalizar);
+//
+//
+//        btScan =  findViewById(R.id.scanQR);
+//        btScan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                IntentIntegrator integrator = new IntentIntegrator(activity);
+//                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+//                integrator.setPrompt("Qr Code da sua Amostra");
+//                integrator.setCameraId(0); //0 camera traseira e 1 para camera frontal
+//                integrator.initiateScan();
+//
+//
+//            }
+//        });
+//
+//
+//        botFinalizar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
     }
 
-
-    private  void alert(String msg){ //depois trocar esse toast
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//        if(result!=null){
+//            if(result.getContents() != null){
+//                //alert("Deu bom");
+//                txtleite.setText(result.getContents());
+//            }else{
+//                alert("Cancelado");
+//            }
+//        }else{
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//
+//    }
+//
+//
+//    private  void alert(String msg){ //depois trocar esse toast
+//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//    }
 }

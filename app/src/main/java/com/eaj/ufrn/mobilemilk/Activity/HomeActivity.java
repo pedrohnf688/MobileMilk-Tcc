@@ -21,6 +21,7 @@ import android.widget.Toolbar;
 
 import com.eaj.ufrn.mobilemilk.Fragments.FazendasFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.PerfilFragment;
+import com.eaj.ufrn.mobilemilk.Fragments.QrCodeFragment;
 import com.eaj.ufrn.mobilemilk.Fragments.SolicitacoesFragment;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
@@ -73,6 +74,11 @@ public class HomeActivity extends AppCompatActivity {
             Fragment fragment = null;
 
             switch(menuItem.getItemId()){
+                case R.id.navigation_qrcode:
+                    getSupportActionBar().setTitle("QrCode Leitor");
+                    fragment = new QrCodeFragment();
+                    break;
+
                 case R.id.navigation_solicitacao:
                     getSupportActionBar().setTitle(R.string.Solicitacoes);
                     actionButton.setVisibility(View.VISIBLE);
