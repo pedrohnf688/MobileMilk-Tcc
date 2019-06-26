@@ -78,11 +78,6 @@ public class HomeActivity extends AppCompatActivity {
                     actionButton.setVisibility(View.VISIBLE);
                     fragment = new SolicitacoesFragment();
                     break;
-                case R.id.navigation_fazenda:
-                    getSupportActionBar().setTitle(R.string.Fazendas);
-                    actionButton.setVisibility(View.VISIBLE);
-                    fragment = new FazendasFragment();
-                    break;
                 case R.id.navigation_perfil:
                     getSupportActionBar().setTitle(R.string.Perfil);
                     actionButton.setVisibility(View.GONE);

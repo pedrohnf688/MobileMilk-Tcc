@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.Leitor;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
@@ -69,9 +70,10 @@ public class SolicitacoesFragment extends Fragment {
 
                     @Override
                     public void onItemClick(View view, int position){
-                        Toast.makeText(getContext(), "Clicou CURTO", Toast.LENGTH_SHORT).show();
-                        Intent t = new Intent(getContext(), Leitor.class);
-                        startActivity(t);
+                        //Toast.makeText(getContext(), "Clicou CURTO", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getActivity().getApplicationContext(), DetalheSolicitacaoActivity.class);
+                        i.putExtra("recyclerPosition", position);
+                        startActivity(i);
                     }
                 })
         );

@@ -194,36 +194,39 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             /*
             * Verificando Proutos
             * */
-            if(bundle.getInt("produto") == 0) this.produtos.add(Produtos.CREME_30_GORDURA);
-            if(bundle.getInt("produto") == 1) this.produtos.add(Produtos.CREME_45_GORDURA);
-            if(bundle.getInt("produto") == 2) this.produtos.add(Produtos.SORO);
-            if(bundle.getInt("produto") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA);
-            if(bundle.getInt("produto") == 4) this.produtos.add(Produtos.IORGUTE);
-            if(bundle.getInt("produto") == 5) this.produtos.add(Produtos.SORVETE);
-            if(bundle.getInt("produto") == 6) this.produtos.add(Produtos.QUEIJO);
-            if(bundle.getInt("produto") == 7) this.produtos.add(Produtos.LEITE_UHT);
-            if(bundle.getInt("produto") == 8) this.produtos.add(Produtos.LEITE_PASTEURIZADO);
-            if(bundle.getInt("produto") == 9) this.produtos.add(Produtos.LEITE_CRU);
+            if(bundle.getInt("produto") == 0) {
+                this.produtos.add(Produtos.CREME_30_GORDURA);
+                Log.i("produto", ""+0);
+            }
+            if(bundle.getInt("produto") == 1) this.produtos.add(Produtos.CREME_45_GORDURA); Log.i("produto", ""+1);
+            if(bundle.getInt("produto") == 2) this.produtos.add(Produtos.SORO); Log.i("produto", ""+2);
+            if(bundle.getInt("produto") == 3) this.produtos.add(Produtos.BEBIDA_LACTEA); Log.i("produto", ""+3);
+            if(bundle.getInt("produto") == 4) this.produtos.add(Produtos.IORGUTE); Log.i("produto", ""+4);
+            if(bundle.getInt("produto") == 5) this.produtos.add(Produtos.SORVETE); Log.i("produto", ""+5);
+            if(bundle.getInt("produto") == 6) this.produtos.add(Produtos.QUEIJO); Log.i("produto", ""+6);
+            if(bundle.getInt("produto") == 7) this.produtos.add(Produtos.LEITE_UHT); Log.i("produto", ""+7);
+            if(bundle.getInt("produto") == 8) this.produtos.add(Produtos.LEITE_PASTEURIZADO); Log.i("produto", ""+8);
+            if(bundle.getInt("produto") == 9) this.produtos.add(Produtos.LEITE_CRU); Log.i("produto", ""+9);
 
             /*
             *  Verificando Origem do Leite
             * */
-            if(bundle.getInt("origemLeite") == 0) this.origemLeite = OrigemLeite.TANQUE_COLETIVO;
-            if(bundle.getInt("origemLeite") == 1) this.origemLeite = OrigemLeite.ANIMAL_QUARTO_MAMARIO;
-            if(bundle.getInt("origemLeite") == 2) this.origemLeite = OrigemLeite.TETEIRA;
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TANQUE_INDIVIDUAL;
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.ANIMAL;
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.REBANHO_BALDE;
-            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TETO;
+            if(bundle.getInt("origemLeite") == 0) this.origemLeite = OrigemLeite.TANQUE_COLETIVO; Log.i("origemLeite", ""+0);
+            if(bundle.getInt("origemLeite") == 1) this.origemLeite = OrigemLeite.ANIMAL_QUARTO_MAMARIO; Log.i("origemLeite", ""+1);
+            if(bundle.getInt("origemLeite") == 2) this.origemLeite = OrigemLeite.TETEIRA; Log.i("origemLeite", ""+2);
+            if(bundle.getInt("origemLeite") == 3) this.origemLeite = OrigemLeite.TANQUE_INDIVIDUAL; Log.i("origemLeite", ""+3);
+            if(bundle.getInt("origemLeite") == 4) this.origemLeite = OrigemLeite.ANIMAL; Log.i("origemLeite", ""+4);
+            if(bundle.getInt("origemLeite") == 5) this.origemLeite = OrigemLeite.REBANHO_BALDE; Log.i("origemLeite", ""+5);
+            if(bundle.getInt("origemLeite") == 6) this.origemLeite = OrigemLeite.TETO; Log.i("origemLeite", ""+6);
 
             /*
             *   Verificando especie
             * */
-            if(bundle.getInt("especie") == 0) this.especie = EnumEspecie.CAPRINO;
-            if(bundle.getInt("especie") == 1) this.especie = EnumEspecie.BOVINO;
-            if(bundle.getInt("especie") == 2) this.especie = EnumEspecie.OVINO;
-            if(bundle.getInt("especie") == 3) this.especie = EnumEspecie.BUBALINO;
-            if(bundle.getInt("especie") == 4) this.especie = EnumEspecie.ASILINO;
+            if(bundle.getInt("especie") == 0) this.especie = EnumEspecie.CAPRINO; Log.i("especie", ""+0);
+            if(bundle.getInt("especie") == 1) this.especie = EnumEspecie.BOVINO; Log.i("especie", ""+1);
+            if(bundle.getInt("especie") == 2) this.especie = EnumEspecie.OVINO; Log.i("especie", ""+2);
+            if(bundle.getInt("especie") == 3) this.especie = EnumEspecie.BUBALINO; Log.i("especie", ""+3);
+            if(bundle.getInt("especie") == 4) this.especie = EnumEspecie.ASILINO; Log.i("especie", ""+4);
 
             /*
             *  Quantidade de amostras

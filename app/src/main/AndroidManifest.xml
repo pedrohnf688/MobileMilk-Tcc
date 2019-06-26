@@ -93,6 +93,13 @@
         </activity>
         <activity android:name=".Activity.AtualizarFazendaActivity" />
         <activity android:name=".Activity.CadastrarFazendaActivity" />
+        <activity
+            android:name=".Activity.DetalheSolicitacaoActivity"
+            android:parentActivityName=".Activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.HomeActivity"/>
+        </activity>
     </application>
 
 </manifest>
