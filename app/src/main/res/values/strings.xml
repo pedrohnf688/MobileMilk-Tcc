@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MobileMilk</string>
     <string name="alertDialogMessage">
-    Para poder fazer uma requisição de análise você precisa completar seu cadastro fornecendo sua identificação Cpf, Telefone e uma Fazenda. Deseja Cadastrar informações agora?
+    Para poder fazer uma solicitação de análise de leite você precisa completar seu cadastro. Deseja cadastrar informações agora?
     </string>
     <string name="NomeObrigatorio">Nome é obrigatório</string>
     <string name="EmailObrigatorio">Email é obrigatório</string>

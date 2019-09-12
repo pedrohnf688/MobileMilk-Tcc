@@ -47,11 +47,46 @@ public class ListarFazendaActivity extends AppCompatActivity {
         this.cadastrarFazenda = findViewById(R.id.actionButtonCadastrarFazenda);
 
         recycler = findViewById(R.id.recyclerViewListarFazendas);
+
+        cadastrarFazenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent t = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
+                startActivity(t);
+            }
+        });
+
+
+
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayout.VERTICAL, false);
-
         recycler.setLayoutManager(layout);
-
         recycler.setItemAnimator(new DefaultItemAnimator());
+
+
+        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+
+        Call<List<Fazenda>> call = new RetrofitConfig()
+                .getClienteService()
+                .buscarFazendas(prefs.getString("accessId", "default")
+                        , prefs.getString("accessToken", "default"));
+        call.enqueue(new Callback<List<Fazenda>>() {
+            @Override
+            public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
+                listaFazendas.clear();
+                if(response.isSuccessful()){
+                    listaFazendas = response.body();
+                    recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Fazenda>> call, Throwable t) {
+                Log.i("Error404", "cause: " + t.getCause());
+                Log.i("Error404", "message: " + t.getMessage());
+                Toast.makeText(ListarFazendaActivity.this, "Erro ao listar fazendas", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         // Implementação de Listener de cliques.
         recycler.addOnItemTouchListener(
@@ -80,10 +115,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
 
     }
 
-    public void CadastrarFazenda(View v){
-        Intent t = new Intent(getApplicationContext(), CadastrarFazendaActivity.class);
-        startActivity(t);
-    }
+
 
 
     // onStart() -> Carrega as fazendas do Banco de Dados ...
@@ -91,29 +123,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
-        SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        Call<List<Fazenda>> call = new RetrofitConfig()
-                .getClienteService()
-                .buscarFazendas(prefs.getString("accessId", "default")
-                        , prefs.getString("accessToken", "default"));
-        call.enqueue(new Callback<List<Fazenda>>() {
-            @Override
-            public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
-                listaFazendas.clear();
-                if(response.isSuccessful()){
-                    listaFazendas = response.body();
-                    recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Fazenda>> call, Throwable t) {
-                Log.i("Error404", "cause: " + t.getCause());
-                Log.i("Error404", "message: " + t.getMessage());
-                Toast.makeText(ListarFazendaActivity.this, "Erro ao listar fazendas", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 }

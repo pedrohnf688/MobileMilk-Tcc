@@ -103,7 +103,7 @@ public class SolicitacoesFragment extends Fragment {
                 if(response.isSuccessful()){
                     listaSolicitacoes = response.body();
 
-                    recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getActivity().getApplicationContext()));
+                    recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getContext()));
                 }
                 else {
                     Log.i("ResponseError", "Message: " + response.message());

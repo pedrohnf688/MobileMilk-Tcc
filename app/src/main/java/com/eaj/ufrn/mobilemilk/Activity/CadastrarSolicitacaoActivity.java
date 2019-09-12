@@ -39,7 +39,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
     }
 
     // Avança para a tela de cadastrara amostras.
-    public void avançar(View v){
+    public void avancar(View v){
 
         /*
         *  Verifica se há fazendas cadastradas
@@ -81,7 +81,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Fazenda>>() {
             @Override
             public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
-                listaFazendas.clear();
+                //listaFazendas.clear();
                 if(response.isSuccessful()){
                     listaFazendas = response.body();
 

@@ -93,7 +93,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Fazenda> call, Response<Fazenda> response) {
                 if(response.isSuccessful())
-                    Toast.makeText(getApplicationContext(), "Fazenda salva com sucesso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Fazenda salva com sucesso", Toast.LENGTH_SHORT).show();
 
                 finish();
                 Intent i = new Intent(getApplicationContext(), ListarFazendaActivity.class);

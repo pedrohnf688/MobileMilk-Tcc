@@ -130,9 +130,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                                     startActivity(i);
                                 }
                                 else {
-                                    Toast.makeText(getApplicationContext(), R.string.EmailSetError, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                                     Log.i("erro", ""+response.toString());
-                                }
+                                }//R.string.EmailSetError
 
                                 progressBar.setVisibility(View.GONE);
                             }

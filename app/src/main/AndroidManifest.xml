@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Leitor"></activity>
+        <activity android:name=".Activity.AnalisesActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Activity.QrCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.Leitor"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".BroadcastReceiver.NetWorkChangeReceiver">
             <intent-filter>
@@ -20,7 +27,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activity.InicioActivity">
+        <activity
+            android:name=".Activity.InicioActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,76 +38,92 @@
         </activity>
         <activity
             android:name=".Activity.LoginActivity"
-            android:parentActivityName=".Activity.InicioActivity">
+            android:parentActivityName=".Activity.InicioActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.InicioActivity" />
         </activity>
         <activity
             android:name=".Activity.CadastrarClienteActivity"
-            android:parentActivityName=".Activity.InicioActivity">
+            android:parentActivityName=".Activity.InicioActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.InicioActivity" />
         </activity>
-        <activity android:name=".Activity.HomeActivity"></activity>
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ComplementoCadastroClienteActivity"
-            android:parentActivityName=".Activity.CadastrarClienteActivity">
+            android:parentActivityName=".Activity.CadastrarClienteActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.CadastrarClienteActivity" />
         </activity>
         <activity
             android:name=".Activity.CadastrarSolicitacaoActivity"
-            android:parentActivityName=".Activity.HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity" />
         </activity>
         <activity
             android:name=".Activity.ListarAnalisesActivity"
-            android:parentActivityName=".Activity.CadastrarSolicitacaoActivity">
+            android:parentActivityName=".Activity.CadastrarSolicitacaoActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.CadastrarSolicitacaoActivity" />
         </activity>
         <activity
             android:name=".Activity.ListarFazendaActivity"
-            android:parentActivityName=".Activity.HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity" />
         </activity>
         <activity
             android:name=".Activity.AtualizarClienteActivity"
-            android:parentActivityName=".Activity.HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.HomeActivity" />
         </activity>
         <activity
             android:name=".Activity.PerfilFazendaActivity"
-            android:parentActivityName=".Activity.ListarFazendaActivity">
+            android:parentActivityName=".Activity.ListarFazendaActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ListarFazendaActivity" />
         </activity>
         <activity
             android:name=".Activity.CadastrarAnaliseActivity"
-            android:parentActivityName=".Activity.ListarAnalisesActivity">
+            android:parentActivityName=".Activity.ListarAnalisesActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ListarAnalisesActivity" />
         </activity>
-        <activity android:name=".Activity.AtualizarFazendaActivity" />
-        <activity android:name=".Activity.CadastrarFazendaActivity" />
+        <activity
+            android:name=".Activity.AtualizarFazendaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CadastrarFazendaActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.DetalheSolicitacaoActivity"
-            android:parentActivityName=".Activity.HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.HomeActivity"/>
+                android:value=".Activity.HomeActivity" />
         </activity>
     </application>
 

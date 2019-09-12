@@ -4,32 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".Fragments.FazendasFragment">
+    android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".Fragments.FazendasFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewListarFazendas"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/actionButtonCadastrarFazenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:backgroundTint="@color/RedFloat"
         android:onClick="CadastrarFazenda"
         android:src="@drawable/add_48dp"
-        android:backgroundTint="@color/RedFloat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

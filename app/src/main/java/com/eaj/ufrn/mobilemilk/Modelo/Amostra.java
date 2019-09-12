@@ -14,13 +14,16 @@ public class Amostra {
     private String qrCode;
     private String observacao;
     private Analise analise;
+    private String identificadorAmostra;
 
-    public Amostra(Date dataColeta, Integer numAmostras, String qrCode, String observacao, Analise analise) {
+    public Amostra(Date dataColeta, Integer numAmostras, String qrCode, String observacao, Analise analise,
+                   String identificadorAmostra) {
         this.dataColeta = dataColeta;
         this.numAmostras = numAmostras;
         this.qrCode = qrCode;
         this.observacao = observacao;
         this.analise = analise;
+        this.identificadorAmostra = identificadorAmostra;
     }
 
     public Amostra(){
@@ -65,5 +68,25 @@ public class Amostra {
 
     public void setAnalise(Analise analise) {
         this.analise = analise;
+    }
+
+    public String getIdentificadorAmostra() {
+        return identificadorAmostra;
+    }
+
+    public void setIdentificadorAmostra(String identificadorAmostra) {
+        this.identificadorAmostra = identificadorAmostra;
+    }
+
+    @Override
+    public String toString() {
+        return "Amostra{" +
+                "dataColeta=" + dataColeta +
+                ", numAmostras=" + numAmostras +
+                ", qrCode='" + qrCode + '\'' +
+                ", observacao='" + observacao + '\'' +
+                ", analise=" + analise +
+                ", identificadorAmostra='" + identificadorAmostra + '\'' +
+                '}';
     }
 }

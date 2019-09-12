@@ -7,24 +7,25 @@
 
     <LinearLayout
         android:id="@id/layout1"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Selecionar Fazenda"
-            android:textSize="18dp" />
+            android:textSize="25dp"
+            android:layout_marginRight="15dp"/>
 
         <Spinner
             android:id="@+id/spinnerFazenda"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -39,7 +40,7 @@
         android:layout_marginTop="25dp"
         android:background="@color/GreenB"
         android:text="Avançar"
-        android:onClick="avançar"
+        android:onClick="avancar"
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

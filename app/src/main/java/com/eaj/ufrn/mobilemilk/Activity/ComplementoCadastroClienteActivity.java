@@ -65,7 +65,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
         this.progressBar.setVisibility(View.GONE);
 
         // Adicionando maskaras ao campo cpf
-        SimpleMaskFormatter mask = new SimpleMaskFormatter("NNN-NNN-NNN.NN");
+        SimpleMaskFormatter mask = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
         MaskTextWatcher watcher = new MaskTextWatcher(this.cpfUsuario, mask);
         this.cpfUsuario.addTextChangedListener(watcher);
 
@@ -136,8 +136,8 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
                     startActivity(i);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), R.string.CpfInvaliso, Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
+                }//R.string.CpfInvaliso
                 progressBar.setVisibility(View.GONE);
             }
 
