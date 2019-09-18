@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.ModeloDTO;
 
+import com.eaj.ufrn.mobilemilk.Modelo.Amostra;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 
@@ -14,14 +15,16 @@ public class SolicitacaoGetDto {
     private List<Analise> listaAnalise;
     private String status;
     private String observacao;
+    private List<Amostra> amostraList;
 
-    public SolicitacaoGetDto(String id, Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao) {
+    public SolicitacaoGetDto(String id, Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList) {
         this.id = id;
         this.dataCriada = dataCriada;
         this.fazenda = fazenda;
         this.listaAnalise = listaAnalise;
         this.status = status;
         this.observacao = observacao;
+        this.amostraList = amostraList;
     }
 
     public SolicitacaoGetDto(){}
@@ -74,14 +77,24 @@ public class SolicitacaoGetDto {
         this.dataCriada = dataCriada;
     }
 
+    public List<Amostra> getAmostraList() {
+        return amostraList;
+    }
+
+    public void setAmostraList(List<Amostra> amostraList) {
+        this.amostraList = amostraList;
+    }
+
     @Override
     public String toString() {
         return "SolicitacaoGetDto{" +
                 "id='" + id + '\'' +
+                ", dataCriada=" + dataCriada +
                 ", fazenda=" + fazenda +
                 ", listaAnalise=" + listaAnalise +
                 ", status='" + status + '\'' +
                 ", observacao='" + observacao + '\'' +
+                ", amostraList=" + amostraList +
                 '}';
     }
 }

@@ -63,7 +63,7 @@
                     android:id="@+id/cnpjFazendaAtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Cnpj"
+                    android:hint="CNPJ"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
@@ -82,7 +82,7 @@
                     android:id="@+id/cepFazendaAtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Cep"
+                    android:hint="CEP"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 

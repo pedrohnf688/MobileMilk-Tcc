@@ -10,6 +10,7 @@
     android:layout_marginLeft="25dp"
     android:focusable="true"
     android:clickable="true"
+    android:elevation="8dp"
     android:foreground="?android:attr/selectableItemBackground">
 
     <android.support.constraint.ConstraintLayout

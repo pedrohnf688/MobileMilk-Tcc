@@ -35,4 +35,5 @@ public interface ServiceCliente {
     @GET("cliente/{id}/solicitacao")
     Call<List<SolicitacaoGetDto>> buscarSolicitacoes(@Path("id") String id, @Header("Authorization") String authorization);
 
+
 }

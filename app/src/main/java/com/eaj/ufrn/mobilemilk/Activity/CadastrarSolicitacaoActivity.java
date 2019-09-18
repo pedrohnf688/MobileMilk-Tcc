@@ -81,11 +81,12 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Fazenda>>() {
             @Override
             public void onResponse(Call<List<Fazenda>> call, Response<List<Fazenda>> response) {
-                //listaFazendas.clear();
+                listaFazendas.clear();
                 if(response.isSuccessful()){
                     listaFazendas = response.body();
 
                     String[] arrayFazenda = new String[listaFazendas.size()];
+                    Log.i("Lista de Fazenda",listaFazendas.toString());
 
                     for(int i = 0; i < listaFazendas.size(); i++){
                         arrayFazenda[i] = listaFazendas.get(i).getNome();

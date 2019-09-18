@@ -25,7 +25,7 @@ public class AnalisesActivity extends AppCompatActivity {
 
     private RecyclerView recycler;
     private AnaliseAdapter adapter;
-    private List<SolicitacaoGetDto> listaSolicitacao = new ArrayList<>();
+    private List<SolicitacaoGetDto> listaSolicitacao = new ArrayList<SolicitacaoGetDto>();
     private Bundle data;
 
     @Override
@@ -62,11 +62,13 @@ public class AnalisesActivity extends AppCompatActivity {
                     Log.i("response", "Tudo Certo");
                     listaSolicitacao = response.body();
 
+                    Log.i("Antes kkkkk",listaSolicitacao.toString());
                     AnaliseQrCodeAdapter adapter = new AnaliseQrCodeAdapter(
                             listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise(),
                             getApplicationContext()
                     );
 
+                    Log.i("Depois kkkkk",listaSolicitacao.toString());
                     recycler.setAdapter(adapter);
                 }
                 else{

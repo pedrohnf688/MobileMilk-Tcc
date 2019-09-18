@@ -15,15 +15,16 @@ public class Amostra {
     private String observacao;
     private Analise analise;
     private String identificadorAmostra;
+    private boolean finalizada;
 
-    public Amostra(Date dataColeta, Integer numAmostras, String qrCode, String observacao, Analise analise,
-                   String identificadorAmostra) {
+    public Amostra(Date dataColeta, Integer numAmostras, String qrCode, String observacao, Analise analise, String identificadorAmostra, boolean finalizada) {
         this.dataColeta = dataColeta;
         this.numAmostras = numAmostras;
         this.qrCode = qrCode;
         this.observacao = observacao;
         this.analise = analise;
         this.identificadorAmostra = identificadorAmostra;
+        this.finalizada = finalizada;
     }
 
     public Amostra(){
@@ -78,6 +79,15 @@ public class Amostra {
         this.identificadorAmostra = identificadorAmostra;
     }
 
+
+    public boolean getFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
+    }
+
     @Override
     public String toString() {
         return "Amostra{" +
@@ -87,6 +97,7 @@ public class Amostra {
                 ", observacao='" + observacao + '\'' +
                 ", analise=" + analise +
                 ", identificadorAmostra='" + identificadorAmostra + '\'' +
+                ", finalizada=" + finalizada +
                 '}';
     }
 }

@@ -82,7 +82,7 @@
                     android:id="@+id/cpfClienteAtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Cpf"
+                    android:hint="CPF"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 

@@ -72,7 +72,7 @@
                     android:id="@+id/cnpjFazenda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cpf/Cnpj"
+                    android:hint="CPF/CNPJ"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 

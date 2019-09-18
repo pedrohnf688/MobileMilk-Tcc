@@ -21,7 +21,7 @@
             android:id="@+id/cpfusuario"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:hint="Cpf"
+            android:hint="CPF"
             android:inputType="phone" />
     </android.support.design.widget.TextInputLayout>
 

@@ -134,4 +134,21 @@ public class Fazenda {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Fazenda{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpfcnpj='" + cpfcnpj + '\'' +
+                ", cep='" + cep + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", estado='" + estado + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", imagem='" + imagem + '\'' +
+                ", cliente=" + cliente +
+                '}';
+    }
 }

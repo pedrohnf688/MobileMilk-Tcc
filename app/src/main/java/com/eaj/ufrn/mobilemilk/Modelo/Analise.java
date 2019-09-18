@@ -96,4 +96,18 @@ public class Analise {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return "Analise{" +
+                "origemLeite=" + origemLeite +
+                ", produtos=" + produtos +
+                ", analisesSolicitadas=" + analisesSolicitadas +
+                ", especie=" + especie +
+                ", quantidadeAmostras=" + quantidadeAmostras +
+                ", solicitacao=" + solicitacao +
+                ", listaAmostras=" + listaAmostras +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
 }
