@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +13,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.Leitor;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
+import com.eaj.ufrn.mobilemilk.Activity.QrCodeActivity;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Enum.Status;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
@@ -64,7 +67,54 @@ public class SolicitacoesFragment extends Fragment {
                 new MeuRecyclerViewClickListener(getActivity().getApplicationContext(), recyclerSolicitacao, new MeuRecyclerViewClickListener.OnItemClickListener(){
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        //Toast.makeText(getContext(), "Clicou LONGO", Toast.LENGTH_SHORT).show();
+
+                        AlertDialog.Builder alertDeletarSolicitacao = new AlertDialog.Builder(getContext());
+
+                        final View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_deletar_solicitacao,null);
+                        alertDeletarSolicitacao.setView(dialogView);
+
+                        Button buttonSolicitacaoNAO = dialogView.findViewById(R.id.buttonSolicitacaoNAO);
+                        Button buttonSolicitacaoSIM = dialogView.findViewById(R.id.buttonSolicitacaoSIM);
+
+                        final AlertDialog alertDialog = alertDeletarSolicitacao.create();
+                        alertDialog.show();
+
+                        buttonSolicitacaoSIM.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
+                                Call<Solicitacao> call2 = new RetrofitConfig().getSolicitacaoService().deletarSolicitacao(
+                                        prefs.getString("accessId", "default"),
+                                        prefs.getString("accessToken", "default"));
+
+                                call2.enqueue(new Callback<Solicitacao>() {
+                                    @Override
+                                    public void onResponse(Call<Solicitacao> call, Response<Solicitacao> response) {
+                                        if(response.isSuccessful()){
+                                            alertDialog.dismiss();
+                                            Toast.makeText(getContext(), "Solicitacação excluida com sucesso", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Solicitacao> call, Throwable t) {
+                                        alertDialog.dismiss();
+                                        Toast.makeText(getContext(), "Falha na exclução da solicitação", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                            }
+                        });
+
+
+                        buttonSolicitacaoNAO.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                                Toast.makeText(getContext(), "Ação cancelada", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                     }
 

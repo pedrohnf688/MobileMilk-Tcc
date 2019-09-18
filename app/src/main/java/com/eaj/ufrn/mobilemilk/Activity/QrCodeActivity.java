@@ -142,14 +142,15 @@ public class QrCodeActivity extends AppCompatActivity {
                                         call2.enqueue(new Callback<Amostra>() {
                                             @Override
                                             public void onResponse(Call<Amostra> call, Response<Amostra> response) {
-                                                Toast.makeText(QrCodeActivity.this, "Amostra atualizada com sucesso", Toast.LENGTH_SHORT).show();
                                                 alertDialog.dismiss();
+                                                Toast.makeText(QrCodeActivity.this, "Amostra atualizada com sucesso", Toast.LENGTH_SHORT).show();
                                             }
 
                                             @Override
                                             public void onFailure(Call<Amostra> call, Throwable t) {
-                                                Toast.makeText(QrCodeActivity.this, "Falha ao atualizar a amostra", Toast.LENGTH_SHORT).show();
                                                 alertDialog.dismiss();
+                                                Toast.makeText(QrCodeActivity.this, "Falha ao atualizar a amostra", Toast.LENGTH_SHORT).show();
+
                                             }
                                         });
 
@@ -165,6 +166,7 @@ public class QrCodeActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     alertDialog.dismiss();
+                                    Toast.makeText(QrCodeActivity.this, "Ação cancelada", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
