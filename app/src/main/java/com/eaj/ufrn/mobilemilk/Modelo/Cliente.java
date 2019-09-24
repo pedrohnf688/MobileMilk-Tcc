@@ -22,6 +22,7 @@ public class Cliente {
     private String senha;
     private String username;
     private String id;
+    private Arquivo foto;
 
     public Cliente(String id, String telefone1, String telefone2, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username) {
         this.telefone1 = telefone1;
@@ -33,6 +34,21 @@ public class Cliente {
         this.senha = senha;
         this.username = username;
         this.id = id;
+    }
+
+    public Cliente(String telefone1, String telefone2, List<Solicitacao> listaSolicitacoes, List<Fazenda> listaFazendas, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username, String id, Arquivo foto) {
+        this.telefone1 = telefone1;
+        this.telefone2 = telefone2;
+        this.listaSolicitacoes = listaSolicitacoes;
+        this.listaFazendas = listaFazendas;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.codigoTipoPerfilUsuario = codigoTipoPerfilUsuario;
+        this.senha = senha;
+        this.username = username;
+        this.id = id;
+        this.foto = foto;
     }
 
     // SERVE PRA O CADASTRO DE FAZENDAS
@@ -129,5 +145,31 @@ public class Cliente {
 
     public void setTelefone2(String telefone2) {
         this.telefone2 = telefone2;
+    }
+
+    public Arquivo getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Arquivo foto) {
+        this.foto = foto;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "telefone1='" + telefone1 + '\'' +
+                ", telefone2='" + telefone2 + '\'' +
+                ", listaSolicitacoes=" + listaSolicitacoes +
+                ", listaFazendas=" + listaFazendas +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", codigoTipoPerfilUsuario=" + codigoTipoPerfilUsuario +
+                ", senha='" + senha + '\'' +
+                ", username='" + username + '\'' +
+                ", id='" + id + '\'' +
+                ", foto=" + foto +
+                '}';
     }
 }

@@ -67,6 +67,7 @@ public class SolicitacoesFragment extends Fragment {
                 new MeuRecyclerViewClickListener(getActivity().getApplicationContext(), recyclerSolicitacao, new MeuRecyclerViewClickListener.OnItemClickListener(){
                     @Override
                     public void onItemLongClick(View view, int position) {
+                        final SolicitacaoGetDto s = listaSolicitacoes.get(position);
 
                         AlertDialog.Builder alertDeletarSolicitacao = new AlertDialog.Builder(getContext());
 
@@ -84,8 +85,7 @@ public class SolicitacoesFragment extends Fragment {
                             public void onClick(View v) {
 
                                 SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
-                                Call<Solicitacao> call2 = new RetrofitConfig().getSolicitacaoService().deletarSolicitacao(
-                                        prefs.getString("accessId", "default"),
+                                Call<Solicitacao> call2 = new RetrofitConfig().getSolicitacaoService().deletarSolicitacao(s.getId(),
                                         prefs.getString("accessToken", "default"));
 
                                 call2.enqueue(new Callback<Solicitacao>() {
@@ -94,6 +94,11 @@ public class SolicitacoesFragment extends Fragment {
                                         if(response.isSuccessful()){
                                             alertDialog.dismiss();
                                             Toast.makeText(getContext(), "Solicitacação excluida com sucesso", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            alertDialog.dismiss();
+
+                                            Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+
                                         }
                                     }
 
@@ -101,6 +106,7 @@ public class SolicitacoesFragment extends Fragment {
                                     public void onFailure(Call<Solicitacao> call, Throwable t) {
                                         alertDialog.dismiss();
                                         Toast.makeText(getContext(), "Falha na exclução da solicitação", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
 

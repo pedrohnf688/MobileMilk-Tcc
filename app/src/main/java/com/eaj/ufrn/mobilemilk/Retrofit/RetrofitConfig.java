@@ -2,6 +2,7 @@ package com.eaj.ufrn.mobilemilk.Retrofit;
 
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceAmostra;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceAnalise;
+import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceArquivo;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceAutenticacao;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceCliente;
 import com.eaj.ufrn.mobilemilk.ServiceInterface.ServiceFazenda;
@@ -64,4 +65,9 @@ public class RetrofitConfig {
     public ServiceAnalise getAnaliseService(){
         return rt.create(ServiceAnalise.class);
     }
+
+    public ServiceArquivo getArquivoService(){
+        return rt.create(ServiceArquivo.class);
+    }
+
 }

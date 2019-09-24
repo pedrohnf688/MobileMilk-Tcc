@@ -16,7 +16,7 @@
             android:layout_width="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/circleImageViewPerfil"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="20dp"
@@ -26,14 +26,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
+                android:id="@+id/buttonAlterarFotoPerfil"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="190dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/shape_circle"
                 android:src="@drawable/camera_24dp"
-                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
-                app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+                app:layout_constraintEnd_toEndOf="@+id/circleImageViewPerfil"
+                app:layout_constraintTop_toTopOf="@+id/circleImageViewPerfil" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -43,7 +44,7 @@
                 android:layout_marginTop="60dp"
                 android:src="@drawable/perfil_48dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/circleImageViewPerfil" />
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
@@ -53,7 +54,7 @@
                 android:layout_marginTop="60dp"
                 android:orientation="vertical"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+                app:layout_constraintTop_toBottomOf="@+id/circleImageViewPerfil">
 
                 <TextView
                     android:layout_width="wrap_content"

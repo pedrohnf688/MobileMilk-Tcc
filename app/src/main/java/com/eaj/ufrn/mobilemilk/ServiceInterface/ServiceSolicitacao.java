@@ -22,7 +22,7 @@ public interface ServiceSolicitacao {
     @GET("solicitacao/{id}")
     Call<List<SolicitacaoGetDto>> buscarPorIdSolicitacao(@Path("id") String id, @Header("Authorization") String authorzation);
 
-    @DELETE
+    @DELETE("solicitacao/{id}")
     Call<Solicitacao> deletarSolicitacao(@Path("id") String id, @Header("Authorization") String authorzation);
 
 }
