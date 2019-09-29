@@ -25,6 +25,8 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
     private Spinner spinnerFazenda;
 
+    ArrayAdapter<String> adapter;
+
     private List<Fazenda> listaFazendas = new ArrayList<>();
 
     @Override
@@ -55,7 +57,7 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
 
         // Buscando Cnpj
         for(Fazenda f: listaFazendas){
-            if(f.getNome().equals(nome))
+            if(f.getNomeFazenda().equals(nome))
                 cnpj = f.getCpfcnpj();
         }
 
@@ -86,13 +88,14 @@ public class CadastrarSolicitacaoActivity extends AppCompatActivity {
                     listaFazendas = response.body();
 
                     String[] arrayFazenda = new String[listaFazendas.size()];
-                    Log.i("Lista de Fazenda",listaFazendas.toString());
+                    Log.i("TANIRO",listaFazendas.toString());
 
                     for(int i = 0; i < listaFazendas.size(); i++){
-                        arrayFazenda[i] = listaFazendas.get(i).getNome();
+                       arrayFazenda[i] = listaFazendas.get(i).getNomeFazenda();
                     }
+                    //arrayFazenda[0] = "Teste";
                     // ArrayAdapter para listar Fazendas
-                    ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(),
+                    adapter = new ArrayAdapter(getApplicationContext(),
                             android.R.layout.simple_spinner_item, arrayFazenda);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerFazenda.setAdapter(adapter);

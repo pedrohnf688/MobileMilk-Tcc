@@ -66,7 +66,7 @@ public class SolicitacoesFragment extends Fragment {
         recyclerSolicitacao.addOnItemTouchListener(
                 new MeuRecyclerViewClickListener(getActivity().getApplicationContext(), recyclerSolicitacao, new MeuRecyclerViewClickListener.OnItemClickListener(){
                     @Override
-                    public void onItemLongClick(View view, int position) {
+                    public void onItemLongClick(View view, final int position) {
                         final SolicitacaoGetDto s = listaSolicitacoes.get(position);
 
                         AlertDialog.Builder alertDeletarSolicitacao = new AlertDialog.Builder(getContext());
@@ -93,6 +93,7 @@ public class SolicitacoesFragment extends Fragment {
                                     public void onResponse(Call<Solicitacao> call, Response<Solicitacao> response) {
                                         if(response.isSuccessful()){
                                             alertDialog.dismiss();
+                                            listaSolicitacoes.remove(position);
                                             Toast.makeText(getContext(), "Solicitacação excluida com sucesso", Toast.LENGTH_SHORT).show();
                                         }else{
                                             alertDialog.dismiss();

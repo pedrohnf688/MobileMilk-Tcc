@@ -2,57 +2,52 @@ package com.eaj.ufrn.mobilemilk.Modelo;
 
 public class Fazenda {
 
-    private String id;
-    private String nome;
+    private Integer id;
+    private String nomeFazenda;
     private String cpfcnpj;
     private String cep;
     private String endereco;
-    private String estado;
-    private String cidade;
-    private String bairro;
     private String numero;
-    private String imagem;
+    private String bairro;
+    private String cidade;
+    private String estado;
     private Cliente cliente;
+    private Arquivo fotoFazenda;
 
-    public Fazenda(){
-
+    public Fazenda() {
     }
 
-    public Fazenda(String id, String nome, String cpfcnpj, String cep, String endereco, String estado,
-                   String cidade, String bairro, String numero, Cliente cliente, String imagem) {
-        this.nome = nome;
+    public Fazenda(String nomeFazenda, String cpfcnpj, String cep, String endereco, String estado, String cidade, String bairro, String numero, Cliente cliente) {
+        this.nomeFazenda = nomeFazenda;
         this.cpfcnpj = cpfcnpj;
         this.cep = cep;
         this.endereco = endereco;
-        this.estado = estado;
-        this.cidade = cidade;
-        this.bairro = bairro;
         this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
         this.cliente = cliente;
-        this.imagem = imagem;
+    }
+
+    public Fazenda(String nomeFazenda, String cpfcnpj, String cep, String endereco, String numero, String bairro, String cidade, String estado, Cliente cliente, Arquivo fotoFazenda) {
+        this.nomeFazenda = nomeFazenda;
+        this.cpfcnpj = cpfcnpj;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.fotoFazenda = fotoFazenda;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Fazenda(String nome, String cpfcnpj, String cep, String endereco, String estado,
-                   String cidade, String bairro, String numero, Cliente cliente, String imagem) {
-        this.nome = nome;
-        this.cpfcnpj = cpfcnpj;
-        this.cep = cep;
-        this.endereco = endereco;
-        this.estado = estado;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.numero = numero;
-        this.cliente = cliente;
-        this.imagem = imagem;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCpfcnpj() {
@@ -79,20 +74,12 @@ public class Fazenda {
         this.endereco = endereco;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getBairro() {
@@ -103,12 +90,20 @@ public class Fazenda {
         this.bairro = bairro;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Cliente getCliente() {
@@ -119,36 +114,36 @@ public class Fazenda {
         this.cliente = cliente;
     }
 
-    public String getImagem() {
-        return imagem;
+    public String getNomeFazenda() {
+        return nomeFazenda;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setNomeFazenda(String nomeFazenda) {
+        this.nomeFazenda = nomeFazenda;
     }
 
-    public String getId() {
-        return id;
+    public Arquivo getFotoFazenda() {
+        return fotoFazenda;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFotoFazenda(Arquivo fotoFazenda) {
+        this.fotoFazenda = fotoFazenda;
     }
 
     @Override
     public String toString() {
         return "Fazenda{" +
-                "id='" + id + '\'' +
-                ", nome='" + nome + '\'' +
+                "id=" + id +
+                ", nomeFazenda='" + nomeFazenda + '\'' +
                 ", cpfcnpj='" + cpfcnpj + '\'' +
                 ", cep='" + cep + '\'' +
                 ", endereco='" + endereco + '\'' +
-                ", estado='" + estado + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", bairro='" + bairro + '\'' +
                 ", numero='" + numero + '\'' +
-                ", imagem='" + imagem + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
                 ", cliente=" + cliente +
+                ", fotoFazenda=" + fotoFazenda +
                 '}';
     }
 }

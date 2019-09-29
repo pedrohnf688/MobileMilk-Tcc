@@ -76,7 +76,7 @@ public class AtualizarFazendaActivity extends AppCompatActivity {
                 , this.cidadeFazenda.getText().toString()
                 , this.bairroFazenda.getText().toString()
                 , this.numeroFazenda.getText().toString()
-                , cliente, "default");
+                , cliente);
 
         Log.i("idFazenda", "idFazenda = " + bundle.getString("idFazenda"));
 

@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.R;
 
@@ -38,14 +41,24 @@ public class FazendaAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
-        this.fazendaEscolhida = this.listaFazendas.get(position);
 
-        holder.nomeFazendaCard.setText(this.fazendaEscolhida.getNome());
+        this.fazendaEscolhida = this.listaFazendas.get(position);
+        boolean foto = fazendaEscolhida.getFotoFazenda().getFileDownloadUri() != null;
+
+        holder.nomeFazendaCard.setText(this.fazendaEscolhida.getNomeFazenda());
         holder.localizacaoFazendaCard.setText(this.fazendaEscolhida.getCidade() + "/" + this.fazendaEscolhida.getEstado());
 
         String descricao = "Fazenda pertence ao " + this.fazendaEscolhida.getCliente().getNome();
 
         holder.descricaoFazendaCard.setText(descricao);
+
+        if(foto){
+            loadProfileIcon(fazendaEscolhida.getFotoFazenda().getFileDownloadUri(),holder.imageView2);
+        }else{
+            holder.imageView2.setImageResource(R.drawable.fazenda);
+        }
+
+
     }
 
     @Override
@@ -61,14 +74,26 @@ public class FazendaAdapter extends RecyclerView.Adapter {
         final TextView nomeFazendaCard;
         final TextView localizacaoFazendaCard;
         final TextView descricaoFazendaCard;
+        final ImageView imageView2;
 
         public FazendaViewHolder(@NonNull View itemView) {
             super(itemView);
             nomeFazendaCard = itemView.findViewById(R.id.nomeFazendaCard);
             localizacaoFazendaCard = itemView.findViewById(R.id.localizacaoFazendaCard);
             descricaoFazendaCard = itemView.findViewById(R.id.descricaoFazendaCard);
+            imageView2 = itemView.findViewById(R.id.imageView2);
         }
 
     }
 
+    public static void loadProfileIcon(String url, ImageView imageView) {
+        Context context = imageView.getContext();
+        Glide.with(context)
+                .load(url)
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.userlogin)
+                        .dontAnimate()
+                        .fitCenter())
+                .into(imageView);
+    }
 }

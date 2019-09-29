@@ -5,6 +5,7 @@ import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.PUT;
@@ -17,5 +18,10 @@ public interface ServiceArquivo {
     @PUT("uploadFileUsuario/{id}")
     Call<Arquivo> uploadFileCliente(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
 
+    @Multipart
+    @PUT("uploadFileFazenda/{id}")
+    Call<Arquivo> uploadFileFazenda(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
 
+    @GET("fileUrl/{id}")
+    Call<String> fileUrlUser(@Path("id") String id, @Header("Authorization") String authorization);
 }

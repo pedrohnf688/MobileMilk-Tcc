@@ -19,6 +19,7 @@ public class Analise {
     private Solicitacao solicitacao;
     private List<Amostra> listaAmostras;
     private String descricao;
+    private String id;
 
     public Analise(OrigemLeite origemLeite, List<Produtos> produtos, List<AnalisesSolicitadas> analisesSolicitadas
             , EnumEspecie especie, Integer quantidadeAmostras, List<Amostra> listaAmostras, String descricao) {
@@ -32,6 +33,14 @@ public class Analise {
     }
 
     public Analise(){}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public OrigemLeite getOrigemLeite() {
         return origemLeite;

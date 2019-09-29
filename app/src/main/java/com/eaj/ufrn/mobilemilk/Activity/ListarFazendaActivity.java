@@ -76,6 +76,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     listaFazendas = response.body();
                     recycler.setAdapter(new FazendaAdapter(listaFazendas, getApplicationContext()));
+                    Log.i("ObjetoFazenda",listaFazendas.toString());
                 }
             }
 
@@ -101,7 +102,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         Intent i = new Intent(getApplicationContext(), PerfilFazendaActivity.class);
                         // Salva as informações da fazenda clicada
-                        i.putExtra("nomeFazenda", listaFazendas.get(position).getNome());
+                        i.putExtra("nomeFazenda", listaFazendas.get(position).getNomeFazenda());
                         i.putExtra("cnpjFazenda", listaFazendas.get(position).getCpfcnpj());
                         i.putExtra("cepFazenda", listaFazendas.get(position).getCep());
                         i.putExtra("estadoFazenda", listaFazendas.get(position).getEstado());

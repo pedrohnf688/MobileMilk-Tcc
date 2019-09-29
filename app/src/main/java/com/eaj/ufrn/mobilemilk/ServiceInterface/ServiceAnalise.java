@@ -6,6 +6,7 @@ import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
@@ -14,4 +15,7 @@ public interface ServiceAnalise {
 
     @GET("analise/{solicitacaoId}")
     Call<List<Analise>> buscarAnalisePorSolicitacaoId(@Path("solicitacaoId") String solicitacaoId, @Header("Authorization") String authorization);
+
+    @DELETE("analise/{id}")
+    Call<Analise> deletarAnalisePorId(@Path("id") String id, @Header("Authorization") String authorization);
 }

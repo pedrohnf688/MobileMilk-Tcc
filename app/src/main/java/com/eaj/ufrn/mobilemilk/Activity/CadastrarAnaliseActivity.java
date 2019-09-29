@@ -278,6 +278,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         /*
          *   Checando Checkbox de Tipos de Análises
          * */
+
         t.putExtra("analiseCaseina", this.analisesCaseina.isChecked() ? true : false);
         t.putExtra("analiseComposicao", this.analisesComposicao.isChecked() ? true : false);
         t.putExtra("analiseCelulasSomaticas", this.analisesCelulasSomaticas.isChecked() ? true : false);

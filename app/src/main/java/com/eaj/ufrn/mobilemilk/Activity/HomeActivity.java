@@ -160,6 +160,7 @@ public class HomeActivity extends AppCompatActivity {
                     Log.i("certo", "email: "+c.getData().getEmail());
                     Log.i("certo", "username: "+c.getData().getUsername());
                     Log.i("certo", "username: "+c.getData().getSenha());
+                    Log.i("ObjetoCompleto",c.getData().toString());
 
                 }
                 else

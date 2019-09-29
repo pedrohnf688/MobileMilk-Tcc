@@ -7,18 +7,17 @@ public class Arquivo {
     private String id;
     private String fileName;
     private String fileType;
-    private byte[] data;
+   // private byte[] data;
     private String fileDownloadUri;
     private long size;
 
     public Arquivo() {
     }
 
-    public Arquivo(String id, String fileName, String fileType, byte[] data, String fileDownloadUri, long size) {
+    public Arquivo(String id, String fileName, String fileType, String fileDownloadUri, long size) {
         this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;
-        this.data = data;
         this.fileDownloadUri = fileDownloadUri;
         this.size = size;
     }
@@ -47,14 +46,6 @@ public class Arquivo {
         this.fileType = fileType;
     }
 
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
     public String getFileDownloadUri() {
         return fileDownloadUri;
     }
@@ -77,7 +68,6 @@ public class Arquivo {
                 "id='" + id + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", fileType='" + fileType + '\'' +
-                ", data=" + Arrays.toString(data) +
                 ", fileDownloadUri='" + fileDownloadUri + '\'' +
                 ", size=" + size +
                 '}';
