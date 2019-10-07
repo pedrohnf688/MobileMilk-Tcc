@@ -134,6 +134,7 @@ public class QrCodeActivity extends AppCompatActivity {
 
                                     if(!TextUtils.isEmpty(obs)){
 
+                                        amostra.setFinalizada(true);
                                         amostra.setObservacao(obs);
 
                                         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);

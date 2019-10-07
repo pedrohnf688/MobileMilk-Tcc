@@ -58,7 +58,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
     private Bundle bundle;
 
     @Override
-    protected void onCreate(Bundle saveInstanteState){
+    protected void onCreate(Bundle saveInstanteState) {
         super.onCreate(saveInstanteState);
         setContentView(R.layout.activity_cadastrar_fazendas);
 
@@ -76,39 +76,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         this.confirmar = findViewById(R.id.confirmarCadastro);
         this.cancelar = findViewById(R.id.cancelarCadastro);
 
-        adicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent,1);
-            }
-        });
-
-        if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(CadastrarFazendaActivity.this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(CadastrarFazendaActivity.this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSION_REQUEST);
-            }
-        }
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == PERMISSION_REQUEST) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //A permissão foi concedida. Pode continuar
-            } else {
-                // A permissão foi negada. Precisa ver o que deve ser desabilitado
-            }
-            return;
-        }
-    }
-
 
     public void cadastrarFazenda(View v){
 
@@ -206,62 +174,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         }
 
         return true;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode == RESULT_OK && requestCode == 1){
-
-            Uri selectImage = data.getData();
-            final File file = new File(getPath(selectImage));
-
-            SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-
-            final RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            final MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
-
-            Call<Arquivo> call = new RetrofitConfig().getArquivoService().uploadFileFazenda(body, prefs.getString("accessId", "default"),
-                    prefs.getString("accessToken", "default"));
-
-            call.enqueue(new Callback<Arquivo>() {
-                @Override
-                public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
-   //                 arquivo = response.body();
-                    if(response.isSuccessful()) {
-
-//                        SharedPreferences prefs2 = getActivity().getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = prefs2.edit();
-//                        editor.putString("fotoUsuario", arquivo.getFileDownloadUri());
-//                        editor.commit();
-
-                        Toast.makeText(getApplicationContext(), "Só sucesso :)", Toast.LENGTH_SHORT).show();
-
-                    }else {
-                        Toast.makeText(getApplicationContext(), ""+response.toString(), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<Arquivo> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        }
-    }
-
-    public String getPath(Uri uri) {
-        String[] projection = {MediaStore.Images.Media.DATA};
-        CursorLoader cursorLoader = new CursorLoader(getApplicationContext(),uri,projection, null, null, null);
-        Cursor c = cursorLoader.loadInBackground();
-        int column_idx = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        c.moveToFirst();
-        String picturePath = c.getString(column_idx);
-        c.close();
-        return picturePath;
     }
 
 }

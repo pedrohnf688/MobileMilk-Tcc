@@ -20,6 +20,7 @@ import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.Leitor;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Activity.QrCodeActivity;
+import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Enum.Status;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
@@ -93,7 +94,8 @@ public class SolicitacoesFragment extends Fragment {
                                     public void onResponse(Call<Solicitacao> call, Response<Solicitacao> response) {
                                         if(response.isSuccessful()){
                                             alertDialog.dismiss();
-                                            listaSolicitacoes.remove(position);
+                                            //listaSolicitacoes.remove(position);
+
                                             Toast.makeText(getContext(), "Solicitacação excluida com sucesso", Toast.LENGTH_SHORT).show();
                                         }else{
                                             alertDialog.dismiss();

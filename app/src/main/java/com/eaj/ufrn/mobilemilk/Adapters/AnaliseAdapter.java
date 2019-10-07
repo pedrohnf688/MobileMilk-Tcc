@@ -50,8 +50,6 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
         String produto1 = produto.toString().replace("[","").replace("]","");
 
         holder.origemLeite.setText("Produto: " + produto1);
-
-
     }
 
     @Override
