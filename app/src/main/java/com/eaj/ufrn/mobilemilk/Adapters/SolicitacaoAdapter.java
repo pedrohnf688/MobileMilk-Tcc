@@ -54,6 +54,8 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
             mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.GreenB));
     }
 
+
+
     @Override
     public int getItemCount() {
         return listaSolicitacoes == null ? 0 : listaSolicitacoes.size();

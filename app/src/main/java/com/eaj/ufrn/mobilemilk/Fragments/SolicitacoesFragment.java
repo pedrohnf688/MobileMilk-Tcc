@@ -17,15 +17,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
-import com.eaj.ufrn.mobilemilk.Activity.Leitor;
-import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
-import com.eaj.ufrn.mobilemilk.Activity.QrCodeActivity;
-import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
-import com.eaj.ufrn.mobilemilk.Enum.Status;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
-import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
-import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
@@ -58,10 +51,7 @@ public class SolicitacoesFragment extends Fragment {
         *   após a chamada da requisição GET do recurso /cliente/{id}/solicitacao
         * */
         this.recyclerSolicitacao = view.findViewById(R.id.recyclerViewListarSolicitacoes);
-        RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
-        recyclerSolicitacao.setLayoutManager(layout);
-        recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
 
         // Implementando listener de cliques
         recyclerSolicitacao.addOnItemTouchListener(
@@ -72,7 +62,7 @@ public class SolicitacoesFragment extends Fragment {
 
                         AlertDialog.Builder alertDeletarSolicitacao = new AlertDialog.Builder(getContext());
 
-                        final View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_deletar_solicitacao,null);
+                        final View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_comprovante_solicitacao,null);
                         alertDeletarSolicitacao.setView(dialogView);
 
                         Button buttonSolicitacaoNAO = dialogView.findViewById(R.id.buttonSolicitacaoNAO);
@@ -84,35 +74,8 @@ public class SolicitacoesFragment extends Fragment {
                         buttonSolicitacaoSIM.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
-                                SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
-                                Call<Solicitacao> call2 = new RetrofitConfig().getSolicitacaoService().deletarSolicitacao(s.getId(),
-                                        prefs.getString("accessToken", "default"));
-
-                                call2.enqueue(new Callback<Solicitacao>() {
-                                    @Override
-                                    public void onResponse(Call<Solicitacao> call, Response<Solicitacao> response) {
-                                        if(response.isSuccessful()){
-                                            alertDialog.dismiss();
-                                            //listaSolicitacoes.remove(position);
-
-                                            Toast.makeText(getContext(), "Solicitacação excluida com sucesso", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            alertDialog.dismiss();
-
-                                            Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
-
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<Solicitacao> call, Throwable t) {
-                                        alertDialog.dismiss();
-                                        Toast.makeText(getContext(), "Falha na exclução da solicitação", Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
+                                Toast.makeText(getContext(), "Sim", Toast.LENGTH_SHORT).show();
+                                alertDialog.dismiss();
                             }
                         });
 
@@ -121,7 +84,7 @@ public class SolicitacoesFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 alertDialog.dismiss();
-                                Toast.makeText(getContext(), "Ação cancelada", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Não", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -138,7 +101,7 @@ public class SolicitacoesFragment extends Fragment {
         );
 
 
-        recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getContext()));
+
         return view;
     }
 
@@ -163,6 +126,11 @@ public class SolicitacoesFragment extends Fragment {
                     listaSolicitacoes = response.body();
 
                     recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getContext()));
+
+                    RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+
+                    recyclerSolicitacao.setLayoutManager(layout);
+                    recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
                 }
                 else {
                     Log.i("ResponseError", "Message: " + response.message());

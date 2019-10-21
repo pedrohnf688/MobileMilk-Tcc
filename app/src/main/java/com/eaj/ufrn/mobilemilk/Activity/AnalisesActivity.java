@@ -40,9 +40,6 @@ public class AnalisesActivity extends AppCompatActivity {
 
         recycler = findViewById(R.id.listaAnalisesRecycler);
 
-        RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        recycler.setLayoutManager(layout);
-        recycler.setItemAnimator(new DefaultItemAnimator());
 
     }
 
@@ -69,7 +66,13 @@ public class AnalisesActivity extends AppCompatActivity {
                     );
 
                     Log.i("Depois kkkkk",listaSolicitacao.toString());
+
                     recycler.setAdapter(adapter);
+
+                    RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recycler.setLayoutManager(layout);
+                    recycler.setItemAnimator(new DefaultItemAnimator());
+
                 }
                 else{
                     Log.i("response", "code: "+response.code());

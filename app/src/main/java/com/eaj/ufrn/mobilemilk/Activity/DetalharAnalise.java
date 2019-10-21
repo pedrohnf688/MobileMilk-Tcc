@@ -1,22 +1,16 @@
 package com.eaj.ufrn.mobilemilk.Activity;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
-import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
+import com.eaj.ufrn.mobilemilk.Adapters.AnalisesSolicitadasAdapter;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
@@ -29,46 +23,40 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetalheSolicitacaoActivity extends AppCompatActivity {
+public class DetalharAnalise extends AppCompatActivity {
 
     private RecyclerView recycler;
     private AnaliseAdapter adapter;
     private List<SolicitacaoGetDto> listaSolicitacao = new ArrayList<>();
     private Bundle data;
+    TextView textVieworigemdoLeite, textViewproduto, textViewEspecie, textViewNumerodeAmostras;
 
     @Override
-    protected void onCreate(Bundle saveInstanceState){
-        super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_detalhe_solicitacao);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detalhar_analise);
 
-        getSupportActionBar().setTitle("Análises Solicitadas");
+
+        getSupportActionBar().setTitle("Detalhamento das Análises");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.data = getIntent().getExtras();
 
-        this.recycler = findViewById(R.id.recyclerViewListarAnalises);
+        this.recycler = findViewById(R.id.recyclerAnalisesSolicitadas);
+        textViewEspecie = findViewById(R.id.textoEspecie);
+        textViewNumerodeAmostras = findViewById(R.id.textoNumerodeAmostras);
+        textVieworigemdoLeite = findViewById(R.id.textoOrigemdoLeite);
+        textViewproduto = findViewById(R.id.textoProduto);
 
-        recycler.addOnItemTouchListener(new MeuRecyclerViewClickListener(getApplicationContext(), recycler, new MeuRecyclerViewClickListener.OnItemClickListener() {
-            @Override
-            public void onItemLongClick(View view, int position) {
-                final Analise sa = listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise().get(position);
+        if(data.getInt("solicitacaoPosition") != 0) {
 
-            }
+            final Analise a = listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise().get(data.getInt("analisePosition"));
 
-            @Override
-            public void onItemClick(View view, int position) {
-                Integer solicitacaoID = data.getInt("recyclerPosition");
-                //Exibir os detalhes da da analise como produto, analises solicitadas e etc...
-                Intent i = new Intent(getApplicationContext(), DetalharAnalise.class);
-                i.putExtra("solicitacaoPosition",solicitacaoID);
-                i.putExtra("analisePosition",position);
-                startActivity(i);
-
-
-            }
-
-        }));
-
+            textVieworigemdoLeite.setText(a.getOrigemLeite().toString());
+            textViewproduto.setText(a.getProdutos().toString());
+            textViewEspecie.setText(a.getEspecie().toString());
+            textViewNumerodeAmostras.setText(a.getQuantidadeAmostras().toString());
+        }
     }
 
 
@@ -79,7 +67,7 @@ public class DetalheSolicitacaoActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
         Call<List<SolicitacaoGetDto>> call = new RetrofitConfig().getClienteService().buscarSolicitacoes(
-          prefs.getString("accessId", "default"), prefs.getString("accessToken", "default")
+                prefs.getString("accessId", "default"), prefs.getString("accessToken", "default")
         );
         call.enqueue(new Callback<List<SolicitacaoGetDto>>() {
             @Override
@@ -88,7 +76,7 @@ public class DetalheSolicitacaoActivity extends AppCompatActivity {
                     Log.i("response", "Tudo Certo");
                     listaSolicitacao = response.body();
 
-                    AnaliseAdapter adapter = new AnaliseAdapter(
+                    AnalisesSolicitadasAdapter adapter = new AnalisesSolicitadasAdapter(
                             listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise(),
                             getApplicationContext()
                     );
@@ -114,6 +102,5 @@ public class DetalheSolicitacaoActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

@@ -41,6 +41,7 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         AnaliseViewHolder holder = (AnaliseViewHolder) viewHolder;
         analiseEscolhida = listaAnalise.get(position);
+
         EnumEspecie especie = analiseEscolhida.getEspecie();
         List<Produtos> produto = analiseEscolhida.getProdutos();
 

@@ -46,10 +46,6 @@ public class QrCodeFragment extends Fragment {
 
         recyclerSolicitacao = view.findViewById(R.id.recyclerViewSolicitacao);
 
-        RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-
-        recyclerSolicitacao.setLayoutManager(layout);
-        recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
 
         // Implementando listener de cliques
         recyclerSolicitacao.addOnItemTouchListener(
@@ -97,6 +93,12 @@ public class QrCodeFragment extends Fragment {
                     listaSolicitacoes = response.body();
 
                     recyclerSolicitacao.setAdapter(new SolicitacaoAdapter(listaSolicitacoes, getContext()));
+
+                    RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+
+                    recyclerSolicitacao.setLayoutManager(layout);
+                    recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
+
                 }
                 else {
                     Log.i("ResponseError", "Message: " + response.message());
