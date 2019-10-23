@@ -39,7 +39,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
     ImageView imageViewComprovante;
     ImageButton imageButtonComprovante;
     private final int PERMISSION_REQUEST = 2;
-    private Bundle data;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Comprovante da Solicitação");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.data = getIntent().getExtras();
+        this.bundle = getIntent().getExtras();
 
 
         imageButtonComprovante.setOnClickListener(new View.OnClickListener() {
@@ -102,12 +102,13 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK && requestCode == 1){
 
             Uri selectImage = data.getData();
+
             final File file = new File(getPath(selectImage));
 
             SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
@@ -115,7 +116,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
             final RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             final MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
-            Call<Arquivo> call = new RetrofitConfig().getArquivoService().uploadFileComprovante(body, data.getStringExtra("SolicitacaoID"),
+                Call<Arquivo> call = new RetrofitConfig().getArquivoService().uploadFileComprovante(body, bundle.getString("SolicitacaoID"),
                     prefs.getString("accessToken", "default"));
 
             call.enqueue(new Callback<Arquivo>() {
@@ -133,6 +134,13 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<Arquivo> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+
+                    Log.i("Id da Solicitacao:",""+bundle.getString("SolicitacaoID"));
+                    Log.i("falha 1 message:", t.getMessage());
+                    Log.i("falha 1 stackTrace:",t.getStackTrace().toString());
+                    Log.i("falha 1 localize:",t.getLocalizedMessage());
+
+
                 }
             });
 
@@ -158,7 +166,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
         Call<Arquivo> call3 = new RetrofitConfig().getArquivoService()
-                .fileUrlComprovante(data.getString("SolicitacaoID"),
+                .fileUrlComprovante(bundle.getString("SolicitacaoID"),
                         prefs2.getString("accessToken", "default"));
 
         call3.enqueue(new Callback<Arquivo>() {
@@ -173,6 +181,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
                 }else {
 
                     Log.i("URL ERRADA:", "" + response.body());
+                    Log.i("URL ToString:", "" + response.toString());
                     Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 }
             }
