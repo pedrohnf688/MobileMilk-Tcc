@@ -33,13 +33,14 @@ public class RetrofitConfig {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(100, TimeUnit.SECONDS)
                 .readTimeout(100, TimeUnit.SECONDS).build();
-        Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
+        Gson gsonConvertFactory = new GsonBuilder().setDateFormat("yyyy/MM/dd").setLenient().create();
         this.rt = new Retrofit.Builder()
                 .baseUrl("https://desolate-fjord-16385.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create(gsonConvertFactory))
                 .client(client)
                 .build();
     }
+    //https://desolate-fjord-16385.herokuapp.com/
     //http://service-milk.herokuapp.com/
 
     public ServiceCliente getClienteService(){

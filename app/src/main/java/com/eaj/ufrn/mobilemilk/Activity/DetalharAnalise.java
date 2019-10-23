@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
@@ -30,6 +31,7 @@ public class DetalharAnalise extends AppCompatActivity {
     private List<SolicitacaoGetDto> listaSolicitacao = new ArrayList<>();
     private Bundle data;
     TextView textVieworigemdoLeite, textViewproduto, textViewEspecie, textViewNumerodeAmostras;
+    Button gerarPdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +49,8 @@ public class DetalharAnalise extends AppCompatActivity {
         textViewNumerodeAmostras = findViewById(R.id.textoNumerodeAmostras);
         textVieworigemdoLeite = findViewById(R.id.textoOrigemdoLeite);
         textViewproduto = findViewById(R.id.textoProduto);
+        gerarPdf = findViewById(R.id.gerarPdf);
 
-        if(data.getInt("solicitacaoPosition") != 0) {
-
-            final Analise a = listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise().get(data.getInt("analisePosition"));
-
-            textVieworigemdoLeite.setText(a.getOrigemLeite().toString());
-            textViewproduto.setText(a.getProdutos().toString());
-            textViewEspecie.setText(a.getEspecie().toString());
-            textViewNumerodeAmostras.setText(a.getQuantidadeAmostras().toString());
-        }
     }
 
 
@@ -77,7 +71,8 @@ public class DetalharAnalise extends AppCompatActivity {
                     listaSolicitacao = response.body();
 
                     AnalisesSolicitadasAdapter adapter = new AnalisesSolicitadasAdapter(
-                            listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise(),
+                            listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
+                                    .get(data.getInt("analisePosition")).getAnalisesSolicitadas(),
                             getApplicationContext()
                     );
 
@@ -86,6 +81,25 @@ public class DetalharAnalise extends AppCompatActivity {
                     RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                     recycler.setLayoutManager(layout);
                     recycler.setItemAnimator(new DefaultItemAnimator());
+
+                    textVieworigemdoLeite.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
+                            .get(data.getInt("analisePosition")).getOrigemLeite().toString());
+
+                    textViewproduto.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
+                            .get(data.getInt("analisePosition")).getProdutos().toString().replace("[","").replace("]",""));
+
+                    textViewEspecie.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
+                            .get(data.getInt("analisePosition")).getEspecie().toString());
+
+                    textViewNumerodeAmostras.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
+                            .get(data.getInt("analisePosition")).getQuantidadeAmostras().toString());
+
+//                    if(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaLaudoMedia().size() == 0){
+//                        gerarPdf.setEnabled(false);
+//                    }else{
+//                        gerarPdf.setEnabled(true);
+//                    }
+
 
                 }
                 else{

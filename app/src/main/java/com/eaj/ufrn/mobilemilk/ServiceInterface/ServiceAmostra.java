@@ -6,6 +6,8 @@ import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostraDto;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -20,5 +22,9 @@ public interface ServiceAmostra {
 
     @PUT("amostra/{identifAmostra}")
     Call<Amostra> atualizarAmostra(@Path("identifAmostra") String identifAmostra , @Body Amostra amostra, @Header("Authorization") String authorization);
+
+    @GET("amostra/listaQrCode/{analiseId}")
+    Call<List<Amostra>> listarAmostrasPorAnalise(Integer analiseId, @Header("Authorization") String authorization);
+
 
 }

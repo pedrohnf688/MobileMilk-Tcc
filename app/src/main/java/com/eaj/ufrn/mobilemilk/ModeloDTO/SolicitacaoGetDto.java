@@ -2,7 +2,9 @@ package com.eaj.ufrn.mobilemilk.ModeloDTO;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Amostra;
 import com.eaj.ufrn.mobilemilk.Modelo.Analise;
+import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
+import com.eaj.ufrn.mobilemilk.Modelo.LaudoMedia;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,9 @@ public class SolicitacaoGetDto {
     private String status;
     private String observacao;
     private List<Amostra> amostraList;
+    private List<LaudoMedia> listaLaudoMedia;
+    private double temperatura;
+    private Arquivo fotoSolicitacao;
 
     public SolicitacaoGetDto(String id, Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList) {
         this.id = id;
@@ -25,6 +30,18 @@ public class SolicitacaoGetDto {
         this.status = status;
         this.observacao = observacao;
         this.amostraList = amostraList;
+    }
+
+    public SolicitacaoGetDto(Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList, List<LaudoMedia> listaLaudoMedia, double temperatura, Arquivo fotoSolicitacao) {
+        this.dataCriada = dataCriada;
+        this.fazenda = fazenda;
+        this.listaAnalise = listaAnalise;
+        this.status = status;
+        this.observacao = observacao;
+        this.amostraList = amostraList;
+        this.listaLaudoMedia = listaLaudoMedia;
+        this.temperatura = temperatura;
+        this.fotoSolicitacao = fotoSolicitacao;
     }
 
     public SolicitacaoGetDto(){}
@@ -85,6 +102,30 @@ public class SolicitacaoGetDto {
         this.amostraList = amostraList;
     }
 
+    public List<LaudoMedia> getListaLaudoMedia() {
+        return listaLaudoMedia;
+    }
+
+    public void setListaLaudoMedia(List<LaudoMedia> listaLaudoMedia) {
+        this.listaLaudoMedia = listaLaudoMedia;
+    }
+
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public Arquivo getFotoSolicitacao() {
+        return fotoSolicitacao;
+    }
+
+    public void setFotoSolicitacao(Arquivo fotoSolicitacao) {
+        this.fotoSolicitacao = fotoSolicitacao;
+    }
+
     @Override
     public String toString() {
         return "SolicitacaoGetDto{" +
@@ -95,6 +136,9 @@ public class SolicitacaoGetDto {
                 ", status='" + status + '\'' +
                 ", observacao='" + observacao + '\'' +
                 ", amostraList=" + amostraList +
+                ", listaLaudoMedia=" + listaLaudoMedia +
+                ", temperatura=" + temperatura +
+                ", fotoSolicitacao=" + fotoSolicitacao +
                 '}';
     }
 }

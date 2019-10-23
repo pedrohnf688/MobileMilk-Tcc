@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
+import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -23,5 +24,5 @@ public interface ServiceArquivo {
     Call<Arquivo> uploadFileFazenda(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
 
     @GET("fileUrl/{id}")
-    Call<String> fileUrlUser(@Path("id") String id, @Header("Authorization") String authorization);
+    Call<Arquivo> fileUrlUser(@Path("id") String id, @Header("Authorization") String authorization);
 }

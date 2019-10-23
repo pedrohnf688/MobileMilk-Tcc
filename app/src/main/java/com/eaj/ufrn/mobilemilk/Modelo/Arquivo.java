@@ -7,20 +7,23 @@ public class Arquivo {
     private String id;
     private String fileName;
     private String fileType;
-   // private byte[] data;
+    //private byte[] data;
     private String fileDownloadUri;
     private long size;
+    private Cliente fotoPerfil;
 
     public Arquivo() {
     }
 
-    public Arquivo(String id, String fileName, String fileType, String fileDownloadUri, long size) {
-        this.id = id;
+    public Arquivo(String fileName, String fileType, String fileDownloadUri, long size, Cliente fotoPerfil) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDownloadUri = fileDownloadUri;
         this.size = size;
+        this.fotoPerfil = fotoPerfil;
     }
+
+
 
     public String getId() {
         return id;
@@ -62,6 +65,15 @@ public class Arquivo {
         this.size = size;
     }
 
+    public Cliente getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(Cliente fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+
     @Override
     public String toString() {
         return "Arquivo{" +
@@ -70,6 +82,7 @@ public class Arquivo {
                 ", fileType='" + fileType + '\'' +
                 ", fileDownloadUri='" + fileDownloadUri + '\'' +
                 ", size=" + size +
+                ", fotoPerfil=" + fotoPerfil +
                 '}';
     }
 }

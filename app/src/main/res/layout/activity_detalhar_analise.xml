@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:clickable="true"
     android:elevation="8dp"
     android:focusable="true"
     app:cardCornerRadius="4dp"
@@ -56,7 +55,6 @@
                     android:id="@+id/textoOrigemdoLeite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="origem do leite"
                     android:textSize="20dp"
                     android:layout_marginStart="5dp"/>
 
@@ -79,7 +77,6 @@
                     android:id="@+id/textoProduto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="produto"
                     android:textSize="20dp"
                     android:layout_marginStart="5dp"/>
 
@@ -102,7 +99,6 @@
                     android:id="@+id/textoEspecie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="especie"
                     android:textSize="20dp"
                     android:layout_marginStart="5dp"/>
 
@@ -125,7 +121,6 @@
                     android:id="@+id/textoNumerodeAmostras"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="100"
                     android:textSize="20dp"
                     android:layout_marginStart="5dp"/>
 
@@ -148,9 +143,19 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerAnalisesSolicitadas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="370dp"
                     android:layout_marginTop="5dp"/>
 
+                <Button
+                    android:id="@+id/gerarPdf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="57dp"
+                    android:layout_marginStart="57dp"
+                    android:background="@color/GreenB"
+                    android:text="Laudo Disponível"
+                    android:textColor="@color/branco"/>
 
             </LinearLayout>
 

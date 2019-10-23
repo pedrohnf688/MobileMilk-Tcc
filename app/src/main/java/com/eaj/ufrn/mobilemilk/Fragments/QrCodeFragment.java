@@ -53,15 +53,22 @@ public class QrCodeFragment extends Fragment {
                     @Override
                     public void onItemLongClick(View view, int position) {
                         //Toast.makeText(getContext(), "Clicou LONGO", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity().getApplicationContext(), QrCodeActivity.class));
+                        //startActivity(new Intent(getActivity().getApplicationContext(), QrCodeActivity.class));
                     }
 
                     @Override
                     public void onItemClick(View view, int position){
                         //Toast.makeText(getContext(), "Clicou CURTO", Toast.LENGTH_SHORT).show();
+                        listaSolicitacoes.get(position).getId();
+                        listaSolicitacoes.get(position).getStatus();
+
                         Intent i = new Intent(getActivity().getApplicationContext(), AnalisesActivity.class);
                         i.putExtra("recyclerPosition", position);
+                        i.putExtra("IdSolicitacao",listaSolicitacoes.get(position).getId());
+                        i.putExtra("StatusSolicitacao",listaSolicitacoes.get(position).getStatus());
                         startActivity(i);
+                        Log.i("IdSolicitacao",listaSolicitacoes.get(position).getId());
+                        Log.i("StatusSolicitacao",listaSolicitacoes.get(position).getStatus());
 
                     }
                 })
@@ -99,8 +106,7 @@ public class QrCodeFragment extends Fragment {
                     recyclerSolicitacao.setLayoutManager(layout);
                     recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
 
-                }
-                else {
+                } else {
                     Log.i("ResponseError", "Message: " + response.message());
                     Log.i("ResponseError", "Error Body: " + response.errorBody());
                     Log.i("ResponseError", "Http Code: " + response.code());

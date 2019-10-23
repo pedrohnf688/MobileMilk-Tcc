@@ -83,7 +83,7 @@ public class QrCodeActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(final int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
        final IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
@@ -111,6 +111,7 @@ public class QrCodeActivity extends AppCompatActivity {
                             origem.setText(a.getData().getOrigemLeite().toString());
                             produtos.setText(a.getData().getProdutos().toString());
                             especie.setText(a.getData().getEspecie().toString());
+
 
 
                             AlertDialog.Builder alertObservacao = new AlertDialog.Builder(QrCodeActivity.this);

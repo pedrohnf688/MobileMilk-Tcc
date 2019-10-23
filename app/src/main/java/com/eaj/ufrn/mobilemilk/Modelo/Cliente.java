@@ -22,7 +22,6 @@ public class Cliente {
     private String senha;
     private String username;
     private String id;
-    private Arquivo foto;
 
     public Cliente(String id, String telefone1, String telefone2, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username) {
         this.telefone1 = telefone1;
@@ -36,7 +35,7 @@ public class Cliente {
         this.id = id;
     }
 
-    public Cliente(String telefone1, String telefone2, List<Solicitacao> listaSolicitacoes, List<Fazenda> listaFazendas, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username, String id, Arquivo foto) {
+    public Cliente(String telefone1, String telefone2, List<Solicitacao> listaSolicitacoes, List<Fazenda> listaFazendas, String nome, String email, String cpf, EnumTipoPerfilUsuario codigoTipoPerfilUsuario, String senha, String username, String id) {
         this.telefone1 = telefone1;
         this.telefone2 = telefone2;
         this.listaSolicitacoes = listaSolicitacoes;
@@ -48,7 +47,6 @@ public class Cliente {
         this.senha = senha;
         this.username = username;
         this.id = id;
-        this.foto = foto;
     }
 
     // SERVE PRA O CADASTRO DE FAZENDAS
@@ -147,13 +145,6 @@ public class Cliente {
         this.telefone2 = telefone2;
     }
 
-    public Arquivo getFoto() {
-        return foto;
-    }
-
-    public void setFoto(Arquivo foto) {
-        this.foto = foto;
-    }
 
     @Override
     public String toString() {
@@ -169,7 +160,6 @@ public class Cliente {
                 ", senha='" + senha + '\'' +
                 ", username='" + username + '\'' +
                 ", id='" + id + '\'' +
-                ", foto=" + foto +
                 '}';
     }
 }

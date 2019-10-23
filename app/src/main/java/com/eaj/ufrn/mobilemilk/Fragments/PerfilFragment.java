@@ -37,6 +37,7 @@ import com.bumptech.glide.request.target.Target;
 import com.eaj.ufrn.mobilemilk.Activity.AtualizarClienteActivity;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
 import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
+import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
@@ -151,7 +152,7 @@ public class PerfilFragment extends Fragment {
         this.telefone1ClientePerfil.setText(prefs.getString("telefone1", "DEFAULT"));
         this.telefone2ClientePerfil.setText(prefs.getString("telefone2", "DEFAULT"));
 //      loadProfileIcon(prefs.getString("fotoUsuario","null"), circleImageView);
-        loadProfileIcon(urlImagem, circleImageView);
+        //loadProfileIcon(urlImagem, circleImageView);
     }
 
     @Override
@@ -199,20 +200,11 @@ public class PerfilFragment extends Fragment {
             call.enqueue(new Callback<Arquivo>() {
                 @Override
                 public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
-                    arquivo = response.body();
                     if(response.isSuccessful()) {
-
-                        SharedPreferences prefs2 = getActivity().getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = prefs2.edit();
-                        editor.putString("fotoUsuario", arquivo.getFileDownloadUri());
-                        editor.commit();
-
-                        Toast.makeText(getContext(), "Só sucesso :)", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getContext(), "Só sucesso :) Arquivo:"+response.body(), Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getContext(), ""+response.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Falha:"+response.toString(), Toast.LENGTH_SHORT).show();
                    }
-
                 }
 
                 @Override
@@ -254,23 +246,34 @@ public class PerfilFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+        SharedPreferences prefs2 = getActivity().getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        Call<String> call3 = new RetrofitConfig().getArquivoService().fileUrlUser(prefs.getString("accessId", "default"),
-                prefs.getString("accessToken", "default"));
+        Call<Arquivo> call3 = new RetrofitConfig().getArquivoService()
+                .fileUrlUser(prefs2.getString("accessId", "default"),
+                        prefs2.getString("accessToken", "default"));
 
-        call3.enqueue(new Callback<String>() {
+        call3.enqueue(new Callback<Arquivo>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
 
                 if (response.isSuccessful()) {
-                    urlImagem = response.body();
-                    Toast.makeText(getContext(), urlImagem, Toast.LENGTH_SHORT).show();
+                    Log.i("aaaaaa",""+response.body());
+
+                    loadProfileIcon(response.body().getFileDownloadUri(), circleImageView);
+                    Toast.makeText(getContext(),"URL:"+ response.body(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Log.i("URL ERRADA:", "" + response.body());
+                    Toast.makeText(getContext(), "Erro" + response.body(), Toast.LENGTH_SHORT).show();
                 }
-                Log.i("URL-AAA",""+response.body());
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Arquivo> call, Throwable t) {
+                Toast.makeText(getContext(), "Falha 2:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i("falha 2 message:", t.getMessage());
+                Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
+                Log.i("falha 2 localize:",t.getLocalizedMessage());
+
+                Log.i("falha 2 call:",call.toString());
 
             }
         });

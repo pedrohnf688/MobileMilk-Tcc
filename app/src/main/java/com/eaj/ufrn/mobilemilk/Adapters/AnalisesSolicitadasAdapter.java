@@ -17,11 +17,11 @@ import java.util.List;
 
 public class AnalisesSolicitadasAdapter extends RecyclerView.Adapter {
 
-    private List<Analise> listaAnalise;
-    private Analise analiseEscolhida;
+    private List<AnalisesSolicitadas> listaAnalise;
+    private AnalisesSolicitadas analisesSolicitadasEscolhida;
     private Context context;
 
-    public AnalisesSolicitadasAdapter(List<Analise> listaAnalise, Context context) {
+    public AnalisesSolicitadasAdapter(List<AnalisesSolicitadas> listaAnalise, Context context) {
         this.listaAnalise = listaAnalise;
         this.context = context;
     }
@@ -39,11 +39,10 @@ public class AnalisesSolicitadasAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
         AnalisesSolicitadasAdapter.AnalisesSolicitadasViewHolder holder = (AnalisesSolicitadasAdapter.AnalisesSolicitadasViewHolder) viewHolder;
-        analiseEscolhida = listaAnalise.get(i);
-        List<AnalisesSolicitadas> analises = analiseEscolhida.getAnalisesSolicitadas();
-        String analises1 = analises.toString().replace("[","").replace("]","");
 
-        holder.analisesSolicitadas.setText(analises1);
+        analisesSolicitadasEscolhida = listaAnalise.get(i);
+
+        holder.analisesSolicitadas.setText(""+analisesSolicitadasEscolhida);
 
     }
 
