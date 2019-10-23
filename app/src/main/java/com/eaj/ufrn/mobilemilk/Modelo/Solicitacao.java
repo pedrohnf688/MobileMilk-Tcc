@@ -14,7 +14,6 @@ public class Solicitacao {
    private OrdemServico ordemServico;
    private List<LaudoMedia> listaLaudoMedia;
    private double temperatura;
-   private Arquivo fotoSolicitacao;
 
 
     public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao,
@@ -27,7 +26,7 @@ public class Solicitacao {
         this.ordemServico = ordemServico;
     }
 
-    public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, OrdemServico ordemServico, List<LaudoMedia> listaLaudoMedia, double temperatura, Arquivo fotoSolicitacao) {
+    public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, OrdemServico ordemServico, List<LaudoMedia> listaLaudoMedia, double temperatura) {
         this.cliente = cliente;
         this.fazenda = fazenda;
         this.status = status;
@@ -36,7 +35,7 @@ public class Solicitacao {
         this.ordemServico = ordemServico;
         this.listaLaudoMedia = listaLaudoMedia;
         this.temperatura = temperatura;
-        this.fotoSolicitacao = fotoSolicitacao;
+
     }
 
     public Solicitacao(){
@@ -107,13 +106,6 @@ public class Solicitacao {
         this.temperatura = temperatura;
     }
 
-    public Arquivo getFotoSolicitacao() {
-        return fotoSolicitacao;
-    }
-
-    public void setFotoSolicitacao(Arquivo fotoSolicitacao) {
-        this.fotoSolicitacao = fotoSolicitacao;
-    }
 
     @Override
     public String toString() {
@@ -126,7 +118,6 @@ public class Solicitacao {
                 ", ordemServico=" + ordemServico +
                 ", listaLaudoMedia=" + listaLaudoMedia +
                 ", temperatura=" + temperatura +
-                ", fotoSolicitacao=" + fotoSolicitacao +
                 '}';
     }
 }

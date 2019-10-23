@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.eaj.ufrn.mobilemilk.Activity.ComprovanteSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
@@ -65,26 +66,31 @@ public class SolicitacoesFragment extends Fragment {
                         final View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_comprovante_solicitacao,null);
                         alertDeletarSolicitacao.setView(dialogView);
 
-                        Button buttonSolicitacaoNAO = dialogView.findViewById(R.id.buttonSolicitacaoNAO);
-                        Button buttonSolicitacaoSIM = dialogView.findViewById(R.id.buttonSolicitacaoSIM);
+                        Button buttonSolicitacaoAmostras = dialogView.findViewById(R.id.buttonSolicitacaoAmostras);
+                        Button buttonSolicitacaoComprovante = dialogView.findViewById(R.id.buttonSolicitacaoComprovante);
 
                         final AlertDialog alertDialog = alertDeletarSolicitacao.create();
                         alertDialog.show();
 
-                        buttonSolicitacaoSIM.setOnClickListener(new View.OnClickListener() {
+                        buttonSolicitacaoComprovante.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(getContext(), "Sim", Toast.LENGTH_SHORT).show();
+                                //startActivity(new Intent(getActivity().getApplicationContext(), ComprovanteSolicitacaoActivity.class));
+                                Intent i = new Intent(getActivity().getApplicationContext(), ComprovanteSolicitacaoActivity.class);
+                                i.putExtra("SolicitacaoID",s.getId());
+                                startActivity(i);
+
                                 alertDialog.dismiss();
+                                Toast.makeText(getContext(), "Cadastrado do Comprovante", Toast.LENGTH_SHORT).show();
+
                             }
                         });
-
-
-                        buttonSolicitacaoNAO.setOnClickListener(new View.OnClickListener() {
+                        
+                        buttonSolicitacaoAmostras.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 alertDialog.dismiss();
-                                Toast.makeText(getContext(), "Não", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Visualizar amostras recebidas", Toast.LENGTH_SHORT).show();
                             }
                         });
 

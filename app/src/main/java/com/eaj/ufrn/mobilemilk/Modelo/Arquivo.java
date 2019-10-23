@@ -11,19 +11,21 @@ public class Arquivo {
     private String fileDownloadUri;
     private long size;
     private Cliente fotoPerfil;
+    private Solicitacao fotoSolicitacao;
+    private Solicitacao comprovanteSolicitacao;
 
     public Arquivo() {
     }
 
-    public Arquivo(String fileName, String fileType, String fileDownloadUri, long size, Cliente fotoPerfil) {
+    public Arquivo(String fileName, String fileType, String fileDownloadUri, long size, Cliente fotoPerfil, Solicitacao fotoSolicitacao, Solicitacao comprovanteSolicitacao) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDownloadUri = fileDownloadUri;
         this.size = size;
         this.fotoPerfil = fotoPerfil;
+        this.fotoSolicitacao = fotoSolicitacao;
+        this.comprovanteSolicitacao = comprovanteSolicitacao;
     }
-
-
 
     public String getId() {
         return id;
@@ -73,6 +75,21 @@ public class Arquivo {
         this.fotoPerfil = fotoPerfil;
     }
 
+    public Solicitacao getFotoSolicitacao() {
+        return fotoSolicitacao;
+    }
+
+    public void setFotoSolicitacao(Solicitacao fotoSolicitacao) {
+        this.fotoSolicitacao = fotoSolicitacao;
+    }
+
+    public Solicitacao getComprovanteSolicitacao() {
+        return comprovanteSolicitacao;
+    }
+
+    public void setComprovanteSolicitacao(Solicitacao comprovanteSolicitacao) {
+        this.comprovanteSolicitacao = comprovanteSolicitacao;
+    }
 
     @Override
     public String toString() {
@@ -83,6 +100,8 @@ public class Arquivo {
                 ", fileDownloadUri='" + fileDownloadUri + '\'' +
                 ", size=" + size +
                 ", fotoPerfil=" + fotoPerfil +
+                ", fotoSolicitacao=" + fotoSolicitacao +
+                ", comprovanteSolicitacao=" + comprovanteSolicitacao +
                 '}';
     }
 }

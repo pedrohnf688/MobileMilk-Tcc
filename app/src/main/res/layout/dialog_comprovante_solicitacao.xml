@@ -6,43 +6,30 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/buttonSolicitacaoNAO"
-        android:layout_width="0dp"
+        android:id="@+id/buttonSolicitacaoAmostras"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="64dp"
         android:background="@color/buttonGmail"
-        android:text="Não"
+        android:text="Visualizar Amostras"
         android:textColor="@color/branco"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSolicitacaoSIM"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSolicitacaoComprovante"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDeletarSolicitacao" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonSolicitacaoSIM"
-        android:layout_width="0dp"
+        android:id="@+id/buttonSolicitacaoComprovante"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="48dp"
         android:background="@color/GreenB"
-        android:text="Sim"
+        android:text="Adicionar Comprovante"
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonSolicitacaoNAO"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDeletarSolicitacao" />
-
-    <TextView
-        android:id="@+id/textViewDeletarSolicitacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Adicionar comprovante?"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSolicitacaoAmostras"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -55,7 +42,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/textView8A"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSolicitacaoNAO" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSolicitacaoAmostras" />
 
     <TextView
         android:id="@+id/textView8A"
@@ -67,7 +54,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewS"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSolicitacaoSIM" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSolicitacaoComprovante" />
 
 
 </android.support.constraint.ConstraintLayout>

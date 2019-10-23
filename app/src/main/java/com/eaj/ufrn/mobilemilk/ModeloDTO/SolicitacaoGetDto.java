@@ -20,7 +20,6 @@ public class SolicitacaoGetDto {
     private List<Amostra> amostraList;
     private List<LaudoMedia> listaLaudoMedia;
     private double temperatura;
-    private Arquivo fotoSolicitacao;
 
     public SolicitacaoGetDto(String id, Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList) {
         this.id = id;
@@ -32,7 +31,7 @@ public class SolicitacaoGetDto {
         this.amostraList = amostraList;
     }
 
-    public SolicitacaoGetDto(Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList, List<LaudoMedia> listaLaudoMedia, double temperatura, Arquivo fotoSolicitacao) {
+    public SolicitacaoGetDto(Date dataCriada, Fazenda fazenda, List<Analise> listaAnalise, String status, String observacao, List<Amostra> amostraList, List<LaudoMedia> listaLaudoMedia, double temperatura) {
         this.dataCriada = dataCriada;
         this.fazenda = fazenda;
         this.listaAnalise = listaAnalise;
@@ -41,7 +40,6 @@ public class SolicitacaoGetDto {
         this.amostraList = amostraList;
         this.listaLaudoMedia = listaLaudoMedia;
         this.temperatura = temperatura;
-        this.fotoSolicitacao = fotoSolicitacao;
     }
 
     public SolicitacaoGetDto(){}
@@ -118,14 +116,6 @@ public class SolicitacaoGetDto {
         this.temperatura = temperatura;
     }
 
-    public Arquivo getFotoSolicitacao() {
-        return fotoSolicitacao;
-    }
-
-    public void setFotoSolicitacao(Arquivo fotoSolicitacao) {
-        this.fotoSolicitacao = fotoSolicitacao;
-    }
-
     @Override
     public String toString() {
         return "SolicitacaoGetDto{" +
@@ -138,7 +128,6 @@ public class SolicitacaoGetDto {
                 ", amostraList=" + amostraList +
                 ", listaLaudoMedia=" + listaLaudoMedia +
                 ", temperatura=" + temperatura +
-                ", fotoSolicitacao=" + fotoSolicitacao +
                 '}';
     }
 }

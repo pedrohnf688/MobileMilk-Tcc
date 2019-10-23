@@ -25,4 +25,20 @@ public interface ServiceArquivo {
 
     @GET("fileUrl/{id}")
     Call<Arquivo> fileUrlUser(@Path("id") String id, @Header("Authorization") String authorization);
+
+    @Multipart
+    @PUT("uploadFileSolicitacao/{id}")
+    Call<Arquivo> uploadFileSolicitacao(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
+
+    @Multipart
+    @PUT("uploadFileComprovanteSolicitacao/{id}")
+    Call<Arquivo> uploadFileComprovante(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
+
+    @GET("fileUrlSolicitacao/{id}")
+    Call<Arquivo> fileUrlSolicitacao(@Path("id") String id, @Header("Authorization") String authorization);
+
+    @GET("fileUrlComprovante/{id}")
+    Call<Arquivo> fileUrlComprovante(@Path("id") String id, @Header("Authorization") String authorization);
+
+
 }
