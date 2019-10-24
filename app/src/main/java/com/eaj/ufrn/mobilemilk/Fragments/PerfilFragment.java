@@ -260,15 +260,15 @@ public class PerfilFragment extends Fragment {
                     Log.i("aaaaaa",""+response.body());
 
                     loadProfileIcon(response.body().getFileDownloadUri(), circleImageView);
-                    Toast.makeText(getContext(),"URL:"+ response.body(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(),"URL:"+ response.body(), Toast.LENGTH_SHORT).show();
                 }else {
                     Log.i("URL ERRADA:", "" + response.body());
-                    Toast.makeText(getContext(), "Erro" + response.body(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Erro" + response.body(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Arquivo> call, Throwable t) {
-                Toast.makeText(getContext(), "Falha 2:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Falha 2:"+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.i("falha 2 message:", t.getMessage());
                 Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
                 Log.i("falha 2 localize:",t.getLocalizedMessage());

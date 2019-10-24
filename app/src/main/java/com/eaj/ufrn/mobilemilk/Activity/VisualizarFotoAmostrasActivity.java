@@ -166,7 +166,7 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
         Call<Arquivo> call3 = new RetrofitConfig().getArquivoService()
-                .fileUrlComprovante(bundle.getString("SolicitacaoID"),
+                .fileUrlSolicitacao(bundle.getString("SolicitacaoID"),
                         prefs2.getString("accessToken", "default"));
 
         call3.enqueue(new Callback<Arquivo>() {
@@ -177,18 +177,18 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
 
                     Log.i("aaaaaa",""+response.body());
                     loadProfileIcon(response.body().getFileDownloadUri(), imageViewFotoSolicitacao);
-                    Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
                 }else {
 
                     Log.i("URL ERRADA:", "" + response.body());
                     Log.i("URL ToString:", "" + response.toString());
-                    Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Arquivo> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 Log.i("falha 2 message:", t.getMessage());
                 Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
                 Log.i("falha 2 localize:",t.getLocalizedMessage());

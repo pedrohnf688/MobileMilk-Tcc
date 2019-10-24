@@ -109,7 +109,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                         i.putExtra("cidadeFazenda", listaFazendas.get(position).getCidade());
                         i.putExtra("bairroFazenda", listaFazendas.get(position).getBairro());
                         i.putExtra("numeroFazenda", listaFazendas.get(position).getNumero());
-                        i.putExtra("idFazenda", listaFazendas.get(position).getId());
+                        i.putExtra("idFazenda", listaFazendas.get(position).getId().toString());
                         startActivity(i);
                     }
                 }));

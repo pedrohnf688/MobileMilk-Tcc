@@ -177,18 +177,18 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
 
                     Log.i("aaaaaa",""+response.body());
                     loadProfileIcon(response.body().getFileDownloadUri(), imageViewComprovante);
-                    Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
                 }else {
 
                     Log.i("URL ERRADA:", "" + response.body());
                     Log.i("URL ToString:", "" + response.toString());
-                    Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Arquivo> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 Log.i("falha 2 message:", t.getMessage());
                 Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
                 Log.i("falha 2 localize:",t.getLocalizedMessage());

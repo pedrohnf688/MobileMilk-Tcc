@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amostras da Solicitação Recebidas"
+            android:text="Amostras Recebidas da Solicitação"
             android:textSize="30dp"
             android:textStyle="bold"
             android:layout_gravity="center"
