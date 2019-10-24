@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -144,8 +145,12 @@ public class QrCodeActivity extends AppCompatActivity {
                                         call2.enqueue(new Callback<Amostra>() {
                                             @Override
                                             public void onResponse(Call<Amostra> call, Response<Amostra> response) {
-                                                alertDialog.dismiss();
-                                                Toast.makeText(QrCodeActivity.this, "Amostra atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                                                if(response.isSuccessful()) {
+                                                    alertDialog.dismiss();
+                                                    Toast.makeText(QrCodeActivity.this, "Amostra atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                                                }else{
+                                                    Log.i("Erro Atualizar Amostra",""+response.toString());
+                                                }
                                             }
 
                                             @Override
@@ -153,6 +158,7 @@ public class QrCodeActivity extends AppCompatActivity {
                                                 alertDialog.dismiss();
                                                 Toast.makeText(QrCodeActivity.this, "Falha ao atualizar a amostra", Toast.LENGTH_SHORT).show();
 
+                                                Log.i("Erro amostra Detalhes",""+t.getMessage());
                                             }
                                         });
 

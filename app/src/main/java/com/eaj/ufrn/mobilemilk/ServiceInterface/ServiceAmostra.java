@@ -3,6 +3,8 @@ package com.eaj.ufrn.mobilemilk.ServiceInterface;
 import com.eaj.ufrn.mobilemilk.Modelo.Amostra;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostraDto;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostrasDetalhes;
+import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostrasDetalhesDTO;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.ClienteDto;
 
 
@@ -25,6 +27,9 @@ public interface ServiceAmostra {
 
     @GET("amostra/listaQrCode/{analiseId}")
     Call<List<Amostra>> listarAmostrasPorAnalise(Integer analiseId, @Header("Authorization") String authorization);
+
+    @GET("amostra/dadosAmostras/{analiseId}")
+    Call<AmostrasDetalhesDTO> buscarDadosAmostrasPorAnaliseId(String analiseId, @Header("Authorization") String authorization);
 
 
 }

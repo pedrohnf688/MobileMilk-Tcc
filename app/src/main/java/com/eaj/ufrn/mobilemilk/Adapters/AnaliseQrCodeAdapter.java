@@ -56,8 +56,6 @@ public class AnaliseQrCodeAdapter extends RecyclerView.Adapter {
        String produto1 = produto.toString().replace("[","").replace("]","");
 
        holder.origemLeite.setText("Produto: " + produto1);
-       holder.totalAmostras.setText(""+analiseEscolhida.getListaAmostras());
-
 
     }
 
@@ -70,16 +68,12 @@ public class AnaliseQrCodeAdapter extends RecyclerView.Adapter {
         final TextView numAmostras;
         final TextView tipoLeite;
         final TextView origemLeite;
-        final TextView amostrasFinalizadas;
-        final TextView totalAmostras;
 
         public AnaliseQrCodeViewHolder(@NonNull View itemView) {
             super(itemView);
             numAmostras = itemView.findViewById(R.id.numAmostrasAnaliseQrCode);
             tipoLeite = itemView.findViewById(R.id.tipoLeiteAnaliseQrCode);
             origemLeite = itemView.findViewById(R.id.origemDoLeiteAnaliseQrCode);
-            amostrasFinalizadas = itemView.findViewById(R.id.amostrasFinalizadas);
-            totalAmostras = itemView.findViewById(R.id.totalAmostras);
         }
     }
 }
