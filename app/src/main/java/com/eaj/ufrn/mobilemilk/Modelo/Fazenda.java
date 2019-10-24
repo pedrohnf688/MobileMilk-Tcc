@@ -12,7 +12,6 @@ public class Fazenda {
     private String cidade;
     private String estado;
     private Cliente cliente;
-    private Arquivo fotoFazenda;
 
     public Fazenda() {
     }
@@ -29,18 +28,6 @@ public class Fazenda {
         this.cliente = cliente;
     }
 
-    public Fazenda(String nomeFazenda, String cpfcnpj, String cep, String endereco, String numero, String bairro, String cidade, String estado, Cliente cliente, Arquivo fotoFazenda) {
-        this.nomeFazenda = nomeFazenda;
-        this.cpfcnpj = cpfcnpj;
-        this.cep = cep;
-        this.endereco = endereco;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cliente = cliente;
-        this.fotoFazenda = fotoFazenda;
-    }
 
     public Integer getId() {
         return id;
@@ -122,14 +109,6 @@ public class Fazenda {
         this.nomeFazenda = nomeFazenda;
     }
 
-    public Arquivo getFotoFazenda() {
-        return fotoFazenda;
-    }
-
-    public void setFotoFazenda(Arquivo fotoFazenda) {
-        this.fotoFazenda = fotoFazenda;
-    }
-
     @Override
     public String toString() {
         return "Fazenda{" +
@@ -143,7 +122,6 @@ public class Fazenda {
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
                 ", cliente=" + cliente +
-                ", fotoFazenda=" + fotoFazenda +
                 '}';
     }
 }

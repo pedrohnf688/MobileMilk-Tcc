@@ -13,11 +13,13 @@ public class Arquivo {
     private Cliente fotoPerfil;
     private Solicitacao fotoSolicitacao;
     private Solicitacao comprovanteSolicitacao;
+    private Fazenda fotoFazenda;
 
     public Arquivo() {
     }
 
-    public Arquivo(String fileName, String fileType, String fileDownloadUri, long size, Cliente fotoPerfil, Solicitacao fotoSolicitacao, Solicitacao comprovanteSolicitacao) {
+
+    public Arquivo(String fileName, String fileType, String fileDownloadUri, long size, Cliente fotoPerfil, Solicitacao fotoSolicitacao, Solicitacao comprovanteSolicitacao, Fazenda fotoFazenda) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDownloadUri = fileDownloadUri;
@@ -25,6 +27,7 @@ public class Arquivo {
         this.fotoPerfil = fotoPerfil;
         this.fotoSolicitacao = fotoSolicitacao;
         this.comprovanteSolicitacao = comprovanteSolicitacao;
+        this.fotoFazenda = fotoFazenda;
     }
 
     public String getId() {
@@ -91,6 +94,14 @@ public class Arquivo {
         this.comprovanteSolicitacao = comprovanteSolicitacao;
     }
 
+    public Fazenda getFotoFazenda() {
+        return fotoFazenda;
+    }
+
+    public void setFotoFazenda(Fazenda fotoFazenda) {
+        this.fotoFazenda = fotoFazenda;
+    }
+
     @Override
     public String toString() {
         return "Arquivo{" +
@@ -102,6 +113,7 @@ public class Arquivo {
                 ", fotoPerfil=" + fotoPerfil +
                 ", fotoSolicitacao=" + fotoSolicitacao +
                 ", comprovanteSolicitacao=" + comprovanteSolicitacao +
+                ", fotoFazenda=" + fotoFazenda +
                 '}';
     }
 }

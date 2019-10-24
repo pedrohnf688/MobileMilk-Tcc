@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.ComprovanteSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
+import com.eaj.ufrn.mobilemilk.Activity.VisualizarFotoAmostrasActivity;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
@@ -89,8 +90,13 @@ public class SolicitacoesFragment extends Fragment {
                         buttonSolicitacaoAmostras.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Intent i = new Intent(getActivity().getApplicationContext(), VisualizarFotoAmostrasActivity.class);
+                                i.putExtra("SolicitacaoID",s.getId());
+                                startActivity(i);
+
                                 alertDialog.dismiss();
                                 Toast.makeText(getContext(), "Visualizar amostras recebidas", Toast.LENGTH_SHORT).show();
+
                             }
                         });
 

@@ -33,6 +33,7 @@ import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.io.File;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -50,7 +51,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
     private EditText bairroFazenda;
     private EditText numeroFazenda;
 
-    private ImageButton adicionar;
     private Button confirmar;
     private Button cancelar;
     private final int PERMISSION_REQUEST = 2;
@@ -72,9 +72,9 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         this.bairroFazenda = findViewById(R.id.bairroFazenda);
         this.numeroFazenda = findViewById(R.id.numeroFazenda);
 
-        this.adicionar = findViewById(R.id.adicionarImagemfazenda);
         this.confirmar = findViewById(R.id.confirmarCadastro);
         this.cancelar = findViewById(R.id.cancelarCadastro);
+
 
     }
 

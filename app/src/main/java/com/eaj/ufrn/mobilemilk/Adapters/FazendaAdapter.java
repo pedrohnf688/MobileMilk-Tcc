@@ -1,6 +1,7 @@
 package com.eaj.ufrn.mobilemilk.Adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +15,18 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.eaj.ufrn.mobilemilk.Activity.ListarFazendaActivity;
+import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
 import com.eaj.ufrn.mobilemilk.Modelo.Fazenda;
 import com.eaj.ufrn.mobilemilk.R;
+import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FazendaAdapter extends RecyclerView.Adapter {
 
@@ -40,10 +49,9 @@ public class FazendaAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
+        final FazendaViewHolder holder = (FazendaViewHolder) viewHolder;
 
         this.fazendaEscolhida = this.listaFazendas.get(position);
-        boolean foto = fazendaEscolhida.getFotoFazenda().getFileDownloadUri() != null;
 
         holder.nomeFazendaCard.setText(this.fazendaEscolhida.getNomeFazenda());
         holder.localizacaoFazendaCard.setText(this.fazendaEscolhida.getCidade() + "/" + this.fazendaEscolhida.getEstado());
@@ -52,11 +60,39 @@ public class FazendaAdapter extends RecyclerView.Adapter {
 
         holder.descricaoFazendaCard.setText(descricao);
 
-        if(foto){
-            loadProfileIcon(fazendaEscolhida.getFotoFazenda().getFileDownloadUri(),holder.imageView2);
-        }else{
-            holder.imageView2.setImageResource(R.drawable.fazenda);
-        }
+
+
+        SharedPreferences prefs2 = context.getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+
+        Call<Arquivo> call3 = new RetrofitConfig().getArquivoService()
+                .fileUrlFazenda(fazendaEscolhida.getId().toString(),
+                        prefs2.getString("accessToken", "default"));
+
+        call3.enqueue(new Callback<Arquivo>() {
+            @Override
+            public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
+
+                if (response.isSuccessful()) {
+                    Log.i("asaa",""+response.body());
+                    loadProfileIcon(response.body().getFileDownloadUri(),holder.imageView2);
+
+                }else {
+                    Log.i("URL ERRADA:", "" + response.body());
+                }
+            }
+            @Override
+            public void onFailure(Call<Arquivo> call, Throwable t) {
+                //Toast.makeText(getApplicationContext(), "Falha 2:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i("falha 2 message:", t.getMessage());
+                Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
+                Log.i("falha 2 localize:",t.getLocalizedMessage());
+
+            }
+        });
+
+
+
+
 
 
     }
@@ -91,7 +127,7 @@ public class FazendaAdapter extends RecyclerView.Adapter {
         Glide.with(context)
                 .load(url)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.userlogin)
+                        .placeholder(R.drawable.fazenda)
                         .dontAnimate()
                         .fitCenter())
                 .into(imageView);

@@ -34,35 +34,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
+public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
 
-    ImageView imageViewComprovante;
-    ImageButton imageButtonComprovante;
+    ImageView imageViewFotoSolicitacao;
+    ImageButton imageButtonFotoSolicitacao;
     private final int PERMISSION_REQUEST = 2;
     private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comprovante_solicitacao);
+        setContentView(R.layout.activity_visualizar_foto_amostras);
 
-        imageButtonComprovante = findViewById(R.id.imageButtonComprovante);
-        imageViewComprovante = findViewById(R.id.imageViewComprovante);
+        imageButtonFotoSolicitacao = findViewById(R.id.imageButtonFotoAmostras);
+        imageViewFotoSolicitacao = findViewById(R.id.imageViewFotoAmostras);
 
-
-        getSupportActionBar().setTitle("Comprovante da Solicitação");
+        getSupportActionBar().setTitle("Foto da Solicitação");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.bundle = getIntent().getExtras();
 
 
-        imageButtonComprovante.setOnClickListener(new View.OnClickListener() {
+        imageButtonFotoSolicitacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent,1);
             }
         });
+
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -116,7 +116,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
             final RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             final MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
-                Call<Arquivo> call = new RetrofitConfig().getArquivoService().uploadFileComprovante(body, bundle.getString("SolicitacaoID"),
+            Call<Arquivo> call = new RetrofitConfig().getArquivoService().uploadFileSolicitacao(body, bundle.getString("SolicitacaoID"),
                     prefs.getString("accessToken", "default"));
 
             call.enqueue(new Callback<Arquivo>() {
@@ -176,7 +176,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     Log.i("aaaaaa",""+response.body());
-                    loadProfileIcon(response.body().getFileDownloadUri(), imageViewComprovante);
+                    loadProfileIcon(response.body().getFileDownloadUri(), imageViewFotoSolicitacao);
                     Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
                 }else {
 
@@ -200,6 +200,4 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
     }
 
 
-
 }
-

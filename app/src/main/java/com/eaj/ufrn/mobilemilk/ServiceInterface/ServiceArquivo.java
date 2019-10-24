@@ -26,6 +26,9 @@ public interface ServiceArquivo {
     @GET("fileUrl/{id}")
     Call<Arquivo> fileUrlUser(@Path("id") String id, @Header("Authorization") String authorization);
 
+    @GET("fileUrlFazenda/{id}")
+    Call<Arquivo> fileUrlFazenda(@Path("id") String id, @Header("Authorization") String authorization);
+
     @Multipart
     @PUT("uploadFileSolicitacao/{id}")
     Call<Arquivo> uploadFileSolicitacao(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
