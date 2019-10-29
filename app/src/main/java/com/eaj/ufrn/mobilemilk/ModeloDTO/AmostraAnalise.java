@@ -5,6 +5,7 @@ import com.eaj.ufrn.mobilemilk.Enum.EnumEspecie;
 import com.eaj.ufrn.mobilemilk.Enum.OrigemLeite;
 import com.eaj.ufrn.mobilemilk.Enum.Produtos;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,12 @@ public class AmostraAnalise {
     private OrigemLeite origemLeite;
     private List<Produtos> produtos;
     private EnumEspecie especie;
+    private boolean finalizada;
+    private String nomeCliente;
+    private String nomeFazenda;
+    private List<AnalisesSolicitadas> analisesSolicitadas;
+
+
 
     public AmostraAnalise() {
     }
@@ -75,5 +82,56 @@ public class AmostraAnalise {
 
     public void setEspecie(EnumEspecie especie) {
         this.especie = especie;
+    }
+
+
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getNomeFazenda() {
+        return nomeFazenda;
+    }
+
+    public void setNomeFazenda(String nomeFazenda) {
+        this.nomeFazenda = nomeFazenda;
+    }
+
+    public List<AnalisesSolicitadas> getAnalisesSolicitadas() {
+        return analisesSolicitadas;
+    }
+
+    public void setAnalisesSolicitadas(List<AnalisesSolicitadas> analisesSolicitadas) {
+        this.analisesSolicitadas = analisesSolicitadas;
+    }
+
+
+    @Override
+    public String toString() {
+        return "AmostraAnalise{" +
+                "dataColeta=" + dataColeta +
+                ", numeroAmostra=" + numeroAmostra +
+                ", qrCode='" + qrCode + '\'' +
+                ", observacao='" + observacao + '\'' +
+                ", origemLeite=" + origemLeite +
+                ", produtos=" + produtos +
+                ", especie=" + especie +
+                ", finalizada=" + finalizada +
+                ", nomeCliente='" + nomeCliente + '\'' +
+                ", nomeFazenda='" + nomeFazenda + '\'' +
+                ", analisesSolicitadas=" + analisesSolicitadas +
+                '}';
     }
 }

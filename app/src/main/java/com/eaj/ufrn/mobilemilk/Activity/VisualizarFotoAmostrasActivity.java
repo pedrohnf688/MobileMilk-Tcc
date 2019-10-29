@@ -13,6 +13,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,11 +24,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.eaj.ufrn.mobilemilk.Adapters.AnalisesSolicitadasAdapter;
+import com.eaj.ufrn.mobilemilk.Adapters.FotoSolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -40,6 +47,8 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
     ImageButton imageButtonFotoSolicitacao;
     private final int PERMISSION_REQUEST = 2;
     private Bundle bundle;
+    List<Arquivo> arquivoList = new ArrayList<>();
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +56,16 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_visualizar_foto_amostras);
 
         imageButtonFotoSolicitacao = findViewById(R.id.imageButtonFotoAmostras);
-        imageViewFotoSolicitacao = findViewById(R.id.imageViewFotoAmostras);
+        //imageViewFotoSolicitacao = findViewById(R.id.imageViewFotoAmostras);
+        recyclerView = findViewById(R.id.recyclerViewAmostrasFotos);
+
 
         getSupportActionBar().setTitle("Foto da Solicitação");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.bundle = getIntent().getExtras();
+
+
 
 
         imageButtonFotoSolicitacao.setOnClickListener(new View.OnClickListener() {
@@ -165,39 +178,47 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
 
         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
 
-        Call<Arquivo> call3 = new RetrofitConfig().getArquivoService()
+        Call<List<Arquivo>> call3 = new RetrofitConfig().getArquivoService()
                 .fileUrlSolicitacao(bundle.getString("SolicitacaoID"),
                         prefs2.getString("accessToken", "default"));
 
-        call3.enqueue(new Callback<Arquivo>() {
+
+        call3.enqueue(new Callback<List<Arquivo>>() {
             @Override
-            public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
+            public void onResponse(Call<List<Arquivo>> call, Response<List<Arquivo>> response) {
 
                 if (response.isSuccessful()) {
 
                     Log.i("aaaaaa",""+response.body());
-                    loadProfileIcon(response.body().getFileDownloadUri(), imageViewFotoSolicitacao);
+                    arquivoList = response.body();
+
+                    FotoSolicitacaoAdapter adapter = new FotoSolicitacaoAdapter(arquivoList, getApplicationContext());
+                    recyclerView.setAdapter(adapter);
+
+                    RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recyclerView.setLayoutManager(layout);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+
                     //Toast.makeText(getApplicationContext(),"Só Sucesso :)", Toast.LENGTH_SHORT).show();
                 }else {
 
                     Log.i("URL ERRADA:", "" + response.body());
                     Log.i("URL ToString:", "" + response.toString());
-                   // Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 }
+
             }
+
             @Override
-            public void onFailure(Call<Arquivo> call, Throwable t) {
+            public void onFailure(Call<List<Arquivo>> call, Throwable t) {
 
                 //Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
                 Log.i("falha 2 message:", t.getMessage());
                 Log.i("falha 2 stackTrace:",t.getStackTrace().toString());
                 Log.i("falha 2 localize:",t.getLocalizedMessage());
 
-
             }
         });
-
     }
-
 
 }

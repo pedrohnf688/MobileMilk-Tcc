@@ -26,6 +26,7 @@ import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,6 +43,7 @@ public class QrCodeActivity extends AppCompatActivity {
     private TextView produtos;
     private TextView especie;
     private Button leitor,btFinalizar;
+    Bundle bundle;
 
     final Activity activity= this;
 
@@ -59,6 +61,10 @@ public class QrCodeActivity extends AppCompatActivity {
 
         leitor = findViewById(R.id.scanQR);
         btFinalizar = findViewById(R.id.btFinalizar);
+
+
+        bundle = getIntent().getExtras();
+
 
         btFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +101,7 @@ public class QrCodeActivity extends AppCompatActivity {
 
                 SharedPreferences prefs = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
 
-                Call<AmostraDto> call = new RetrofitConfig().getAmostraService().buscarAmostra(intentResult.getContents(),
+                Call<AmostraDto> call = new RetrofitConfig().getAmostraService().buscarAmostra(bundle.getString("analiseId"),intentResult.getContents(),
                         prefs.getString("accessToken", "default")
                 );
 
@@ -106,13 +112,19 @@ public class QrCodeActivity extends AppCompatActivity {
 
                             AmostraDto a = response.body();
 
-                            coleta.setText(a.getData().getDataColeta().toString());
-                            numeroAmostra.setText(String.valueOf(a.getData().getNumeroAmostra()));
-                            observacao.setText(a.getData().getObservacao());
-                            origem.setText(a.getData().getOrigemLeite().toString());
-                            produtos.setText(a.getData().getProdutos().toString());
-                            especie.setText(a.getData().getEspecie().toString());
+                            if(a.getData().getDataColeta() != null && a.getData().getEspecie() != null &&
+                                    a.getData().getNumeroAmostra() != 0 && a.getData().getOrigemLeite().toString() != null &&
+                                    a.getData().getProdutos().toString() != null || response.body().toString() != null) {
 
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+                                String strDate = formatter.format(a.getData().getDataColeta());
+
+                                coleta.setText(strDate);
+                                numeroAmostra.setText(String.valueOf(a.getData().getNumeroAmostra()));
+                                observacao.setText(a.getData().getObservacao());
+                                origem.setText(a.getData().getOrigemLeite().toString());
+                                produtos.setText(a.getData().getProdutos().toString());
+                                especie.setText(a.getData().getEspecie().toString());
 
 
                             AlertDialog.Builder alertObservacao = new AlertDialog.Builder(QrCodeActivity.this);
@@ -177,6 +189,10 @@ public class QrCodeActivity extends AppCompatActivity {
                                     Toast.makeText(QrCodeActivity.this, "Ação cancelada", Toast.LENGTH_SHORT).show();
                                 }
                             });
+                            }else{
+                                Toast.makeText(QrCodeActivity.this, "QrCode não correspondente a análise", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
 

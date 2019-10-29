@@ -49,9 +49,9 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter {
         if(mvn.statusSolicitacao.getText().toString().equals("PENDENTE"))
             mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.RedFloat));
         else if(mvn.statusSolicitacao.getText().toString().equals("APROVADO"))
-            mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.YELLOW));
-        else
             mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.GreenB));
+        else
+            mvn.statusSolicitacao.setTextColor(context.getResources().getColor(R.color.YELLOW));
     }
 
 

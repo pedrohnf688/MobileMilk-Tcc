@@ -201,15 +201,15 @@ public class PerfilFragment extends Fragment {
                 @Override
                 public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
                     if(response.isSuccessful()) {
-                        Toast.makeText(getContext(), "Só sucesso :) Arquivo:"+response.body(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Foto atualizada com sucesso", Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getContext(), "Falha:"+response.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Falha ao atualizar foto", Toast.LENGTH_SHORT).show();
                    }
                 }
 
                 @Override
                 public void onFailure(Call<Arquivo> call, Throwable t) {
-                    Toast.makeText(getContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Falha ao atualizar foto", Toast.LENGTH_SHORT).show();
                 }
             });
 

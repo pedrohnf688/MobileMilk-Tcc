@@ -3,6 +3,8 @@ package com.eaj.ufrn.mobilemilk.ServiceInterface;
 import com.eaj.ufrn.mobilemilk.Modelo.Arquivo;
 import com.eaj.ufrn.mobilemilk.Modelo.Cliente;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -38,7 +40,7 @@ public interface ServiceArquivo {
     Call<Arquivo> uploadFileComprovante(@Part MultipartBody.Part file, @Path("id") String id, @Header("Authorization") String authorization);
 
     @GET("fileUrlSolicitacao/{id}")
-    Call<Arquivo> fileUrlSolicitacao(@Path("id") String id, @Header("Authorization") String authorization);
+    Call<List<Arquivo>> fileUrlSolicitacao(@Path("id") String id, @Header("Authorization") String authorization);
 
     @GET("fileUrlComprovante/{id}")
     Call<Arquivo> fileUrlComprovante(@Path("id") String id, @Header("Authorization") String authorization);

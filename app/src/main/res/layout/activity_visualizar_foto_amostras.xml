@@ -27,13 +27,11 @@
             android:gravity="center"
             android:layout_marginTop="20dp"/>
 
-        <ImageView
-            android:id="@+id/imageViewFotoAmostras"
-            android:layout_width="370dp"
-            android:layout_height="400dp"
-            android:src="@drawable/ic_insert_drive_file_black_24dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewAmostrasFotos"
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
+
 
         <ImageButton
             android:id="@+id/imageButtonFotoAmostras"
@@ -43,7 +41,6 @@
             android:src="@drawable/camera_24dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"/>
-
 
     </LinearLayout>
 

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Modelo.Credencial;
 import com.eaj.ufrn.mobilemilk.Modelo.Login;
@@ -74,6 +75,10 @@ public class LoginActivity extends AppCompatActivity {
                         String accesstoken = response.headers().get("Authorization");               // Recebe o token pelo cabeçalho.
                         String[] accessId = response.headers().get("Usuario").split(":");     // Recebe o id do cliente logado.
                         String id = accessId[1];
+                        //verificar perfil do usuario
+
+                        Toast.makeText(LoginActivity.this, response.headers().get("UsuarioPerfil"), Toast.LENGTH_SHORT).show();
+                        Log.i("Perfil",response.headers().get("UsuarioPerfil"));
 
                         //Login login = new Login(getApplicationContext());                         // Responsável por gerenciar o Token
                         Login.saveToken(getApplicationContext(), accesstoken, id);                  // Armazena o Token no SharedPrefs
@@ -84,9 +89,16 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences prefs = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
                         Log.i("prefs", "token: " + prefs.getString("accessToken", "errou"));
 
-                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                        finish();
-                        startActivity(i);
+                        if(response.headers().get("UsuarioPerfil").equals("ROLE_BOLSISTA") || response.headers().get("UsuarioPerfil").equals("ROLE_ADMINISTRADOR")){
+                            Intent intent = new Intent(getApplicationContext(), AreaRestritaActivity.class);
+                            finish();
+                            startActivity(intent);
+
+                        }else if(response.headers().get("UsuarioPerfil").equals("ROLE_CLIENTE")) {
+                            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                            finish();
+                            startActivity(i);
+                        }
                     }
                     else{
                         Log.i("xx", ""+ response.toString());

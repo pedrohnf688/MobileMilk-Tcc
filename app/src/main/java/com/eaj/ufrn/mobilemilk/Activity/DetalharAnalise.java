@@ -49,7 +49,7 @@ public class DetalharAnalise extends AppCompatActivity {
         textViewNumerodeAmostras = findViewById(R.id.textoNumerodeAmostras);
         textVieworigemdoLeite = findViewById(R.id.textoOrigemdoLeite);
         textViewproduto = findViewById(R.id.textoProduto);
-        gerarPdf = findViewById(R.id.gerarPdf);
+
 
     }
 

@@ -14,13 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Adapters.AnaliseAdapter;
 import com.eaj.ufrn.mobilemilk.Adapters.AnaliseQrCodeAdapter;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
 import com.eaj.ufrn.mobilemilk.Modelo.Amostra;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostrasDetalhes;
-import com.eaj.ufrn.mobilemilk.ModeloDTO.AmostrasDetalhesDTO;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
@@ -75,19 +75,19 @@ public class AnalisesActivity extends AppCompatActivity {
 
                         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
 
-                        Call<AmostrasDetalhesDTO> callamostras = new RetrofitConfig().getAmostraService()
+                        Call<AmostrasDetalhes> callamostras = new RetrofitConfig().getAmostraService()
                                 .buscarDadosAmostrasPorAnaliseId(listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise().get(position).getId(), prefs2.getString("accessToken", "default"));
 
-
-                        callamostras.enqueue(new Callback<AmostrasDetalhesDTO>() {
+                        callamostras.enqueue(new Callback<AmostrasDetalhes>() {
                             @Override
-                            public void onResponse(Call<AmostrasDetalhesDTO> call, Response<AmostrasDetalhesDTO> response) {
-                                totalAmostras.setText(response.body().getAmostrasDetalhes().getTotalAmostras());
-                                amostrasColetadas.setText(response.body().getAmostrasDetalhes().getAmostrasColetadas());
+                            public void onResponse(Call<AmostrasDetalhes> call, Response<AmostrasDetalhes> response) {
+                                totalAmostras.setText(""+response.body().getTotalAmostras());
+                                amostrasColetadas.setText(""+response.body().getAmostrasColetadas());
+                                //Toast.makeText(AnalisesActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
-                            public void onFailure(Call<AmostrasDetalhesDTO> call, Throwable t) {
+                            public void onFailure(Call<AmostrasDetalhes> call, Throwable t) {
                                 alertDialog.dismiss();
                             }
                         });
@@ -101,23 +101,13 @@ public class AnalisesActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                     }
 
                     @Override
                     public void onItemClick(View view, int position){
-                        startActivity(new Intent(getApplicationContext(), QrCodeActivity.class));
+                        Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
+                        intent.putExtra("analiseId",listaSolicitacao.get(data.getInt("recyclerPosition")).getListaAnalise().get(position).getId());
+                        startActivity(intent);
 
 
                     }

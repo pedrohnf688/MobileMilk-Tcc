@@ -300,6 +300,7 @@ public class CadastrarAnaliseActivity extends AppCompatActivity {
         t.putExtra("analiseFraudeLactoperoxidade", this.analiseFraudeLactoperoxidade.isChecked() ? true : false);
         t.putExtra("analiseFraudeCloretos", this.analiseFraudeCloretos.isChecked() ? true : false);
         t.putExtra("analiseFraudeAmido", this.analiseFraudeAmido.isChecked() ? true : false);
+        t.putExtra("analiseFraudePeroxidoHidrogenio",this.analiseFraudePeroxidoHidrogenio.isChecked() ? true : false);
 
         /*
          *  quantidade de amostras

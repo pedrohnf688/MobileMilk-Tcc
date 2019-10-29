@@ -48,14 +48,12 @@ public class AnaliseQrCodeAdapter extends RecyclerView.Adapter {
         EnumEspecie especie = analiseEscolhida.getEspecie();
         List<Produtos> produto = analiseEscolhida.getProdutos();
 
-
-
        holder.tipoLeite.setText("Espécie: " + especie.name());
        holder.numAmostras.setText("Quantidade de Amostras: " + analiseEscolhida.getQuantidadeAmostras());
+       holder.origemLeite.setText("Origem do Leite: "+ analiseEscolhida.getOrigemLeite().name().replace("_"," "));
 
-       String produto1 = produto.toString().replace("[","").replace("]","");
-
-       holder.origemLeite.setText("Produto: " + produto1);
+//       String produto1 = produto.toString().replace("[","").replace("]","");
+//       holder.origemLeite.setText("Produto: " + produto1.replace("_"," "));
 
     }
 

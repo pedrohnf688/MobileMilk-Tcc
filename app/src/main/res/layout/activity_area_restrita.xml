@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AreaRestritaActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="8dp"
+        app:cardCornerRadius="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solicitação"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="35dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cliente:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/nomeClienteQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fazenda:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/nomeFazendaQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Análise"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coleta:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/coletaQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Origem do Leite:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/origemLeiteQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número da Amostra:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/numeroAmostraQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Espécie:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/especieQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Produto:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/produtoQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Observação:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/observacaoQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Análises Solicitadas"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewAnalisesSolicitadasQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sairQrCode"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/buttonGmail"
+                android:text="Sair"
+                android:textColor="@color/branco" />
+
+
+            <Button
+                android:id="@+id/pesquisarQrCode"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Consultar QrCode"
+                android:textColor="@color/branco" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.widget.ScrollView>

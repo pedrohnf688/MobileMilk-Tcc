@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Solicitacao {
 
+   private String id;
    private Cliente cliente;
    private Fazenda fazenda;
    private Status status;
@@ -26,7 +27,8 @@ public class Solicitacao {
         this.ordemServico = ordemServico;
     }
 
-    public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, OrdemServico ordemServico, List<LaudoMedia> listaLaudoMedia, double temperatura) {
+    public Solicitacao(String id, Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, OrdemServico ordemServico, List<LaudoMedia> listaLaudoMedia, double temperatura) {
+        this.id = id;
         this.cliente = cliente;
         this.fazenda = fazenda;
         this.status = status;
@@ -35,11 +37,18 @@ public class Solicitacao {
         this.ordemServico = ordemServico;
         this.listaLaudoMedia = listaLaudoMedia;
         this.temperatura = temperatura;
-
     }
 
     public Solicitacao(){
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Cliente getCliente() {
@@ -110,7 +119,8 @@ public class Solicitacao {
     @Override
     public String toString() {
         return "Solicitacao{" +
-                "cliente=" + cliente +
+                "id='" + id + '\'' +
+                ", cliente=" + cliente +
                 ", fazenda=" + fazenda +
                 ", status=" + status +
                 ", observacao='" + observacao + '\'' +

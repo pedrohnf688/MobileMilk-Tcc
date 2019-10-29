@@ -47,10 +47,10 @@ public class AnaliseAdapter extends RecyclerView.Adapter {
 
         holder.numAmostras.setText("Quantidade de Amostras: " + analiseEscolhida.getQuantidadeAmostras());
         holder.tipoLeite.setText("Espécie: " + especie.name());
+        holder.origemLeite.setText("Origem do Leite: "+ analiseEscolhida.getOrigemLeite().name().replace("_"," "));
+        //String produto1 = produto.toString().replace("[","").replace("]","");
+        //holder.origemLeite.setText("Produto: " + produto1.replace("_"," "));
 
-        String produto1 = produto.toString().replace("[","").replace("]","");
-
-        holder.origemLeite.setText("Produto: " + produto1);
     }
 
     @Override

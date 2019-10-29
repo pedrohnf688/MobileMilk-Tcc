@@ -14,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.VisualizarFotoAmostrasActivity"
+        <activity android:name=".Activity.AreaRestritaActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Activity.VisualizarFotoAmostrasActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ComprovanteSolicitacaoActivity"
             android:screenOrientation="portrait" />

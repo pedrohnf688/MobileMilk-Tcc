@@ -183,11 +183,12 @@ public class ListarAnalisesActivity extends AppCompatActivity {
             *
             * */
             if(bundle.getBoolean("analiseFraudeFormol")) this.analisesSolicitadas.add(AnalisesSolicitadas.FORMOL);
-            if(bundle.getBoolean("analiseFraudeAçucares")) this.analisesSolicitadas.add(AnalisesSolicitadas.AÇUCARES);
+            if(bundle.getBoolean("analiseFraudeAçucares")) this.analisesSolicitadas.add(AnalisesSolicitadas.ACUCARES);
             if(bundle.getBoolean("analiseFraudeAlcalinizantes")) this.analisesSolicitadas.add(AnalisesSolicitadas.ALCALINIZANTES);
-            if(bundle.getBoolean("analiseFraudeLactoperoxidade")) this.analisesSolicitadas.add(AnalisesSolicitadas.LACTOPEROXIDADE);
+            if(bundle.getBoolean("analiseFraudeLactoperoxidade")) this.analisesSolicitadas.add(AnalisesSolicitadas.LACTOPEROXIDASE);
             if(bundle.getBoolean("analiseFraudeCloretos")) this.analisesSolicitadas.add(AnalisesSolicitadas.CLORETOS);
             if(bundle.getBoolean("analiseFraudeAmido")) this.analisesSolicitadas.add(AnalisesSolicitadas.AMIDO);
+            if(bundle.getBoolean("analiseFraudePeroxidoHidrogenio")) this.analisesSolicitadas.add(AnalisesSolicitadas.PEROXIDO_HIDROGENIO);
 
             Log.i("tamanho", "tamanho list analisesSolicitadas " + analisesSolicitadas.size());
 

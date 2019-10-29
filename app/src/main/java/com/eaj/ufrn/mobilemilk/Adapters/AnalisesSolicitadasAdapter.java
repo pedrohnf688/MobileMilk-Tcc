@@ -42,7 +42,7 @@ public class AnalisesSolicitadasAdapter extends RecyclerView.Adapter {
 
         analisesSolicitadasEscolhida = listaAnalise.get(i);
 
-        holder.analisesSolicitadas.setText(""+analisesSolicitadasEscolhida);
+        holder.analisesSolicitadas.setText(""+analisesSolicitadasEscolhida.name().replace("_"," "));
 
     }
 

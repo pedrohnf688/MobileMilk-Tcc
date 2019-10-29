@@ -7,10 +7,10 @@
 
     <LinearLayout
         android:id="@id/layout1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,11 +20,13 @@
             android:layout_height="match_parent"
             android:text="Selecionar Fazenda"
             android:textSize="25dp"
+            android:layout_gravity="center"
             android:layout_marginRight="15dp"/>
 
         <Spinner
             android:id="@+id/spinnerFazenda"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
             android:layout_height="match_parent" />
 
     </LinearLayout>

@@ -1,16 +1,11 @@
 package com.eaj.ufrn.mobilemilk.ModeloDTO;
 
-import java.util.Arrays;
-
-public class AmostrasDetalhes {
+public class AmostrasDetalhe {
 
     private int totalAmostras;
     private int amostrasColetadas;
 
-    public AmostrasDetalhes() {
-    }
-
-    public AmostrasDetalhes(int totalAmostras, int amostrasColetadas) {
+    public AmostrasDetalhe(int totalAmostras, int amostrasColetadas) {
         this.totalAmostras = totalAmostras;
         this.amostrasColetadas = amostrasColetadas;
     }
@@ -33,7 +28,7 @@ public class AmostrasDetalhes {
 
     @Override
     public String toString() {
-        return "AmostrasDetalhes{" +
+        return "AmostrasDetalhe{" +
                 "totalAmostras=" + totalAmostras +
                 ", amostrasColetadas=" + amostrasColetadas +
                 '}';
