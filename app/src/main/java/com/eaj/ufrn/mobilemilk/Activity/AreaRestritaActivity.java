@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ import retrofit2.Response;
 
 public class AreaRestritaActivity extends AppCompatActivity {
 
-    TextView nomeCliente, nomeFazenda, coleta, origemLeite,numeroAmostra, especie, produto, observacao;
+    TextView nomeCliente, nomeFazenda, coleta, origemLeite,numeroAmostra, especie, produto, observacao, amostraStatus;
     RecyclerView recyclerView;
     Button sairQrCode, pesquisarQrCode;
     final Activity activity= this;
@@ -54,6 +55,7 @@ public class AreaRestritaActivity extends AppCompatActivity {
         especie = findViewById(R.id.especieQrCode);
         produto = findViewById(R.id.produtoQrCode);
         observacao = findViewById(R.id.observacaoQrCode);
+        amostraStatus = findViewById(R.id.amostraStatusQrCode);
 
         recyclerView = findViewById(R.id.recyclerViewAnalisesSolicitadasQrCode);
 
@@ -113,6 +115,7 @@ public class AreaRestritaActivity extends AppCompatActivity {
                                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
                                 String strDate = formatter.format(a.getData().getDataColeta());
 
+                                Log.i("AmostraTo",a.getData().toString());
                                 coleta.setText(strDate);
                                 numeroAmostra.setText(String.valueOf(a.getData().getNumeroAmostra()));
                                 observacao.setText(a.getData().getObservacao());
@@ -121,6 +124,12 @@ public class AreaRestritaActivity extends AppCompatActivity {
                                 especie.setText(a.getData().getEspecie().toString());
                                 nomeCliente.setText(a.getData().getNomeCliente());
                                 nomeFazenda.setText(a.getData().getNomeFazenda());
+                                if(a.getData().getFinalizada() == true){
+                                    amostraStatus.setText("Amostra coletada");
+                                }else if(a.getData().getFinalizada() == false){
+                                    amostraStatus.setText("Amostra não coletada");
+                                }
+
 
                                 analisesSolicitadasArrayList = a.getData().getAnalisesSolicitadas();
 

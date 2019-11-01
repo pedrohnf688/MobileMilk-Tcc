@@ -85,7 +85,7 @@ public class AmostraAnalise {
     }
 
 
-    public boolean isFinalizada() {
+    public boolean getFinalizada() {
         return finalizada;
     }
 

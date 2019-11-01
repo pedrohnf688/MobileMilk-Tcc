@@ -112,9 +112,11 @@ public class QrCodeActivity extends AppCompatActivity {
 
                             AmostraDto a = response.body();
 
-                            if(a.getData().getDataColeta() != null && a.getData().getEspecie() != null &&
+                            if (a.getData().getDataColeta() != null && a.getData().getEspecie() != null &&
                                     a.getData().getNumeroAmostra() != 0 && a.getData().getOrigemLeite().toString() != null &&
-                                    a.getData().getProdutos().toString() != null || response.body().toString() != null) {
+                                    a.getData().getProdutos().toString() != null) {
+
+                                Log.i("Objeto Amostra:",response.body().toString());
 
                                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
                                 String strDate = formatter.format(a.getData().getDataColeta());
@@ -126,7 +128,11 @@ public class QrCodeActivity extends AppCompatActivity {
                                 produtos.setText(a.getData().getProdutos().toString());
                                 especie.setText(a.getData().getEspecie().toString());
 
-
+//                                Log.i("Data Coleta 1:",""+a.getData().getDataColeta());
+//                                Log.i("Data Coleta 2:",""+a.getData().getDataColeta().toString());
+//                                Log.i("Data Coleta 3:",""+a.getData().getDataColeta().toGMTString());
+//                                Log.i("Data Coleta 4:",""+a.getData().getDataColeta().toLocaleString());
+//                                Log.i("Data Coleta 5:",""+a.getData().getDataColeta().getTime());
                             AlertDialog.Builder alertObservacao = new AlertDialog.Builder(QrCodeActivity.this);
 
                             final View dialogView = LayoutInflater.from(QrCodeActivity.this).inflate(R.layout.dialog_atualizar_amostra,null);
@@ -142,11 +148,12 @@ public class QrCodeActivity extends AppCompatActivity {
                             sim.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Amostra amostra = new Amostra();
 
                                     String obs = observacaoInput.getText().toString().trim();
 
                                     if(!TextUtils.isEmpty(obs)){
+
+                                        final Amostra amostra = new Amostra();
 
                                         amostra.setFinalizada(true);
                                         amostra.setObservacao(obs);
@@ -160,6 +167,8 @@ public class QrCodeActivity extends AppCompatActivity {
                                                 if(response.isSuccessful()) {
                                                     alertDialog.dismiss();
                                                     Toast.makeText(QrCodeActivity.this, "Amostra atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                                                    Log.i("AmostraT",response.body().toString());
+                                                    Log.i("Amostra Entrada",amostra.toString());
                                                 }else{
                                                     Log.i("Erro Atualizar Amostra",""+response.toString());
                                                 }
