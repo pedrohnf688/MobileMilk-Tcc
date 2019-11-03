@@ -31,6 +31,7 @@ public class Amostra {
 
     }
 
+
     public Date getDataColeta() {
         return dataColeta;
     }
@@ -79,8 +80,7 @@ public class Amostra {
         this.identificadorAmostra = identificadorAmostra;
     }
 
-
-    public boolean getFinalizada() {
+    public boolean isFinalizada() {
         return finalizada;
     }
 

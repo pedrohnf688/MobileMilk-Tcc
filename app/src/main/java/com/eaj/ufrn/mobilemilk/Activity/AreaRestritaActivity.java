@@ -124,9 +124,10 @@ public class AreaRestritaActivity extends AppCompatActivity {
                                 especie.setText(a.getData().getEspecie().toString());
                                 nomeCliente.setText(a.getData().getNomeCliente());
                                 nomeFazenda.setText(a.getData().getNomeFazenda());
-                                if(a.getData().getFinalizada() == true){
+
+                                if(a.getData().getObservacao() != null){
                                     amostraStatus.setText("Amostra coletada");
-                                }else if(a.getData().getFinalizada() == false){
+                                }else if(a.getData().getObservacao() == null){
                                     amostraStatus.setText("Amostra não coletada");
                                 }
 

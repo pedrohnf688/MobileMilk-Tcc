@@ -155,7 +155,7 @@ public class QrCodeActivity extends AppCompatActivity {
 
                                         final Amostra amostra = new Amostra();
 
-                                        amostra.setFinalizada(true);
+                                        //amostra.setFinalizada(true);
                                         amostra.setObservacao(obs);
 
                                         SharedPreferences prefs2 = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);

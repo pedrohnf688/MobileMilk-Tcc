@@ -28,6 +28,14 @@ public class AmostraAnalise {
     public AmostraAnalise() {
     }
 
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
+    }
+
     public Date getDataColeta() {
         return dataColeta;
     }
@@ -84,14 +92,6 @@ public class AmostraAnalise {
         this.especie = especie;
     }
 
-
-    public boolean getFinalizada() {
-        return finalizada;
-    }
-
-    public void setFinalizada(boolean finalizada) {
-        this.finalizada = finalizada;
-    }
 
     public String getNomeCliente() {
         return nomeCliente;
