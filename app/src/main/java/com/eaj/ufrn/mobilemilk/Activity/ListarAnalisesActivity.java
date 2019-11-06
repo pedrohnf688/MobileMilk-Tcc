@@ -132,13 +132,13 @@ public class ListarAnalisesActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "deu ruim", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Falha ao Cadastrar Solicitação", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<SolicitacaoPostDto> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "Falha ao Cadastrar Solicitação", Toast.LENGTH_SHORT).show();
             }
         });
     }

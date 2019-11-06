@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         String id = accessId[1];
                         //verificar perfil do usuario
 
-                        Toast.makeText(LoginActivity.this, response.headers().get("UsuarioPerfil"), Toast.LENGTH_SHORT).show();
+                        ///Toast.makeText(LoginActivity.this, response.headers().get("UsuarioPerfil"), Toast.LENGTH_SHORT).show();
                         Log.i("Perfil",response.headers().get("UsuarioPerfil"));
 
                         //Login login = new Login(getApplicationContext());                         // Responsável por gerenciar o Token

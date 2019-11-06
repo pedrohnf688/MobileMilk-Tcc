@@ -145,9 +145,9 @@ public class PerfilFazendaActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
                     if(response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Só sucesso :)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Imagem Cadastrada", Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Falha ao Cadastrar", Toast.LENGTH_SHORT).show();
                         Log.i("AAA",""+response.toString());
                         Log.i("AAA 3",""+bundle.getString("idFazenda"));
                     }
@@ -155,7 +155,7 @@ public class PerfilFazendaActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Arquivo> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Falha ao Cadastrar", Toast.LENGTH_SHORT).show();
                     Log.i("AAA 2",""+t.getMessage());
                 }
             });

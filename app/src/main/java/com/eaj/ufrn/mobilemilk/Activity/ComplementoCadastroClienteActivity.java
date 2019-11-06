@@ -111,13 +111,16 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
             this.telefone1Usuario.setError("Não use espaços ao preencher o número");
             return false;
         }
-        else if(telefone2.length() < 14 || telefone2.length() > 14){
-            this.telefone2Usuario.setError("Deve conter 11 digitos incluindo o DDD");
-            return false;
-        }
-        else if(telefone2.contains(" ")){
-            this.telefone2Usuario.setError("Não use espaços ao preencher o número");
-            return false;
+        if(telefone2.length() != 0){
+            if(telefone2.length() < 14 || telefone2.length() > 14){
+                this.telefone2Usuario.setError("Deve conter 11 digitos incluindo o DDD");
+                return false;
+            }
+            else if(telefone2.contains(" ")){
+                this.telefone2Usuario.setError("Não use espaços ao preencher o número");
+                return false;
+            }
+
         }
 
         progressBar.setVisibility(View.VISIBLE);
@@ -143,7 +146,7 @@ public class ComplementoCadastroClienteActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error 404", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                 Log.i("Error404", "vausa: " + t.getCause());
                 t.printStackTrace();
                 progressBar.setVisibility(View.GONE);

@@ -123,17 +123,17 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Arquivo> call, Response<Arquivo> response) {
                     if(response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Só sucesso :)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Arquivo Cadastrdo", Toast.LENGTH_SHORT).show();
                         Log.i("Sucesso Arquivo: ",""+response.body());
                     }else {
-                        Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Falha ao Inserir", Toast.LENGTH_SHORT).show();
                         Log.i("Falha 1",response.toString());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Arquivo> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Falha :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Falha ao Inserir", Toast.LENGTH_SHORT).show();
 
                     Log.i("Id da Solicitacao:",""+bundle.getString("SolicitacaoID"));
                     Log.i("falha 1 message:", t.getMessage());

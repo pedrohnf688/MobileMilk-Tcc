@@ -95,7 +95,7 @@ public class ListarFazendaActivity extends AppCompatActivity {
                     @Override
                     public void onItemLongClick(View view, int position) {
                         // Implementação opcional para desenvolvimento futuro ....
-                        Toast.makeText(getApplicationContext(), "LONG", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getApplicationContext(), "LONG", Toast.LENGTH_LONG).show();
                     }
 
                     @Override

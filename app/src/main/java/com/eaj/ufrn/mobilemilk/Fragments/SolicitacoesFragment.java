@@ -82,7 +82,7 @@ public class SolicitacoesFragment extends Fragment {
                                 startActivity(i);
 
                                 alertDialog.dismiss();
-                                Toast.makeText(getContext(), "Cadastrado do Comprovante", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getContext(), "Comprovante ", Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -95,7 +95,7 @@ public class SolicitacoesFragment extends Fragment {
                                 startActivity(i);
 
                                 alertDialog.dismiss();
-                                Toast.makeText(getContext(), "Visualizar amostras recebidas", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getContext(), "Visualizar amostras recebidas", Toast.LENGTH_SHORT).show();
 
                             }
                         });

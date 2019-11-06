@@ -132,6 +132,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                                 else {
                                     Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                                     Log.i("erro", ""+response.toString());
+                                    Log.i("erro2", ""+response.body());
+                                    Log.i("erro3", ""+response.errorBody());
+                                    Log.i("erro4", ""+response.message());
                                 }//R.string.EmailSetError
 
                                 progressBar.setVisibility(View.GONE);
@@ -140,6 +143,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                             public void onFailure(Call<Cliente> call, Throwable t) {
                                 Log.i("MK", "Falha ao Inserir");
                                 Log.i("MK", "Falha ao Inserir " + t.getMessage());
+                                Log.i("aaaa", t.toString());
+                                Log.i("bbbb", call.toString());
+
                                 Toast.makeText(getApplicationContext(), R.string.FalhaInserir, Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                             }
