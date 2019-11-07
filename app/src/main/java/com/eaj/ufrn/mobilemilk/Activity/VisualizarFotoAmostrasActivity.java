@@ -44,7 +44,7 @@ import retrofit2.Response;
 public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
 
     ImageView imageViewFotoSolicitacao;
-    ImageButton imageButtonFotoSolicitacao;
+    //ImageButton imageButtonFotoSolicitacao;
     private final int PERMISSION_REQUEST = 2;
     private Bundle bundle;
     List<Arquivo> arquivoList = new ArrayList<>();
@@ -55,7 +55,7 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_foto_amostras);
 
-        imageButtonFotoSolicitacao = findViewById(R.id.imageButtonFotoAmostras);
+        //imageButtonFotoSolicitacao = findViewById(R.id.imageButtonFotoAmostras);
         //imageViewFotoSolicitacao = findViewById(R.id.imageViewFotoAmostras);
         recyclerView = findViewById(R.id.recyclerViewAmostrasFotos);
 
@@ -68,13 +68,13 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
 
 
 
-        imageButtonFotoSolicitacao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent,1);
-            }
-        });
+//        imageButtonFotoSolicitacao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(intent,1);
+//            }
+//        });
 
 
         if (ContextCompat.checkSelfPermission(this,
@@ -108,7 +108,7 @@ public class VisualizarFotoAmostrasActivity extends AppCompatActivity {
         Glide.with(context)
                 .load(url)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_insert_drive_file_black_24dp)
+                        .placeholder(R.drawable.loading)
                         .dontAnimate()
                         .fitCenter())
                 .into(imageView);

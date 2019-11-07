@@ -172,7 +172,7 @@ public class PerfilFragment extends Fragment {
         Glide.with(context)
                 .load(url)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_insert_drive_file_black_24dp)
+                        .placeholder(R.drawable.userlogin)
                         .dontAnimate()
                         .fitCenter())
                 .into(imageView);

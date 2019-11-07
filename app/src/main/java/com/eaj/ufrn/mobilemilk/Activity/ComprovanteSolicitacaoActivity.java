@@ -95,7 +95,7 @@ public class ComprovanteSolicitacaoActivity extends AppCompatActivity {
         Glide.with(context)
                 .load(url)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_insert_drive_file_black_24dp)
+                        .placeholder(R.drawable.loading)
                         .dontAnimate()
                         .fitCenter())
                 .into(imageView);
