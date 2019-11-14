@@ -97,7 +97,7 @@ public class QrCodeActivity extends AppCompatActivity {
 
         if(intentResult != null){
             if (intentResult.getContents() !=  null){
-                alert(intentResult.getContents());
+                //alert(intentResult.getContents());
 
                 SharedPreferences prefs = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
 
@@ -113,7 +113,7 @@ public class QrCodeActivity extends AppCompatActivity {
                             AmostraDto a = response.body();
 
                             if (a.getData().getDataColeta() != null && a.getData().getEspecie() != null &&
-                                    a.getData().getNumeroAmostra() != 0 && a.getData().getOrigemLeite().toString() != null &&
+                                     a.getData().getOrigemLeite().toString() != null &&
                                     a.getData().getProdutos().toString() != null) {
 
                                 Log.i("Objeto Amostra:",response.body().toString());
@@ -125,7 +125,7 @@ public class QrCodeActivity extends AppCompatActivity {
                                 numeroAmostra.setText(String.valueOf(a.getData().getNumeroAmostra()));
                                 observacao.setText(a.getData().getObservacao());
                                 origem.setText(a.getData().getOrigemLeite().toString());
-                                produtos.setText(a.getData().getProdutos().toString());
+                                produtos.setText(a.getData().getProdutos().toString().replace("[","").replace("]",""));
                                 especie.setText(a.getData().getEspecie().toString());
 
 //                                Log.i("Data Coleta 1:",""+a.getData().getDataColeta());

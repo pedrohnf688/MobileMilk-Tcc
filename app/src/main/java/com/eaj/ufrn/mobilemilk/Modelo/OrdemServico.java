@@ -7,13 +7,13 @@ public class OrdemServico {
     private Bolsista bolsista;
     private Date dataHora;
     private Solicitacao solicitacao;
-    private Integer valor;
+    private Integer valorPreco;
 
-    public OrdemServico(Bolsista bolsista, Date dataHora, Solicitacao solicitacao, Integer valor) {
+    public OrdemServico(Bolsista bolsista, Date dataHora, Solicitacao solicitacao, Integer valorPreco) {
         this.bolsista = bolsista;
         this.dataHora = dataHora;
         this.solicitacao = solicitacao;
-        this.valor = valor;
+        this.valorPreco = valorPreco;
     }
 
     public OrdemServico(){
@@ -43,11 +43,11 @@ public class OrdemServico {
         this.solicitacao = solicitacao;
     }
 
-    public Integer getValor() {
-        return valor;
+    public Integer getValorPreco() {
+        return valorPreco;
     }
 
-    public void setValor(Integer valor) {
-        this.valor = valor;
+    public void setValorPreco(Integer valorPreco) {
+        this.valorPreco = valorPreco;
     }
 }

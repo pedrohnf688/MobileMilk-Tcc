@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaj.ufrn.mobilemilk.Activity.ComprovanteSolicitacaoActivity;
@@ -69,9 +70,11 @@ public class SolicitacoesFragment extends Fragment {
 
                         Button buttonSolicitacaoAmostras = dialogView.findViewById(R.id.buttonSolicitacaoAmostras);
                         Button buttonSolicitacaoComprovante = dialogView.findViewById(R.id.buttonSolicitacaoComprovante);
+                        TextView precoOrdemServico = dialogView.findViewById(R.id.precoOrdemServico);
 
                         final AlertDialog alertDialog = alertDeletarSolicitacao.create();
                         alertDialog.show();
+
 
                         buttonSolicitacaoComprovante.setOnClickListener(new View.OnClickListener() {
                             @Override
