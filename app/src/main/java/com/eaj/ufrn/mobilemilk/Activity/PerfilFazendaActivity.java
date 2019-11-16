@@ -248,9 +248,10 @@ public class PerfilFazendaActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Log.i("aaaaaa",""+response.body());
-
-                    loadProfileIcon(response.body().getFileDownloadUri(), circleImageViewFazenda);
-                    //Toast.makeText(getApplicationContext(),"URL:"+ response.body(), Toast.LENGTH_SHORT).show();
+                    if(response.body() != null) {
+                        loadProfileIcon(response.body().getFileDownloadUri(), circleImageViewFazenda);
+                        //Toast.makeText(getApplicationContext(),"URL:"+ response.body(), Toast.LENGTH_SHORT).show();
+                    }
                 }else {
                     Log.i("URL ERRADA:", "" + response.body());
                     // Toast.makeText(getApplicationContext(), "Erro" + response.body(), Toast.LENGTH_SHORT).show();

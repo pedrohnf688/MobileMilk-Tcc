@@ -12,29 +12,26 @@ public class Solicitacao {
    private Status status;
    private String observacao;
    private List<Analise> listaAnalises;
-   private OrdemServico ordemServico;
    private List<LaudoMedia> listaLaudoMedia;
    private double temperatura;
 
 
     public Solicitacao(Cliente cliente, Fazenda fazenda, Status status, String observacao,
-                       List<Analise> listaAnalises, OrdemServico ordemServico) {
+                       List<Analise> listaAnalises) {
         this.cliente = cliente;
         this.fazenda = fazenda;
         this.status = status;
         this.observacao = observacao;
         this.listaAnalises = listaAnalises;
-        this.ordemServico = ordemServico;
     }
 
-    public Solicitacao(String id, Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, OrdemServico ordemServico, List<LaudoMedia> listaLaudoMedia, double temperatura) {
+    public Solicitacao(String id, Cliente cliente, Fazenda fazenda, Status status, String observacao, List<Analise> listaAnalises, List<LaudoMedia> listaLaudoMedia, double temperatura) {
         this.id = id;
         this.cliente = cliente;
         this.fazenda = fazenda;
         this.status = status;
         this.observacao = observacao;
         this.listaAnalises = listaAnalises;
-        this.ordemServico = ordemServico;
         this.listaLaudoMedia = listaLaudoMedia;
         this.temperatura = temperatura;
     }
@@ -91,14 +88,6 @@ public class Solicitacao {
         this.listaAnalises = listaAnalises;
     }
 
-    public OrdemServico getOrdemServico() {
-        return ordemServico;
-    }
-
-    public void setOrdemServico(OrdemServico ordemServico) {
-        this.ordemServico = ordemServico;
-    }
-
     public List<LaudoMedia> getListaLaudoMedia() {
         return listaLaudoMedia;
     }
@@ -125,7 +114,6 @@ public class Solicitacao {
                 ", status=" + status +
                 ", observacao='" + observacao + '\'' +
                 ", listaAnalises=" + listaAnalises +
-                ", ordemServico=" + ordemServico +
                 ", listaLaudoMedia=" + listaLaudoMedia +
                 ", temperatura=" + temperatura +
                 '}';

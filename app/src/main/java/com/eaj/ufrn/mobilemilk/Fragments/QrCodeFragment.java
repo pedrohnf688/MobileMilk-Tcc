@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.eaj.ufrn.mobilemilk.Activity.AnalisesActivity;
 import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
@@ -35,6 +36,7 @@ public class QrCodeFragment extends Fragment {
 
     private List<SolicitacaoGetDto> listaSolicitacoes = new ArrayList<>();
     private RecyclerView recyclerSolicitacao;
+    TextView vazioq;
 
     public QrCodeFragment() {
 
@@ -45,6 +47,7 @@ public class QrCodeFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_leitor, group, false);
 
         recyclerSolicitacao = view.findViewById(R.id.recyclerViewSolicitacao);
+        vazioq = view.findViewById(R.id.xvazio);
 
 
         // Implementando listener de cliques
@@ -105,6 +108,12 @@ public class QrCodeFragment extends Fragment {
 
                     recyclerSolicitacao.setLayoutManager(layout);
                     recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
+
+                    if(listaSolicitacoes.size() == 0){
+                        vazioq.setVisibility(View.VISIBLE);
+                    }else{
+                        vazioq.setVisibility(View.GONE);
+                    }
 
                 } else {
                     Log.i("ResponseError", "Message: " + response.message());

@@ -146,11 +146,11 @@ public class PerfilFragment extends Fragment {
 
     public void carregarPerfil(){
         SharedPreferences prefs = getActivity().getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-        this.nomeClientePerfil.setText(prefs.getString("nome", "null"));
-        this.emailClientePerfil.setText(prefs.getString("email", "null"));
-        this.cpfClientePerfil.setText(prefs.getString("cpf", "null"));
-        this.telefone1ClientePerfil.setText(prefs.getString("telefone1", "DEFAULT"));
-        this.telefone2ClientePerfil.setText(prefs.getString("telefone2", "DEFAULT"));
+        this.nomeClientePerfil.setText(prefs.getString("nome", ""));
+        this.emailClientePerfil.setText(prefs.getString("email", ""));
+        this.cpfClientePerfil.setText(prefs.getString("cpf", ""));
+        this.telefone1ClientePerfil.setText(prefs.getString("telefone1", ""));
+        this.telefone2ClientePerfil.setText(prefs.getString("telefone2",""));
 //      loadProfileIcon(prefs.getString("fotoUsuario","null"), circleImageView);
         //loadProfileIcon(urlImagem, circleImageView);
     }

@@ -1,5 +1,6 @@
 package com.eaj.ufrn.mobilemilk.ServiceInterface;
 
+import com.eaj.ufrn.mobilemilk.Modelo.OrdemServico;
 import com.eaj.ufrn.mobilemilk.Modelo.Solicitacao;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoPostDto;
@@ -24,5 +25,8 @@ public interface ServiceSolicitacao {
 
     @DELETE("solicitacao/{id}")
     Call<Solicitacao> deletarSolicitacao(@Path("id") String id, @Header("Authorization") String authorzation);
+
+    @GET("solicitacao/ordemServico/{id}")
+    Call<OrdemServico> buscarOrdemServico(@Path("id") String id, @Header("Authorization") String authorzation);
 
 }

@@ -65,7 +65,6 @@
                     android:id="@+id/nomeCLientePerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hudson Silva de Borba"
                     android:textColor="@color/BlackT"
                     android:textSize="15dp" />
 
@@ -100,7 +99,6 @@
                     android:id="@+id/emailCLientePerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="hudson_ufrn@hotmail.com"
                     android:textColor="@color/BlackT"
                     android:textSize="15dp" />
 
@@ -135,7 +133,6 @@
                     android:id="@+id/cpfCLientePerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="78965478521"
                     android:textColor="@color/BlackT"
                     android:textSize="15dp" />
 
@@ -170,7 +167,6 @@
                     android:id="@+id/telefone1CLientePerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+55 84 988888888"
                     android:textColor="@color/BlackT"
                     android:textSize="15dp" />
 
@@ -205,7 +201,6 @@
                     android:id="@+id/telefone2CLientePerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+55 84 988888888"
                     android:textColor="@color/BlackT"
                     android:textSize="15dp" />
 

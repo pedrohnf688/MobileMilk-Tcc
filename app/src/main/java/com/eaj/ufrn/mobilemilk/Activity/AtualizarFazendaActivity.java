@@ -115,11 +115,19 @@ public class AtualizarFazendaActivity extends AppCompatActivity {
         call.enqueue(new Callback<FazendaDto>() {
             @Override
             public void onResponse(Call<FazendaDto> call, Response<FazendaDto> response) {
-                if(response.isSuccessful())
+                if(response.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Fazenda Atualizada", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(getApplicationContext(), "Erro ao atualizar", Toast.LENGTH_SHORT).show();
+                    nomeFazenda.setText(response.body().getData().getNomeFazenda());
+                    cpfcnpjFazenda.setText(response.body().getData().getCpfcnpj());
+                    estadoFazenda.setText(response.body().getData().getEstado());
+                    cidadeFazenda.setText(response.body().getData().getCidade());
+                    bairroFazenda.setText(response.body().getData().getBairro());
+                    numeroFazenda.setText(response.body().getData().getNumero());
+                    cepFazenda.setText(response.body().getData().getCep());
 
+                }else {
+                    Toast.makeText(getApplicationContext(), "Erro ao atualizar", Toast.LENGTH_SHORT).show();
+                }
                 finish();
             }
 

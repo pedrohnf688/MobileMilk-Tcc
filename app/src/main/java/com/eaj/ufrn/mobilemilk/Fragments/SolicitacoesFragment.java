@@ -22,6 +22,7 @@ import com.eaj.ufrn.mobilemilk.Activity.DetalheSolicitacaoActivity;
 import com.eaj.ufrn.mobilemilk.Activity.VisualizarFotoAmostrasActivity;
 import com.eaj.ufrn.mobilemilk.Adapters.SolicitacaoAdapter;
 import com.eaj.ufrn.mobilemilk.Gesture.MeuRecyclerViewClickListener;
+import com.eaj.ufrn.mobilemilk.Modelo.OrdemServico;
 import com.eaj.ufrn.mobilemilk.ModeloDTO.SolicitacaoGetDto;
 import com.eaj.ufrn.mobilemilk.R;
 import com.eaj.ufrn.mobilemilk.Retrofit.RetrofitConfig;
@@ -37,7 +38,7 @@ public class SolicitacoesFragment extends Fragment {
 
    private List<SolicitacaoGetDto> listaSolicitacoes = new ArrayList<>();
    private RecyclerView recyclerSolicitacao;
-
+   TextView vazio;
     // Required empty constructor
     public SolicitacoesFragment(){
 
@@ -54,7 +55,7 @@ public class SolicitacoesFragment extends Fragment {
         *   após a chamada da requisição GET do recurso /cliente/{id}/solicitacao
         * */
         this.recyclerSolicitacao = view.findViewById(R.id.recyclerViewListarSolicitacoes);
-
+        this.vazio = view.findViewById(R.id.rvazio);
 
         // Implementando listener de cliques
         recyclerSolicitacao.addOnItemTouchListener(
@@ -70,11 +71,30 @@ public class SolicitacoesFragment extends Fragment {
 
                         Button buttonSolicitacaoAmostras = dialogView.findViewById(R.id.buttonSolicitacaoAmostras);
                         Button buttonSolicitacaoComprovante = dialogView.findViewById(R.id.buttonSolicitacaoComprovante);
-                        TextView precoOrdemServico = dialogView.findViewById(R.id.precoOrdemServico);
+                        final TextView precoOrdemServico = dialogView.findViewById(R.id.precoOrdemServico);
 
                         final AlertDialog alertDialog = alertDeletarSolicitacao.create();
                         alertDialog.show();
 
+
+                        SharedPreferences prefs2 = getActivity().getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
+
+                        Call<OrdemServico> call2 = new RetrofitConfig().getSolicitacaoService()
+                                .buscarOrdemServico(s.getId(), prefs2.getString("accessToken", "default"));
+
+                        call2.enqueue(new Callback<OrdemServico>() {
+                            @Override
+                            public void onResponse(Call<OrdemServico> call, Response<OrdemServico> response) {
+                                if(response.isSuccessful()){
+                                    precoOrdemServico.setText(""+response.body().getValorPreco());
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<OrdemServico> call, Throwable t) {
+
+                            }
+                        });
 
                         buttonSolicitacaoComprovante.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -146,6 +166,13 @@ public class SolicitacoesFragment extends Fragment {
 
                     recyclerSolicitacao.setLayoutManager(layout);
                     recyclerSolicitacao.setItemAnimator(new DefaultItemAnimator());
+
+                    if(listaSolicitacoes.size() == 0){
+                        vazio.setVisibility(View.VISIBLE);
+                    }else{
+                        vazio.setVisibility(View.GONE);
+                    }
+
                 }
                 else {
                     Log.i("ResponseError", "Message: " + response.message());

@@ -83,13 +83,13 @@ public class DetalharAnalise extends AppCompatActivity {
                     recycler.setItemAnimator(new DefaultItemAnimator());
 
                     textVieworigemdoLeite.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
-                            .get(data.getInt("analisePosition")).getOrigemLeite().toString());
+                            .get(data.getInt("analisePosition")).getOrigemLeite().toString().replace("_"," "));
 
                     textViewproduto.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
                             .get(data.getInt("analisePosition")).getProdutos().toString().replace("[","").replace("]",""));
 
                     textViewEspecie.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
-                            .get(data.getInt("analisePosition")).getEspecie().toString());
+                            .get(data.getInt("analisePosition")).getEspecie().toString().replace("_"," "));
 
                     textViewNumerodeAmostras.setText(listaSolicitacao.get(data.getInt("solicitacaoPosition")).getListaAnalise()
                             .get(data.getInt("analisePosition")).getQuantidadeAmostras().toString());
